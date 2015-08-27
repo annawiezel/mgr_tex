@@ -74,27 +74,29 @@ Odpowiednik testu istotnoœci dla prostego modelu regresji = F-test (+ t-test) [p
 %Odpowiednikami testu istotnoœci w klasycznym modelu liniowym s¹ np. t-test oraz F-test.
 
 \chapter{Preliminaria}
-\section{Dane funkcjonalne. Klasyfikacja operatorów liniowych}
+%
 Przestrzeni¹ funkcyjn¹ nazywaæ bêdziemy przestrzeñ liniow¹ funkcji z dowolnego zbioru $X$ do zbioru $Y$.
 %
 \begin{df}{\cite{FV}}
-\\Zmienn¹ losow¹ $X$ nazywamy \textbf{zmienn¹ funkcjonaln¹} wtedy i tylko wtedy, gdy przyjmuje wartoœci w nieskoñczenie wymiarowej przestrzeni (przestrzeni funkcyjnej). Obserwacjê $\chi$ zmiennej $X$ nazywamy \textbf{dan¹ funkcjonaln¹} (\textit{ang. functional data}).
+	\\Zmienn¹ losow¹ $X$ nazywamy \textbf{zmienn¹ funkcjonaln¹} wtedy i tylko wtedy, gdy przyjmuje wartoœci w nieskoñczenie wymiarowej przestrzeni (przestrzeni funkcyjnej). Obserwacjê $\chi$ zmiennej $X$ nazywamy \textbf{dan¹ funkcjonaln¹} (\textit{ang. functional data}).
 \end{df}
 %
 Jeœli zmienna funkcjonalna $X$ (odpowiednio obserwacja $\chi$) jest krzyw¹, to zachodzi $X= \{X(t), \ t \in T \}$ (odp. $\chi= \{\chi(t), \ t \in T \}$), gdzie zbiór indeksów $T \subset \mathbb{R}$. Tak¹ zmienn¹ funkcjonaln¹ mo¿emy zatem uto¿samiaæ z procesem stochastycznym z nieskoñczenie wymiarow¹ przestrzeni¹ stanów. W szczególnoœci, zmienna funkcjonalna mo¿e byæ powierzchni¹, czyli dwuwymiarowym wektorem krzywych - wtedy, analogicznie, $T$ bêdzie dwuwymiarowym zbiorem indeksów tj. $T \subset \mathbb{R}^2$ - lub dowolnie wymiarowym wektorem krzywych.
 %%% przyk³ady danych funkcjonalnych? %%%
 %
 \\W niniejszej pracy skupimy siê na zmiennych funkcjonalnych przyjmuj¹cych postaæ krzywych.
+\vspace{0.35cm}\\Aby zbudowaæ pojêcia œredniej oraz kowariancji dla zmiennych funkcjonalnych wprowadzimy niezbêdne pojêcia z dziedziny operatorów liniowych.
 %
-\vspace{0.35cm}\\Niech $(\Omega, \mathcal{F},P)$ bêdzie przestrzeni¹ probabilistyczn¹, $\Omega$ jest zatem zbiorem scenariuszy $\omega$, $\mathcal{F}$ jest $\sigma$-algebr¹ podzbiorów $\Omega$, a $P$ miar¹ prawdopodobieñstwa nad $\mathcal{F}$. Dla uproszczenia zak³adamy zupe³noœæ zadanej przestrzeni probabilistycznej. Rozwa¿my proces stochastyczny z czasem ci¹g³ym $X=\{X_t, \ t \in T \}$, gdzie $T$ jest przedzia³em w $\mathbb{R}$, zdefiniowany na przestrzeni probabilistycznej $(\Omega, \mathcal{F},P)$, taki, ¿e $\mathcal{X}_t(\omega)$ nale¿y do przestrzeni funkcyjnej $E$ dla wszystkich $\omega \in \Omega$.
+%
+\section{Klasyfikacja operatorów liniowych}
+%
+Niech $(\Omega, \mathcal{F},P)$ bêdzie przestrzeni¹ probabilistyczn¹, $\Omega$ jest zatem zbiorem scenariuszy $\omega$, $\mathcal{F}$ jest $\sigma$-algebr¹ podzbiorów $\Omega$, a $P$ miar¹ prawdopodobieñstwa nad $\mathcal{F}$. Dla uproszczenia zak³adamy zupe³noœæ zadanej przestrzeni probabilistycznej. Rozwa¿my proces stochastyczny z czasem ci¹g³ym $X=\{X_t, \ t \in T \}$, gdzie $T$ jest przedzia³em w $\mathbb{R}$, zdefiniowany na przestrzeni probabilistycznej $(\Omega, \mathcal{F},P)$, taki, ¿e $\mathcal{X}_t(\omega)$ nale¿y do przestrzeni funkcyjnej $E$ dla wszystkich $\omega \in \Omega$.
 %
 \\W pracy rozwa¿aæ bêdziemy zmienne funkcjonalne przyjmuj¹ce wartoœci w przestrzeni Hilberta.
 %
 %%% "Klasyfikacja operatorów liniowych" jako oddzielny rozdzia³? A mo¿e zamieniæ kolejnoœci¹ z "Dane funkcjonalne"? %%%
 %
-\\Aby zbudowaæ pojêcia œredniej oraz kowariancji dla zmiennych funkcjonalnych wprowadzimy niezbêdne pojêcia z dziedziny operatorów liniowych.
-%
-\vspace{0.35cm}\\Rozwa¿my oœrodkow¹ przestrzeñ Hilberta $H$ z iloczynem skalarnym $\langle \cdot, \cdot \rangle$ zadaj¹cym normê $\left\|  \cdot \right\| $ i oznaczmy przez $\mathcal{L}$ przestrzeñ ci¹g³ych (ograniczonych) operatorów liniowych w $H$ z norm¹
+\vspace{0.35cm}\\Rozwa¿my oœrodkow¹ nieskoñczenie wymiarow¹ przestrzeñ Hilberta $H$ z iloczynem skalarnym $\langle \cdot, \cdot \rangle$ zadaj¹cym normê $\left\|  \cdot \right\| $ i oznaczmy przez $\mathcal{L}$ przestrzeñ ci¹g³ych (ograniczonych) operatorów liniowych w $H$ z norm¹
 \begin{equation*}
 \left\| \psi \right\|_{\mathcal{L}}:= \sup \{\left\| \psi(x)\right\| : \ \left\| x\right\| \leq 1\}.
 \end{equation*}
@@ -129,7 +131,7 @@ gdzie ${e_j}_{j=1}^{\infty}$ jest dowoln¹ baz¹ ortonormaln¹ w $H$.
 \end{uw}
 %
 \begin{df}\cite{B}
-\\Operator liniowy nazywamy \textbf{operatorem œladowym}, jeœli równoœæ \eqref{zwarty} spe³niona jest dla ci¹gu takiego, ¿e $\sum_{j=1}^{\infty} \left| \lambda_j \right|  < \infty$.
+\\Operator liniowy nazywamy \textbf{operatorem œladowym} (ang. \textit{nuclear operator}), jeœli równoœæ \eqref{zwarty} spe³niona jest dla ci¹gu takiego, ¿e $\sum_{j=1}^{\infty} \left| \lambda_j \right|  < \infty$.
 \end{df}
 %%% operator œladowy = nuclear operator %%%
 %
@@ -137,9 +139,48 @@ gdzie ${e_j}_{j=1}^{\infty}$ jest dowoln¹ baz¹ ortonormaln¹ w $H$.
 \\Klasa operatorów œladowych $\mathcal{N}$ z norm¹ $\left\| \psi \right\|_{\mathcal{N}} := \sum_{j=1}^{\infty} \left| \lambda_j \right| $ jest przestrzeni¹ Banacha.
 \end{uw}
 %
-%%% Operatory symetryczne, pozytywnie okreœlone %%%
+\begin{df} \cite{HK}
+\\Operator $\psi \in \mathcal{L}$ nazywamy \textbf{symetrycznym}, jeœli
+\begin{equation*}
+\langle \psi(x), y \rangle  = \langle x, \psi(y) \rangle, \quad x,y \in H,
+\end{equation*}
+oraz \textbf{nieujemnie okreœlonym} (po³owicznie pozytywnie okreœlonym, ang. \textit{positive semidefinite}), jeœli
+\begin{equation*}
+\langle \psi (x), x \rangle \geq 0, \quad x \in H.
+\end{equation*}
+\end{df}
+%
+\begin{uw} \cite{HK}
+\\Symetryczny nieujemnie okreœlony operator Hilberta-Schmidta $\psi$ mo¿emy przedstawiæ w reprezentacji
+\begin{equation}\label{fw}
+\psi(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \nu_j \rangle	\nu_j, \quad x \in H,
+\end{equation}
+gdzie ortonormalne $\nu_j$ s¹ \textbf{funkcjami w³asnymi} $\psi$, tj. $\psi(\nu_j)=\lambda_j \nu_j$. Funkcje $\nu_j$ mog¹ byæ rozszerzone do bazy, przez dope³nienie ortogonalne podprzestrzeni rozpiêtej przez oryginalne $\nu_j$. Mo¿emy zatem za³o¿yæ, ¿e funkcje $\nu_j$ w \eqref{fw} tworz¹ bazê, a pewne wartoœci $\lambda_j$ mog¹ byæ równe zero.
+\end{uw} 
+%%% pojêcie wartoœci w³asnych? %%%
+%%% funkcje w³asne ~odpowiedniki wektorów w³asnych w przestrzeniach wektorowych %%%
+%
+\section{Przestrzeñ $L^2$ i pojêcie operatora kowariancji}
 %%% Przestrzeñ L^2 %%%
 %%% ca³kowalnoœæ, wartoœæ oczekiwana = ca³ka ? %%%
+%
+Przestrzeñ $L^2=L^2(K,\mathcal{A},\mu)$ nad pewn¹ przestrzeni¹ liniow¹ $K$ jest zbiorem mierzalnych funkcji rzeczywistych okreœlonych na $K$ spe³niaj¹cych $\int_{K} x^2 (t) dt < \infty$. Przestrzeñ $L^2$ jest oœrodkow¹ przestrzeni¹ Hilberta z iloczynem skalarnym
+\begin{equation*}
+\langle x, y \rangle:= \int_{K} x(t) y(t) dt.
+\end{equation*}
+%
+Tak jak zwyczajowo zapisujemy $L^2$ zamiast $L^2(K)$, tak w przypadku symbolu ca³ki bez wskazania obszaru ca³kowania bêdziemy mieæ na myœli ca³kowanie po ca³ej przestrzeni $K$. Jeœli $x,y \in L^2$, równoœæ $x=y$ zawsze oznaczaæ bêdzie $\int \left[x(t) - y(t) \right]^2 dt$.
+%
+\vspace{0.35cm}\\Wa¿n¹ klasê operatorów liniowych na przestrzeni $L^2$ stanowi¹ operatory ca³kowe.
+%
+\begin{df}
+\textbf{Operatorem ca³kowym} nazywamy operator liniowy $\psi$ daj¹cy siê przedstawiæ w formie
+\begin{equation*}
+\Psi(x)(t)= \int \psi(t,s) x(s) ds, \quad x \in L^2,
+\end{equation*}
+gdzie $\psi$ stanowi \textbf{j¹dro ca³kowe} operatora $\Psi$.
+\end{df}
+%%% Psi ~ psi ?! %%%
 %
 \begin{df}\cite{B}
 \\\textbf{Operator kowariancji} scentrowanej zmiennej funkcjonalnej $X$ przyjmuj¹cej wartoœci w przestrzeni funkcyjnej $H$ spe³niaj¹cej $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy nastêpuj¹co
@@ -153,6 +194,8 @@ oraz
 C_{Y,X}(x):=\mathbb{E} [\langle Y, x \rangle X ], \quad x \in H.
 \end{equation*}
 \end{df}
+%
+Operatory kowariancji s¹ operatorami œladowymi,...
 %
 %
 %
