@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.24)  26 AUG 2015 00:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.24)  27 AUG 2015 00:44
 entering extended mode
 **praca*FDA.tex
 ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.tex"
@@ -633,22 +633,7 @@ LaTeX Font Info:    External font `plex10' loaded for size
 
 ]
 Rozdzia\PlPrIeC {\l } 1.
-[7]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.132 \\Z
-         ak³adamy, ¿e zmienne $X_n$, $Y_n$ s¹ scentrowanymi zmiennymi losowy...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[8] [9] [10
+[7] [8] [9] [10
 
 ]
 Rozdzia\PlPrIeC {\l } 2.
@@ -663,7 +648,7 @@ Dodatek A.
 [17] [18
 
 ]
-LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 249
+LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 278
 .
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\ot4cmtt.fd"
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
@@ -672,11 +657,11 @@ File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 Here is how much of TeX's memory you used:
  11606 strings out of 493921
  211454 string characters out of 3144879
- 254799 words of memory out of 3000000
+ 254860 words of memory out of 3000000
  14663 multiletter control sequences out of 15000+200000
  20486 words of font info for 60 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,9n,45p,657b,235s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,9n,45p,638b,235s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C
 :/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/pltt.enc}{C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/plmi.enc}{C:/Program Files (x86)/MiKTeX 2.9
@@ -697,7 +682,7 @@ ublic/pl/plr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plsy
 10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plsy8.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plti10.pfb><C:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/public/pl/pltt10.pfb>
-Output written on "praca FDA.pdf" (21 pages, 169320 bytes).
+Output written on "praca FDA.pdf" (21 pages, 172199 bytes).
 PDF statistics:
  143 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

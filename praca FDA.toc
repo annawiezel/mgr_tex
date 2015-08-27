@@ -1,7 +1,7 @@
 \contentsline {chapter}{Wst\k ep}{5}
 \contentsline {chapter}{\numberline {1}Preliminaria}{7}
-\contentsline {section}{\numberline {1.1}Dane funkcjonalne. Elementy losowe}{7}
-\contentsline {section}{\numberline {1.2}Funkcjonalne modele liniowe}{8}
+\contentsline {section}{\numberline {1.1}Dane funkcjonalne. Klasyfikacja operator\'ow liniowych}{7}
+\contentsline {section}{\numberline {1.2}Funkcjonalne modele liniowe}{9}
 \contentsline {chapter}{\numberline {2}Test istotno\'sci w funkcjonalnym modelu liniowym}{11}
 \contentsline {section}{\numberline {2.1}Idea og\'olna}{11}
 \contentsline {section}{\numberline {2.2}Formalizm}{13}

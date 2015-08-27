@@ -74,30 +74,33 @@ Odpowiednik testu istotnoœci dla prostego modelu regresji = F-test (+ t-test) [p
 %Odpowiednikami testu istotnoœci w klasycznym modelu liniowym s¹ np. t-test oraz F-test.
 
 \chapter{Preliminaria}
-\section{Dane funkcjonalne. Elementy losowe}
+\section{Dane funkcjonalne. Klasyfikacja operatorów liniowych}
 Przestrzeni¹ funkcyjn¹ nazywaæ bêdziemy przestrzeñ liniow¹ funkcji z dowolnego zbioru $X$ do zbioru $Y$.
 %
 \begin{df}{\cite{FV}}
-\\Zmienn¹ losow¹ $\mathcal{X}$ nazywamy \textbf{zmienn¹ funkcjonaln¹} wtedy i tylko wtedy, gdy przyjmuje wartoœci w nieskoñczenie wymiarowej przestrzeni (przestrzeni funkcyjnej). Obserwacjê $\chi$ zmiennej $\mathcal{X}$ nazywamy \textbf{dan¹ funkcjonaln¹} (\textit{ang. functional data}).
+\\Zmienn¹ losow¹ $X$ nazywamy \textbf{zmienn¹ funkcjonaln¹} wtedy i tylko wtedy, gdy przyjmuje wartoœci w nieskoñczenie wymiarowej przestrzeni (przestrzeni funkcyjnej). Obserwacjê $\chi$ zmiennej $X$ nazywamy \textbf{dan¹ funkcjonaln¹} (\textit{ang. functional data}).
 \end{df}
 %
-Jeœli zmienna funkcjonalna $\mathcal{X}$ (odpowiednio obserwacja $\chi$) jest krzyw¹, to zachodzi $\mathcal{X}= \{\mathcal{X}(t), \ t \in T \}$ (odp. $\chi= \{\chi(t), \ t \in T \}$), gdzie zbiór indeksów $T \subset \mathbb{R}$. Tak¹ zmienn¹ funkcjonaln¹ mo¿emy zatem uto¿samiaæ z procesem stochastycznym z nieskoñczenie wymiarow¹ przestrzeni¹ stanów. W szczególnoœci, zmienna funkcjonalna mo¿e byæ powierzchni¹, czyli dwuwymiarowym wektorem krzywych - wtedy, analogicznie, $T$ bêdzie dwuwymiarowym zbiorem indeksów tj. $T \subset \mathbb{R}^2$ - lub dowolnie wymiarowym wektorem krzywych.
+Jeœli zmienna funkcjonalna $X$ (odpowiednio obserwacja $\chi$) jest krzyw¹, to zachodzi $X= \{X(t), \ t \in T \}$ (odp. $\chi= \{\chi(t), \ t \in T \}$), gdzie zbiór indeksów $T \subset \mathbb{R}$. Tak¹ zmienn¹ funkcjonaln¹ mo¿emy zatem uto¿samiaæ z procesem stochastycznym z nieskoñczenie wymiarow¹ przestrzeni¹ stanów. W szczególnoœci, zmienna funkcjonalna mo¿e byæ powierzchni¹, czyli dwuwymiarowym wektorem krzywych - wtedy, analogicznie, $T$ bêdzie dwuwymiarowym zbiorem indeksów tj. $T \subset \mathbb{R}^2$ - lub dowolnie wymiarowym wektorem krzywych.
+%%% przyk³ady danych funkcjonalnych? %%%
 %
 \\W niniejszej pracy skupimy siê na zmiennych funkcjonalnych przyjmuj¹cych postaæ krzywych.
 %
-\vspace{0.4cm}\\Niech $(\Omega, \mathcal{F},P)$ bêdzie przestrzeni¹ probabilistyczn¹, $\Omega$ jest zatem zbiorem scenariuszy $\omega$, $\mathcal{F}$ jest $\sigma$-algebr¹ podzbiorów $\Omega$, a $P$ miar¹ prawdopodobieñstwa nad $\mathcal{F}$. Dla uproszczenia zak³adamy zupe³noœæ zadanej przestrzeni probabilistycznej. Rozwa¿my proces stochastyczny z czasem ci¹g³ym $\mathcal{X}=\{\mathcal{X}_t, \ t \in T \}$, gdzie $T$ jest przedzia³em w $\mathbb{R}$, zdefiniowany na przestrzeni probabilistycznej $(\Omega, \mathcal{F},P)$, taki, ¿e $\mathcal{X}_t(\omega)$ nale¿y do przestrzeni funkcyjnej $E$ dla wszystkich $\omega \in \Omega$.
+\vspace{0.35cm}\\Niech $(\Omega, \mathcal{F},P)$ bêdzie przestrzeni¹ probabilistyczn¹, $\Omega$ jest zatem zbiorem scenariuszy $\omega$, $\mathcal{F}$ jest $\sigma$-algebr¹ podzbiorów $\Omega$, a $P$ miar¹ prawdopodobieñstwa nad $\mathcal{F}$. Dla uproszczenia zak³adamy zupe³noœæ zadanej przestrzeni probabilistycznej. Rozwa¿my proces stochastyczny z czasem ci¹g³ym $X=\{X_t, \ t \in T \}$, gdzie $T$ jest przedzia³em w $\mathbb{R}$, zdefiniowany na przestrzeni probabilistycznej $(\Omega, \mathcal{F},P)$, taki, ¿e $\mathcal{X}_t(\omega)$ nale¿y do przestrzeni funkcyjnej $E$ dla wszystkich $\omega \in \Omega$.
 %
 \\W pracy rozwa¿aæ bêdziemy zmienne funkcjonalne przyjmuj¹ce wartoœci w przestrzeni Hilberta.
 %
+%%% "Klasyfikacja operatorów liniowych" jako oddzielny rozdzia³? A mo¿e zamieniæ kolejnoœci¹ z "Dane funkcjonalne"? %%%
+%
 \\Aby zbudowaæ pojêcia œredniej oraz kowariancji dla zmiennych funkcjonalnych wprowadzimy niezbêdne pojêcia z dziedziny operatorów liniowych.
 %
-\vspace{0.4cm}\\Rozwa¿my oœrodkow¹ przestrzeñ Hilberta $H$ z iloczynem skalarnym $\langle \cdot, \cdot \rangle$ zadaj¹cym normê $\left\|  \cdot \right\| $ i oznaczmy przez $\mathcal{L}$ przestrzeñ ci¹g³ych (ograniczonych) operatorów liniowych w $H$ z norm¹
+\vspace{0.35cm}\\Rozwa¿my oœrodkow¹ przestrzeñ Hilberta $H$ z iloczynem skalarnym $\langle \cdot, \cdot \rangle$ zadaj¹cym normê $\left\|  \cdot \right\| $ i oznaczmy przez $\mathcal{L}$ przestrzeñ ci¹g³ych (ograniczonych) operatorów liniowych w $H$ z norm¹
 \begin{equation*}
 \left\| \psi \right\|_{\mathcal{L}}:= \sup \{\left\| \psi(x)\right\| : \ \left\| x\right\| \leq 1\}.
 \end{equation*}
 %
-\begin{df}{\cite{FV}}
-\\\textbf{Operator} $\psi \in \mathcal{L}$ nazywamy \textbf{zwartym}, jeœli istniej¹ dwie ortonormalne bazy $\{\nu_j\}$ i $\{f_j\}$, oraz rzeczywisty ci¹g $\{\lambda_j \}$ zbie¿ny do zera, takie ¿e
+\begin{df}{\cite{HK}}
+\\Operator $\psi \in \mathcal{L}$ nazywamy \textbf{operatorem zwartym}, jeœli istniej¹ dwie ortonormalne bazy $\{\nu_j\}_{j=1}^{\infty}$ i $\{f_j\}_{j=1}^{\infty}$, oraz rzeczywisty ci¹g $\{\lambda_j \}_{j=1}^{\infty}$ zbie¿ny do zera, takie ¿e
 \begin{equation}\label{zwarty}
 \psi(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \nu_j \rangle	f_j, \quad x \in H.
 \end{equation}
@@ -109,27 +112,53 @@ Bez straty ogólnoœci mo¿emy za³o¿yæ, ¿e w przedstawionej reprezentacji $\lambda_
 \\Równowa¿n¹ definicj¹ operatora zwartego jest spe³nienie nastêpuj¹cego warunku: zbie¿noœæ $\langle y,x_n \rangle \rightarrow \langle y, x \rangle$ dla ka¿dego $y \in H$ implikuje $\left\| \psi(x_n) - \psi(x) \right\| \rightarrow 0 $.
 %%% jeszcze jakieœ definicje? %%%
 %
-Inn¹ klas¹ operatorów s¹ operatory Hilberta-Schmidta, któr¹ oznaczaæ bêdziemy przez $\mathcal{S}$.
+\vspace{0.35cm}\\Inn¹ klas¹ operatorów s¹ operatory Hilberta-Schmidta, któr¹ oznaczaæ bêdziemy przez $\mathcal{S}$.
 %
 \begin{df} \cite{B}
-\\\textbf{Operatorem Hilberta-Schmidta} nazywamy taki operator zwarty $\psi \in \mathcal{L}$, dla którego ci¹g $\{\lambda_j\}$ w reprezentacji \eqref{zwarty} spe³nia $\sum_{j=1}^{\infty}\lambda_j^2 < \infty$.
+\\\textbf{Operatorem Hilberta-Schmidta} nazywamy taki operator zwarty $\psi \in \mathcal{L}$, dla którego ci¹g $\{\lambda_j\}_{j=1}^{\infty}$ w reprezentacji \eqref{zwarty} spe³nia $\sum_{j=1}^{\infty}\lambda_j^2 < \infty$.
 \end{df}
+%%% u Beœki inna definicja (wyk4WM) %%%
 %
-\begin{uw}\cite{B}
-Klasa $\mathcal{S}$ z norm¹ $\left\| \psi \right\|_{\mathcal{S}} := \left( \sum_{j=1}^{\infty} \lambda_j^2 \right)^{1/2} $ jest przestrzeni¹ Hilberta.
+\begin{uw}\cite{B}, \cite{HK}
+\\Klasa $\mathcal{S}$ jest przestrzeni¹ Hilberta z iloczynem skalarnym
+\begin{equation*}
+\langle \psi_1, \psi_2 \rangle_{\mathcal{S}}: = \sum_{j=1}^{\infty} \ \langle \psi_1 (e_j), \psi_2 (e_j) \rangle,
+\end{equation*}
+gdzie ${e_j}_{j=1}^{\infty}$ jest dowoln¹ baz¹ ortonormaln¹ w $H$.
+\\Powy¿szy iloczyn skalarny zadaje normê $\left\| \psi \right\|_{\mathcal{S}} := \left( \sum_{j=1}^{\infty} \lambda_j^2 \right)^{1/2} $.
 \end{uw}
 %
 \begin{df}\cite{B}
-\\\textbf{Operator kowariancji} scentrowanej zmiennej funkcjonalnej przyjmuj¹cej wartoœci w przestrzeni funkcyjnej $H$ spe³niaj¹cej $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy nastêpuj¹co
-$$C_X (x):= \mathbb{E} [\langle X, x \rangle X ], \quad x \in H. $$
+\\Operator liniowy nazywamy \textbf{operatorem œladowym}, jeœli równoœæ \eqref{zwarty} spe³niona jest dla ci¹gu takiego, ¿e $\sum_{j=1}^{\infty} \left| \lambda_j \right|  < \infty$.
 \end{df}
-%%% zmieniæ \mathcal{X} na X ? %%%
+%%% operator œladowy = nuclear operator %%%
+%
+\begin{uw}\cite{B}
+\\Klasa operatorów œladowych $\mathcal{N}$ z norm¹ $\left\| \psi \right\|_{\mathcal{N}} := \sum_{j=1}^{\infty} \left| \lambda_j \right| $ jest przestrzeni¹ Banacha.
+\end{uw}
+%
+%%% Operatory symetryczne, pozytywnie okreœlone %%%
+%%% Przestrzeñ L^2 %%%
+%%% ca³kowalnoœæ, wartoœæ oczekiwana = ca³ka ? %%%
+%
+\begin{df}\cite{B}
+\\\textbf{Operator kowariancji} scentrowanej zmiennej funkcjonalnej $X$ przyjmuj¹cej wartoœci w przestrzeni funkcyjnej $H$ spe³niaj¹cej $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy nastêpuj¹co
+$$C_X (x):= \mathbb{E} [\langle X, x \rangle X ], \quad x \in H. $$
+Jeœli $Y$ jest zmienn¹ funkcjonaln¹ spe³niaj¹c¹ powy¿sze warunki, wtedy operator kowariancji miêdzy zmiennymi $X$ i $Y$ przedstawiamy nastêpuj¹co
+\begin{equation*}
+C_{X,Y}(x):=\mathbb{E} [\langle X, x \rangle Y ], \quad x \in H
+\end{equation*}
+oraz
+\begin{equation*}
+C_{Y,X}(x):=\mathbb{E} [\langle Y, x \rangle X ], \quad x \in H.
+\end{equation*}
+\end{df}
 %
 %
 %
 %
 \vspace{2cm}
-\\Zak³adamy, ¿e zmienne $X_n$, $Y_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) losow¹ funkcjê o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
+Zak³adamy, ¿e zmienne $X_n$, $Y_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) losow¹ funkcjê o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
 $$C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ].$$
 ...
 
@@ -240,17 +269,17 @@ Magnetometer data...
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
 
-\bibitem[B]{B} D. Bosq, \textit{Linear Processes in Function Spaces}. Springer, 2000.
+\bibitem[Bosq]{B} D. Bosq, \textit{Linear Processes in Function Spaces}. Springer, 2000.
 
-\bibitem[FV]{FV} F. Ferraty, P. Vieu, \textit{Nonparametric Functional Data Analysis. Theory and practice}. Springer, 2006.
+\bibitem[Ferraty, Vieu]{FV} F. Ferraty, P. Vieu, \textit{Nonparametric Functional Data Analysis. Theory and practice}. Springer, 2006.
 
-\bibitem[HK]{HK} Lajos Horv\'{a}th, Piotr Kokoszka, \textit{Interference for Functional Data with Applications}. Springer, 2012.
+\bibitem[Horv\'{a}th, Kokoszka]{HK} Lajos Horv\'{a}th, Piotr Kokoszka, \textit{Interference for Functional Data with Applications}. Springer, 2012.
 
 \bibitem[I]{I} INTERMAGNET \url{http://www.intermagnet.org/index-eng.php}
 
-\bibitem[K08]{K08} P. Kokoszka, I. Maslova, J. Sojka, L. Zhu, \textit{Testing for lack of dependence in the functional linear model}. Canadian Journal of Statistics, 2008, 36, 207-222.
+\bibitem[Kokoszka et al. 2008]{K08} P. Kokoszka, I. Maslova, J. Sojka, L. Zhu, \textit{Testing for lack of dependence in the functional linear model}. Canadian Journal of Statistics, 2008, 36, 207-222.
 
-\bibitem[RS05]{RS05} J. O. Ramsay, B. W. Silverman, \textit{Functional Data Analysis}. Springer, 2005.
+\bibitem[Ramsay, Silverman]{RS05} J. O. Ramsay, B. W. Silverman, \textit{Functional Data Analysis}. Springer, 2005.
 
 
 
