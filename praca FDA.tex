@@ -12,6 +12,7 @@
 \usepackage{pgf}
 \usepackage{mathtools}
 \usepackage{url}
+\usepackage{upgreek}
 
 \author{Anna Wie¿el}
 \nralbumu{132540}
@@ -90,7 +91,7 @@ Jeœli zmienna funkcjonalna $X$ (odpowiednio obserwacja $\chi$) jest krzyw¹, to z
 %
 \section{Klasyfikacja operatorów liniowych}
 %
-Niech $(\Omega, \mathcal{F},P)$ bêdzie przestrzeni¹ probabilistyczn¹, $\Omega$ jest zatem zbiorem scenariuszy $\omega$, $\mathcal{F}$ jest $\sigma$-algebr¹ podzbiorów $\Omega$, a $P$ miar¹ prawdopodobieñstwa nad $\mathcal{F}$. Dla uproszczenia zak³adamy zupe³noœæ zadanej przestrzeni probabilistycznej. Rozwa¿my proces stochastyczny z czasem ci¹g³ym $X=\{X_t, \ t \in T \}$, gdzie $T$ jest przedzia³em w $\mathbb{R}$, zdefiniowany na przestrzeni probabilistycznej $(\Omega, \mathcal{F},P)$, taki, ¿e $\mathcal{X}_t(\omega)$ nale¿y do przestrzeni funkcyjnej $E$ dla wszystkich $\omega \in \Omega$.
+Niech $(\Omega, \mathcal{F},P)$ bêdzie przestrzeni¹ probabilistyczn¹, $\Omega$ jest zatem zbiorem scenariuszy $\omega$, $\mathcal{F}$ jest $\sigma$-algebr¹ podzbiorów $\Omega$, a $P$ miar¹ prawdopodobieñstwa nad $\mathcal{F}$. Dla uproszczenia zak³adamy zupe³noœæ zadanej przestrzeni probabilistycznej. Rozwa¿my proces stochastyczny z czasem ci¹g³ym $X=\{X_t, \ t \in T \}$, gdzie $T$ jest przedzia³em w $\mathbb{R}$, zdefiniowany na przestrzeni probabilistycznej $(\Omega, \mathcal{F},P)$, taki, ¿e $X_t(\omega)$ nale¿y do przestrzeni funkcyjnej $E$ dla wszystkich $\omega \in \Omega$.
 %
 \\W pracy rozwa¿aæ bêdziemy zmienne funkcjonalne przyjmuj¹ce wartoœci w przestrzeni Hilberta.
 %
@@ -98,69 +99,70 @@ Niech $(\Omega, \mathcal{F},P)$ bêdzie przestrzeni¹ probabilistyczn¹, $\Omega$ j
 %
 \vspace{0.35cm}\\Rozwa¿my oœrodkow¹ nieskoñczenie wymiarow¹ przestrzeñ Hilberta $H$ z iloczynem skalarnym $\langle \cdot, \cdot \rangle$ zadaj¹cym normê $\left\|  \cdot \right\| $ i oznaczmy przez $\mathcal{L}$ przestrzeñ ci¹g³ych (ograniczonych) operatorów liniowych w $H$ z norm¹
 \begin{equation*}
-\left\| \psi \right\|_{\mathcal{L}}:= \sup \{\left\| \psi(x)\right\| : \ \left\| x\right\| \leq 1\}.
+\left\| \mathit{\Psi} \right\|_{\mathcal{L}}:= \sup \{\left\| \mathit{\Psi}(x)\right\| : \ \left\| x\right\| \leq 1\}.
 \end{equation*}
 %
 \begin{df}{\cite{HK}}
-\\Operator $\psi \in \mathcal{L}$ nazywamy \textbf{operatorem zwartym}, jeœli istniej¹ dwie ortonormalne bazy $\{\nu_j\}_{j=1}^{\infty}$ i $\{f_j\}_{j=1}^{\infty}$, oraz rzeczywisty ci¹g $\{\lambda_j \}_{j=1}^{\infty}$ zbie¿ny do zera, takie ¿e
-\begin{equation}\label{zwarty}
-\psi(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \nu_j \rangle	f_j, \quad x \in H.
-\end{equation}
+	\\Operator $\mathit{\Psi} \in \mathcal{L}$ nazywamy \textbf{operatorem zwartym}, jeœli istniej¹ dwie ortonormalne bazy $\{\nu_j\}_{j=1}^{\infty}$ i $\{f_j\}_{j=1}^{\infty}$, oraz rzeczywisty ci¹g $\{\lambda_j \}_{j=1}^{\infty}$ zbie¿ny do zera, takie ¿e
+	\begin{equation}\label{zwarty}
+	\mathit{\Psi}(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \nu_j \rangle	f_j, \quad x \in H.
+	\end{equation}
 \end{df}
 %%% porównanæ z innymi definicjami %%%
 %
 Bez straty ogólnoœci mo¿emy za³o¿yæ, ¿e w przedstawionej reprezentacji $\lambda_j$ s¹ wartoœciami dodatnimi, w razie koniecznoœci wystarczy $f_j$ zamieniæ na $-f_j$.
 %
-\\Równowa¿n¹ definicj¹ operatora zwartego jest spe³nienie nastêpuj¹cego warunku: zbie¿noœæ $\langle y,x_n \rangle \rightarrow \langle y, x \rangle$ dla ka¿dego $y \in H$ implikuje $\left\| \psi(x_n) - \psi(x) \right\| \rightarrow 0 $.
+\\Równowa¿n¹ definicj¹ operatora zwartego jest spe³nienie nastêpuj¹cego warunku: zbie¿noœæ $\langle y,x_n \rangle \rightarrow \langle y, x \rangle$ dla ka¿dego $y \in H$ implikuje $\left\| \mathit{\Psi}(x_n) - \mathit{\Psi}(x) \right\| \rightarrow 0 $.
 %%% jeszcze jakieœ definicje? %%%
 %
 \vspace{0.35cm}\\Inn¹ klas¹ operatorów s¹ operatory Hilberta-Schmidta, któr¹ oznaczaæ bêdziemy przez $\mathcal{S}$.
 %
 \begin{df} \cite{B}
-\\\textbf{Operatorem Hilberta-Schmidta} nazywamy taki operator zwarty $\psi \in \mathcal{L}$, dla którego ci¹g $\{\lambda_j\}_{j=1}^{\infty}$ w reprezentacji \eqref{zwarty} spe³nia $\sum_{j=1}^{\infty}\lambda_j^2 < \infty$.
+	\\\textbf{Operatorem Hilberta-Schmidta} nazywamy taki operator zwarty $\mathit{\Psi} \in \mathcal{L}$, dla którego ci¹g $\{\lambda_j\}_{j=1}^{\infty}$ w reprezentacji \eqref{zwarty} spe³nia $\sum_{j=1}^{\infty}\lambda_j^2 < \infty$.
 \end{df}
 %%% u Beœki inna definicja (wyk4WM) %%%
 %
 \begin{uw}\cite{B}, \cite{HK}
-\\Klasa $\mathcal{S}$ jest przestrzeni¹ Hilberta z iloczynem skalarnym
-\begin{equation*}
-\langle \psi_1, \psi_2 \rangle_{\mathcal{S}}: = \sum_{j=1}^{\infty} \ \langle \psi_1 (e_j), \psi_2 (e_j) \rangle,
-\end{equation*}
-gdzie ${e_j}_{j=1}^{\infty}$ jest dowoln¹ baz¹ ortonormaln¹ w $H$.
-\\Powy¿szy iloczyn skalarny zadaje normê $\left\| \psi \right\|_{\mathcal{S}} := \left( \sum_{j=1}^{\infty} \lambda_j^2 \right)^{1/2} $.
+	\\Klasa $\mathcal{S}$ jest przestrzeni¹ Hilberta z iloczynem skalarnym
+	\begin{equation*}
+	\langle \mathit{\Psi}_1, \mathit{\Psi}_2 \rangle_{\mathcal{S}}: = \sum_{j=1}^{\infty} \ \langle \mathit{\Psi}_1 (e_j), \mathit{\Psi}_2 (e_j) \rangle,
+	\end{equation*}
+	gdzie $\{e_j\}_{j=1}^{\infty}$ jest dowoln¹ baz¹ ortonormaln¹ w $H$.
+	\\Powy¿szy iloczyn skalarny zadaje normê $\left\| \mathit{\Psi} \right\|_{\mathcal{S}} := \left( \sum_{j=1}^{\infty} \lambda_j^2 \right)^{1/2} $.
 \end{uw}
 %
 \begin{df}\cite{B}
-\\Operator liniowy nazywamy \textbf{operatorem œladowym} (ang. \textit{nuclear operator}), jeœli równoœæ \eqref{zwarty} spe³niona jest dla ci¹gu takiego, ¿e $\sum_{j=1}^{\infty} \left| \lambda_j \right|  < \infty$.
+	\\Operator liniowy nazywamy \textbf{operatorem œladowym} (ang. \textit{nuclear operator}), jeœli równoœæ \eqref{zwarty} spe³niona jest dla ci¹gu takiego, ¿e $\sum_{j=1}^{\infty} \left| \lambda_j \right|  < \infty$.
 \end{df}
 %%% operator œladowy = nuclear operator %%%
 %
 \begin{uw}\cite{B}
-\\Klasa operatorów œladowych $\mathcal{N}$ z norm¹ $\left\| \psi \right\|_{\mathcal{N}} := \sum_{j=1}^{\infty} \left| \lambda_j \right| $ jest przestrzeni¹ Banacha.
+	\\Klasa operatorów œladowych $\mathcal{N}$ z norm¹ $\left\| \mathit{\Psi} \right\|_{\mathcal{N}} := \sum_{j=1}^{\infty} \left| \lambda_j \right| $ jest przestrzeni¹ Banacha.
 \end{uw}
 %
 \begin{df} \cite{HK}
-\\Operator $\psi \in \mathcal{L}$ nazywamy \textbf{symetrycznym}, jeœli
-\begin{equation*}
-\langle \psi(x), y \rangle  = \langle x, \psi(y) \rangle, \quad x,y \in H,
-\end{equation*}
-oraz \textbf{nieujemnie okreœlonym} (po³owicznie pozytywnie okreœlonym, ang. \textit{positive semidefinite}), jeœli
-\begin{equation*}
-\langle \psi (x), x \rangle \geq 0, \quad x \in H.
-\end{equation*}
+	\\Operator $\mathit{\Psi} \in \mathcal{L}$ nazywamy 	\textbf{symetrycznym}, jeœli
+	\begin{equation*}
+	\langle \mathit{\Psi}(x), y \rangle  = \langle x, \mathit{\Psi}(y) \rangle, \quad x,y \in H,
+	\end{equation*}
+	oraz \textbf{nieujemnie okreœlonym} (po³owicznie pozytywnie okreœlonym, ang. \textit{positive semidefinite}), jeœli
+	\begin{equation*}
+	\langle \mathit{\Psi} (x), x \rangle \geq 0, \quad x \in H.
+	\end{equation*}
 \end{df}
 %
-\begin{uw} \cite{HK}
-\\Symetryczny nieujemnie okreœlony operator Hilberta-Schmidta $\psi$ mo¿emy przedstawiæ w reprezentacji
-\begin{equation}\label{fw}
-\psi(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \nu_j \rangle	\nu_j, \quad x \in H,
-\end{equation}
-gdzie ortonormalne $\nu_j$ s¹ \textbf{funkcjami w³asnymi} $\psi$, tj. $\psi(\nu_j)=\lambda_j \nu_j$. Funkcje $\nu_j$ mog¹ byæ rozszerzone do bazy, przez dope³nienie ortogonalne podprzestrzeni rozpiêtej przez oryginalne $\nu_j$. Mo¿emy zatem za³o¿yæ, ¿e funkcje $\nu_j$ w \eqref{fw} tworz¹ bazê, a pewne wartoœci $\lambda_j$ mog¹ byæ równe zero.
+\begin{uw}\label{HSsp} \cite{HK}
+	\\Symetryczny nieujemnie okreœlony operator Hilberta-Schmidta $\mathit{\Psi}$ mo¿emy przedstawiæ w reprezentacji
+	\begin{equation}\label{eq:fw}
+	\mathit{\Psi}(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \nu_j \rangle	\nu_j, \quad x \in H,
+	\end{equation}
+	gdzie ortonormalne $\nu_j$ s¹ \textbf{funkcjami w³asnymi} $\mathit{\Psi}$, tj. $\mathit{\Psi}(\nu_j)=\lambda_j \nu_j$. Funkcje $\nu_j$ mog¹ byæ rozszerzone do bazy, przez dope³nienie ortogonalne podprzestrzeni rozpiêtej przez oryginalne $\nu_j$. Mo¿emy zatem za³o¿yæ, ¿e funkcje $\nu_j$ w \eqref{eq:fw} tworz¹ bazê, a pewne wartoœci $\lambda_j$ mog¹ byæ równe zero.
 \end{uw} 
 %%% pojêcie wartoœci w³asnych? %%%
 %%% funkcje w³asne ~odpowiedniki wektorów w³asnych w przestrzeniach wektorowych %%%
 %
-\section{Przestrzeñ $L^2$ i pojêcie operatora kowariancji}
+%
+\section{Przestrzeñ $L^2$}
 %%% Przestrzeñ L^2 %%%
 %%% ca³kowalnoœæ, wartoœæ oczekiwana = ca³ka ? %%%
 %
@@ -169,39 +171,74 @@ Przestrzeñ $L^2=L^2(K,\mathcal{A},\mu)$ nad pewn¹ przestrzeni¹ liniow¹ $K$ jest 
 \langle x, y \rangle:= \int_{K} x(t) y(t) dt.
 \end{equation*}
 %
-Tak jak zwyczajowo zapisujemy $L^2$ zamiast $L^2(K)$, tak w przypadku symbolu ca³ki bez wskazania obszaru ca³kowania bêdziemy mieæ na myœli ca³kowanie po ca³ej przestrzeni $K$. Jeœli $x,y \in L^2$, równoœæ $x=y$ zawsze oznaczaæ bêdzie $\int \left[x(t) - y(t) \right]^2 dt$.
+Tak jak zwyczajowo zapisujemy $L^2$ zamiast $L^2(K)$, tak w przypadku symbolu ca³ki bez wskazania obszaru ca³kowania bêdziemy mieæ na myœli ca³kowanie po ca³ej przestrzeni $K$. Jeœli $x,y \in L^2$, równoœæ $x=y$ zawsze oznaczaæ bêdzie $\int \left[x(t) - y(t) \right]^2 dt = 0$.
 %
 \vspace{0.35cm}\\Wa¿n¹ klasê operatorów liniowych na przestrzeni $L^2$ stanowi¹ operatory ca³kowe.
 %
 \begin{df}
-\textbf{Operatorem ca³kowym} nazywamy operator liniowy $\psi$ daj¹cy siê przedstawiæ w formie
-\begin{equation*}
-\Psi(x)(t)= \int \psi(t,s) x(s) ds, \quad x \in L^2,
-\end{equation*}
-gdzie $\psi$ stanowi \textbf{j¹dro ca³kowe} operatora $\Psi$.
+	\textbf{Operatorem ca³kowym} nazywamy operator liniowy $\mathit{\Psi}$ daj¹cy siê przedstawiæ w formie
+	\begin{equation*}
+	\mathit{\Psi}(x)(t)= \int \psi(t,s) x(s) ds, \quad x \in L^2,
+	\end{equation*}
+	gdzie $\psi$ stanowi \textbf{j¹dro ca³kowe} operatora $\mathit{\Psi}$.
 \end{df}
-%%% Psi ~ psi ?! %%%
+%
+\begin{uw} \cite{HK}
+	\\Operatory ca³kowe s¹ operatorami Hilberta-Schmidta wtedy i tylko wtedy, gdy
+	\begin{equation*}
+	\iint \psi^2(t,s) dt ds < \infty.
+	\end{equation*}
+	Ponadto zachodzi
+	\begin{equation*}
+	\left\| \mathit{\Psi} \right\|^2_{\mathcal{S}} = \iint \psi^2(t,s) dt ds.
+	\end{equation*}
+\end{uw}
+%
+\begin{uw} (Twierdzenie Mercera) \cite{HK}
+	\\Jeœli operator spe³nia równie¿ $\psi (s,t) = \psi (t,s)$ oraz $\iint \psi(t,s) x(t) x(s) dt ds \geq 0$, to operator ca³kowy $\mathit{\Psi}$jest symetryczny i nieujemnie okreœlony, zatem z uwagi \ref{HSsp} mamy
+	\begin{equation*}
+	\psi (t,s) = \sum_{j=1}^{\infty} \lambda_j \nu_j (t) \nu_j (s) \quad \text{w } L^2(K) \times L^2(K).
+	\end{equation*}
+	Je¿eli funkcja $\psi$ jest ci¹g³a, powy¿sze rozwiniêcie jest prawdziwe dla wszystkich $s,t \in K$ i szereg jest zbie¿ny jednostajnie.
+\end{uw}
+%
+%
+\section{Zmienne funkcjonalne w $L^2$. Pojêcie operatora kowariancji}
+%
+Rozwa¿my zmienn¹ funkcjonaln¹ $X= \{X(t), \ t \in T \}$ bêd¹c¹ krzyw¹ ($T \subset \mathbb{R}$) jako element losowy z przestrzeni $L^2(T)$ zaopatrzonej w $\sigma$-algebrê borelowskich podzbiorów $T$.
+\\Mówimy, ¿e zmienna $X$ jest \textbf{ca³kowalna}, jeœli $\mathbb{E} \left\| X \right\| = \mathbb{E} \left[\int X^2(t) dt \right]^{1/2} <\infty $.
 %
 \begin{df}\cite{B}
-\\\textbf{Operator kowariancji} scentrowanej zmiennej funkcjonalnej $X$ przyjmuj¹cej wartoœci w przestrzeni funkcyjnej $H$ spe³niaj¹cej $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy nastêpuj¹co
-$$C_X (x):= \mathbb{E} [\langle X, x \rangle X ], \quad x \in H. $$
-Jeœli $Y$ jest zmienn¹ funkcjonaln¹ spe³niaj¹c¹ powy¿sze warunki, wtedy operator kowariancji miêdzy zmiennymi $X$ i $Y$ przedstawiamy nastêpuj¹co
-\begin{equation*}
-C_{X,Y}(x):=\mathbb{E} [\langle X, x \rangle Y ], \quad x \in H
-\end{equation*}
-oraz
-\begin{equation*}
-C_{Y,X}(x):=\mathbb{E} [\langle Y, x \rangle X ], \quad x \in H.
-\end{equation*}
+	\\\textbf{Operator kowariancji} scentrowanej zmiennej funkcjonalnej $X$ (tj. $\mathbb{E}X=0$) przyjmuj¹cej wartoœci w przestrzeni funkcyjnej $L^2$ spe³niaj¹cej $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy nastêpuj¹co
+	\begin{equation*}
+	C_X (x):= \mathbb{E} [\langle X, x \rangle X ], \quad x \in L^2.
+	\end{equation*}
+	Jeœli $Y$ jest zmienn¹ funkcjonaln¹ spe³niaj¹c¹ powy¿sze warunki, wtedy operator kowariancji miêdzy zmiennymi $X$ i $Y$ przedstawiamy nastêpuj¹co
+	\begin{equation*}
+	C_{X,Y}(x):=\mathbb{E} [\langle X, x \rangle Y ], \quad x \in L^2
+	\end{equation*}
+	oraz
+	\begin{equation*}
+	C_{Y,X}(x):=\mathbb{E} [\langle Y, x \rangle X ], \quad x \in L^2.
+	\end{equation*}
 \end{df}
 %
 Operatory kowariancji s¹ operatorami œladowymi,...
+$$C_X (x)(t) = \int c(t,s) x(s) ds, \quad \text{gdzie } c(t,s)=\mathbb{E} \left[ X(t) X(s) \right].$$
+Oczywistym jest, ¿e $c(t,s)=c(s,t)$ i mamy
+\begin{align*}
+\iint c(t,s) x(t) x(s) dt ds = \iint \mathbb{E} \left[ X(t) X(s) \right] x(t) x(s) dt ds = \mathbb{E} \left[ \left( \int X(t) x(t) dt \right)^2 \right] \geq 0.
+\end{align*}
+Zatem operator kowariancji $C_X$ jest symetryczny oraz nieujemnie okreœlony. Wartoœci w³asne $\lambda_j$ operatora $C_X$ s¹ dodatnie i spe³niony jest warunek $\sum_{j=1}^{\infty} \lambda_j = \mathbb{E} \left\| X \right\|^2 <\infty$. $C_X$ jest operatorem Hilberta-Schmidta (a nawet operatorem œladowym) i  posiada on nastêpuj¹c¹ reprezentacjê
+\begin{equation*}
+C_X (x) = \sum_{j=1}^{\infty} \lambda_j \langle x, \nu_j \rangle \nu_j, \quad x \in L^2.
+\end{equation*}
 %
 %
 %
 %
 \vspace{2cm}
-Zak³adamy, ¿e zmienne $X_n$, $Y_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) losow¹ funkcjê o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
+\\Zak³adamy, ¿e zmienne $X_n$, $Y_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) losow¹ funkcjê o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
 $$C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ].$$
 ...
 
