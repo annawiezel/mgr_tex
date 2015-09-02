@@ -51,6 +51,7 @@
 \newtheorem{wn}{Wniosek}[section]
 \newtheorem{np}{Przyk³ad}[section]
 %\theoremstyle{plain}
+\newtheorem{lem}{Lemat}[section]
 \newtheorem{tw}{Twierdzenie}[section]
 %\AfterEndEnvironment{df}{\noindent\ignorespaces}
 %\AfterEndEnvironment{uw}{\noindent\ignorespaces}
@@ -76,7 +77,7 @@ Odpowiednik testu istotnoœci dla prostego modelu regresji = F-test (+ t-test) [p
 
 \chapter{Preliminaria}
 %
-Przestrzeni¹ funkcyjn¹ nazywaæ bêdziemy przestrzeñ liniow¹ funkcji z dowolnego zbioru $X$ do zbioru $Y$.
+Przestrzeni¹ funkcyjn¹ $E$ nazywaæ bêdziemy przestrzeñ liniow¹ funkcji z dowolnego zbioru $A$ do zbioru $B$.
 %
 \begin{df}{\cite{FV}}
 	\\Zmienn¹ losow¹ $X$ nazywamy \textbf{zmienn¹ funkcjonaln¹} wtedy i tylko wtedy, gdy przyjmuje wartoœci w nieskoñczenie wymiarowej przestrzeni (przestrzeni funkcyjnej). Obserwacjê $\chi$ zmiennej $X$ nazywamy \textbf{dan¹ funkcjonaln¹} (\textit{ang. functional data}).
@@ -86,7 +87,7 @@ Jeœli zmienna funkcjonalna $X$ (odpowiednio obserwacja $\chi$) jest krzyw¹, to z
 %%% przyk³ady danych funkcjonalnych? %%%
 %
 \\W niniejszej pracy skupimy siê na zmiennych funkcjonalnych przyjmuj¹cych postaæ krzywych.
-\vspace{0.35cm}\\Aby zbudowaæ pojêcia œredniej oraz kowariancji dla zmiennych funkcjonalnych wprowadzimy niezbêdne pojêcia z dziedziny operatorów liniowych.
+\vspace{0.35cm}\\Aby zbudowaæ pojêcie operatora kowariancji dla zmiennych funkcjonalnych wprowadzimy niezbêdne pojêcia z dziedziny operatorów liniowych.
 %
 %
 \section{Klasyfikacja operatorów liniowych}
@@ -103,7 +104,7 @@ Niech $(\Omega, \mathcal{F},P)$ bêdzie przestrzeni¹ probabilistyczn¹, $\Omega$ j
 \end{equation*}
 %
 \begin{df}{\cite{HK}}
-	\\Operator $\mathit{\Psi} \in \mathcal{L}$ nazywamy \textbf{operatorem zwartym}, jeœli istniej¹ dwie ortonormalne bazy $\{\nu_j\}_{j=1}^{\infty}$ i $\{f_j\}_{j=1}^{\infty}$, oraz rzeczywisty ci¹g $\{\lambda_j \}_{j=1}^{\infty}$ zbie¿ny do zera, takie ¿e
+	\\Operator $\mathit{\Psi} \in \mathcal{L}$ nazywamy \textbf{operatorem zwartym}, jeœli istniej¹ dwie ortonormalne bazy $\{\nu_j\}_{j=1}^{\infty}$ i $\{f_j\}_{j=1}^{\infty}$, oraz ci¹g liczb rzeczywistych $\{\lambda_j \}_{j=1}^{\infty}$ zbie¿ny do zera, takie ¿e
 	\begin{equation}\label{zwarty}
 	\mathit{\Psi}(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \nu_j \rangle	f_j, \quad x \in H.
 	\end{equation}
@@ -163,8 +164,7 @@ Bez straty ogólnoœci mo¿emy za³o¿yæ, ¿e w przedstawionej reprezentacji $\lambda_
 %
 %
 \section{Przestrzeñ $L^2$}
-%%% Przestrzeñ L^2 %%%
-%%% ca³kowalnoœæ, wartoœæ oczekiwana = ca³ka ? %%%
+%%% wartoœæ oczekiwana = ca³ka ? %%%
 %
 Przestrzeñ $L^2=L^2(K,\mathcal{A},\mu)$ nad pewn¹ przestrzeni¹ liniow¹ $K$ jest zbiorem mierzalnych funkcji rzeczywistych okreœlonych na $K$ spe³niaj¹cych $\int_{K} x^2 (t) dt < \infty$. Przestrzeñ $L^2$ jest oœrodkow¹ przestrzeni¹ Hilberta z iloczynem skalarnym
 \begin{equation*}
@@ -213,7 +213,7 @@ Rozwa¿my zmienn¹ funkcjonaln¹ $X= \{X(t), \ t \in T \}$ bêd¹c¹ krzyw¹ ($T \subse
 	\begin{equation*}
 	C_X (x):= \mathbb{E} [\langle X, x \rangle X ], \quad x \in L^2.
 	\end{equation*}
-	Jeœli $Y$ jest zmienn¹ funkcjonaln¹ spe³niaj¹c¹ powy¿sze warunki, wtedy operator kowariancji miêdzy zmiennymi $X$ i $Y$ przedstawiamy nastêpuj¹co
+	Jeœli $Y$ jest zmienn¹ funkcjonaln¹ spe³niaj¹c¹ powy¿sze warunki, wtedy operator kowariancji miêdzy zmiennymi $X$ i $Y$ przedstawiamy jako
 	\begin{equation*}
 	C_{X,Y}(x):=\mathbb{E} [\langle X, x \rangle Y ], \quad x \in L^2
 	\end{equation*}
@@ -223,7 +223,7 @@ Rozwa¿my zmienn¹ funkcjonaln¹ $X= \{X(t), \ t \in T \}$ bêd¹c¹ krzyw¹ ($T \subse
 	\end{equation*}
 \end{df}
 %
-Operatory kowariancji s¹ operatorami œladowymi,...
+Operatory kowariancji s¹ operatorami ca³kowymi, czyli
 $$C_X (x)(t) = \int c(t,s) x(s) ds, \quad \text{gdzie } c(t,s)=\mathbb{E} \left[ X(t) X(s) \right].$$
 Oczywistym jest, ¿e $c(t,s)=c(s,t)$ i mamy
 \begin{align*}
@@ -235,117 +235,155 @@ C_X (x) = \sum_{j=1}^{\infty} \lambda_j \langle x, \nu_j \rangle \nu_j, \quad x 
 \end{equation*}
 %
 %
+%%% tu: estymatory operatorów kowariancji? %%%
+%
+%\vspace{2cm}
+%\\Zak³adamy, ¿e zmienne $X_n$, $Y_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) losow¹ funkcjê o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
+%$$C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ].$$
+%
+\section{Funkcjonalny model liniowy}
+%%% wstêp o regresji liniowej? %%%
+
+%
+%%% czy w ogóle podawaæ wszystkie rodzaje funkcjonalnych modeli liniowych? %%%
+%Rozró¿niamy trzy postaci funkcjonalnych modeli liniowych
+%%% postaci bez ca³ek %%%
+%\begin{enumerate}
+%\item[(i)] pe³en model funkcjonalny (ang. \textit{the fully functional model})
+%$$ Y(t) = \int \psi (s,t) X(s) ds + \varepsilon (t), $$
+%\item[(ii)] model z odpowiedzi¹ skalarn¹ (ang. \textit{the scalar response model})
+%$$ Y = \int \psi (s) X(s) ds + \varepsilon,$$
+%\item[(iii)] model z odpowiedzi¹ funkcyjn¹ (ang. \textit{the functional response model})
+%$$ Y(t) = \psi (t) x + \varepsilon (t). $$
+%\end{enumerate}
+Rozwa¿aæ bêdziemy pe³en model funkcjonalny postaci
+\begin{equation}\label{eq:FLM}
+Y_n = \mathit{\Psi} X_n + \varepsilon_n,
+\end{equation}
+gdzie krzywe $Y_n$, $X_n$ oraz nieobserwowalny b³¹d $\varepsilon_n$ nale¿¹ do przestrzeni Hilberta $L^2(T)$. Operator $\mathit{\Psi}: \ L^2 \rightarrow L^2$ jest ograniczonym operatorem liniowym, który w szczególnoœci jest równie¿ operatorem ca³kowym, którego j¹dro ca³kowe $\psi(t,s)$ jest funkcj¹ ca³kowaln¹ z kwadratem na $T \times T$. Równoœæ \eqref{eq:FLM} rozumiemy zatem jako
+\begin{equation*}
+Y_n(t) = \int \psi (s,t) X_n(s) ds + \varepsilon_n (t).
+\end{equation*}
 %
 %
-\vspace{2cm}
-\\Zak³adamy, ¿e zmienne $X_n$, $Y_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) losow¹ funkcjê o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
-$$C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ].$$
-...
-
-\section{Funkcjonalne modele liniowe}
-Rozró¿niamy 3 postaci funkcjonalnych modeli liniowych
-\begin{enumerate}
-\item[(i)] pe³en model funkcjonalny (ang. \textit{the fully functional model})
-$$ Y(t) = \int \beta(s,t) X(s) ds + \varepsilon (t), $$
-\item[(ii)] model z odpowiedzi¹ skalarn¹ (ang. \textit{the scalar response model})
-$$ Y = \int \beta(s) X(s) ds + \varepsilon,$$
-\item[(iii)] model z odpowiedzi¹ funkcyjn¹ (ang. \textit{the functional response model})
-$$ Y(t) = \beta(t) x + \varepsilon (t). $$
-\end{enumerate}
-Rozwa¿my pe³en model funkcjonalny postaci
-$$ \mathbf{Y}(t) = \int \beta (s,t) \mathbf{X}(s) ds + \boldsymbol\varepsilon (t), $$
-gdzie
-$$\mathbf{Y}(t)=\begin{bmatrix}
-							Y_{1}(t) \\
-							Y_{2}(t) \\
-							\vdots \\
-							Y_{N}(t)
-							\end{bmatrix},
-	\mathbf{X}(s)=\begin{bmatrix}
-							X_{1}(s) \\
-							X_{2}(s) \\
-							\vdots \\
-							X_{N}(s)
-							\end{bmatrix},
-	\boldsymbol\varepsilon (t)=\begin{bmatrix}
-							\varepsilon_{1}(t) \\
-							\varepsilon_{2}(t) \\
-							\vdots \\
-							\varepsilon_{N}(t)
-							\end{bmatrix}.$$
-
 \chapter{Test istotnoœci w funkcjonalnym modelu liniowym}
-\section{Idea ogólna}
-Jednym z podstawowych testów na efektywnoœæ modelu jest test istotnoœci zmiennych objaœniaj¹cych. Zarówno jak i w przypadku klasycznego modelu liniowego w przypadku funkcjonalnego modelu liniowego badamy zerowanie siê funkcji $\beta$, tj.
-$$\text{H}_0: \quad \boldsymbol\beta = 0 \quad \text{przeciw} \quad \text{H}_{A}: \quad \boldsymbol\beta \neq 0.$$
+%
+\section{Procedura testowa}
+%
+Jednym z podstawowych testów na efektywnoœæ modelu jest test istotnoœci zmiennych objaœniaj¹cych. Zarówno jak i w przypadku klasycznego modelu liniowego w przypadku funkcjonalnego modelu liniowego badamy zerowanie siê operatora $\mathit{\Psi}$, tj.
+\begin{equation*}
+\text{H}_0: \quad \mathit{\Psi} = 0 \quad \text{przeciw} \quad \text{H}_{A}: \quad \mathit{\Psi} \neq 0.
+\end{equation*}
 Zauwa¿my, ¿e przyjêcie H$_0$ nie oznacza braku zwi¹zku miêdzy zmienn¹ objaœnian¹ a objaœniaj¹c¹. Prowadzi jedynie do stwierdzenia braku zale¿noœci liniowej.
-\vspace{0.2cm}\\Zak³adamy, ¿e zmienna objaœniana $Y_n$, zmienne objaœniaj¹ce $X_n$ i b³êdy $\varepsilon_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) losow¹ funkcjê o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
-$$C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ].$$
+%%% Ci¹g zmiennych d³ugoœci N %%%
+\vspace{0.35cm}\\Zak³adamy, ¿e zmienna objaœniana $Y_n$, zmienne objaœniaj¹ce $X_n$ i b³êdy $\varepsilon_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) losow¹ funkcjê o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
+\begin{equation*}
+C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ].
+\end{equation*}
 Przez $\hat{C}$, $\hat{\Gamma}$, $\hat{\Delta}$ oznaczamy ich estymatory, np.
-$$\hat{C}(x)=  \frac{1}{N} \sum_{n=1}^N \left\langle X_n, x \right\rangle X_n.$$
+\begin{equation*}
+\hat{C}(x)=  \frac{1}{N} \sum_{n=1}^N \left\langle X_n, x \right\rangle X_n.
+\end{equation*}
 Definiujemy równie¿ wartoœci i wektory w³asne $C$ i $\Gamma$
-$$C(\upsilon_k)=\lambda_k \upsilon_k, \quad \Gamma(u_j)=\gamma_j u_j,$$
+\begin{equation*}
+C(\upsilon_k)=\lambda_k \upsilon_k, \quad \Gamma(u_j)=\gamma_j u_j,
+\end{equation*}
 których estymatory bêdziemy oznaczaæ $(\hat{\lambda}_k,\hat{\upsilon}_k)$, $(\hat{\gamma}_j,\hat{u}_j)$.
 \\Test obejmuje obciêcie powy¿szych operatorów na podprzestrzenie skoñczenie wymiarowe. Podprzestrzeñ $\mathcal{V}_p=\text{span}\{\upsilon_1,...,\upsilon_p\}$ zawiera najlepsze przybli¿enia $X_n$, które s¹ liniowymi kombinacjami pierwszych $p$ g³ównych sk³adowych (\textit{FPC}). 
+%%% zmniejszenie wymiaru X i Y %%%
 Metod¹ g³ównych sk³adowych wyznaczamy $p$ najwiêkszych wartoœci w³asnych operatora $\hat{C}$ tak, ¿e $\hat{\mathcal{V}}_p=\text{span}\{\hat{\upsilon}_1,...,\hat{\upsilon}_p\}$ zawiera najlepsze przybli¿enie $X_n$. Analogicznie $\mathcal{U}_q=\text{span}\{u_1,...,u_q\}$ zawiera przybli¿enia $\text{span}\{Y_1,...,Y_N\}$.
 %Analogicznie $\hat{\mathcal{U}}_q=\text{span}\{\hat{u}_1,...,\hat{u}_q\}$ zawiera przybli¿enie $Y_n$.
-\vspace{0.1cm}\\Z równoœci 
-$$ Y(t) = \int \beta (s,t) X(s) ds + \boldsymbol\varepsilon (t)$$
-wynika $\Delta=\beta C$ i dla $k \leq p$ mamy
-$$\beta(\upsilon_k)=\lambda_k^{-1}\Delta(\upsilon_k).$$
-St¹d, $\beta$ zeruje siê na $\text{span}\{\upsilon_1,...,\upsilon_p\}$ wtedy i tylko wtedy, gdy $\Delta(\upsilon_k)=0$ dla ka¿dego $k=1,...,p$. Zauwa¿my, ¿e
-$$\Delta(\upsilon_k) \approx \hat{\Delta}(\upsilon_k) = \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \upsilon_k \right\rangle Y_n.$$
+\vspace{0.35cm}\\Z równoœci 
+\begin{equation*}
+Y(t) = \int \psi (s,t) X(s) ds + \boldsymbol\varepsilon (t)
+\end{equation*}
+wynika $\Delta =\psi C$ i dla $k \leq p$ mamy
+\begin{equation*}
+\psi(\upsilon_k)=\lambda_k^{-1}\Delta(\upsilon_k).
+\end{equation*}
+St¹d, $\psi$ zeruje siê na $\text{span}\{\upsilon_1,...,\upsilon_p\}$ wtedy i tylko wtedy, gdy $\Delta(\upsilon_k)=0$ dla ka¿dego $k=1,...,p$. Zauwa¿my, ¿e
+\begin{equation*}
+\Delta(\upsilon_k) \approx \hat{\Delta}(\upsilon_k) = \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \upsilon_k \right\rangle Y_n.
+\end{equation*}
 Skoro zatem $\text{span}\{Y_1,...,Y_N\}$ s¹ dobrze aproksymowane przez $\mathcal{U}_q$, to mo¿emy ograniczyæ siê do sprawdzania czy
 \begin{equation}\label{eq:delta}
 \left\langle \hat{\Delta}(\upsilon_k),u_j \right\rangle=0, \quad k=1,...,p,\quad j=1,...,q.
 \end{equation}
-Jeœli H$_0$ jest prawdziwa, to dla ka¿dego $x \in \mathcal{V}_p$, $\beta(x)$ nie nale¿y do $\mathcal{U}_q$. Co znaczy, ¿e ¿adna funkcja $Y_n$ nie mo¿e byæ opisana jako liniowa kombinacja $X_n$, $n=1,...,N$.
+Jeœli H$_0$ jest prawdziwa, to dla ka¿dego $x \in \mathcal{V}_p$, $\psi(x)$ nie nale¿y do $\mathcal{U}_q$. Co znaczy, ¿e ¿adna funkcja $Y_n$ nie mo¿e byæ opisana jako liniowa kombinacja $X_n$, $n=1,...,N$.
 Statystyka testowa powinna zatem sumowaæ kwadraty iloczynów skalarnych (\ref{eq:delta}). Poni¿sze twierdzenia prowadz¹ do wyznaczenia statystyki
 \begin{equation}\label{eq:stat}
 \hat{T}_N(p,q)=N\sum_{k=1}^p \sum_{j=1}^q \hat{\lambda}_k^{-1} \hat{\gamma}_j^{-1} \left\langle \hat{\Delta}(\hat{\upsilon}_k),\hat{u}_j \right\rangle^2,
 \end{equation}
 która zbiega wed³ug rozk³adu do rozk³adu $\chi^2$ z $pq$ stopniami swobody.
 \\Przy czym
-\[ \left\langle \hat{\Delta}(\hat{\upsilon}_k),\hat{u}_j \right\rangle = \left\langle \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \hat{\upsilon}_k \right\rangle Y_n,\hat{u}_j \right\rangle = \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \hat{\upsilon}_k \right\rangle \left\langle Y_n,\hat{u}_j \right\rangle\]
+\begin{equation*}
+\left\langle \hat{\Delta}(\hat{\upsilon}_k),\hat{u}_j \right\rangle = \left\langle \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \hat{\upsilon}_k \right\rangle Y_n,\hat{u}_j \right\rangle = \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \hat{\upsilon}_k \right\rangle \left\langle Y_n,\hat{u}_j \right\rangle
+\end{equation*}
 oraz $\lambda_k=\mathbb{E}\left\langle X, \upsilon_k \right \rangle ^2$ i $\gamma_j=\mathbb{E}\left\langle Y, u_j \right \rangle ^2$.
-
-\begin{uw} Oczywistym jest, ¿e jeœli odrzucamy H$_0$, to $\beta(\upsilon_k)\neq 0$ dla pewnego $k\geq 1$. Jednak ograniczaj¹c siê do $p$ najwiêkszych wartoœci w³asnych, test jest skuteczny tylko jeœli $\beta$ nie zanika na którymœ wektorze $\upsilon_k$, $k=1,...,p$. Aczkolwiek takie ograniczenie jest intuicyjnie niegroŸne, poniewa¿ test ma za zadanie sprawdziæ czy g³ówne Ÿród³a zmiennoœci $Y$ mog¹ byæ opisane przez g³ówne Ÿród³a zmiennoœci zmiennych $X$.
+%
+\begin{uw}
+	Oczywistym jest, ¿e jeœli odrzucamy H$_0$, to $\psi(\upsilon_k)\neq 0$ dla pewnego $k\geq 1$. Jednak ograniczaj¹c siê do $p$ najwiêkszych wartoœci w³asnych, test jest skuteczny tylko jeœli $\psi$ nie zanika na którymœ wektorze $\upsilon_k$, $k=1,...,p$. Aczkolwiek takie ograniczenie jest intuicyjnie niegroŸne, poniewa¿ test ma za zadanie sprawdziæ czy g³ówne Ÿród³a zmiennoœci $Y$ mog¹ byæ opisane przez g³ówne Ÿród³a zmiennoœci zmiennych $X$.
 \end{uw}
+%
 \vspace{0.35cm}\textbf{Schemat przebiegu testu}
 \begin{enumerate}
-\item Sprawdzamy za³o¿enie o liniowoœci metod¹ \textit{FPC score predictor-response plots}.
-\item Wybieramy liczbê g³ównych sk³adowych $p$ i $q$ metodami \textit{scree test} oraz \textit{CPV}.
-\item Wyliczamy wartoœæ statystyki $\hat{T}_N(p,q)$ (\ref{eq:stat}).
-\item Jeœli $\hat{T}_N(p,q) > \chi^2_{pq}(1-\alpha)$, to odrzucamy hipotezê zerow¹ o braku liniowej zale¿noœci. W przeciwnym razie nie mamy podstaw do odrzucenia H$_0$.
+	\item Sprawdzamy za³o¿enie o liniowoœci metod¹ \textit{FPC score predictor-response plots}.
+	\item Wybieramy liczbê g³ównych sk³adowych $p$ i $q$ metodami \textit{scree test} oraz \textit{CPV}.
+	\item Wyliczamy wartoœæ statystyki $\hat{T}_N(p,q)$ (\ref{eq:stat}).
+	\item Jeœli $\hat{T}_N(p,q) > \chi^2_{pq}(1-\alpha)$, to odrzucamy hipotezê zerow¹ o braku liniowej zale¿noœci. W przeciwnym razie nie mamy podstaw do odrzucenia H$_0$.
 \end{enumerate}
 ...
-
-\section{Formalizm}
+%
+\section{Formalne podstawy}
+%
 \textbf{Za³o¿enia:}
 \begin{enumerate}
-\item Trójka $(Y_n,X_n, \varepsilon_n)$ tworzy ci¹g niezale¿nych zmiennych losowych o jednakowym rozk³adzie, takich ¿e $\varepsilon_n$ jest niezale¿ne od $X_n$ oraz
-$$\mathbb{E}X_n=0, \quad \mathbb{E}\varepsilon_n=0,$$
-$$\mathbb{E} \|X_n\|^4<\infty \quad \text{i} \quad \mathbb{E}\|\varepsilon_n\|^4<\infty.$$
-\item Wartoœci w³asne operatorów $C$ oraz $\Gamma$ spe³niaj¹, dla pewnych $p>0$ i $q>0$
-$$\lambda_1>\lambda_2>...>\lambda_p>\lambda_{p+1}, \quad \gamma_1>\gamma_2>...>\gamma_q>\gamma_{q+1}.$$
+	\item Trójka $(Y_n,X_n, \varepsilon_n)$ tworzy ci¹g niezale¿nych zmiennych losowych o jednakowym rozk³adzie, takich ¿e $\varepsilon_n$ jest niezale¿ne od $X_n$ oraz
+	\begin{equation*}
+	\mathbb{E}X_n=0, \quad \mathbb{E}\varepsilon_n=0,
+	\end{equation*}
+	\begin{equation*}
+	\mathbb{E} \|X_n\|^4<\infty \quad \text{i} \quad \mathbb{E}\|\varepsilon_n\|^4<\infty.
+	\end{equation*}
+	\item Wartoœci w³asne operatorów $C$ oraz $\Gamma$ spe³niaj¹, dla pewnych $p>0$ i $q>0$
+	\begin{equation*}
+	\lambda_1>\lambda_2>...>\lambda_p>\lambda_{p+1}, \quad \gamma_1>\gamma_2>...>\gamma_q>\gamma_{q+1}.
+	\end{equation*}
 \end{enumerate}
+%
+%%% zbie¿noœci wynikaj¹ce z powy¿szych za³o¿eñ %%%
+%
+\begin{lem}\cite{K08}, \cite{B}
+	\\Przy powy¿szych Za³o¿eniach spe³nione s¹ nierównoœci
+	\begin{equation*}
+	\limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left\| \nu_k - \hat{\nu}_k \right\|^2 < \infty, \quad \limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left\| u_j - \hat{u}_j \right\|^2 < \infty,
+	\end{equation*}
+	\begin{equation*}
+	\limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left[ \left| \gamma_k - \hat{\gamma}_k \right|^2 \right]  < \infty, \quad \limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left[ \left| \lambda_j - \hat{\lambda}_j \right|^2 \right] < \infty,
+	\end{equation*}
+	dla $k \leq p$ oraz $j \leq q$.
+\end{lem}
+%
 \begin{tw}
-Jeœli spe³nione s¹ H$_0$ i powy¿sze Za³o¿enia, to $\hat{T}_N(p,q) \overset{d}{\longrightarrow}\chi^2_{pq} $ przy $N \rightarrow \infty$.
+	Jeœli spe³nione s¹ H$_0$ i powy¿sze Za³o¿enia, to $\hat{T}_N(p,q) \overset{d}{\longrightarrow}\chi^2_{pq} $ przy $N \rightarrow \infty$.
 \end{tw}
+%
 \begin{tw}
-Przy powy¿szych Za³o¿eniach oraz jeœli $\left\langle \beta(\upsilon_k),u_j \right\rangle \neq 0$ dla pewnych $k \leq p$ oraz $j \leq q$, to $\hat{T}_N(p,q) \overset{P}{\longrightarrow}\chi^2_{pq} $ przy $N \rightarrow \infty$. 
+	Przy powy¿szych Za³o¿eniach oraz jeœli $\left\langle \psi(\upsilon_k),u_j \right\rangle \neq 0$ dla pewnych $k \leq p$ oraz $j \leq q$, to $\hat{T}_N(p,q) \overset{P}{\longrightarrow}\chi^2_{pq} $ przy $N \rightarrow \infty$. 
 \end{tw}
 Dowody...
-
+%
+%
 \chapter{Przyk³ad zastosowania}
 Magnetometer data...
-
-
+%
+%
 \appendix
-
+%
 \chapter{Kod w R}
 ...
-
+%
+%
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
 
@@ -357,11 +395,9 @@ Magnetometer data...
 
 \bibitem[I]{I} INTERMAGNET \url{http://www.intermagnet.org/index-eng.php}
 
-\bibitem[Kokoszka et al. 2008]{K08} P. Kokoszka, I. Maslova, J. Sojka, L. Zhu, \textit{Testing for lack of dependence in the functional linear model}. Canadian Journal of Statistics, 2008, 36, 207-222.
+\bibitem[Kokoszka et al. (2008)]{K08} P. Kokoszka, I. Maslova, J. Sojka, L. Zhu, \textit{Testing for lack of dependence in the functional linear model}. Canadian Journal of Statistics, 2008, 36, 207-222.
 
 \bibitem[Ramsay, Silverman]{RS05} J. O. Ramsay, B. W. Silverman, \textit{Functional Data Analysis}. Springer, 2005.
-
-
 
 
 
