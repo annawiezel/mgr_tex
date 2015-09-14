@@ -50,6 +50,7 @@
 \newtheorem{df}{Definicja}[section]
 \newtheorem{uw}{Uwaga}[section]
 \newtheorem{wn}{Wniosek}[section]
+\newtheorem{zal}{Za³o¿enie}[section]
 \newtheorem{np}{Przyk³ad}[section]
 %\theoremstyle{plain}
 \newtheorem{lem}{Lemat}[section]
@@ -358,42 +359,45 @@
 	%
 	\section{Formalne podstawy}
 	%
-	\textbf{Za³o¿enia}
-	\begin{enumerate}
-		\item Trójka $(Y_n,X_n, \varepsilon_n)$ tworzy ci¹g niezale¿nych zmiennych losowych o jednakowym rozk³adzie, takich ¿e $\varepsilon_n$ jest niezale¿ne od $X_n$ oraz
+	\begin{zal}\label{Z1} \cite{K08}, \cite{HK}
+		\\Trójka $(Y_n,X_n, \varepsilon_n)$ tworzy ci¹g niezale¿nych elementów losowych o jednakowym rozk³adzie, takich ¿e $\varepsilon_n$ jest niezale¿ne od $X_n$ oraz
 		\begin{equation*}
 		\mathbb{E}X_n=0, \quad \mathbb{E}\varepsilon_n=0,
 		\end{equation*}
 		\begin{equation*}
 		\mathbb{E} \|X_n\|^4<\infty \quad \text{i} \quad \mathbb{E}\|\varepsilon_n\|^4<\infty.
 		\end{equation*}
-		\item Wartoœci w³asne operatorów $C$ oraz $\Gamma$ spe³niaj¹, dla pewnych $p>0$ i $q>0$
+	\end{zal}
+	%
+	\begin{zal}\label{Z2} \cite{K08}, \cite{HK}
+		\\Wartoœci w³asne operatorów $C$ oraz $\Gamma$ spe³niaj¹, dla pewnych $p>0$ i $q>0$
 		\begin{equation*}
 		\lambda_1>\lambda_2>...>\lambda_p>\lambda_{p+1}, \quad \gamma_1>\gamma_2>...>\gamma_q>\gamma_{q+1}.
 		\end{equation*}
-	\end{enumerate}
+	\end{zal}
+	%
+	\begin{tw}\label{T1} \cite{K08}, \cite{HK}
+		\\Jeœli spe³nione s¹ H$_0$ i powy¿sze Za³o¿enia \ref{Z1}, \ref{Z2}, to $\widehat{T}_N(p,q) \overset{d}{\longrightarrow}\chi^2_{pq} $ przy $N \rightarrow \infty$.
+	\end{tw}
+	%
+	\begin{tw}\label{T2} \cite{K08}, \cite{HK}
+		\\Przy Za³o¿eniach \ref{Z1}, \ref{Z2} oraz jeœli $\left\langle \psi(\upsilon_k),u_j \right\rangle \neq 0$ dla pewnych $k \leq p$ oraz $j \leq q$, to $\widehat{T}_N(p,q) \overset{P}{\longrightarrow}\chi^2_{pq} $ przy $N \rightarrow \infty$. 
+	\end{tw}
+	Dowody... \hfill $\square$
 	%
 	%%% zbie¿noœci wynikaj¹ce z powy¿szych za³o¿eñ %%%
+	%%% potrzebne? %%%
 	%
 	\begin{lem}\cite{K08}, \cite{B}
 		\\Przy powy¿szych Za³o¿eniach spe³nione s¹ nierównoœci
 		\begin{equation*}
-		\limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left\| \nu_k - \widehat{\nu}_k \right\|^2 < \infty, \quad \limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left\| u_j - \widehat{u}_j \right\|^2 < \infty,
+			\limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left\| \nu_k - \widehat{\nu}_k \right\|^2 < \infty, \quad \limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left\| u_j - \widehat{u}_j \right\|^2 < \infty,
 		\end{equation*}
 		\begin{equation*}
-		\limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left[ \left| \gamma_k - \widehat{\gamma}_k \right|^2 \right]  < \infty, \quad \limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left[ \left| \lambda_j - \widehat{\lambda}_j \right|^2 \right] < \infty,
+			\limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left[ \left| \gamma_k - \widehat{\gamma}_k \right|^2 \right]  < \infty, \quad \limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left[ \left| \lambda_j - \widehat{\lambda}_j \right|^2 \right] < \infty,
 		\end{equation*}
 		dla $k \leq p$ oraz $j \leq q$.
 	\end{lem}
-	%
-	\begin{tw}\label{T1} \cite{K08}, \cite{HK}
-		\\Jeœli spe³nione s¹ H$_0$ i powy¿sze Za³o¿enia, to $\widehat{T}_N(p,q) \overset{d}{\longrightarrow}\chi^2_{pq} $ przy $N \rightarrow \infty$.
-	\end{tw}
-	%
-	\begin{tw} \cite{K08}, \cite{HK}
-		\\Przy powy¿szych Za³o¿eniach oraz jeœli $\left\langle \psi(\upsilon_k),u_j \right\rangle \neq 0$ dla pewnych $k \leq p$ oraz $j \leq q$, to $\widehat{T}_N(p,q) \overset{P}{\longrightarrow}\chi^2_{pq} $ przy $N \rightarrow \infty$. 
-	\end{tw}
-	Dowody... \hfill $\square$
 	%
 	\begin{lem}\label{L2} \cite{K08}, \cite{HK}
 		\\Jeœli spe³nione s¹ H$_0$ i powy¿sze Za³o¿enia, to dla $j \leq q$, $k \leq p$
@@ -424,7 +428,7 @@
 		\end{equation*}
 	\end{lem}
 		\textit{Dowód.} Zauwa¿my, ¿e
-		\[ \| \widehat{\Delta}(e_j)\|^2 = N^{-2} \sum_{n,n'=1}^N \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle Y_n, Y_{n'} \rangle . \]
+		\[ \left\| \widehat{\Delta}(e_j)\right\|^2 = N^{-2} \sum_{n,n'=1}^N \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle Y_n, Y_{n'} \rangle . \]
 		St¹d mamy
 		\begin{align*}
 		\mathbb{E} \left\| \widehat{\Delta} \right\|^2_{\mathcal{S}} &= N^{-2} \sum_{j=1}^{\infty} \sum_{n,n'=1}^N \mathbb{E} \left[ \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle \varepsilon_n, \varepsilon_{n'} \rangle \right]
@@ -433,9 +437,15 @@
 		\end{align*}
 		\hfill $\square$
 	%
-	\begin{lem}
-		"lemat 7.3"
+	\begin{lem}\label{LP} \cite{K08}, \cite{HK}
+		\\Za³ó¿my, ¿e $\{U_n\}_{n=1}^{\infty}$ oraz $\{V_n\}_{n=1}^{\infty}$ s¹ ci¹gami elementów losowych z przestrzeni Hilberta takich, ¿e $\| U_n \| \overset{P}{\rightarrow} 0$ i $\| V_n \| = O_P (1)$, tj. $$\lim_{C \rightarrow \infty}\limsup_{n \rightarrow \infty} P(\|V_n \| >C) =0.$$
+		Wtedy zachodzi
+		\begin{equation*}
+		\langle U_n, V_n \rangle \overset{P}{\longrightarrow} 0.
+		\end{equation*}
 	\end{lem}
+		\textit{Dowód.} Prawdziwoœæ lematu wynika z analogicznej w³asnoœci dla losowych ci¹gów liczb rzeczywistych i nierównoœci $| \langle U_n, V_n \rangle | \leq \| U_n \| \| V_n \| $.
+		\hfill $\square$
 	%
 	\begin{lem}\label{L4} \cite{K08}, \cite{HK}
 		\\Przy za³o¿eniach Twierdzenia \ref{T1}, dla $j \leq q$, $k \leq p$ zachodzi
@@ -456,8 +466,8 @@
 		\begin{equation}\label{eq:L4.3}
 		\sqrt{N} \langle \widehat{\Delta} (\hat{\nu}_k - \nu_k), \hat{u}_j \rangle \stackrel{P}{\longrightarrow} 0.
 		\end{equation}
-		Aby udowodniæ równoœæ \eqref{eq:L4.2}, zauwa¿my, ¿e $\sqrt{N}(\hat{u}_j - u_j) = O_P(1)$ oraz, na mocy Lematu \ref{L3}, $\mathbb{E} \left\| \widehat{\Delta}(\nu_k) \right\| \leq \mathbb{E} \left\| \widehat{\Delta} \right\|_{\mathcal{S}} = O(N^{-1/2})$. St¹d równoœæ \eqref{eq:L4.2} wynika z LEMATU 7.3 [ksia¿ka!]...
-%%% O_P !!! %%%
+		Aby udowodniæ równoœæ \eqref{eq:L4.2}, zauwa¿my, ¿e $\sqrt{N}(\hat{u}_j - u_j) = O_P(1)$ oraz, na mocy Lematu \ref{L3}, $\mathbb{E} \left\| \widehat{\Delta}(\nu_k) \right\| \leq \mathbb{E} \left\| \widehat{\Delta} \right\|_{\mathcal{S}} = O(N^{-1/2})$. St¹d równoœæ \eqref{eq:L4.2} wynika z Lematu \ref{LP}...
+%%% O_P wy¿ej %%%
 		\hfill $\square$
 	%
 	\begin{wn} \cite{K08}, \cite{HK}
@@ -467,8 +477,56 @@
 		\end{equation*}
 		gdzie $\eta_{kj}$ definiowane s¹ jak w Lemacie \ref{L2}.
 	\end{wn}
-	\textit{Dowód.} ... \hfill $\square$
-	\\...	
+	%
+	\begin{lem}\label{L5} \cite{K08}, \cite{HK}
+		Jeœli $\{Y_n\}_{n\geq 1}$ s¹ elementami losowymi o jednakowych rozk³adach, to zachodzi $\mathbb{E} \| \widehat{\Delta} \| \leq \mathbb{E} \| Y \|^2$.
+	\end{lem}
+		\textit{Dowód.} Dla dowolnego $u \in L^2$ takiego, ¿e $\| u\| \leq 1$, mamy
+		\begin{equation*}
+		\left\| \widehat{\Delta} u \right\| \leq N^{-1} \sum_{n=1}^N | \langle Y_n, u \rangle | \| Y_n \| \leq N^{-1} \sum_{n=1}^{N} \| Y_n \|^2.
+		\end{equation*}
+		Co ze wzglêdu na za³o¿enie, ¿e $Y_n$ maj¹ jednakowy rozk³ad, jest równowa¿ne tezie lematu. \hfill $\square$
+	%
+	\begin{lem}\label{L6} \cite{K08}, \cite{HK}
+		\\Je¿eli spe³nione jest Za³o¿enie \ref{Z1}, wtedy dla dowolnych funkcji $\nu, u \in L^2$
+		\begin{equation*}
+		\langle \widehat{\Delta}(\nu), u \rangle \overset{P}{\longrightarrow} \langle \Delta (\nu), u \rangle.
+		\end{equation*}
+	\end{lem}
+	\textit{Dowód.} Tezê otrzymujemy korzystaj¹c z Prawa Wielkich Liczb zauwa¿aj¹c
+	\begin{equation*}
+	\langle \widehat{\Delta}(\nu), u \rangle = \frac{1}{N} \sum_{n=1}^N \langle X_n , \nu \rangle \langle Y_n , u \rangle
+	\end{equation*}
+	oraz
+	\begin{equation*}
+	\mathbb{E} [ \langle X_n , \nu \rangle \langle Y_n , u \rangle ] = \mathbb{E} [  \langle \langle X_n , \nu \rangle Y_n , u \rangle ] = \langle \Delta(\nu), u \rangle.
+	\end{equation*}
+	\hfill $\square$
+	%
+	\begin{lem}\label{L7} \cite{K08}, \cite{HK}
+		\\Je¿eli spe³nione s¹ Za³o¿enia \ref{Z1} i \ref{Z2}, to
+		\begin{equation*}
+		\langle \widehat{\Delta}(\hat{\nu}_k), \hat{u}_j \rangle \overset{P}{\longrightarrow} \langle \Delta (\nu_k), u_j \rangle, \quad \text{dla } k \leq p, \ j \leq q.
+		\end{equation*}
+	\end{lem}
+	\textit{Dowód.} Na mocy Lematu \ref{L6} wystarczy pokazaæ
+		\begin{equation*}
+		\langle \widehat{\Delta}(\nu_k), \hat{u}_j - u_j \rangle \overset{P}{\longrightarrow} 0
+		\end{equation*}
+		i
+		\begin{equation*}
+		\langle \widehat{\Delta}(\hat{\nu}_k) - \widehat{\Delta}(\nu_k), \hat{u}_j \rangle \overset{P}{\longrightarrow} 0.
+		\end{equation*}
+		Relacje te wynikaj¹ z Lematu \ref{LP} oraz Lematu \ref{L5}.
+	 \hfill $\square$
+	%
+	\vspace{0.4cm}
+	\\\textit{Dowód Twierdzenia \ref{T2}.} WprowadŸmy oznaczenie
+	\begin{equation*}
+		\widehat{S}_N (p,q) = \sum_{k=1}^p \sum_{j=1}^q \hat{\lambda}^{-1}_k \hat{\gamma}^{-1}_j \langle \widehat{\Delta}(\hat{\nu}_k), \hat{u}_j \rangle ^2.
+	\end{equation*}
+	Na mocy Lematu \ref{L7}
+	... \hfill $\square$	
 	%
 	%
 	\chapter{Przyk³ad zastosowania}
@@ -480,6 +538,7 @@
 		\label{fig:mapa}
 	\end{figure}
 	%
+	\\Korzystaj¹c z dostêpnego pakietu \textit{fda} (\cite{R})
 	%
 	\appendix
 	%
