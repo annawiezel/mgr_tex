@@ -19,8 +19,10 @@
 \nralbumu{132540}
 
 \title{Funkcjonalne Modele Liniowe}
+%Test instotnoœci w funkcjonalnym modelu liniowym
 
 \tytulang{Functional Linear Models}
+%Test for lack of effort in the functional linear model
 
 \kierunek{Matematyka}
 
@@ -43,7 +45,8 @@
 	62J12 Generalized linear models\\
 }
 
-\keywords{funkcjonalna analiza danych, dane funkcjonalne, funkcjonalne modele liniowe, test istotnoœci}
+\keywords{analiza danych funkcjonalnych, dane funkcjonalne, funkcjonalny model liniowy, test istotnoœci}
+%funkcjonalne
 
 %\newtheorem{defi}{Definicja}[section]
 %\theoremstyle{definition}
@@ -65,7 +68,10 @@
 	\maketitle
 	
 	\begin{abstract}
-		coœ
+	%\indent 
+	The paper's motivation is to contribute to popularization of mathematical statistics on infinite dimensional function Hilbert spaces. The author presents the fully  functional linear model in form $Y=\beta X +\varepsilon$ and its significance test proposed by Kokoszka et al. The test detects nullity of operator $\beta$ which implies the lack of linear dependence between $X$ and $Y$. Using the principal component decomposition it is concluded with test statistic convergent by distribution to chi-squared.
+	\\
+	The test is further used for magnetic field data collected in some stations in different latitudes. The results show linear dependence between horizontal intensities of the magnetic field in mid- and low-latitude stations with high-latitude station data with a day or two delay but they contradict the linear dependence between data with more than a two-day lag.
 	\end{abstract}
 	
 	\tableofcontents
@@ -74,7 +80,8 @@
 	
 	\chapter*{Wstêp}
 	\addcontentsline{toc}{chapter}{Wstêp}
-	Odpowiednik testu istotnoœci dla prostego modelu regresji = F-test (+ t-test) [patrz: artyku³]
+	Przyk³ady danych funkcjonalnych
+	\\Odpowiednik testu istotnoœci dla prostego modelu regresji = F-test (+ t-test) [patrz: artyku³]
 	%Odpowiednikami testu istotnoœci w klasycznym modelu liniowym s¹ np. t-test oraz F-test.
 	
 	\chapter{Preliminaria}
@@ -82,13 +89,15 @@
 	Przestrzeni¹ funkcyjn¹ $E$ nazywaæ bêdziemy przestrzeñ liniow¹ funkcji z dowolnego zbioru $A$ do zbioru $B$.
 	%
 	\begin{df}{\cite{FV}}
-		\\Zmienn¹ losow¹ $X$ nazywamy \textbf{zmienn¹ funkcjonaln¹} wtedy i tylko wtedy, gdy przyjmuje wartoœci w nieskoñczenie wymiarowej przestrzeni (przestrzeni funkcyjnej). Obserwacjê $\chi$ zmiennej $X$ nazywamy \textbf{dan¹ funkcjonaln¹} (\textit{ang. functional data}).
+		\\Zmienn¹ losow¹ $X$ nazywamy \textbf{zmienn¹ funkcjonaln¹} (\textit{ang. functional variable}) wtedy i tylko wtedy, gdy przyjmuje wartoœci w nieskoñczenie wymiarowej przestrzeni (przestrzeni funkcyjnej). Obserwacjê $\chi$ zmiennej $X$ nazywamy \textbf{dan¹ funkcjonaln¹} (\textit{ang. functional data}).
 	\end{df}
 	%
-	Jeœli zmienna funkcjonalna $X$ (odpowiednio obserwacja $\chi$) jest krzyw¹, to zachodzi $X= \{X(t), \ t \in T \}$ (odp. $\chi= \{\chi(t), \ t \in T \}$), gdzie zbiór indeksów $T \subset \mathbb{R}$. Tak¹ zmienn¹ funkcjonaln¹ mo¿emy zatem uto¿samiaæ z procesem stochastycznym z nieskoñczenie wymiarow¹ przestrzeni¹ stanów. W szczególnoœci, zmienna funkcjonalna mo¿e byæ powierzchni¹, czyli dwuwymiarowym wektorem krzywych - wtedy, analogicznie, $T$ bêdzie dwuwymiarowym zbiorem indeksów tj. $T \subset \mathbb{R}^2$ - lub dowolnie wymiarowym wektorem krzywych.
+	Jeœli zmienna funkcjonalna $X$ (odpowiednio obserwacja $\chi$) jest krzyw¹, to mo¿emy przedstawiæ $X$ w nastêpuj¹cej postaci $X= \{X(t), \ t \in T \}$ (odp. $\chi= \{\chi(t), \ t \in T \}$), gdzie zbiór indeksów $T \subset \mathbb{R}$. Tak¹ zmienn¹ funkcjonaln¹ mo¿emy zatem uto¿samiaæ z procesem stochastycznym z nieskoñczenie wymiarow¹ przestrzeni¹ stanów. W szczególnoœci, zmienna funkcjonalna mo¿e byæ powierzchni¹, czyli dwuwymiarowym wektorem krzywych - wtedy, analogicznie, $T$ bêdzie dwuwymiarowym zbiorem indeksów tj. $T \subset \mathbb{R}^2$ - lub dowolnie wymiarowym wektorem krzywych.
 	%%% przyk³ady danych funkcjonalnych? %%%
 	%
 	\\W niniejszej pracy skupimy siê na zmiennych funkcjonalnych przyjmuj¹cych postaæ krzywych.
+	\\\textcolor{red}{[przyk³ady? czy tylko we wstêpie?]}
+	\\\textcolor{red}{[tu: próba = punkty - ostatecznie: funkcja g³adka?]}
 	\vspace{0.35cm}\\Aby zbudowaæ pojêcie operatora kowariancji dla zmiennych funkcjonalnych wprowadzimy niezbêdne pojêcia z dziedziny operatorów liniowych.
 	%
 	%
@@ -115,7 +124,7 @@
 	%
 	Bez straty ogólnoœci mo¿emy za³o¿yæ, ¿e w przedstawionej reprezentacji $\lambda_j$ s¹ wartoœciami dodatnimi, w razie koniecznoœci wystarczy $f_j$ zamieniæ na $-f_j$.
 	%
-	\\Równowa¿n¹ definicj¹ operatora zwartego jest spe³nienie nastêpuj¹cego warunku: zbie¿noœæ $\langle y,x_n \rangle \rightarrow \langle y, x \rangle$ dla ka¿dego $y \in H$ implikuje $\left\| \mathit{\Psi}(x_n) - \mathit{\Psi}(x) \right\| \rightarrow 0 $.
+	\\Równowa¿n¹ definicj¹ operatora zwartego jest spe³nienie przez $\mathit{\Psi}$ nastêpuj¹cego warunku: zbie¿noœæ $\langle y,x_n \rangle \rightarrow \langle y, x \rangle$ dla ka¿dego $y \in H$ implikuje $\left\| \mathit{\Psi}(x_n) - \mathit{\Psi}(x) \right\| \rightarrow 0 $.
 	%%% jeszcze jakieœ definicje? %%%
 	%
 	\vspace{0.35cm}\\Inn¹ klas¹ operatorów s¹ operatory Hilberta-Schmidta, któr¹ oznaczaæ bêdziemy przez $\mathcal{S}$.
@@ -135,7 +144,7 @@
 	\end{uw}
 	%
 	\begin{df}\cite{B}
-		\\Operator liniowy nazywamy \textbf{operatorem œladowym} (ang. \textit{nuclear operator}), jeœli równoœæ \eqref{zwarty} spe³niona jest dla ci¹gu takiego, ¿e $\sum_{j=1}^{\infty} \left| \lambda_j \right|  < \infty$.
+		\\Operator liniowy nazywamy \textbf{operatorem œladowym} (ang. \textit{nuclear operator}), jeœli równoœæ \eqref{zwarty} spe³niona jest dla ci¹gu $\{\lambda_j \}_{j=1}^{\infty}$ takiego, ¿e $\sum_{j=1}^{\infty} \left| \lambda_j \right|  < \infty$.
 	\end{df}
 	%%% operator œladowy = nuclear operator %%%
 	%
@@ -168,10 +177,14 @@
 	\section{Przestrzeñ $L^2$}
 	%%% wartoœæ oczekiwana = ca³ka ? %%%
 	%
-	Przestrzeñ $L^2=L^2(K,\mathcal{A},\mu)$ nad pewn¹ przestrzeni¹ liniow¹ $K$ jest zbiorem mierzalnych funkcji rzeczywistych okreœlonych na $K$ spe³niaj¹cych $\int_{K} x^2 (t) dt < \infty$. Przestrzeñ $L^2$ jest oœrodkow¹ przestrzeni¹ Hilberta z iloczynem skalarnym
+	Przestrzeñ $L^2=L^2(K,\mathcal{A},\mu)$ nad pewn¹ przestrzeni¹ liniow¹ $K$ jest zbiorem mierzalnych funkcji rzeczywistych ca³kowalnych z kwadratem okreœlonych na $K$, tj.
+	\[x \in L^2(K) \iff x: K \rightarrow \mathbb{R} \ \wedge \ \int_{K} x^2 (t) dt < \infty.\] 
+	Przestrzeñ $L^2$ jest oœrodkow¹ przestrzeni¹ Hilberta z iloczynem skalarnym
 	\begin{equation*}
 	\langle x, y \rangle:= \int_{K} x(t) y(t) dt.
 	\end{equation*}
+	Normê zaœ wyznacza wzór
+	\[ \|x\|^2 = \langle x,x \rangle = \int x^2 (t) dt. \]
 	%
 	Tak jak zwyczajowo zapisujemy $L^2$ zamiast $L^2(K)$, tak w przypadku symbolu ca³ki bez wskazania obszaru ca³kowania bêdziemy mieæ na myœli ca³kowanie po ca³ej przestrzeni $K$. Jeœli $x,y \in L^2$, równoœæ $x=y$ zawsze oznaczaæ bêdzie $\int \left[x(t) - y(t) \right]^2 dt = 0$.
 	%
@@ -205,49 +218,78 @@
 	\end{uw}
 	%
 	%
-	\section{Zmienne funkcjonalne w $L^2$. Pojêcie operatora kowariancji}
+	\section{Zmienne funkcjonalne w $L^2$. Pojêcie œredniej i operatora kowariancji}
 	%
 	Rozwa¿my zmienn¹ funkcjonaln¹ $X= \{X(t), \ t \in T \}$ bêd¹c¹ krzyw¹ ($T \subset \mathbb{R}$) jako element losowy z przestrzeni $L^2(T)$ zaopatrzonej w $\sigma$-algebrê borelowskich podzbiorów $T$.
-	\\Mówimy, ¿e zmienna $X$ jest \textbf{ca³kowalna}, jeœli $\mathbb{E} \left\| X \right\| = \mathbb{E} \left[\int X^2(t) dt \right]^{1/2} <\infty $.
+	\\Mówimy, ¿e zmienna $X$ jest \textbf{ca³kowalna}, jeœli $\mathbb{E} \left\| X \right\| = \mathbb{E} \left[\int X^2(t) dt \right]^{1/2} <\infty $. Jeœli $X$ jest ca³kowalna, to istnieje jedyna funkcja $\mu \in L^2$ taka, ¿e $\mathbb{E} \langle y, X \rangle = \langle y , \mu \rangle$ dla dowolnej funkcji $y \in L^2$. Zachodzi $\mu (t) = \mathbb{E} [X(t)]$ dla prawie wszystkich $t \in T$ i funkcjê $\mu$ nazywaæ bêdziemy \textbf{funkcj¹ œredniej}.
 	%
 	\begin{df}\cite{B}
-		\\\textbf{Operator kowariancji} scentrowanej zmiennej funkcjonalnej $X$ (tj. $\mathbb{E}X=0$) przyjmuj¹cej wartoœci w przestrzeni funkcyjnej $L^2$ spe³niaj¹cej $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy nastêpuj¹co
+		\\\textbf{Operator kowariancji} ca³kowalnej zmiennej funkcjonalnej $X$ o œredniej $\mu_X$ przyjmuj¹cej wartoœci w przestrzeni funkcyjnej $L^2$ spe³niaj¹cej $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy nastêpuj¹co
 		\begin{equation*}
-		C_X (x):= \mathbb{E} [\langle X, x \rangle X ], \quad x \in L^2.
+		C_X (x):= \mathbb{E} \big[ \big\langle X - \mu_X, x \big\rangle (X - \mu_X ) \big], \quad x \in L^2.
 		\end{equation*}
-		Jeœli $Y$ jest zmienn¹ funkcjonaln¹ spe³niaj¹c¹ powy¿sze warunki, wtedy operator kowariancji miêdzy zmiennymi $X$ i $Y$ przedstawiamy jako
+		Jeœli $Y$ jest zmienn¹ funkcjonaln¹ o œredniej $\mu_Y$ spe³niaj¹c¹ powy¿sze warunki, wtedy operator kowariancji miêdzy zmiennymi $X$ i $Y$ przedstawiamy jako
 		\begin{equation*}
-		C_{X,Y}(x):=\mathbb{E} [\langle X, x \rangle Y ], \quad x \in L^2
+		C_{X,Y}(x):=\mathbb{E} \Big[ \big\langle (X - \mu_X) , x \big\rangle (Y - \mu_Y) \Big], \quad x \in L^2
 		\end{equation*}
 		oraz
 		\begin{equation*}
-		C_{Y,X}(x):=\mathbb{E} [\langle Y, x \rangle X ], \quad x \in L^2.
+		C_{Y,X}(x):=\mathbb{E} \Big[ \big\langle (Y - \mu_Y) , x \big\rangle \big(X - \mu_X \big) \Big], \quad x \in L^2.
 		\end{equation*}
 	\end{df}
-	%
+	%%% \textcolor{red}{[uogólniæ dla przypadku EX ró¿ne od 0 ?]} %%%
 	Operator kowariancji jest operatorem ca³kowym, czyli
-	$$C_X (x)(t) = \int c(t,s) x(s) ds, \quad \text{gdzie } c(t,s)=\mathbb{E} \left[ X(t) X(s) \right].$$
-	Oczywistym jest, ¿e $c(t,s)=c(s,t)$ i mamy
+	$$C_X (x)(t) = \int c(t,s) x(s) ds,$$
+	gdzie j¹dro ca³kowe $c(t,s)$ zdefiniowane nastêpuj¹co
+	$$c(t,s)=\mathbb{E} \Big[ \big( X(t) - \mu(t) \big) \big( X(s) - \mu(s) \big) \Big]$$
+	nazywaæ bêdziemy \textbf{funkcj¹ kowariancji}. Oczywistym jest, ¿e $c(t,s)=c(s,t)$ i mamy
 	\begin{align*}
-	\iint c(t,s) x(t) x(s) dt ds = \iint \mathbb{E} \left[ X(t) X(s) \right] x(t) x(s) dt ds = \mathbb{E} \left[ \left( \int X(t) x(t) dt \right)^2 \right] \geq 0.
+	\iint c(t,s) x(t) x(s) dt ds &= \iint \mathbb{E} \big[ \big( X(t) - \mu(t) \big) \big( X(s) - \mu(s) \big) \big] x(t) x(s) dt ds
+	\\&= \mathbb{E} \left[ \left( \int X(t) x(t) dt \right)^2 \right] \geq 0.
 	\end{align*}
 	Zatem operator kowariancji $C_X$ jest symetryczny oraz nieujemnie okreœlony. Wartoœci w³asne $\lambda_j$ operatora $C_X$ s¹ dodatnie i spe³niony jest warunek $\sum_{j=1}^{\infty} \lambda_j = \mathbb{E} \left\| X \right\|^2 <\infty$. $C_X$ jest operatorem Hilberta-Schmidta (a nawet operatorem œladowym) i  posiada on nastêpuj¹c¹ reprezentacjê
 	\begin{equation*}
 	C_X (x) = \sum_{j=1}^{\infty} \lambda_j \langle x, \nu_j \rangle \nu_j, \quad x \in L^2.
 	\end{equation*}
 	%
-	\textcolor{red}{[ju¿ tu: estymatory operatorów kowariancji?]}
-	%%% ju¿ tu: estymatory operatorów kowariancji? %%%
+	%\textcolor{red}{[ju¿ tu: estymatory operatorów kowariancji?]}
 	%
 	%
-	%\vspace{2cm}
-	%\\Zak³adamy, ¿e zmienne $X_n$, $Y_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) losow¹ funkcjê o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
-	%$$C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ].$$
+	\section{Estymacja œredniej, funkcji kowariancji i operatora kowariancji}
+	%
+	Naturalnym problemem pojawiaj¹cym siê przy danych funkcjonalnych jest wnioskowanie o obiektach nieskoñczenie wymiarowych na podstawie skoñczonej próbki danych.
+	\\Obserwujemy zatem $N$ krzywych $X_1,...,X_N$, które mo¿e traktowaæ  jako realizacje losowej funkcji $X$ lub obserwacje zmiennej funkcjonalnej $X$ z przestrzeni $L^2$.
+	%
+	\begin{zal}\label{proba} \cite{HK}
+		\\Zak³adamy, ¿e $X_1,...,X_N$ s¹ niezale¿nymi zmiennymi losowymi w $L^2$ o jednakowym rozk³adzie jak zmienna $X \in L^2$.
+	\end{zal}
+	%%% Assumption 2.1 %%%
+	%
+	Definiujemy szukane parametry
+	%\begin{align*}
+	%\mu (t) &= \mathbb{E} [X(t)] \quad \text{funkcja œredniej}
+	%\\ c(t,s) &= \mathbb{E}[(X(t) - \mu(t)(X(s) - \mu(s))] \quad \text{funkcja kowariancji}
+	%\\  C &= \mathbb{E}[ \langle (X - \mu), \cdot \rangle (X -\mu)] \quad \text{operator kowariancji}
+	%\end{align*}
+	\vspace{0.15cm}\\ \indent funkcja œredniej:  \indent \indent $\mu (t) = \mathbb{E} [X(t)]$;
+	\\ \indent funkcja kowariancji: \indent $c(t,s) = \mathbb{E}[(X(t) - \mu(t)(X(s) - \mu(s))]$;
+	\\ \indent operator kowariancji: $ \quad C = \mathbb{E}[ \langle (X - \mu), \cdot \rangle (X -\mu)]$.
+	%
+	\vspace{0.35cm}\\Funkcjê œredniej $\mu$ estymujemy œredni¹ z funkcji z próby
+	\[ \widehat{\mu}(t) = \frac{1}{N} \sum_{n=1}^N X_n (t), \]
+	funkcjê kowariancji ze wzoru
+	\[ \hat{c}(t,s) = \frac{1}{N} \sum_{n=1}^N \big( X_n (t) - \hat{\mu}(t) \big) \big( X_n(s) -\hat{\mu}(s) \big), \]
+	zaœ operator kowariancji estymujemy
+	\[ \widehat{C}(x) = \frac{1}{N} \sum_{n=1}^N \langle X_n - \hat{\mu}, x \rangle ( X_n - \hat{\mu} ), \quad x \in L^2. \]
+	%
+	%
+	\section{Estymacja wartoœci w³asnych i funkcji w³asnych}
+	%
 	%
 	%
 	\section{Funkcjonalny model liniowy}
 	%
-	Standardowy model liniowy dla par zmiennych skalarnych $Y_n$ i wektorów $\mathbf{X}_n$ ($n=1,...,N$), przy za³o¿eniu $\mathbb{E}Y_n=0$, $\mathbb{E}\mathbf{X}_n=\mathbf{0}$\textcolor{red}{\footnote{\textcolor{red}{przenieœæ tê uwagê/wyt³umaczenie do przypisu?}}}, ma postaæ
+	Standardowy model liniowy dla par zmiennych skalarnych $Y_n$ i wektorów $\mathbf{X}_n$ (tworzonych przez $p$ skalarnych zmiennych $X_{ni}$, $i=1,...,p$), przy za³o¿eniu $\mathbb{E}Y_n=0$, $\mathbb{E}\mathbf{X}_n=\mathbf{0}$\textcolor{red}{\footnote{\textcolor{red}{przenieœæ tê uwagê/wyt³umaczenie do przypisu?}}} (gdzie $n=1,...,N$), przyjmuje postaæ
 	%%% bez tego za³o¿enia nale¿y dodaæ parametr odpowiadaj¹cy wyrazowi wolnemu w macierzy X i w wektorze beta - dodaæ jako footnote? %%%
 	\begin{equation}\label{eq:SLM}
 	\mathbf{Y} = \mathbf{X} \boldsymbol\beta + \boldsymbol\varepsilon,
@@ -261,7 +303,7 @@
 	%%% informacje zbêdne? %%%
 	\vspace{0.35cm}\\ \textcolor{red}{[} Maj¹c dane realizacje zmiennych $\mathbf{Y}$ oraz $\mathbf{X}$ poszukiwany wektor wspó³czynników modelu $\boldsymbol\beta$ znajdujemy metod¹ najmniejszych kwadratów. \textcolor{red}{]}
 	%
-	\\Poza narzuconym ju¿ za³o¿eniem o scentrowanych zmiennych losowych $\mathbf{Y}$ i $\mathbf{X}$ (tu: jedynie aby unikn¹æ uwzglêdniania wyrazu wolnego\textcolor{red}{\footnote{\textcolor{red}{przenieœæ tê uwagê/wyt³umaczenie do przypisu?}}}) najwa¿niejszymi za³o¿eniami powy¿szego modelu liniowego s¹ wymagania, aby zmienna losowa $\boldsymbol\varepsilon$ opisuj¹ca b³¹d modelu równie¿ spe³nia³a $\mathbb{E}[ \boldsymbol\varepsilon ] =0$ oraz aby nie by³a skorelowana ze zmiennymi $X_n$).
+	\\Poza narzuconym ju¿ za³o¿eniem o scentrowanych zmiennych losowych $\mathbf{Y}$ i $\mathbf{X}$ (tu: jedynie aby unikn¹æ uwzglêdniania wyrazu wolnego\textcolor{red}{\footnote{\textcolor{red}{przenieœæ tê uwagê/wyt³umaczenie do przypisu?}}}) najwa¿niejszymi za³o¿eniami powy¿szego modelu liniowego s¹ wymagania, aby zmienna losowa $\boldsymbol\varepsilon$ opisuj¹ca b³¹d modelu równie¿ spe³nia³a $\mathbb{E}[ \boldsymbol\varepsilon ] =0$ oraz aby nie by³a skorelowana ze zmiennymi $X_n$.
 	%
 	%%% czy w ogóle podawaæ wszystkie rodzaje funkcjonalnych modeli liniowych? %%%
 	%Rozró¿niamy trzy postaci funkcjonalnych modeli liniowych...
@@ -271,23 +313,23 @@
 	\begin{equation}\label{eq:FLM}
 	Y_n = \mathit{\Psi} X_n + \varepsilon_n, \quad n=1,...,N,
 	\end{equation}
-	gdzie krzywe $Y_n$, $X_n$ oraz nieobserwowalny b³¹d $\varepsilon_n$ nale¿¹ do przestrzeni Hilberta $L^2(T)$. Operator $\mathit{\Psi}: L^2 \rightarrow L^2$ jest ograniczonym operatorem liniowym, który w szczególnoœci jest równie¿ operatorem ca³kowym, którego j¹dro ca³kowe $\psi(t,s)$ jest funkcj¹ ca³kowaln¹ z kwadratem na $T \times T$. Równoœæ \eqref{eq:FLM} rozumiemy zatem nastêpuj¹co
+	gdzie krzywe $Y_n$, $X_n$ oraz nieobserwowalny b³¹d $\varepsilon_n$ nale¿¹ do przestrzeni Hilberta $L^2(T)$. Operator $\mathit{\Psi}: L^2 \rightarrow L^2$ jest ograniczonym operatorem liniowym, który w szczególnoœci jest operatorem ca³kowym. J¹dro ca³kowe $\psi(t,s)$ operatora $\mathit{\Psi}$ jest funkcj¹ ca³kowaln¹ z kwadratem na $T \times T$. Równoœæ \eqref{eq:FLM} rozumiemy zatem nastêpuj¹co
 	\begin{equation*}
-	Y_n(t) = \int \psi (s,t) X_n(s) ds + \varepsilon_n (t), \quad n=1,...,N.
+	Y_n(t) = \int \psi (t,s) X_n(s) ds + \varepsilon_n (t), \quad n=1,...,N.
 	\end{equation*}
 	%
 	\textcolor{red}{\textbf{[}} Nazwa powy¿szego modelu wynika z faktu, ¿e zarówno zmienne objaœniane $Y_n$ jak i zmienne objaœniaj¹ce $X_n$ s¹ zmiennymi funkcjonalnymi. Niewielkim uproszczeniem s¹ pozosta³e typy funkcjonalnych modeli liniowych, tj.
 	\begin{itemize}
 		\item[-] model z odpowiedzi¹ skalarn¹ (ang. \textit{scalar response model})
 		$$ Y_n = \int \psi (s) X_n(s) ds + \varepsilon_n, \quad n=1,...,N,$$
-		w którym tylko zmienne objaœniaj¹ce $X$ s¹ zmiennymi funkcjonalnymi,
+		w którym tylko zmienne objaœniaj¹ce $X_n$ s¹ zmiennymi funkcjonalnymi,
 		\item[-] model z odpowiedzi¹ funkcyjn¹ (ang. \textit{functional response model})
 		$$ Y_n (t) = \psi (t) X_n + \varepsilon_n (t), \quad n=1,...,N,$$
 		w którym zmienne objaœniaj¹ce $X_n$ s¹ skalarami. \textcolor{red}{]}
 	\end{itemize}
 	%
 	%%% za³o¿enia modelu! %%%
-	Naturalnym problemem pojawiaj¹cym siê przy funkcjonalnym modelu liniowym jest estymacja operatora $\mathit{\Psi}$...
+	Naturalnym problemem pojawiaj¹cym siê przy funkcjonalnym modelu liniowym jest estymacja operatora $\mathit{\Psi}$ nale¿¹cego do nieskoñczenie wymiarowej przestrzeni na podstawie skoñczonej próbki danych. Mo¿liwym jest znalezienie operatora, który daje idealne dopasowanie do danych (dla którego wszystkie ró¿nice od próbki s¹ równe zero) nie narzucaj¹c dodatkowych za³o¿eñ, ale jego interpretacja jest czêsto problemowa i nie funkcjonalna. Problem ten rozwi¹zuje siê przez poszukiwanie operatora nale¿¹cego do podprzestrzeni generowanej przez funkcje w³asne operatora kowariancji danych z próby, nazywane \textbf{empirycznymi funkcjonalnymi g³ównymi sk³adowymi} (\textit{ang. empirical functional principal components, EFPC's}).
 	%
 	\chapter{Test istotnoœci w funkcjonalnym modelu liniowym}
 	%
@@ -299,7 +341,7 @@
 	\end{equation*}
 	Zauwa¿my, ¿e przyjêcie H$_0$ nie oznacza braku zwi¹zku miêdzy zmienn¹ objaœnian¹ a objaœniaj¹c¹. Prowadzi jedynie do stwierdzenia braku zale¿noœci liniowej.
 	%%% Ci¹g zmiennych d³ugoœci N %%%
-	\vspace{0.35cm}\\Zak³adamy, ¿e zmienna objaœniana $Y_n$, zmienne objaœniaj¹ce $X_n$ i b³êdy $\varepsilon_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) losow¹ funkcjê o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
+	\vspace{0.35cm}\\Zak³adamy, ¿e zmienna objaœniana $Y_n$, zmienne objaœniaj¹ce $X_n$ i b³êdy $\varepsilon_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) zmienn¹ funkcjonaln¹ o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory
 	\begin{equation*}
 	C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ].
 	\end{equation*}
@@ -383,7 +425,7 @@
 	\begin{tw}\label{T2} \cite{K08}, \cite{HK}
 		\\Przy Za³o¿eniach \ref{Z1}, \ref{Z2} oraz jeœli $\left\langle \psi(\upsilon_k),u_j \right\rangle \neq 0$ dla pewnych $k \leq p$ oraz $j \leq q$, to $\widehat{T}_N(p,q) \overset{P}{\longrightarrow}\chi^2_{pq} $ przy $N \rightarrow \infty$. 
 	\end{tw}
-	Dowody... \hfill $\square$
+	Dowody powy¿szych twierdzeñ rozbijemy w krokach na kolejne lematy i wnioski.
 	%
 	%%% zbie¿noœci wynikaj¹ce z powy¿szych za³o¿eñ %%%
 	%%% potrzebne? %%%
@@ -478,6 +520,8 @@
 		gdzie $\eta_{kj}$ definiowane s¹ jak w Lemacie \ref{L2}.
 	\end{wn}
 	%
+	Dowód Twierdzenia \ref{T1}...
+	%
 	\begin{lem}\label{L5} \cite{K08}, \cite{HK}
 		Jeœli $\{Y_n\}_{n\geq 1}$ s¹ elementami losowymi o jednakowych rozk³adach, to zachodzi $\mathbb{E} \| \widehat{\Delta} \| \leq \mathbb{E} \| Y \|^2$.
 	\end{lem}
@@ -486,6 +530,15 @@
 		\left\| \widehat{\Delta} u \right\| \leq N^{-1} \sum_{n=1}^N | \langle Y_n, u \rangle | \| Y_n \| \leq N^{-1} \sum_{n=1}^{N} \| Y_n \|^2.
 		\end{equation*}
 		Co ze wzglêdu na za³o¿enie, ¿e $Y_n$ maj¹ jednakowy rozk³ad, jest równowa¿ne tezie lematu. \hfill $\square$
+	%
+	\begin{tw}\label{SLLN} Mocne Prawo Wielkich Liczb \cite{B}
+		\\Niech $\{ X_n\}_{n \geq 1}$ bêdzie ci¹giem zmiennych funkcjonalnych o jednakowym rozk³adzie przyjmuj¹cych wartoœci w oœrodkowej przestrzeni Hilberta takich, ¿e $\mathbb{E}\|X_n \|^2 < \infty$. Niech $m = \mathbb{E} X_n$, wtedy mamy
+		\begin{equation*}
+		N^{-1} \sum_{n=1}^{N} X_n \overset{p.n.}{\longrightarrow} m.
+		\end{equation*}
+	\end{tw}
+	%%% dowód u Bosq'a %%%
+	%%% zbie¿noœæ prawie na pewno ~ zbie¿noœæ prawie wszêdzie %%%
 	%
 	\begin{lem}\label{L6} \cite{K08}, \cite{HK}
 		\\Je¿eli spe³nione jest Za³o¿enie \ref{Z1}, wtedy dla dowolnych funkcji $\nu, u \in L^2$

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.24)  14 SEP 2015 23:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.24)  16 SEP 2015 21:38
 entering extended mode
 **praca*FDA.tex
 ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.tex"
@@ -508,20 +508,20 @@ LaTeX Font Info:    Overwriting symbol font `ugrf@m' in version `bold'
 \c@tw=\count130
 
 ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -539,35 +539,35 @@ LaTeX Font Info:    ... okay on input line 64.
 )
 \c@lstlisting=\count137
  ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for OML+plm on input line 65.
+LaTeX Font Info:    Try loading font information for OML+plm on input line 68.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\omlplm.fd"
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMS+plsy on input line 65.
+LaTeX Font Info:    Try loading font information for OMS+plsy on input line 68.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\omsplsy.fd"
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMX+plex on input line 65.
+LaTeX Font Info:    Try loading font information for OMX+plex on input line 68.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\omxplex.fd"
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12> on input line 65.
+(Font)              <12> on input line 68.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 65.
+(Font)              <8> on input line 68.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 65.
-LaTeX Font Info:    Try loading font information for U+msa on input line 65.
+(Font)              <6> on input line 68.
+LaTeX Font Info:    Try loading font information for U+msa on input line 68.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 65.
+LaTeX Font Info:    Try loading font information for U+msb on input line 68.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -614,12 +614,15 @@ Missing character: There is no ï in font plr12!
 Missing character: There is no ¿ in font plr12!
 Missing character: There is no ½ in font plr12!
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 69--69
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <10.95> on input line 72.
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--69
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
 
  []
 
@@ -628,10 +631,7 @@ Missing character: There is no ¿ in font plbx12!
 Missing character: There is no ½ in font plbx12!
 [1] [2
 
-] ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.toc"
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10.95> on input line 1.
-)
+] ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.toc")
 \tf@toc=\write4
 
 [3
@@ -644,35 +644,35 @@ LaTeX Font Info:    External font `plex10' loaded for size
 Rozdzia\PlPrIeC {\l } 1.
 [7]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <14.4> on input line 168.
+(Font)              <14.4> on input line 177.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 168.
+(Font)              <10> on input line 177.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 168.
- [8] [9]
+(Font)              <7> on input line 177.
+ [8] [9] [10]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <9> on input line 250.
+(Font)              <9> on input line 292.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 250.
+(Font)              <5> on input line 292.
 
-Overfull \hbox (2.2448pt too wide) in paragraph at lines 254--271
+Overfull \hbox (2.2448pt too wide) in paragraph at lines 296--313
 \OT4/cmr/m/n/10.95 Rozwa»a¢ b¦-dzie-my od-po-wied-nik mo-de-lu li-nio-we-go dla
  zmien-nych funk-cjo-nal-nych. Dla uprosz-
  []
 
-[10] [11] [12
-
-]
+[11] [12]
 Rozdzia\PlPrIeC {\l } 2.
-[13] [14] [15] [16] [17] [18]
+[13
+
+] [14] [15] [16] [17] [18]
 Rozdzia\PlPrIeC {\l } 3.
 <mapa_stacji.png, id=88, 514.17094pt x 383.18156pt>
 File: mapa_stacji.png Graphic file (type png)
  <use mapa_stacji.png>
-Package pdftex.def Info: mapa_stacji.png used on input line 536.
+Package pdftex.def Info: mapa_stacji.png used on input line 589.
 (pdftex.def)             Requested size: 462.74957pt x 344.86021pt.
 
-Overfull \hbox (21.73184pt too wide) in paragraph at lines 536--537
+Overfull \hbox (21.73184pt too wide) in paragraph at lines 589--590
  [][] 
  []
 
@@ -686,20 +686,20 @@ Dodatek A.
 [21] [22
 
 ]
-LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 558
+LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 611
 .
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\ot4cmtt.fd"
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 [23] ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.aux") ) 
 Here is how much of TeX's memory you used:
- 11775 strings out of 493921
- 213156 string characters out of 3144879
- 258231 words of memory out of 3000000
- 14804 multiletter control sequences out of 15000+200000
+ 11777 strings out of 493921
+ 213169 string characters out of 3144879
+ 258258 words of memory out of 3000000
+ 14806 multiletter control sequences out of 15000+200000
  35974 words of font info for 105 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,10n,45p,612b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,12n,45p,764b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C
 :/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/pltt.enc}{C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/plms.enc}{C:/Program Files (x86)/MiKTeX 2.9
@@ -725,7 +725,7 @@ TeX 2.9/fonts/type1/public/pl/plsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/pl/plsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
 ic/pl/plti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/pltt1
 0.pfb>
-Output written on "praca FDA.pdf" (25 pages, 371126 bytes).
+Output written on "praca FDA.pdf" (25 pages, 380409 bytes).
 PDF statistics:
  177 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
