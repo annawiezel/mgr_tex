@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.24)  16 SEP 2015 21:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.24)  24 SEP 2015 00:51
 entering extended mode
 **praca*FDA.tex
 ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.tex"
@@ -642,64 +642,72 @@ Missing character: There is no ½ in font plbx12!
 
 ]
 Rozdzia\PlPrIeC {\l } 1.
-[7]
+[7] [8]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <14.4> on input line 177.
+(Font)              <14.4> on input line 189.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 177.
+(Font)              <10> on input line 189.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 177.
- [8] [9] [10]
+(Font)              <7> on input line 189.
+ [9] [10] [11]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <9> on input line 292.
+(Font)              <9> on input line 331.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 292.
+(Font)              <5> on input line 331.
 
-Overfull \hbox (2.2448pt too wide) in paragraph at lines 296--313
+Overfull \hbox (2.2448pt too wide) in paragraph at lines 331--343
 \OT4/cmr/m/n/10.95 Rozwa»a¢ b¦-dzie-my od-po-wied-nik mo-de-lu li-nio-we-go dla
  zmien-nych funk-cjo-nal-nych. Dla uprosz-
  []
 
-[11] [12]
-Rozdzia\PlPrIeC {\l } 2.
-[13
+[12] [13] [14
 
-] [14] [15] [16] [17] [18]
+]
+Rozdzia\PlPrIeC {\l } 2.
+[15] [16] [17] [18] [19]
+Overfull \hbox (4.37334pt too wide) in paragraph at lines 576--583
+\OT4/cmr/m/n/10.95 gdzie $[](\OML/plm/m/it/10.95 x\OT4/cmr/m/n/10.95 ) = \OML/p
+lm/m/it/10.95 N[] [][] [] X[]$\OT4/cmr/m/n/10.95 . Le-mat 2.2.3[] sta-no-wi, »e
+ przy za-ªo-»e-niu H$[]$ ma-my $\U/msb/m/n/10.95 E\OMS/plsy/m/n/10.95 k[]k[] \O
+T4/cmr/m/n/10.95 =$
+ []
+
+[20] [21] [22
+
+]
 Rozdzia\PlPrIeC {\l } 3.
-<mapa_stacji.png, id=88, 514.17094pt x 383.18156pt>
+<mapa_stacji.png, id=100, 514.17094pt x 383.18156pt>
 File: mapa_stacji.png Graphic file (type png)
  <use mapa_stacji.png>
-Package pdftex.def Info: mapa_stacji.png used on input line 589.
+Package pdftex.def Info: mapa_stacji.png used on input line 663.
 (pdftex.def)             Requested size: 462.74957pt x 344.86021pt.
 
-Overfull \hbox (21.73184pt too wide) in paragraph at lines 589--590
+Overfull \hbox (21.73184pt too wide) in paragraph at lines 663--664
  [][] 
  []
 
-[19
-
- <D:/Inne/STUDIA!/MAGISTERKA/praca magisterska/mgr_tex/mapa_stacji.png>]
-[20
+[23 <D:/Inne/STUDIA!/MAGISTERKA/praca magisterska/mgr_tex/mapa_stacji.png>]
+[24
 
 ]
 Dodatek A.
-[21] [22
+[25] [26
 
 ]
-LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 611
+LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 688
 .
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\ot4cmtt.fd"
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-[23] ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.aux") ) 
+[27] ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.aux") ) 
 Here is how much of TeX's memory you used:
- 11777 strings out of 493921
- 213169 string characters out of 3144879
- 258258 words of memory out of 3000000
- 14806 multiletter control sequences out of 15000+200000
+ 11789 strings out of 493921
+ 213256 string characters out of 3144879
+ 259377 words of memory out of 3000000
+ 14818 multiletter control sequences out of 15000+200000
  35974 words of font info for 105 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,12n,45p,764b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,17n,45p,800b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C
 :/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/pltt.enc}{C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/plms.enc}{C:/Program Files (x86)/MiKTeX 2.9
@@ -725,9 +733,9 @@ TeX 2.9/fonts/type1/public/pl/plsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/pl/plsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
 ic/pl/plti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/pltt1
 0.pfb>
-Output written on "praca FDA.pdf" (25 pages, 380409 bytes).
+Output written on "praca FDA.pdf" (29 pages, 397285 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
+ 189 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
