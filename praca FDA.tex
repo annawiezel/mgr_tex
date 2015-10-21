@@ -81,8 +81,14 @@
 	\chapter*{Wstêp}
 	\addcontentsline{toc}{chapter}{Wstêp}
 	\textcolor{red}{[ju¿ tu: Przyk³ady danych funkcjonalnych?]}
+	\\\textcolor{red}{[ju¿ tu: próba = punkty - ostatecznie: funkcja g³adka?]}
 	\\\textcolor{red}{[Odpowiednik testu istotnoœci dla prostego modelu regresji = F-test (+ t-test) [patrz: artyku³]]}
+	\\\textcolor{red}{[pakiet w R: fda]}
+	\\\textcolor{red}{Praca opiera siê g³ównie na artykule \cite{K08}, który to zosta³ u¿yty i rozwiniêty w ksi¹¿ce \cite{HK}}.
 	%Odpowiednikami testu istotnoœci w klasycznym modelu liniowym s¹ np. t-test oraz F-test.
+	\vspace{0.35cm}\\\textcolor{red}{Ze wzglêdu na to, ¿e analiza danych funkcjonalnych (\textit{ang.} Functional Data Analysis, FDA) jest stosunkowo nowym dzia³em statystyki i jest wci¹¿ ma³o popularna w polskiej literaturze, wiele pojêæ czy okreœleñ zawartych w pracy nie posiada jeszcze ogólnie przyjêtych polskich odpowiedników. Dlatego zosta³y one przet³umaczone przez autora wed³ug w³asnego uznania, przytaczaj¹c oczywiœcie oryginalne (angielskie) nazwy.}
+	\vspace{0.35cm}\\\textcolor{red}{ACKNOWLEDGEMENTS/podziêkowania?
+		\\The results presented in this paper rely on data collected at magnetic observatories. We thank the national institutes that support them and INTERMAGNET for promoting high standards of magnetic observatory practice (www.intermagnet.org).}
 	
 	\chapter{Preliminaria}
 	%
@@ -150,7 +156,7 @@
 		\begin{align*}
 		\left\| \mathit{\Psi} \right\|_{\mathcal{S}}^2 &= \langle \mathit{\Psi}, \mathit{\Psi} \rangle_{\mathcal{S}} = \sum_{n=1}^{\infty} \bigg\langle \sum_{j=1}^{\infty} \lambda_j \langle e_n , \upsilon_j \rangle f_j , \sum_{k=1}^{\infty} \lambda_k \langle e_n , \upsilon_k \rangle f_k \bigg\rangle
 		\\&= \sum_{n=1}^{\infty} \sum_{j=1}^{\infty} \sum_{k=1}^{\infty} \lambda_j \lambda_k \langle e_n , \upsilon_j \rangle \langle e_n , \upsilon_k \rangle \langle f_j , f_k \rangle = \sum_{n=1}^{\infty} \sum_{j=1}^{\infty} \lambda_j^2 \langle e_n , \upsilon_j \rangle
-		\\&= \sum_{j=1}^{\infty} \lambda_j^2 \sum_{n=1}^{\infty} \langle e_n , \upsilon_j \rangle \overset{\shortstack{$\scriptstyle \text{to¿samoœæ}$\\ $\scriptstyle \text{Parsevala}$}}{=} \sum_{j=1}^{\infty} \lambda_j^2 \| e_j \| = \sum_{j=1}^{\infty} \lambda_j^2 .
+		\\&= \sum_{j=1}^{\infty} \lambda_j^2 \sum_{n=1}^{\infty} \langle e_n , \upsilon_j \rangle \overset{\shortstack{$\scriptstyle \text{to¿samoœæ}$\\ $\scriptstyle \text{Parsevala}$}}{=} \sum_{j=1}^{\infty} \lambda_j^2 \| \upsilon_j \| = \sum_{j=1}^{\infty} \lambda_j^2 .
 		\end{align*}
 		\hfill $\square$
 	%\text{to¿samoœæ Parsevala}
@@ -169,7 +175,7 @@
 		\begin{equation*}
 		\langle \mathit{\Psi}(x), y \rangle  = \langle x, \mathit{\Psi}(y) \rangle, \quad x,y \in H,
 		\end{equation*}
-		oraz \textbf{nieujemnie okreœlonym} (po³owicznie pozytywnie okreœlonym, ang. \textit{positive semidefinite}), jeœli
+		oraz \textbf{nieujemnie okreœlonym} (lub po³owicznie pozytywnie okreœlonym, ang. \textit{positive semidefinite}), jeœli
 		\begin{equation*}
 		\langle \mathit{\Psi} (x), x \rangle \geq 0, \quad x \in H.
 		\end{equation*}
@@ -189,12 +195,12 @@
 	\section{Przestrzeñ $L^2$}
 	%%% wartoœæ oczekiwana = ca³ka ? %%%
 	%
-	Przestrzeñ $L^2=L^2(T,\mathcal{B}, \lambda)$ nad pewnym przedzia³em $T \subset \mathbb{R}$ jest zbiorem klas mierzalnych funkcji rzeczywistych ca³kowalnych z kwadratem okreœlonych na $T$, tj.
+	Przestrzeñ $L^2=L^2(T)=L^2(T,\mathcal{B}, \lambda)$ nad pewnym przedzia³em $T \subset \mathbb{R}$ jest zbiorem klas mierzalnych funkcji rzeczywistych ca³kowalnych z kwadratem okreœlonych na $T$, tj.
 	%funkcji ca³kowalnych z kwadratem w sensie Lebesgue'a na przedziale T (Pytlik)
 	\[x \in L^2(T) \iff x: T \rightarrow \mathbb{R} \ \wedge \ \int_{T} x^2 (t) dt < \infty.\] 
 	Przestrzeñ $L^2$ jest oœrodkow¹ przestrzeni¹ Hilberta z iloczynem skalarnym
 	\begin{equation*}
-	\langle x, y \rangle:= \int_{T} x(t) y(t) dt, \quad x,y \in L^2(T).
+	\langle x, y \rangle:= \int_{T} x(t) y(t) dt, \quad x,y \in L^2.
 	\end{equation*}
 	Normê zaœ wyznacza wzór
 	\[ \|x\|^2 = \langle x,x \rangle = \int x^2 (t) dt, \quad x \in L^2. \]
@@ -212,7 +218,47 @@
 		gdzie $\psi$ jest mierzaln¹ \textcolor{red}{[ci¹g³¹ = ca³kowaln¹?]} funkcj¹ dwóch zmiennych nazywan¹ \textbf{j¹drem ca³kowym} operatora $\mathit{\Psi}$.
 	\end{df}
 	%
-	\begin{uw} \cite{HK}
+	Operator ca³kowy $\mathit{\Psi}$ jest dobrze okreœlony, jeœli spe³nia pewnego rodzaju w³asnoœæ ograniczonoœci.
+	%
+	\begin{uw}\cite{W}
+		\\Niech $(T, \mu)$ bêdzie przestrzeni¹ z miar¹ i niech $\psi(t,s)$ bêdzie mierzaln¹ funkcj¹ na $T \times T$. Zdefiniujmy
+		\[ \mathit{\Psi} x (s) = \int_T \psi (t,s) x(t) d\mu(t). \]
+		Jeœli $1 < p < \infty$ oraz istnieje mierzalna dodatnia funkcja $y$ na $T$ oraz sta³e $a$, $b$ takie ¿e dla $\frac{1}{p}+\frac{1}{q}=1$ mamy
+		\begin{equation}\label{eq:zal1}
+		\int_T  | \psi (t,s) | y (t)^q d\mu(t) \leq [a y (s) ]^q, \quad \quad \mu-\text{pr.w.}
+		\end{equation}
+		oraz
+		\begin{equation}\label{eq:zal2}
+		\int_T  | \psi (t,s) | y (t)^p d\mu(t) \leq [b y (s) ]^p, \quad \quad \mu-\text{pr.w.},
+		\end{equation}
+		wtedy $T: L^p (T,\mu) \rightarrow L^p(T,\mu)$.
+	\end{uw}
+	\textcolor{red}{[ca³e twierdzenie? jakie daæ oznaczenia?]}
+	\\\textit{Dowód.} Niech $x \in L^p$ i niech $y$ spe³nia za³o¿enia twierdzenia. Mamy
+	\begin{gather}
+	\begin{aligned}\label{eq:W1}
+	\big|\mathit{\Psi} x (s) \big|
+	&= \left| \int_T \psi (t,s) x(t) d\mu(t) \right|
+	\leq \int_T | \psi (t,s) | | x(t) | d\mu(t)
+	\\& = \int_T  [| \psi (t,s) |^{1/q} y (t) ] \cdot [ | \psi (t,s) |^{1/p} | x(t) | y (t)^{-1}  ] d\mu(t)
+	\\&= \int_T  \Big[| \psi (t,s) | y^q (t) \Big]^{1/q} \cdot \Big[ | \psi (t,s) |( | x|/y)^p (t)^{-1}  \Big]^{1/p} d\mu(t)
+	\\& \overset{\shortstack{$\scriptstyle \text{nierówn.}$\\ $\scriptstyle \text{H\"{o}ldera}$}}{\underset{\eqref{eq:zal1}}{\leq}} a y (s) \cdot \left[ \int_T | \psi (t,s) | (|x|/y)^p (t) d\mu(t) \right]^{1/p}.
+	\end{aligned}
+	\end{gather}
+	St¹d, korzystaj¹c z twierdzenia Fubiniego, otrzymujemy
+	\begin{align*}
+	\| \mathit{\Psi} x \|_p
+	&\leq \Big\| | \mathit{\Psi} x | \Big\|_p
+	= \left[ \int_T \Big| \int_T \psi (t,s) x(t) d\mu(t) \Big|^p d\mu(s) \right]^{1/p} 
+	\\&\overset{\eqref{eq:W1}}{\leq} a \left[ \int_T  y^p(s) \int_T | \psi(t,s) | (|x|/y)^p (t)  d\mu(t) d\mu(s) \right]^{1/p}
+	\\&\overset{\text{tw.F.}}{=} a \left[ \int_T (|x|/y)^p (t) \int_T y^p(s) | \psi(t,s) | d\mu(s) d\mu(t) \right]^{1/p}
+	\\&\overset{\eqref{eq:zal2}}{\leq} ab \left[ \int_T (|x|/y)^p (t) y^p(t) d\mu(t) \right]^{1/p}
+	= ab \left[ \int_T |x(t)|^p d\mu(t) \right]^{1/p}
+	= ab \|x\|_p < \infty.
+	\end{align*}
+	Pokazaliœmy, ¿e $\mathit{\Psi} x \in L^p$, co koñczy dowód. \hfill $\square$
+	%
+	\begin{uw}\label{u:cHS} \cite{HK}
 		\\Operatory ca³kowe s¹ operatorami Hilberta-Schmidta wtedy i tylko wtedy, gdy
 		\begin{equation}\label{eq:tM}
 		\iint \psi^2(t,s) dt ds < \infty.
@@ -236,10 +282,10 @@
 	\section{Zmienne funkcjonalne w $L^2$. Pojêcie œredniej i operatora kowariancji}
 	%
 	Rozwa¿my zmienn¹ funkcjonaln¹ $X= \{X(t), \ t \in T \}$ bêd¹c¹ krzyw¹ ($T \subset \mathbb{R}$) jako element losowy z przestrzeni $L^2(T)$ zaopatrzonej w $\sigma$-algebrê borelowskich podzbiorów $T$.
-	\\Mówimy, ¿e zmienna $X$ jest \textbf{ca³kowalna}, jeœli $\mathbb{E} \left\| X \right\| = \mathbb{E} \left[\int X^2(t) dt \right]^{1/2} <\infty $. Jeœli $X$ jest ca³kowalna, to istnieje jedyna funkcja $\mu \in L^2$ taka, ¿e $\mathbb{E} \langle y, X \rangle = \langle y , \mu \rangle$ dla dowolnej funkcji $y \in L^2$ (zauwa¿my, ¿e wartoœæ oczekiwana jest funkcjona³em liniowym, mo¿emy zatem skorzystaæ z twierdzenia Riesza). Zachodzi $\mu (t) = \mathbb{E} [X(t)]$ dla prawie wszystkich $t \in T$ i funkcjê $\mu$ nazywaæ bêdziemy \textbf{funkcj¹ œredniej}. Ponadto, wartoœæ oczekiwana jest przemienna z operatorami ograniczonymi, tj. jeœli X jest ca³kowalna oraz $\mathit{\Psi} \in \mathcal{L}$, to mamy $\mathbb{E}\mathit{\Psi} (X) = \mathit{\Psi} (\mathbb{E} X)$.
+	\\Mówimy, ¿e zmienna $X$ jest \textbf{ca³kowalna}, jeœli $\mathbb{E} \left\| X \right\| = \mathbb{E} \left[\int X^2(t) dt \right]^{1/2} <\infty $. Jeœli $X$ jest ca³kowalna, to istnieje jedyna funkcja $\mu \in L^2$ taka, ¿e $\mathbb{E} \langle y, X \rangle = \langle y , \mu \rangle$ dla dowolnej funkcji $y \in L^2$ (zauwa¿my, ¿e wartoœæ oczekiwana jest funkcjona³em liniowym, mo¿emy zatem skorzystaæ z twierdzenia Riesza). Zachodzi $\mu (t) = \mathbb{E} [X(t)]$ dla prawie wszystkich $t \in T$, tak okreœlon¹ funkcjê $\mu$ nazywaæ bêdziemy \textbf{funkcj¹ œredniej}. Ponadto, wartoœæ oczekiwana jest przemienna z operatorami ograniczonymi, tj. jeœli X jest ca³kowalna oraz $\mathit{\Psi} \in \mathcal{L}$, to mamy $\mathbb{E}\mathit{\Psi} (X) = \mathit{\Psi} (\mathbb{E} X)$.
 	%
 	\begin{df}\cite{B}
-		\\\textbf{Operator kowariancji} ca³kowalnej zmiennej funkcjonalnej $X$ o funkcji œredniej $\mu_X$ przyjmuj¹cej wartoœci w przestrzeni funkcyjnej $L^2$ spe³niaj¹cej $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy nastêpuj¹co
+		\\\textbf{Operator kowariancji} ca³kowalnej zmiennej funkcjonalnej $X$ o funkcji œredniej $\mu_X$ przyjmuj¹cej wartoœci w przestrzeni funkcyjnej $L^2$ spe³niaj¹cej $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy jako ograniczony operator liniowy wed³ug wzoru
 		\begin{equation*}
 		C_X (x):= \mathbb{E} \big[ \big\langle X - \mu_X, x \big\rangle (X - \mu_X ) \big], \quad x \in L^2.
 		\end{equation*}
@@ -281,6 +327,7 @@
 	\begin{zal}\label{proba} \cite{HK}
 		\\Zak³adamy, ¿e $X_1,...,X_N$ s¹ niezale¿nymi zmiennymi losowymi w $L^2$ o jednakowym rozk³adzie jak zmienna $X \in L^2$.
 	\end{zal}
+	\textcolor{red}{[rozk³ad?]}
 	%%% Assumption 2.1 %%%
 	%
 	%Definiujemy szukane parametry
@@ -289,7 +336,7 @@
 	%\\ c(t,s) &= \mathbb{E}[(X(t) - \mu(t)(X(s) - \mu(s))] \quad \text{funkcja kowariancji}
 	%\\  C &= \mathbb{E}[ \langle (X - \mu), \cdot \rangle (X -\mu)] \quad \text{operator kowariancji}
 	%\end{align*}
-	Poszukiwanymi parametrami s¹ funkcja œredniej, funkcja kowariancji oraz operator kowariancji, okreœlone nastêpuj¹co
+	\\Poszukiwanymi parametrami s¹ funkcja œredniej, funkcja kowariancji oraz operator kowariancji, okreœlone nastêpuj¹co
 	\vspace{0.15cm}\\ \indent funkcja œredniej:  \indent \indent $\mu (t) = \mathbb{E} [X(t)]$;
 	\\ \indent funkcja kowariancji: \indent $c(t,s) = \mathbb{E}[(X(t) - \mu(t)(X(s) - \mu(s))]$;
 	\\ \indent operator kowariancji: $ \quad C = \mathbb{E}[ \langle (X - \mu), \cdot \rangle (X -\mu)]$.
@@ -305,16 +352,17 @@
 	\textcolor{red}{[wiêcej w \cite{HK}, rozdz. 2]}
 	%
 	%
-	\section{Estymacja wartoœci w³asnych i funkcji w³asnych}\label{r:FPC}
+	\section{Estymacja wartoœci w³asnych i funkcji w³asnych operatora kowariancji}\label{r:FPC}
 	%
 	W dalszej czêœci pracy istotne bêdzie dla nas oszacowanie równie¿ wartoœci i funkcji w³asnych operatora kowariancji $C$. W szczególnoœci interesowaæ nas bêdzie $p$ najwiêkszych wartoœci w³asnych spe³niaj¹cych
 	\[ \lambda_1>\lambda_2>...>\lambda_p>\lambda_{p+1}\]
 	oraz aby $p$ pierwszych wartoœci w³asnych by³o zerowych.
-	\\Funkcje w³asne zdefiniowane s¹ przez równanie $C \upsilon_j = \lambda_j \upsilon_j$. Zauwa¿my, ¿e (z definicji operatora liniowego), jeœli $\upsilon_j$ jest funkcj¹ w³asn¹, to równie¿ $a \upsilon_j$ jest funkcj¹ w³asn¹, gdzie $a \neq 0$ jest skalarem (z definicji funkcje w³asne s¹ niezerowe).
-	\textcolor{red}{[...???]}
+	\\Funkcje w³asne zdefiniowane s¹ przez równanie $C \upsilon_j = \lambda_j \upsilon_j$. Zauwa¿my, ¿e (z definicji operatora liniowego), jeœli $\upsilon_j$ jest funkcj¹ w³asn¹, to równie¿ $a \upsilon_j$ jest funkcj¹ w³asn¹, gdzie $a \neq 0$ jest skalarem.
+	\\\textcolor{red}{[...]}
 	\\Wartoœci i funkcje w³asne estymujemy wed³ug wzoru
 	\[ \int \hat{c}(t,s) \hat{\upsilon}_j (s) ds = \hat{\lambda}_j \hat{\upsilon}_j(t), \quad j=1,2,...,N. \]
 	\textcolor{red}{[...]}
+	\\\textcolor{red}{[EFPC: Interference... rozdz. 3]}
 	%
 	%
 	\section{Funkcjonalny model liniowy}
@@ -343,10 +391,11 @@
 	\begin{equation}\label{eq:FLM}
 	Y_n = \mathit{\Psi} X_n + \varepsilon_n, \quad n=1,2,...,N,
 	\end{equation}
-	gdzie krzywe $Y_n$, $X_n$ oraz nieobserwowalny b³¹d $\varepsilon_n$ nale¿¹ do przestrzeni Hilberta $L^2(T)$. Operator $\mathit{\Psi}: L^2 \rightarrow L^2$ jest ograniczonym operatorem liniowym, który jest operatorem ca³kowym. J¹dro ca³kowe $\psi(t,s)$ operatora $\mathit{\Psi}$ jest funkcj¹ ca³kowaln¹ z kwadratem na $T \times T$. Równoœæ \eqref{eq:FLM} rozumiemy zatem nastêpuj¹co
-	\begin{equation*}
+	gdzie krzywe $Y_n$, $X_n$ oraz nieobserwowalny b³¹d $\varepsilon_n$ nale¿¹ do przestrzeni Hilberta $L^2(T)$. Operator $\mathit{\Psi}: L^2 \rightarrow L^2$ jest ograniczonym operatorem liniowym, który jest operatorem ca³kowym. J¹dro ca³kowe $\psi(t,s)$ operatora $\mathit{\Psi}$ jest funkcj¹ ca³kowaln¹ z kwadratem na $T \times T$. Zauwa¿my ponadto, ¿e, na mocy Uwagi \ref{u:cHS}, operator $\mathit{\Psi}$ jest operatorem Hiberta-Schmidta.
+	\\Równoœæ \eqref{eq:FLM} rozumiemy zatem nastêpuj¹co
+	\begin{equation}\label{eq:FLM2}
 	Y_n(t) = \int \psi (t,s) X_n(s) ds + \varepsilon_n (t), \quad n=1,2,...,N.
-	\end{equation*}
+	\end{equation}
 	Jak i w przypadku standardowego modelu linowego, funkcjonalny model liniowy wymusza pewne za³o¿enia. Podobnie jak poprzednio, wymagamy, aby zmienna losowa $\varepsilon_n$ opisuj¹ca b³¹d modelu spe³nia³a $\mathbb{E}[ \varepsilon_n ] =0$ oraz aby nie by³a skorelowana ze zmiennymi $X_n$.
 	\\\textcolor{red}{["nieskorelowane zmienne" = ( operator kowariancji  = 0 )?]}
 	\\\textcolor{red}{[inne za³o¿enia modelu? konsekwencje?]}
@@ -365,10 +414,16 @@
 	\end{itemize}
 	%
 	%%% za³o¿enia modelu! %%%
-	Naturalnym problemem pojawiaj¹cym siê przy funkcjonalnym modelu liniowym jest estymacja operatora $\mathit{\Psi}$ nale¿¹cego do nieskoñczenie wymiarowej przestrzeni na podstawie skoñczonej próbki danych. Mo¿liwym jest znalezienie operatora, który daje idealne dopasowanie do danych (dla którego wszystkie ró¿nice od próbki s¹ równe zero) nie narzucaj¹c dodatkowych za³o¿eñ, ale jego interpretacja jest czêsto problemowa i nie funkcjonalna. Problem ten rozwi¹zuje siê przez poszukiwanie operatora nale¿¹cego do podprzestrzeni generowanej przez funkcje w³asne operatora kowariancji danych z próby, nazywane \textbf{empirycznymi funkcjonalnymi g³ównymi sk³adowymi} (ang. \textit{empirical functional principal components, EFPC's}).
+	Naturalnym problemem pojawiaj¹cym siê przy funkcjonalnym modelu liniowym jest estymacja operatora $\mathit{\Psi}$ nale¿¹cego do nieskoñczenie wymiarowej przestrzeni na podstawie skoñczonej próbki danych. Mo¿liwym jest znalezienie operatora, który daje idealne dopasowanie do danych (dla którego wszystkie ró¿nice od próbki s¹ równe zero), nie narzucaj¹c dodatkowych za³o¿eñ, ale przypomina on bia³y szum i jego interpretacja jest czêsto problemowa i nie funkcjonalna. Jednym ze sposobów na rozwi¹zanie tego problemu jest poszukiwanie operatora nale¿¹cego do podprzestrzeni generowanej przez funkcje w³asne operatora kowariancji danych z próby, nazywane \textbf{empirycznymi funkcjonalnymi g³ównymi sk³adowymi} (ang. \textit{empirical functional principal components, EFPC's}), które zosta³y opisane w podrozdziale \ref{r:FPC}. G³ówne sk³adowe odpowiadaj¹ istotnym czynnikom zmiennoœci zmiennych, dobrze s³u¿¹ zatem do przybli¿ania ich wartoœci.
+	\\\textcolor{red}{...}
 	\\\textcolor{red}{[sposób znalezienia $\mathit{\Psi}$]}
-	\vspace{0.35cm}\\... Niech $\{ \eta_k \}_{k = 1}^{\infty}$ i $\{ \theta_l \}_{l = 1}^{\infty}$ bêd¹ pewnymi ustalonymi bazami, niekoniecznie ortonormalnymi, np. bazami Furiera lub splajnowymi. Ponadto, niech funkcje $\eta_k$ ...
+	\\Wykorzystany w dalszej czêœci pracy pakiet \textit{fda}, do programu \textit{R-project}, do znalezienia operatora $\mathit{\Psi}$ stosuje metodê najmniejszych kwadratów. Dlatego w³aœnie tê metodê przedstawiamy poni¿ej.
+	\vspace{0.35cm}\\Niech $\{ \eta_k \}_{k = 1}^{\infty}$ i $\{ \theta_l \}_{l = 1}^{\infty}$ bêd¹ pewnymi ustalonymi bazami, niekoniecznie ortonormalnymi, np. bazami Fouriera lub splajnowymi. Ponadto, niech funkcje $\eta_k$ dobrze przybli¿aj¹ funkcje $X_n$, a $\theta_l$ dobrze przybli¿aj¹ $Y_n$. Nieznane j¹dro $\psi$ estymujemy wed³ug postaci
+	\[ \widehat{\psi} (t,s) = \sum_{k=1}^{K} \sum_{l=1}^L p_{kl} \eta_k(s) \theta_l(t), \]
+	gdzie $K$ i $L$ s¹ odpowiednio ma³ymi liczbami wybranymi do wyg³adzenia przybli¿enia $X_n$ i $Y_n$. Podobnie jak w przypadku standardowego modelu linowego mo¿emy znaleŸæ parametry $p_{kl}$ metod¹ najmniejszych kwadratów przez minimalizacjê sumy kwadratów reszt
+	\[ \sum_{n=1}^N \bigg\| Y_n - \int X_n (s) \widehat{\psi}(s, \cdot) \bigg\|^2. \]
 	\\\textcolor{red}{[jak w pakiecie w R]}
+	\eqref{eq:FLM2}
 	%
 	\chapter{Test istotnoœci w funkcjonalnym modelu liniowym}
 	%
@@ -656,19 +711,28 @@
 	%
 	%
 	\chapter{Przyk³ad zastosowania}
-	Magnetometer data... dostêpne na stronie INTERMAGNET \cite{I}
-	\\\textcolor{red}{[do opracowania: opis danych!]}
+	Podobnie jak w artykule \cite{K08} oraz ksi¹¿ce \cite{HK}, zastosujemy przedstawiony test do modelu stworzonego na podstawie danych opisuj¹cych pola magnetyczne. Takie dane zbierane s¹ przez stacje geofizyczne i publikowane s¹ w ramach miêdzynarodowego programu INTERMAGNET i udostêpniane s¹ na stronie internetowej projektu \cite{I}. Do programu nale¿y obecnie 129 naziemnych obserwatoriów, w tym dwie stacje znajduj¹ce siê w Polsce (mapa stacji na Rysunku \ref{fig:mapa})
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.9]{mapa_stacji.png}
-		\caption{Mapa stacji meteorologicznych nale¿¹cych do programu INTERMAGNET}
+		\includegraphics[scale=0.88]{mapa_stacji.png}
+		\caption{Mapa stacji geofizycznych nale¿¹cych do programu INTERMAGNET}
 		\label{fig:mapa}
 	\end{figure}
+	% uaktualnic rysynek?
+	\\Dane o polu magnetycznym zbierane s¹ za pomoc¹ tzw. magnetometru. Urz¹dzenie to odczytuje informacje... \textcolor{red}{[...]}
+	\\Ze strony programu mo¿na pobraæ dane dok³adne: w odstêpach jednosekundowych lub uproszczone: w odstêpach jednominutowych (obserwacja jest œredni¹ z 60 sekund). W pracy wykorzystano dane uproszczone, mamy zatem 1440 punktów ka¿dego dnia (poza sytuacjami z brakiem czêœci danych), które wykorzystamy do stworzenia danych funkcjonalnych. Tym sposobem jeden dzieñ stanie siê jedn¹ obserwacj¹.
+	\\\textcolor{red}{Magnetometer data... }
+	\\\textcolor{red}{Zorze polarne + substorms (?)}
+	\\Korzystaj¹c z dostêpnego pakietu \textit{fda} (\cite{R})...
 	%
-	\\\textcolor{red}{[do opracowania: przyk³ad danych]}
-	\\Korzystaj¹c z dostêpnego pakietu \textit{fda} (\cite{R})
+	\section{Ameryka Pó³nocna (Kanada)}
+	W krêgu zainteresowañ autorów artyku³u \cite{K08} le¿¹ dane pochodz¹ce z obserwatoriów Ameryki Pó³nocnej, zaczniemy zatem od analizy podobnych danych.
 	\\\textcolor{red}{[do opracowania: punkt po punkcie wed³ug opisu procedury testowej w rozdziale 2]}
 	\\\textcolor{red}{[do opracowania: kod w R!]}
+	%
+	\section{Europa (Polska)}
+	Do programu INTERMAGNET nale¿¹ tak¿e dwie polskie stacje geofizyczne: obserwatorium w Belsku oraz obserwatorium na Helu. Przeprowadzimy zatem podobna j.w. analizê dla pó³nocnej Europy.
+	\\\textcolor{red}{[...]}
 	%
 	\appendix
 	%
@@ -689,12 +753,18 @@
 		
 		\bibitem[Kokoszka et al. (2008)]{K08} P. Kokoszka, I. Maslova, J. Sojka, L. Zhu, \textit{Testing for lack of dependence in the functional linear model}. Canadian Journal of Statistics, 2008, 36, 207-222.
 		
+		\bibitem[Maslova et al. (2010)]{K10} Maslova, I., Kokoszka, P., Sojka, J. and Zhu, L., \textit{Statistical significance
+		testing for the association of magnetometer records at high–, mid– and low latitudes during substorm days}. Planetary and Space Science, 58 (2010), 437–445.
+		
 		\bibitem[Pytlik]{P} T. Pytlik, \textit{Analiza funkcjonalna}. Instytut Matematyczny Uniwersytetu Wroc³awskiego, 2000.
 		
-		\bibitem[R: fda]{R} J. O. Ramsay, H. Wickham, S. Graves, G. Hooker, \textit{Package 'fda'}. On-line: \url{https://cran.r-project.org/web/packages/fda/fda.pdf}
+		\bibitem[R: fda]{R} J. O. Ramsay, H. Wickham, S. Graves, G. Hooker, \textit{Package 'fda'}, wersja 2.4.4. On-line: \url{https://cran.r-project.org/web/packages/fda/fda.pdf}
+		
+		\bibitem[Ramsay, et al. (2009)]{R09} J. O Ramsay, G. Hooker and S. Graves, \textit{Functional Data Analysis with R and Matlab}. Springer, 2009.
 		
 		\bibitem[Ramsay, Silverman]{RS05} J. O. Ramsay, B. W. Silverman, \textit{Functional Data Analysis}. Springer, 2005.
 		
+		\bibitem[Wojtaszczyk]{W} P. Wojtaszczyk, \textit{Banach Spaces For Analysts}. Cambridge Universiti Press, 1991, 86-87.
 		
 		
 	\end{thebibliography}
