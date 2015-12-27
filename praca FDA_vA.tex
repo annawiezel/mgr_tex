@@ -1,5 +1,7 @@
 
-\documentclass{pracamgr}
+%\documentclass{pracamgr}
+\documentclass[a4paper, twoside, openright, 11pt]{report}
+\usepackage[a4paper, twoside, left=3cm, right=3cm, top=2.5cm, bottom=2.5cm, headsep=6pt]{geometry}
 
 \usepackage{polski}
 %\usepackage[latin2]{inputenc}
@@ -14,39 +16,41 @@
 \usepackage{url}
 \usepackage{upgreek}
 \usepackage{color}
+\usepackage{pdfpages}
 
-\author{Anna Wie¿el}
-\nralbumu{132540}
+%\author{Anna Wie¿el}
+%\nralbumu{132540}
 
-\title{Funkcjonalne Modele Liniowe}
+%\title{Funkcjonalne Modele Liniowe}
 %Test istotnoœci w funkcjonalnym modelu liniowym
 
-\tytulang{Functional Linear Models}
+%\tytulang{Functional Linear Models}
 %Significance test in the functional linear model
 
-\kierunek{Matematyka}
+%\kierunek{Matematyka}
 
-\zakres{Matematyka finansowa}
+%\zakres{Matematyka finansowa}
 
-\opiekun{dra hab. Karola Dziedziula\\
-	Katedra Analizy Matematycznej i Numerycznej\\
-}
+%\opiekun{dra hab. Karola Dziedziula\\
+%	Katedra Analizy Matematycznej i Numerycznej\\
+%}
 
-\date{Wrzesieñ 2015}
+%\date{Grudzieñ 2015}
+% Gdañsk 2015?
 
-\dziedzina{ 
-	11.1 Matematyka\\ 
-	11.2 Statystyka\\ 
-}
+%\dziedzina{ 
+%	11.1 Matematyka\\ 
+%	11.2 Statystyka\\ 
+%}
 
 %Klasyfikacja tematyczna wedlug AMS
-\klasyfikacja{62 Statistics\\
-	62-07 Data analysis\\
-	62J12 Generalized linear models\\
-}
+% niepotrzebne ?!
+%\klasyfikacja{62 Statistics\\
+%	62-07 Data analysis\\
+%	62J12 Generalized linear models\\
+%}
 
-\keywords{analiza danych funkcjonalnych, dane funkcjonalne, funkcjonalny model liniowy, test istotnoœci}
-%funkcjonalne
+%\keywords{analiza danych funkcjonalnych, dane funkcjonalne, funkcjonalny model liniowy, test istotnoœci}
 
 %\newtheorem{defi}{Definicja}[section]
 %\theoremstyle{definition}
@@ -65,14 +69,32 @@
 %\AfterEndEnvironment{tw}{\noindent\ignorespaces}
 
 \begin{document}
-	\maketitle
+	%\maketitle
 	
-	\begin{abstract}
+	\includepdf{StronaTytulowa_132540}
+	\includepdf{Oswiadczenie_132540}
+	
+	\vspace*{\fill}
+	\begin{center} \large \textbf{Streszczenie} \end{center}
+		\textcolor{red}{Polski abstrakt!}\\
+	
+		\noindent\textbf{S³owa kluczowe:} dane funkcjonalne, analiza danych funkcjonalnych, funkcjonalny model liniowy, test istotnoœci\\
+	
+		\noindent\textbf{Dziedzina nauki i techniki, zgodnie z wymogami OECD:} 1.1 Matematyka.
+		\vspace*{\fill}
+	
+	\newpage
+	
+	\vspace*{\fill}
+	\begin{center} \large \textbf{Abstract} \end{center}
 		%\indent 
-		The paper's motivation is to contribute to popularization of mathematical statistics on infinite dimensional function Hilbert spaces. The author presents the fully  functional linear model in form $Y=\beta X +\varepsilon$ and its significance test proposed by Kokoszka et al. The test detects nullity of operator $\beta$ which implies the lack of linear dependence between $X$ and $Y$. Using the principal component decomposition it is concluded with test statistic convergent by distribution to chi-squared.
+		The paper's motivation is to contribute to popularization of mathematical statistics on infinite dimensional function Hilbert spaces. The author presents the fully  functional linear model in form $Y=\mathit{\Psi} X +\varepsilon$ and its significance test proposed by Kokoszka et al. The test detects \textcolor{red}{nullity} of Hilbert-Schmidt operator $\mathit{\Psi}$, which implies the lack of linear dependence between $X$ and $Y$. Using the principal component decomposition it is concluded with test statistic convergent by distribution to chi-squared.
 		\\
-		The test is further used for magnetic field data collected in some stations in different latitudes. The results show linear dependence between horizontal intensities of the magnetic field in mid- and low-latitude stations with high-latitude station data with a day or two delay but they contradict the linear dependence between data with more than a two-day lag.
-	\end{abstract}
+		The test is further used for magnetic field data collected in some stations in different latitudes. The results show linear dependence between horizontal intensities of the magnetic field in mid- and low-latitude stations with high-latitude station data with a day or two delay but they contradict the linear dependence between data with more than a two-day lag.\\
+		
+		\noindent\textbf{Keywords:} functional data, functional data analysis, functional linear model, significance test.
+		\vspace*{\fill}
+	%\end{abstract}
 	
 	\tableofcontents
 	%\listoffigures
@@ -84,10 +106,12 @@
 	\\\textcolor{red}{[ju¿ tu: próba = punkty - ostatecznie: funkcja g³adka?]}
 	\\\textcolor{red}{[Odpowiednik testu istotnoœci dla prostego modelu regresji = F-test (+ t-test) [patrz: artyku³]]}
 	\\\textcolor{red}{[pakiet w R: fda]}
-	\\\textcolor{red}{Praca opiera siê g³ównie na artykule \cite{K08}, który to zosta³ u¿yty i rozwiniêty w ksi¹¿ce \cite{HK}}.
+	\\\textcolor{red}{Praca opiera siê g³ównie na artykule \cite{K08}, który to zosta³ rozwiniêty w ksi¹¿ce \cite{HK}}.
+	\\\textcolor{red}{+pozosta³a literatura, gdzie mo¿na doczytaæ, itd.}
 	%Odpowiednikami testu istotnoœci w klasycznym modelu liniowym s¹ np. t-test oraz F-test.
-	\vspace{0.35cm}\\\textcolor{red}{Ze wzglêdu na to, ¿e analiza danych funkcjonalnych (\textit{ang.} Functional Data Analysis, FDA) jest stosunkowo nowym dzia³em statystyki i jest wci¹¿ ma³o popularna w polskiej literaturze, wiele pojêæ czy okreœleñ zawartych w pracy nie posiada jeszcze ogólnie przyjêtych polskich odpowiedników. Dlatego zosta³y one przet³umaczone przez autora wed³ug w³asnego uznania, przytaczaj¹c oczywiœcie oryginalne (angielskie) nazwy.}
-	\vspace{0.35cm}\\\textcolor{red}{ACKNOWLEDGEMENTS/podziêkowania?
+	\vspace{0.35cm}\\\textcolor{red}{Ze wzglêdu na to, ¿e analiza danych funkcjonalnych (\textit{ang.} Functional Data Analysis, FDA) jest stosunkowo nowym dzia³em statystyki i jest wci¹¿ ma³o popularna w polskiej literaturze, wiele pojêæ czy okreœleñ zawartych w pracy nie posiada jeszcze ogólnie przyjêtych polskich odpowiedników. Dlatego zosta³y one przet³umaczone przez autora wed³ug w³asnego uznania, przytaczaj¹c oryginalne (angielskie) nazwy.}
+	\vspace{0.35cm}\\W pracy wykorzystano dane o polu magnetycznym Ziemi publikowane na stronie programu INTERMAGNET. Za³¹czam zatem specjalne podziêkowania:
+	\vspace{0.35cm}\\\textit{\textcolor{red}{ACKNOWLEDGEMENTS}
 		\\The results presented in this paper rely on data collected at magnetic observatories. We thank the national institutes that support them and INTERMAGNET for promoting high standards of magnetic observatory practice (www.intermagnet.org).}
 	
 	\chapter{Preliminaria}
@@ -155,8 +179,8 @@
 		\textit{Dowód równoœci \eqref{eq:HS.2}.} 
 		\begin{align*}
 		\left\| \mathit{\Psi} \right\|_{\mathcal{S}}^2 &= \langle \mathit{\Psi}, \mathit{\Psi} \rangle_{\mathcal{S}} = \sum_{n=1}^{\infty} \bigg\langle \sum_{j=1}^{\infty} \lambda_j \langle e_n , \upsilon_j \rangle f_j , \sum_{k=1}^{\infty} \lambda_k \langle e_n , \upsilon_k \rangle f_k \bigg\rangle
-		\\&= \sum_{n=1}^{\infty} \sum_{j=1}^{\infty} \sum_{k=1}^{\infty} \lambda_j \lambda_k \langle e_n , \upsilon_j \rangle \langle e_n , \upsilon_k \rangle \langle f_j , f_k \rangle = \sum_{n=1}^{\infty} \sum_{j=1}^{\infty} \lambda_j^2 \langle e_n , \upsilon_j \rangle
-		\\&= \sum_{j=1}^{\infty} \lambda_j^2 \sum_{n=1}^{\infty} \langle e_n , \upsilon_j \rangle \overset{\shortstack{$\scriptstyle \text{to¿samoœæ}$\\ $\scriptstyle \text{Parsevala}$}}{=} \sum_{j=1}^{\infty} \lambda_j^2 \| \upsilon_j \| = \sum_{j=1}^{\infty} \lambda_j^2 .
+		\\&= \sum_{n=1}^{\infty} \sum_{j=1}^{\infty} \sum_{k=1}^{\infty} \lambda_j \lambda_k \langle e_n , \upsilon_j \rangle \langle e_n , \upsilon_k \rangle \langle f_j , f_k \rangle = \sum_{n=1}^{\infty} \sum_{j=1}^{\infty} \lambda_j^2 \langle e_n , \upsilon_j \rangle^2
+		\\&= \sum_{j=1}^{\infty} \lambda_j^2 \sum_{n=1}^{\infty} \langle e_n , \upsilon_j \rangle^2 \overset{\shortstack{$\scriptstyle \text{to¿samoœæ}$\\ $\scriptstyle \text{Parsevala}$}}{=} \sum_{j=1}^{\infty} \lambda_j^2 \| \upsilon_j \|^2 = \sum_{j=1}^{\infty} \lambda_j^2 .
 		\end{align*}
 		\hfill $\square$
 	%\text{to¿samoœæ Parsevala}
@@ -186,7 +210,7 @@
 		\begin{equation}\label{eq:fw}
 		\mathit{\Psi}(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \upsilon_j \rangle	\upsilon_j, \quad x \in H,
 		\end{equation}
-		gdzie ortonormalne $\upsilon_j$ s¹ \textbf{funkcjami w³asnymi} $\mathit{\Psi}$, tj. $\mathit{\Psi}(\upsilon_j)=\lambda_j \upsilon_j$. Funkcje $\upsilon_j$ mog¹ byæ rozszerzone do bazy, przez dope³nienie ortogonalne podprzestrzeni rozpiêtej przez oryginalne $\upsilon_j$. Mo¿emy zatem za³o¿yæ, ¿e funkcje $\upsilon_j$ w \eqref{eq:fw} tworz¹ bazê, a pewne wartoœci $\lambda_j$ mog¹ byæ równe zero.
+		gdzie ortonormalne $\upsilon_j$ s¹ \textbf{funkcjami w³asnymi} $\mathit{\Psi}$, tj. $\mathit{\Psi}(\upsilon_j)=\lambda_j \upsilon_j$ \textcolor{red}{[a wartoœci w³asne $\lambda$?]}. Funkcje $\upsilon_j$ mog¹ byæ rozszerzone do bazy, przez dope³nienie ortogonalne podprzestrzeni rozpiêtej przez oryginalne $\upsilon_j$. Mo¿emy zatem za³o¿yæ, ¿e funkcje $\upsilon_j$ w \eqref{eq:fw} tworz¹ bazê, a pewne wartoœci $\lambda_j$ mog¹ byæ równe zero.
 	\end{uw} 
 	%%% pojêcie wartoœci w³asnych? %%%
 	%%% funkcje w³asne ~odpowiedniki wektorów w³asnych w przestrzeniach wektorowych %%%
@@ -195,9 +219,10 @@
 	\section{Przestrzeñ $L^2$}
 	%%% wartoœæ oczekiwana = ca³ka ? %%%
 	%
-	Przestrzeñ $L^2=L^2(T)=L^2(T,\mathcal{B}, \lambda)$ nad pewnym przedzia³em $T \subset \mathbb{R}$ jest zbiorem klas mierzalnych funkcji rzeczywistych ca³kowalnych z kwadratem okreœlonych na $T$, tj.
+	Przestrzeñ $L^2=L^2(T)=L^2(T,\mathcal{B}, \lambda)$ nad pewnym przedzia³em $T \subset \mathbb{R}$ jest zbiorem klas \textcolor{red}{abstrakcji?} mierzalnych funkcji rzeczywistych ca³kowalnych z kwadratem okreœlonych na $T$, tj.
 	%funkcji ca³kowalnych z kwadratem w sensie Lebesgue'a na przedziale T (Pytlik)
 	\[x \in L^2(T) \iff x: T \rightarrow \mathbb{R} \ \wedge \ \int_{T} x^2 (t) dt < \infty.\] 
+	\textcolor{red}{[opisaæ $\mathcal{B},\lambda$?]}\\
 	Przestrzeñ $L^2$ jest oœrodkow¹ przestrzeni¹ Hilberta z iloczynem skalarnym
 	\begin{equation*}
 	\langle x, y \rangle:= \int_{T} x(t) y(t) dt, \quad x,y \in L^2.
@@ -207,56 +232,65 @@
 	%
 	Tak jak zwyczajowo zapisujemy $L^2$ zamiast $L^2(T)$, tak w przypadku symbolu ca³ki bez wskazania obszaru ca³kowania bêdziemy mieæ na myœli ca³kowanie po ca³ym przedziale $T$. Jeœli $x,y \in L^2$, równoœæ $x=y$ zawsze oznaczaæ bêdzie $\int \left[x(t) - y(t) \right]^2 dt = 0$.
 	%
-	\vspace{0.35cm}\\Wa¿n¹ klasê operatorów liniowych na przestrzeni $L^2$ stanowi¹ operatory ca³kowe.
+	\vspace{0.35cm}\\Wa¿n¹ klasê operatorów liniowych na przestrzeni $L^2$ stanowi¹ operatory ca³kowe. Poni¿sze twierdzenie przedstawia warunki, które powinny byæ spe³nione, aby taki operator by³ dobrze okreœlony.
 	%
-	\begin{df}\cite{P} % +Kosaku Yosida p. 198
-		\\\textbf{Operatorem ca³kowym} nazywamy operator liniowy $\mathit{\Psi}$ daj¹cy siê przedstawiæ w formie
-		\begin{equation*}
+	%\begin{df}\cite{P} % +Kosaku Yosida p. 198
+	%	\\\textbf{Operatorem ca³kowym} nazywamy operator liniowy $\mathit{\Psi}$ daj¹cy siê przedstawiæ w formie
+	%	\begin{equation*}
 		%\forall_{t \in T}
-		\mathit{\Psi}(x)(t)= \int \psi(t,s) x(s) ds, \quad x \in L^2, \ t \in T,
-		\end{equation*}
-		gdzie $\psi$ jest mierzaln¹ \textcolor{red}{[ci¹g³¹ = ca³kowaln¹?]} funkcj¹ dwóch zmiennych nazywan¹ \textbf{j¹drem ca³kowym} operatora $\mathit{\Psi}$.
-	\end{df}
+	%	\mathit{\Psi}(x)(t)= \int \psi(t,s) x(s) ds, \quad x \in L^2, \ t \in T,
+	%	\end{equation*}
+	%	gdzie $\psi$ jest mierzaln¹ \textcolor{red}{[ci¹g³¹ = ca³kowaln¹?]} funkcj¹ dwóch zmiennych nazywan¹ \textbf{j¹drem ca³kowym} operatora $\mathit{\Psi}$.
+	%\end{df}
 	%
-	Operator ca³kowy $\mathit{\Psi}$ jest dobrze okreœlony, jeœli spe³nia pewnego rodzaju w³asnoœæ ograniczonoœci.
+	%Operator ca³kowy $\mathit{\Psi}$ jest dobrze okreœlony, jeœli spe³nia pewnego rodzaju w³asnoœæ ograniczonoœci.
 	%
-	\begin{uw}\cite{W}
-		\\Niech $(T, \mu)$ bêdzie przestrzeni¹ z miar¹ i niech $\psi(t,s)$ bêdzie mierzaln¹ funkcj¹ na $T \times T$. Zdefiniujmy
-		\[ \mathit{\Psi} x (s) = \int_T \psi (t,s) x(t) d\mu(t). \]
+	\begin{tw}\cite{W}
+		\\Niech $(T, \mu)$ bêdzie przestrzeni¹ z miar¹ \textcolor{red}{[zamieniæ $T$?]} i niech $\psi(t,s)$ bêdzie mierzaln¹ funkcj¹ na $T \times T$. Zdefiniujmy
+		\[ \mathit{\Psi} x (t) = \int_T \psi (t,s) x(s) d\mu(s), \quad \textcolor{red}{x \in L^p}. \]
 		Jeœli $1 < p < \infty$ oraz istnieje mierzalna dodatnia funkcja $y$ na $T$ oraz sta³e $a$, $b$ takie ¿e dla $\frac{1}{p}+\frac{1}{q}=1$ mamy
+		\\\textcolor{red}{[coœ wiêcej o mierze $\mu$? $a,b>0$?]}
 		\begin{equation}\label{eq:zal1}
-		\int_T  | \psi (t,s) | y (t)^q d\mu(t) \leq [a y (s) ]^q, \quad \quad \mu-\text{pr.w.}
+		\int_T  | \psi (t,s) | y (s)^q d\mu(s) \leq [a y (t) ]^q, \quad \quad \mu-\text{p.w.}
 		\end{equation}
 		oraz
 		\begin{equation}\label{eq:zal2}
-		\int_T  | \psi (t,s) | y (t)^p d\mu(t) \leq [b y (s) ]^p, \quad \quad \mu-\text{pr.w.},
+		\int_T  | \psi (t,s) | y (s)^p d\mu(s) \leq [b y (t) ]^p, \quad \quad \mu-\text{p.w.},
 		\end{equation}
-		wtedy $T: L^p (T,\mu) \rightarrow L^p(T,\mu)$.
-	\end{uw}
-	\textcolor{red}{[ca³e twierdzenie? jakie daæ oznaczenia?]}
+		wtedy $\mathit{\Psi}: L^p (T,\mu) \rightarrow L^p(T,\mu)$.
+	\end{tw}
+	\textcolor{red}{[dodaæ coœ o mierze? $\mu$ i $\mu \times \mu$ a $\lambda$ i $\lambda \times \lambda$]}
 	\\\textit{Dowód.} Niech $x \in L^p$ i niech $y$ spe³nia za³o¿enia twierdzenia. Mamy
 	\begin{gather}
 	\begin{aligned}\label{eq:W1}
-	\big|\mathit{\Psi} x (s) \big|
-	&= \left| \int_T \psi (t,s) x(t) d\mu(t) \right|
-	\leq \int_T | \psi (t,s) | | x(t) | d\mu(t)
-	\\& = \int_T  [| \psi (t,s) |^{1/q} y (t) ] \cdot [ | \psi (t,s) |^{1/p} | x(t) | y (t)^{-1}  ] d\mu(t)
-	\\&= \int_T  \Big[| \psi (t,s) | y^q (t) \Big]^{1/q} \cdot \Big[ | \psi (t,s) |( | x|/y)^p (t)^{-1}  \Big]^{1/p} d\mu(t)
-	\\& \overset{\shortstack{$\scriptstyle \text{nierówn.}$\\ $\scriptstyle \text{H\"{o}ldera}$}}{\underset{\eqref{eq:zal1}}{\leq}} a y (s) \cdot \left[ \int_T | \psi (t,s) | (|x|/y)^p (t) d\mu(t) \right]^{1/p}.
+	\big|\mathit{\Psi} x (t) \big|
+	&= \left| \int_T \psi (t,s) x(s) d\mu(s) \right|
+	\leq \int_T | \psi (t,s) | | x(s) | d\mu(s)
+	\\& = \int_T  [| \psi (t,s) |^{1/q} y (s) ] \cdot [ | \psi (t,s) |^{1/p} | x(s) | y (s)^{-1}  ] d\mu(s)
+	\\&= \int_T  \Big[| \psi (t,s) | y^q (s) \Big]^{1/q} \cdot \Big[ | \psi (t,s) |( | x|/y)^p (s)^{-1}  \Big]^{1/p} d\mu(s)
+	\\& \overset{\shortstack{$\scriptstyle \text{nierówn.}$\\ $\scriptstyle \text{H\"{o}ldera}$}}{\underset{\eqref{eq:zal1}}{\leq}} a y (s) \cdot \left[ \int_T | \psi (t,s) | (|x|/y)^p (s) d\mu(s) \right]^{1/p}.
 	\end{aligned}
 	\end{gather}
 	St¹d, korzystaj¹c z twierdzenia Fubiniego, otrzymujemy
 	\begin{align*}
 	\| \mathit{\Psi} x \|_p
 	&\leq \Big\| | \mathit{\Psi} x | \Big\|_p
-	= \left[ \int_T \Big| \int_T \psi (t,s) x(t) d\mu(t) \Big|^p d\mu(s) \right]^{1/p} 
-	\\&\overset{\eqref{eq:W1}}{\leq} a \left[ \int_T  y^p(s) \int_T | \psi(t,s) | (|x|/y)^p (t)  d\mu(t) d\mu(s) \right]^{1/p}
-	\\&\overset{\text{tw.F.}}{=} a \left[ \int_T (|x|/y)^p (t) \int_T y^p(s) | \psi(t,s) | d\mu(s) d\mu(t) \right]^{1/p}
-	\\&\overset{\eqref{eq:zal2}}{\leq} ab \left[ \int_T (|x|/y)^p (t) y^p(t) d\mu(t) \right]^{1/p}
-	= ab \left[ \int_T |x(t)|^p d\mu(t) \right]^{1/p}
+	= \left[ \int_T \Big| \int_T \psi (t,s) x(s) d\mu(s) \Big|^p d\mu(t) \right]^{1/p} 
+	\\&\overset{\eqref{eq:W1}}{\leq} a \left[ \int_T  y^p(t) \int_T | \psi(t,s) | (|x|/y)^p (s)  d\mu(s) d\mu(t) \right]^{1/p}
+	\\&\overset{\text{tw.F.}}{=} a \left[ \int_T (|x|/y)^p (s) \int_T y^p(t) | \psi(t,s) | d\mu(t) d\mu(s) \right]^{1/p}
+	\\&\overset{\eqref{eq:zal2}}{\leq} ab \left[ \int_T (|x|/y)^p (s) y^p(s) d\mu(s) \right]^{1/p}
+	\\&= ab \left[ \int_T |x(s)|^p d\mu(s) \right]^{1/p}
 	= ab \|x\|_p < \infty.
 	\end{align*}
 	Pokazaliœmy, ¿e $\mathit{\Psi} x \in L^p$, co koñczy dowód. \hfill $\square$
+	%
+	\vspace{0.35cm}\\Gdy $p=2$ oraz $\mu=\lambda$, wtedy $q=p=2$, \eqref{eq:zal1} $\Leftrightarrow$ \eqref{eq:zal2} i mamy
+		\begin{equation*}
+		\mathit{\Psi}(x)(t)= \int \psi(t,s) x(s) ds, \quad x \in L^2, \ t \in T.
+		\end{equation*}
+	Tak okreœlony operator $\mathit{\Psi}$ nazywamy \textbf{operatorem ca³kowym} \textcolor{red}{(dla dowolnego $p$)}, zaœ funkcjê $\psi$ nazywamy \textbf{j¹drem ca³kowym} operatora $\mathit{\Psi}$.
+	%
+	\vspace{0.35cm}\\\textcolor{red}{[za szybkie przejœcie?]}
 	%
 	\begin{uw}\label{u:cHS} \cite{HK}
 		\\Operatory ca³kowe s¹ operatorami Hilberta-Schmidta wtedy i tylko wtedy, gdy
@@ -269,14 +303,15 @@
 		\end{equation*}
 	\end{uw}
 	%
-	\begin{uw} (Twierdzenie Mercera) \cite{HK}
+	\begin{tw} (Twierdzenie Mercera) \cite{HK}
 		\\Niech operator $\mathit{\Psi}$ bêdzie operatorem ca³kowym  spe³niaj¹cym \eqref{eq:tM}. Jeœli ponadto jego j¹dro ca³kowe $\psi$ spe³nia $\psi (s,t) = \psi (t,s)$ oraz $\iint \psi(t,s) x(t) x(s) dt ds \geq 0$, to operator ca³kowy $\mathit{\Psi}$jest symetryczny i nieujemnie okreœlony, zatem z Uwagi \ref{HSsp} mamy
 		\begin{equation*}
 		\psi (t,s) = \sum_{j=1}^{\infty} \lambda_j \upsilon_j (t) \upsilon_j (s) \quad \text{w } L^2(T \times T),
 		\end{equation*}
 		gdzie $\lambda_j$, $\upsilon_j$ s¹ odpowiednio wartoœciami w³asnymi i funkcjami w³asnymi operatora $\mathit{\Psi}$.
 		\\Je¿eli funkcja $\psi$ jest ci¹g³a, powy¿sze rozwiniêcie jest prawdziwe dla wszystkich $t,s \in T$ i szereg jest zbie¿ny jednostajnie.
-	\end{uw}
+	\end{tw}
+	\textcolor{red}{PRZYK£AD OPERATORA H-S? Wojtaszczyk?}
 	%
 	%
 	\section{Zmienne funkcjonalne w $L^2$. Pojêcie œredniej i operatora kowariancji}
@@ -367,6 +402,7 @@
 	%
 	\section{Funkcjonalny model liniowy}
 	%
+	\textcolor{red}{[WYRZUCIÆ TÊ CZÊŒÆ,zast¹piæ tylko odnoœnikiem do literatury\\]}
 	\textcolor{red}{Standardowy model liniowy dla par zmiennych skalarnych $Y_n$ i wektorów $\mathbf{X}_n$ (tworzonych przez $p$ skalarnych zmiennych $X_{ni}$, $i=1,...,p$), przy za³o¿eniu $\mathbb{E}Y_n=0$, $\mathbb{E}\mathbf{X}_n=\mathbf{0}$\textcolor{red}{\footnote{\textcolor{red}{przenieœæ tê uwagê/wyt³umaczenie do przypisu?}}} (gdzie $n=1,...,N$), przyjmuje postaæ
 	%%% bez tego za³o¿enia nale¿y dodaæ parametr odpowiadaj¹cy wyrazowi wolnemu w macierzy X i w wektorze beta - dodaæ jako footnote? %%%
 	\begin{equation}\label{eq:SLM}
@@ -396,18 +432,18 @@
 	\begin{equation}\label{eq:FLM2}
 	Y_n(t) = \int \psi (t,s) X_n(s) ds + \varepsilon_n (t), \quad n=1,2,...,N.
 	\end{equation}
-	Jak i w przypadku standardowego modelu linowego, funkcjonalny model liniowy wymusza pewne za³o¿enia. Podobnie jak poprzednio, wymagamy, aby zmienna losowa $\varepsilon_n$ opisuj¹ca b³¹d modelu spe³nia³a $\mathbb{E}[ \varepsilon_n ] =0$ oraz aby nie by³a skorelowana ze zmiennymi $X_n$.
+	Jak i w przypadku standardowego modelu linowego, funkcjonalny model liniowy wymusza pewne za³o¿enia. Podobnie jak poprzednio, wymagamy, aby zmienna losowa \textcolor{red}{?} $\varepsilon_n$ opisuj¹ca b³¹d modelu spe³nia³a $\mathbb{E}[ \varepsilon_n ] =0$ oraz aby nie by³a skorelowana ze zmiennymi $X_n$.
 	\\\textcolor{red}{["nieskorelowane zmienne" = ( operator kowariancji  = 0 )?]}
 	\\\textcolor{red}{[inne za³o¿enia modelu? konsekwencje?]}
 	\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
 	%
 	\vspace{0.35cm}\\ Nazwa powy¿szego modelu wynika z faktu, ¿e zarówno zmienne objaœniane $Y_n$ jak i zmienne objaœniaj¹ce $X_n$ s¹ zmiennymi funkcjonalnymi. Niewielkim uproszczeniem s¹ pozosta³e typy funkcjonalnych modeli liniowych, tj.
 	\begin{itemize}
-		\item[-] model z odpowiedzi¹ skalarn¹ (ang. \textit{scalar response model})
+		\item[-] model z odpowiedzi¹ skalarn¹ (ang. \textit{scalar response model}) postaci
 		$$ Y_n = \int \psi (s) X_n(s) ds + \varepsilon_n, \quad n=1,2,...,N,$$
 		w którym tylko zmienne objaœniaj¹ce $X_n$ s¹ zmiennymi funkcjonalnymi,
 			\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
-		\item[-] model z odpowiedzi¹ funkcyjn¹ (ang. \textit{functional response model})
+		\item[-] model z odpowiedzi¹ funkcyjn¹ (ang. \textit{functional response model}) postaci
 		$$ Y_n (t) = \psi (t) x_n + \varepsilon_n (t), \quad n=1,2,...,N,$$
 		w którym zmienne objaœniaj¹ce $x_n$ s¹ deterministycznymi skalarami.
 			\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
@@ -436,6 +472,7 @@
 	Zauwa¿my, ¿e przyjêcie H$_0$ nie oznacza braku zwi¹zku miêdzy zmienn¹ objaœnian¹ a objaœniaj¹c¹. Prowadzi jedynie do stwierdzenia braku zale¿noœci liniowej.
 	%%% Ci¹g zmiennych d³ugoœci N %%%
 	\vspace{0.35cm}\\Obserwujemy ci¹g krzywych d³ugoœci $N$. Zak³adamy, ¿e zmienna objaœniana $Y_n$, zmienne objaœniaj¹ce $X_n$ i b³êdy $\varepsilon_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) zmienn¹ funkcjonaln¹ o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory kowariancji
+	\\\textcolor{red}{[ROZK£AD]}
 	\begin{equation}\label{eq:operatory}
 	C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ], \quad x \in L^2.
 	\end{equation}
@@ -488,7 +525,7 @@
 	oraz $\lambda_k=\mathbb{E}\left\langle X, \upsilon_k \right \rangle ^2$ i $\gamma_j=\mathbb{E}\left\langle Y, u_j \right \rangle ^2$.
 	%
 	\begin{uw}
-		Oczywistym jest, ¿e jeœli odrzucamy H$_0$, to $\psi(\upsilon_k)\neq 0$ dla pewnego $k\geq 1$. Jednak ograniczaj¹c siê do $p$ najwiêkszych wartoœci w³asnych, test jest skuteczny tylko jeœli $\psi$ nie zanika na którymœ wektorze $\upsilon_k$, $k=1,...,p$. Aczkolwiek takie ograniczenie jest intuicyjnie niegroŸne, poniewa¿ test ma za zadanie sprawdziæ czy g³ówne Ÿród³a zmiennoœci $Y$ mog¹ byæ opisane przez g³ówne Ÿród³a zmiennoœci zmiennych $X$.
+		Oczywistym jest, ¿e jeœli odrzucamy H$_0$, to $\psi(\upsilon_k)\neq 0$ dla pewnego $k\geq 1$. Jednak ograniczaj¹c siê do $p$ najwiêkszych wartoœci w³asnych, test jest skuteczny tylko jeœli $\psi$ nie zanika na którymœ wektorze $\upsilon_k$, $k=1,...,p$. Takie ograniczenie jest intuicyjnie niegroŸne, poniewa¿ test ma za zadanie sprawdziæ czy g³ówne Ÿród³a zmiennoœci $Y$ mog¹ byæ opisane przez g³ówne Ÿród³a zmiennoœci zmiennych $X$.
 	\end{uw}
 	%
 	\vspace{0.35cm}\textbf{Schemat przebiegu testu}
@@ -500,7 +537,14 @@
 	\end{enumerate}
 	\textcolor{red}{[rozwin¹æ i dopracowaæ powy¿sze punkty]}
 	%
-	\section{Formalne podstawy \textcolor{red}{[nazwa?]}}
+	\vspace{0.35cm}\\Przedstawiony test mo¿na stosowaæ ju¿ do prób wielkoœci 40, co pokazuj¹ autorzy pozycji \cite{HK} w Rozdziale 9.3.
+	%
+	\section{Rozk³ad statystyki testowej}
+	%inne pomys³y na nazwê podrozdzia³u
+	% Formalne podstawy 
+	% Dowód poprawnoœci testu
+	% Uzasadnienie poprawnoœci testu
+	% Analiza teoretyczna testu
 	%
 	\begin{zal}\label{Z1} \cite{K08}, \cite{HK}
 		\\Trójka $(Y_n,X_n, \varepsilon_n)$ tworzy ci¹g niezale¿nych zmiennych funkcjonalnych o jednakowym rozk³adzie, takich ¿e $\varepsilon_n$ jest niezale¿ne od $X_n$ oraz
@@ -711,33 +755,119 @@
 	%
 	%
 	\chapter{Przyk³ad zastosowania}
-	Podobnie jak w artykule \cite{K08} oraz ksi¹¿ce \cite{HK}, zastosujemy przedstawiony test do modelu stworzonego na podstawie danych opisuj¹cych pola magnetyczne. Takie dane zbierane s¹ przez stacje geofizyczne i publikowane s¹ w ramach miêdzynarodowego programu INTERMAGNET i udostêpniane s¹ na stronie internetowej projektu \cite{I}. Do programu nale¿y obecnie 129 naziemnych obserwatoriów, w tym dwie stacje znajduj¹ce siê w Polsce (mapa stacji na Rysunku \ref{fig:mapa})
+	Podobnie jak w artykule \cite{K08} oraz ksi¹¿ce \cite{HK}, zastosujemy przedstawiony test do\textcolor{red}{/dla?} modelu stworzonego na podstawie danych opisuj¹cych natê¿enie pola magnetycznego Ziemi. Takie dane zbierane s¹ przez stacje geofizyczne i publikowane s¹ w ramach miêdzynarodowego programu INTERMAGNET na stronie internetowej projektu \cite{I}. Do programu nale¿y obecnie 129 naziemnych obserwatoriów, w tym dwie stacje znajduj¹ce siê w Polsce (mapa stacji na Rysunku \ref{fig:mapa}).
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.88]{mapa_stacji.png}
-		\caption{Mapa stacji geofizycznych nale¿¹cych do programu INTERMAGNET}
+		\includegraphics[scale=0.87]{mapa_stacji.png}
+		\caption{Mapa stacji geofizycznych nale¿¹cych do programu INTERMAGNET, Ÿród³o: strona internetowa projektu \cite{I} }
 		\label{fig:mapa}
 	\end{figure}
 	% uaktualnic rysynek?
-	\\Dane o polu magnetycznym zbierane s¹ za pomoc¹ tzw. magnetometru. Urz¹dzenie to odczytuje informacje... \textcolor{red}{[...]}
-	\\Ze strony programu mo¿na pobraæ dane dok³adne: w odstêpach jednosekundowych lub uproszczone: w odstêpach jednominutowych (obserwacja jest œredni¹ z 60 sekund). W pracy wykorzystano dane uproszczone, mamy zatem 1440 punktów ka¿dego dnia (poza sytuacjami z brakiem czêœci danych), które wykorzystamy do stworzenia danych funkcjonalnych. Tym sposobem jeden dzieñ stanie siê jedn¹ obserwacj¹.
+	\\\textcolor{red}{[SuperMAG]: lub \textbf{H}, D, Z?} 
+	\\\textcolor{red}{[odnoœnik do rysunku z przyk³adowymi obserwacjami]}
+	\\\textcolor{red}{[...](poziome i pionowe intensywnoœci?)}
 	\\\textcolor{red}{Magnetometer data... }
-	\\\textcolor{red}{Zorze polarne + substorms (?)}
-	\\Korzystaj¹c z dostêpnego pakietu \textit{fda} (\cite{R})...
+	\\Mianem \textbf{pogody kosmicznej} nazywamy charakteryzacjê zjawisk w przestrzeni miêdzyplanetarnej oddzia³uj¹cych na atmosferê ziemsk¹. G³ównym Ÿród³em jej zmian s¹ wahania aktywnoœci s³onecznej. S³oñce stale emituje na³adowane cz¹steczki, które docieraj¹ do Ziemi w postaci tzw. wiatrów s³onecznych i mog¹ powodowaæ pewne anomalie w magnetosferze i jonosferze ziemskiej. \textcolor{red}{...zorze polarne + subburze (substorms),... }
+	\\Pogoda kosmiczna wp³ywa na dzia³anie satelitów, promów kosmicznych, komunikacjê radiow¹ i telefoniczn¹, loty samolotowe, na funkcjonowanie elektrowni, mo¿liwe ¿e tak¿e na klimat na Ziemi oraz na ¿ycie zwierz¹t oraz roœlin. Zatem obserwacja i zrozumienie jej procesów, w tym subburz, jest niezwykle istotne do kontrolowania i przewidywania jej skutków.
+	\\Celem testu jest zbadanie, czy zmiany w polu magnetycznym na wysokich szerokoœciach geograficznych maj¹ wp³yw na pole na œrednich szerokoœciach geograficznych, ...\\Dane o polu magnetycznym, generowanym przez pr¹d elektryczny przep³ywaj¹cy przez ziemsk¹ magnetosferê i jonosferê, rejestrowane s¹ za pomoc¹ tzw. magnetometru. To naziemne urz¹dzenie odczytuje kilka sk³adowych natê¿enia pola magnetycznego, nas interesowaæ bêdzie sk³adowa horyzontalna (H, \textit{Horizontal}), która wskazuje na wielkoœæ natê¿enia pola magnetycznego skierowanego w stronê magnetycznej pó³nocy. ...
+	\\\textcolor{red}{[...]}	
+	\\Ze strony programu INTERMAGNET mo¿na pobraæ dane dok³adne: w odstêpach jednosekundowych lub uproszczone: w odstêpach jednominutowych (obserwacja jest œredni¹ z 60 sekund). W pracy wykorzystano dane uproszczone, mamy zatem 1440 punktów ka¿dego dnia, przypisanych wed³ug czasu centralnego, które pos³u¿¹ nam do stworzenia danych funkcjonalnych. Tym sposobem jeden dzieñ stanie siê jedn¹ obserwacj¹.
+	% \footnote{Poza sytuacjami z brakiem czêœci danych.}
+	\\\textcolor{red}{Korzystaj¹c z dostêpnego pakietu \textit{fda} (\cite{R})...}
+	\\\textcolor{red}{scentrowanie danych?}
+	\\\textcolor{red}{za³o¿enia}
+	\\Ze wzglêdu na czêœciowe braki danych w obserwacjach musieliœmy przyj¹æ pewne za³o¿enia odnoœnie ich traktowania. W przypadku niektórych dni brakuje tylko jednej czy dwóch obserwacji, niekiedy jednak luki w zapisie danych dotycz¹ przynajmniej kilku godzin. Odsetek dni z brakami danych jest na tyle du¿y, ¿e nie chcemy odrzucaæ bezwzglêdnie wszystkich dni z niedoborem danych. Przyjmujemy zatem nastêpuj¹ce podejœcie: w przypadku braku wiêcej ni¿ 10 wartoœci (10 minut) dzieñ zostanie odrzucony z analiz, jeœli jednak brakuje nie wiêcej ni¿ 10 punktów w ci¹gu dnia obserwacje zostan¹ zachowane przy dope³nieniu braków danych ostatni¹ znan¹ wartoœci¹ (w przypadku braku wartoœci pocz¹tkowych bierzemy pierwsz¹ znan¹ wartoœæ).
 	%
 	\section{Ameryka Pó³nocna (Kanada)}
 	W krêgu zainteresowañ autorów artyku³u \cite{K08} le¿¹ dane pochodz¹ce z obserwatoriów Ameryki Pó³nocnej, zaczniemy zatem od analizy podobnych danych.
-	\\\textcolor{red}{[do opracowania: punkt po punkcie wed³ug opisu procedury testowej w rozdziale 2]}
+	\vspace{0.35cm}\\Rozwa¿aæ bêdziemy okres od 1 stycznia do 30 czerwca 2001 roku...\textcolor{red}{[do sierpnia?]}
+	\\\textcolor{red}{[podaæ liczbê braków danych - liczbê wykluczeñ oraz nadpisanych wartoœci]}
+	\\\textcolor{red}{[wskazanie obserwatoriów z podzia³em na wysokie, œrednie i niskie szerokoœci geograficzne - wraz z dok³adnymi szerokoœciami]}
+	\\\textcolor{red}{[WYKRESY - przyk³ad danych] [jednostka!? nT]}
+	\\\textcolor{red}{[...]}
+	\vspace{0.35cm}\\\textcolor{red}{[do opracowania: punkt po punkcie wed³ug opisu procedury testowej w rozdziale 2]}
 	\\\textcolor{red}{[do opracowania: kod w R!]}
+	\\\textcolor{red}{[pytanie: wykonaæ to samo dla nowszych danych?]}
 	%
 	\section{Europa (Polska)}
-	Do programu INTERMAGNET nale¿¹ tak¿e dwie polskie stacje geofizyczne: obserwatorium w Belsku oraz obserwatorium na Helu. Przeprowadzimy zatem podobna j.w. analizê dla pó³nocnej Europy.
+	Do programu INTERMAGNET nale¿¹ tak¿e dwie polskie stacje geofizyczne: obserwatorium w Belsku oraz obserwatorium na Helu. Przeprowadzimy zatem podobna j.w. analizê dla Europy. Wybraliœmy ? obserwatoriów: 
+	\\\textcolor{red}{[wskazanie obserwatoriów z podzia³em na wysokie, œrednie i niskie szerokoœci geograficzne - wraz z dok³adnymi szerokoœciami]}
+	\\Do analiz wykorzystamy najœwie¿sze dane:  od 1 stycznia do ? 2015 roku...
+	\\\textcolor{red}{[podaæ liczbê braków danych - liczbê wykluczeñ oraz nadpisanych wartoœci]}
 	\\\textcolor{red}{[...]}
 	%
 	\appendix
 	%
 	\chapter{Kod w R}
-	\textcolor{red}{[KOD]}
+	Poni¿ej za³¹czony jest kod napisany w jêzyku R wykorzystany w przedstawionym wy¿ej przyk³adzie.
+	\\\textcolor{red}{[zaktualizuj KOD]}
+	\begin{verbatim}
+	#-------------------------------------------------------------------------
+	# WCZYTYWANIE DANYCH BEZPOŒREDNIO Z PLIKÓW .min
+	#-------------------------------------------------------------------------
+	# BOU - STYCZEÑ
+	BOU.1.1<-t(matrix(as.numeric(array(scan(file="D:/.../bou20010101dmin.min",
+	what="list", skip=26), dim=c(7,1440))[3:4,]),nrow=2,ncol=1440))
+	BOU.1.2<-t(matrix(as.numeric(array(scan(file="D:/.../bou20010102dmin.min",
+	what="list", skip=26), dim=c(7,1440))[3:4,]),nrow=2,ncol=1440))
+	...
+	#
+	BOU.1<-cbind(BOU.1.1[,2],BOU.1.2[,2],...,BOU.1.30[,2],BOU.1.31[,2])
+	...
+	#-------------------------------------------------------------------------
+	# PREZENTACJA DANYCH
+	#-------------------------------------------------------------------------
+	t<-1:1440
+	plot(x=t,y=BOU.1.1[,2],type="l")
+	...
+	#-------------------------------------------------------------------------
+	# USUNIÊCIE BRAKÓW DANYCH
+	#-------------------------------------------------------------------------
+	# braki danych = 99999 lub 88888
+	#
+	# ZLICZANIE BRAKÓW DANYCH
+	zlicz.braki<-function(zbior){
+	braki<<-c()
+	n<-dim(zbior)
+	for (i in 1:n[2]){
+	braki<<-c(braki,length(which(zbior[,i]>80000)))
+	}
+	braki
+	}
+	zlicz.braki(BOU.1)
+	length(which(braki>0))
+	
+	# ZAMIANA ZBIORU - USUNIÊCIE/PODMIANA BRAKÓW DANYCH
+	zmien.braki<-function(zbior){
+	n<-dim(zbior)
+	temp<<-zbior
+	braki<<-c()
+	for (i in 1:30){
+	b1<<-which(zbior[,i]>80000)
+	b2<<-length(b1)
+	braki<<-c(braki,b2)
+	if (b2>0 & b2<11){
+	if(b1[1]==1 & b2==1){
+	temp[1,i]<<-temp[2,i]
+	}else if(b1[1]==1 & b2>1 & b1[2]!=2){
+	temp[1,i]<<-temp[2,i]
+	for (j in b1[-1]) temp[j,i]<-temp[j-1,i]
+	}else if(b1[1]==1 & b1[2]==2){
+	pierwsza<<-which(b1[-b2]!=b1[-1]-1)
+	if (length(pierwsza)<1){ pierwsza<<-b1[b2]
+	temp[1:pierwsza,i]<<-temp[pierwsza+1,i]
+	}else{ temp[1:pierwsza[1],i]<-temp[pierwsza[1]+1,i]
+	for (j in b1[pierwsza[1]+1:(b2-pierwsza[1])]){ temp[j,i]<-temp[j-1,i]} } 
+	}else if(b1[1]>1){ for (j in b1) temp[j,i]<-temp[j-1,i]
+	}
+	}
+	}
+	temp<<-temp[,-which(braki>10)]
+	}
+	
+	zmien.braki(BOU.1)
+	\end{verbatim}
+	\textcolor{red}{[zaktualizuj KOD]}
 	%
 	%
 	\begin{thebibliography}{99}

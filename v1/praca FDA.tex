@@ -1,0 +1,873 @@
+
+\documentclass{pracamgr}
+
+\usepackage{polski}
+%\usepackage[latin2]{inputenc}
+\usepackage[cp1250]{inputenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage{url}
+\usepackage{upgreek}
+\usepackage{color}
+\usepackage{pdfpages}
+
+\author{Anna Wie¿el}
+\nralbumu{132540}
+
+\title{Funkcjonalne Modele Liniowe}
+%Test istotnoœci w funkcjonalnym modelu liniowym
+
+\tytulang{Functional Linear Models}
+%Significance test in the functional linear model
+
+\kierunek{Matematyka}
+
+\zakres{Matematyka finansowa}
+
+\opiekun{dra hab. Karola Dziedziula\\
+	Katedra Analizy Matematycznej i Numerycznej\\
+}
+
+\date{Grudzieñ 2015}
+% Gdañsk 2015?
+
+\dziedzina{ 
+	11.1 Matematyka\\ 
+	11.2 Statystyka\\ 
+}
+
+%Klasyfikacja tematyczna wedlug AMS
+% niepotrzebne ?!
+\klasyfikacja{62 Statistics\\
+	62-07 Data analysis\\
+	62J12 Generalized linear models\\
+}
+
+\keywords{analiza danych funkcjonalnych, dane funkcjonalne, funkcjonalny model liniowy, test istotnoœci}
+%funkcjonalne
+
+%\newtheorem{defi}{Definicja}[section]
+%\theoremstyle{definition}
+\newtheorem{df}{Definicja}[section]
+\newtheorem{uw}{Uwaga}[section]
+\newtheorem{wn}{Wniosek}[section]
+\newtheorem{zal}{Za³o¿enie}[section]
+\newtheorem{np}{Przyk³ad}[section]
+%\theoremstyle{plain}
+\newtheorem{lem}{Lemat}[section]
+\newtheorem{tw}{Twierdzenie}[section]
+%\AfterEndEnvironment{df}{\noindent\ignorespaces}
+%\AfterEndEnvironment{uw}{\noindent\ignorespaces}
+%\AfterEndEnvironment{wn}{\noindent\ignorespaces}
+%\AfterEndEnvironment{np}{\noindent\ignorespaces}
+%\AfterEndEnvironment{tw}{\noindent\ignorespaces}
+
+\begin{document}
+	\maketitle
+	
+	%\includepdf{StronaTytulowa_132540}
+	
+	\begin{abstract}
+		%\indent 
+		The paper's motivation is to contribute to popularization of mathematical statistics on infinite dimensional function Hilbert spaces. The author presents the fully  functional linear model in form $Y=\beta X +\varepsilon$ and its significance test proposed by Kokoszka et al. The test detects nullity of operator $\beta$ which implies the lack of linear dependence between $X$ and $Y$. Using the principal component decomposition it is concluded with test statistic convergent by distribution to chi-squared.
+		\\
+		The test is further used for magnetic field data collected in some stations in different latitudes. The results show linear dependence between horizontal intensities of the magnetic field in mid- and low-latitude stations with high-latitude station data with a day or two delay but they contradict the linear dependence between data with more than a two-day lag.
+	\end{abstract}
+	% + POLSKI ABSTRAKT
+	
+	\tableofcontents
+	%\listoffigures
+	%\listoftables
+	
+	\chapter*{Wstêp}
+	\addcontentsline{toc}{chapter}{Wstêp}
+	\textcolor{red}{[ju¿ tu: Przyk³ady danych funkcjonalnych?]}
+	\\\textcolor{red}{[ju¿ tu: próba = punkty - ostatecznie: funkcja g³adka?]}
+	\\\textcolor{red}{[Odpowiednik testu istotnoœci dla prostego modelu regresji = F-test (+ t-test) [patrz: artyku³]]}
+	\\\textcolor{red}{[pakiet w R: fda]}
+	\\\textcolor{red}{Praca opiera siê g³ównie na artykule \cite{K08}, który to zosta³ rozwiniêty w ksi¹¿ce \cite{HK}}.
+	\\\textcolor{red}{+pozosta³a literatura, gdzie mo¿na doczytaæ, itd.}
+	%Odpowiednikami testu istotnoœci w klasycznym modelu liniowym s¹ np. t-test oraz F-test.
+	\vspace{0.35cm}\\\textcolor{red}{Ze wzglêdu na to, ¿e analiza danych funkcjonalnych (\textit{ang.} Functional Data Analysis, FDA) jest stosunkowo nowym dzia³em statystyki i jest wci¹¿ ma³o popularna w polskiej literaturze, wiele pojêæ czy okreœleñ zawartych w pracy nie posiada jeszcze ogólnie przyjêtych polskich odpowiedników. Dlatego zosta³y one przet³umaczone przez autora wed³ug w³asnego uznania, przytaczaj¹c oryginalne (angielskie) nazwy.}
+	\vspace{0.35cm}\\\textcolor{red}{ACKNOWLEDGEMENTS/podziêkowania?
+		\\The results presented in this paper rely on data collected at magnetic observatories. We thank the national institutes that support them and INTERMAGNET for promoting high standards of magnetic observatory practice (www.intermagnet.org).}
+	
+	\chapter{Preliminaria}
+	%
+	Przestrzeni¹ funkcyjn¹ $E$ nazywaæ bêdziemy przestrzeñ liniow¹ funkcji z dowolnego zbioru $A$ do zbioru $B$.
+	%
+	\begin{df}{\cite{FV}}
+		\\Zmienn¹ losow¹ $X$ nazywamy \textbf{zmienn¹ funkcjonaln¹} (ang. \textit{functional variable}) wtedy i tylko wtedy, gdy przyjmuje wartoœci w nieskoñczenie wymiarowej przestrzeni (przestrzeni funkcyjnej). Obserwacjê $\chi$ zmiennej $X$ nazywamy \textbf{dan¹ funkcjonaln¹} (ang. \textit{functional data}).
+	\end{df}
+	%
+	Jeœli zmienna funkcjonalna $X$ (odpowiednio obserwacja $\chi$) jest krzyw¹, to mo¿emy przedstawiæ $X$ w nastêpuj¹cej postaci $X= \{X(t), \ t \in T \}$ (odp. $\chi= \{\chi(t), \ t \in T \}$), gdzie zbiór indeksów $T \subset \mathbb{R}$. Tak¹ zmienn¹ funkcjonaln¹ mo¿emy zatem uto¿samiaæ z procesem stochastycznym z nieskoñczenie wymiarow¹ przestrzeni¹ stanów. W szczególnoœci, zmienna funkcjonalna mo¿e byæ powierzchni¹, czyli dwuwymiarowym wektorem krzywych - wtedy, analogicznie, $T$ bêdzie dwuwymiarowym zbiorem indeksów tj. $T \subset \mathbb{R}^2$ - lub dowolnie wymiarowym wektorem krzywych.
+	%%% przyk³ady danych funkcjonalnych? %%%
+	%
+	\\W niniejszej pracy skupimy siê na zmiennych funkcjonalnych przyjmuj¹cych postaæ krzywych.
+	\\\textcolor{red}{[przyk³ady? czy tylko we wstêpie?]}
+	\\\textcolor{red}{[tu: próba = punkty - ostatecznie: funkcja g³adka?]}
+	\vspace{0.35cm}\\Aby zbudowaæ pojêcie operatora kowariancji dla zmiennych funkcjonalnych wprowadzimy niezbêdne pojêcia z dziedziny operatorów liniowych.
+	%
+	%
+	\section{Klasyfikacja operatorów liniowych}
+	%
+	Niech $(\Omega, \mathcal{F},P)$ bêdzie przestrzeni¹ probabilistyczn¹, $\Omega$ jest zatem zbiorem scenariuszy $\omega$, $\mathcal{F}$ jest $\sigma$-algebr¹ podzbiorów $\Omega$, a $P$ miar¹ prawdopodobieñstwa nad $\mathcal{F}$. Dla uproszczenia zak³adamy zupe³noœæ zadanej przestrzeni probabilistycznej. Rozwa¿my proces stochastyczny z czasem ci¹g³ym $X=\{X_t, \ t \in T \}$, gdzie $T$ jest przedzia³em w $\mathbb{R}$, zdefiniowany na przestrzeni probabilistycznej $(\Omega, \mathcal{F},P)$, taki, ¿e $X_t(\omega)$ nale¿y do przestrzeni funkcyjnej $E$ dla wszystkich $\omega \in \Omega$.
+	%
+	\\W pracy rozwa¿aæ bêdziemy zmienne funkcjonalne przyjmuj¹ce wartoœci w przestrzeni Hilberta.
+	%
+	%%% "Klasyfikacja operatorów liniowych" jako oddzielny rozdzia³? A mo¿e zamieniæ kolejnoœci¹ z "Dane funkcjonalne"? %%%
+	%
+	\vspace{0.35cm}\\Rozwa¿my oœrodkow¹ nieskoñczenie wymiarow¹ rzeczywist¹ przestrzeñ Hilberta $H$ z iloczynem skalarnym $\langle \cdot, \cdot \rangle$ zadaj¹cym normê $\left\|  \cdot \right\| $ i oznaczmy przez $\mathcal{L}$ przestrzeñ ci¹g³ych (ograniczonych) operatorów liniowych w $H$ z norm¹
+	\begin{equation*}
+	\left\| \mathit{\Psi} \right\|_{\mathcal{L}}:= \sup \{\left\| \mathit{\Psi}(x)\right\| : \ \left\| x\right\| \leq 1\}.
+	\end{equation*}
+	%
+	\begin{df}{\cite{HK}}
+		\\Operator $\mathit{\Psi} \in \mathcal{L}$ nazywamy \textbf{operatorem zwartym}, jeœli istniej¹ dwie ortonormalne bazy w $H$ $\{\upsilon_j\}_{j=1}^{\infty}$ i $\{f_j\}_{j=1}^{\infty}$, oraz ci¹g liczb rzeczywistych $\{\lambda_j \}_{j=1}^{\infty}$ zbie¿ny do zera, takie ¿e
+		\begin{equation}\label{zwarty}
+		\mathit{\Psi}(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \upsilon_j \rangle	f_j, \quad x \in H.
+		\end{equation}
+	\end{df}
+	%%% porównanæ z innymi definicjami %%%
+	%
+	Bez straty ogólnoœci mo¿emy za³o¿yæ, ¿e w przedstawionej reprezentacji $\lambda_j$ s¹ wartoœciami dodatnimi, w razie koniecznoœci wystarczy $f_j$ zamieniæ na $-f_j$.
+	%
+	\\Równowa¿n¹ definicj¹ operatora zwartego jest spe³nienie przez $\mathit{\Psi}$ nastêpuj¹cego warunku: zbie¿noœæ $\langle y,x_n \rangle \rightarrow \langle y, x \rangle$ dla ka¿dego $y \in H$ implikuje $\left\| \mathit{\Psi}(x_n) - \mathit{\Psi}(x) \right\| \rightarrow 0 $.
+	%%% jeszcze jakieœ definicje? %%%
+	%
+	\vspace{0.35cm}\\Inn¹ klas¹ operatorów s¹ operatory Hilberta-Schmidta, któr¹ oznaczaæ bêdziemy przez $\mathcal{S}$.
+	%
+	\begin{df} \cite{B}
+		\\\textbf{Operatorem Hilberta-Schmidta} nazywamy taki operator zwarty $\mathit{\Psi} \in \mathcal{L}$, dla którego ci¹g $\{\lambda_j\}_{j=1}^{\infty}$ w reprezentacji \eqref{zwarty} spe³nia $\sum_{j=1}^{\infty}\lambda_j^2 < \infty$.
+	\end{df}
+	%%% u Beœki inna definicja (wyk4WM) %%%
+	%
+	\begin{uw}\cite{B}, \cite{HK}
+		\\Klasa $\mathcal{S}$ jest przestrzeni¹ Hilberta z iloczynem skalarnym
+		\begin{equation}\label{eq:HS.1}
+		\langle \mathit{\Psi}_1, \mathit{\Psi}_2 \rangle_{\mathcal{S}}: = \sum_{j=1}^{\infty} \ \langle \mathit{\Psi}_1 (e_j), \mathit{\Psi}_2 (e_j) \rangle,
+		\end{equation}
+		gdzie $\{e_j\}_{j=1}^{\infty}$ jest dowoln¹ baz¹ ortonormaln¹ w $H$.
+		\\Powy¿szy iloczyn skalarny zadaje normê
+		\begin{equation}\label{eq:HS.2}
+		\left\| \mathit{\Psi} \right\|_{\mathcal{S}} := \Bigg( \sum_{j=1}^{\infty} \lambda_j^2 \Bigg)^{1/2}.
+		\end{equation}
+	\end{uw}
+	%
+		\textit{Dowód równoœci \eqref{eq:HS.2}.} 
+		\begin{align*}
+		\left\| \mathit{\Psi} \right\|_{\mathcal{S}}^2 &= \langle \mathit{\Psi}, \mathit{\Psi} \rangle_{\mathcal{S}} = \sum_{n=1}^{\infty} \bigg\langle \sum_{j=1}^{\infty} \lambda_j \langle e_n , \upsilon_j \rangle f_j , \sum_{k=1}^{\infty} \lambda_k \langle e_n , \upsilon_k \rangle f_k \bigg\rangle
+		\\&= \sum_{n=1}^{\infty} \sum_{j=1}^{\infty} \sum_{k=1}^{\infty} \lambda_j \lambda_k \langle e_n , \upsilon_j \rangle \langle e_n , \upsilon_k \rangle \langle f_j , f_k \rangle = \sum_{n=1}^{\infty} \sum_{j=1}^{\infty} \lambda_j^2 \langle e_n , \upsilon_j \rangle
+		\\&= \sum_{j=1}^{\infty} \lambda_j^2 \sum_{n=1}^{\infty} \langle e_n , \upsilon_j \rangle \overset{\shortstack{$\scriptstyle \text{to¿samoœæ}$\\ $\scriptstyle \text{Parsevala}$}}{=} \sum_{j=1}^{\infty} \lambda_j^2 \| \upsilon_j \| = \sum_{j=1}^{\infty} \lambda_j^2 .
+		\end{align*}
+		\hfill $\square$
+	%\text{to¿samoœæ Parsevala}
+	%
+	\begin{df}\cite{B}
+		\\Zwarty operator liniowy nazywamy \textbf{operatorem œladowym} (ang. \textit{nuclear operator}), jeœli równoœæ \eqref{zwarty} spe³niona jest dla ci¹gu $\{\lambda_j \}_{j=1}^{\infty}$ takiego, ¿e $\sum_{j=1}^{\infty} \left| \lambda_j \right|  < \infty$.
+	\end{df}
+	%%% operator œladowy = nuclear operator %%%
+	%
+	\begin{uw}\cite{B}
+		\\Klasa operatorów œladowych $\mathcal{N}$ z norm¹ $\left\| \mathit{\Psi} \right\|_{\mathcal{N}} := \sum_{j=1}^{\infty} \left| \lambda_j \right| $ jest przestrzeni¹ Banacha.
+	\end{uw}
+	%
+	\begin{df} \cite{HK}
+		\\Operator $\mathit{\Psi} \in \mathcal{L}$ nazywamy 	\textbf{symetrycznym}, jeœli
+		\begin{equation*}
+		\langle \mathit{\Psi}(x), y \rangle  = \langle x, \mathit{\Psi}(y) \rangle, \quad x,y \in H,
+		\end{equation*}
+		oraz \textbf{nieujemnie okreœlonym} (lub po³owicznie pozytywnie okreœlonym, ang. \textit{positive semidefinite}), jeœli
+		\begin{equation*}
+		\langle \mathit{\Psi} (x), x \rangle \geq 0, \quad x \in H.
+		\end{equation*}
+	\end{df}
+	%
+	\begin{uw}\label{HSsp} \cite{HK}
+		\\Symetryczny nieujemnie okreœlony operator Hilberta-Schmidta $\mathit{\Psi}$ mo¿emy przedstawiæ w reprezentacji
+		\begin{equation}\label{eq:fw}
+		\mathit{\Psi}(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \upsilon_j \rangle	\upsilon_j, \quad x \in H,
+		\end{equation}
+		gdzie ortonormalne $\upsilon_j$ s¹ \textbf{funkcjami w³asnymi} $\mathit{\Psi}$, tj. $\mathit{\Psi}(\upsilon_j)=\lambda_j \upsilon_j$. Funkcje $\upsilon_j$ mog¹ byæ rozszerzone do bazy, przez dope³nienie ortogonalne podprzestrzeni rozpiêtej przez oryginalne $\upsilon_j$. Mo¿emy zatem za³o¿yæ, ¿e funkcje $\upsilon_j$ w \eqref{eq:fw} tworz¹ bazê, a pewne wartoœci $\lambda_j$ mog¹ byæ równe zero.
+	\end{uw} 
+	%%% pojêcie wartoœci w³asnych? %%%
+	%%% funkcje w³asne ~odpowiedniki wektorów w³asnych w przestrzeniach wektorowych %%%
+	%
+	%
+	\section{Przestrzeñ $L^2$}
+	%%% wartoœæ oczekiwana = ca³ka ? %%%
+	%
+	Przestrzeñ $L^2=L^2(T)=L^2(T,\mathcal{B}, \lambda)$ nad pewnym przedzia³em $T \subset \mathbb{R}$ jest zbiorem klas mierzalnych funkcji rzeczywistych ca³kowalnych z kwadratem okreœlonych na $T$, tj.
+	%funkcji ca³kowalnych z kwadratem w sensie Lebesgue'a na przedziale T (Pytlik)
+	\[x \in L^2(T) \iff x: T \rightarrow \mathbb{R} \ \wedge \ \int_{T} x^2 (t) dt < \infty.\] 
+	Przestrzeñ $L^2$ jest oœrodkow¹ przestrzeni¹ Hilberta z iloczynem skalarnym
+	\begin{equation*}
+	\langle x, y \rangle:= \int_{T} x(t) y(t) dt, \quad x,y \in L^2.
+	\end{equation*}
+	Normê zaœ wyznacza wzór
+	\[ \|x\|^2 = \langle x,x \rangle = \int x^2 (t) dt, \quad x \in L^2. \]
+	%
+	Tak jak zwyczajowo zapisujemy $L^2$ zamiast $L^2(T)$, tak w przypadku symbolu ca³ki bez wskazania obszaru ca³kowania bêdziemy mieæ na myœli ca³kowanie po ca³ym przedziale $T$. Jeœli $x,y \in L^2$, równoœæ $x=y$ zawsze oznaczaæ bêdzie $\int \left[x(t) - y(t) \right]^2 dt = 0$.
+	%
+	\vspace{0.35cm}\\Wa¿n¹ klasê operatorów liniowych na przestrzeni $L^2$ stanowi¹ operatory ca³kowe.
+	%
+	\begin{df}\cite{P} % +Kosaku Yosida p. 198
+		\\\textbf{Operatorem ca³kowym} nazywamy operator liniowy $\mathit{\Psi}$ daj¹cy siê przedstawiæ w formie
+		\begin{equation*}
+		%\forall_{t \in T}
+		\mathit{\Psi}(x)(t)= \int \psi(t,s) x(s) ds, \quad x \in L^2, \ t \in T,
+		\end{equation*}
+		gdzie $\psi$ jest mierzaln¹ \textcolor{red}{[ci¹g³¹ = ca³kowaln¹?]} funkcj¹ dwóch zmiennych nazywan¹ \textbf{j¹drem ca³kowym} operatora $\mathit{\Psi}$.
+	\end{df}
+	%
+	Operator ca³kowy $\mathit{\Psi}$ jest dobrze okreœlony, jeœli spe³nia pewnego rodzaju w³asnoœæ ograniczonoœci.
+	%
+	\begin{uw}\cite{W}
+		\\Niech $(T, \mu)$ bêdzie przestrzeni¹ z miar¹ i niech $\psi(t,s)$ bêdzie mierzaln¹ funkcj¹ na $T \times T$. Zdefiniujmy
+		\[ \mathit{\Psi} x (s) = \int_T \psi (t,s) x(t) d\mu(t). \]
+		Jeœli $1 < p < \infty$ oraz istnieje mierzalna dodatnia funkcja $y$ na $T$ oraz sta³e $a$, $b$ takie ¿e dla $\frac{1}{p}+\frac{1}{q}=1$ mamy
+		\begin{equation}\label{eq:zal1}
+		\int_T  | \psi (t,s) | y (t)^q d\mu(t) \leq [a y (s) ]^q, \quad \quad \mu-\text{p.w.}
+		\end{equation}
+		oraz
+		\begin{equation}\label{eq:zal2}
+		\int_T  | \psi (t,s) | y (t)^p d\mu(t) \leq [b y (s) ]^p, \quad \quad \mu-\text{p.w.},
+		\end{equation}
+		wtedy $T: L^p (T,\mu) \rightarrow L^p(T,\mu)$.
+	\end{uw}
+	\textcolor{red}{[ca³e twierdzenie? jakie daæ oznaczenia?]}
+	\\\textit{Dowód.} Niech $x \in L^p$ i niech $y$ spe³nia za³o¿enia twierdzenia. Mamy
+	\begin{gather}
+	\begin{aligned}\label{eq:W1}
+	\big|\mathit{\Psi} x (s) \big|
+	&= \left| \int_T \psi (t,s) x(t) d\mu(t) \right|
+	\leq \int_T | \psi (t,s) | | x(t) | d\mu(t)
+	\\& = \int_T  [| \psi (t,s) |^{1/q} y (t) ] \cdot [ | \psi (t,s) |^{1/p} | x(t) | y (t)^{-1}  ] d\mu(t)
+	\\&= \int_T  \Big[| \psi (t,s) | y^q (t) \Big]^{1/q} \cdot \Big[ | \psi (t,s) |( | x|/y)^p (t)^{-1}  \Big]^{1/p} d\mu(t)
+	\\& \overset{\shortstack{$\scriptstyle \text{nierówn.}$\\ $\scriptstyle \text{H\"{o}ldera}$}}{\underset{\eqref{eq:zal1}}{\leq}} a y (s) \cdot \left[ \int_T | \psi (t,s) | (|x|/y)^p (t) d\mu(t) \right]^{1/p}.
+	\end{aligned}
+	\end{gather}
+	St¹d, korzystaj¹c z twierdzenia Fubiniego, otrzymujemy
+	\begin{align*}
+	\| \mathit{\Psi} x \|_p
+	&\leq \Big\| | \mathit{\Psi} x | \Big\|_p
+	= \left[ \int_T \Big| \int_T \psi (t,s) x(t) d\mu(t) \Big|^p d\mu(s) \right]^{1/p} 
+	\\&\overset{\eqref{eq:W1}}{\leq} a \left[ \int_T  y^p(s) \int_T | \psi(t,s) | (|x|/y)^p (t)  d\mu(t) d\mu(s) \right]^{1/p}
+	\\&\overset{\text{tw.F.}}{=} a \left[ \int_T (|x|/y)^p (t) \int_T y^p(s) | \psi(t,s) | d\mu(s) d\mu(t) \right]^{1/p}
+	\\&\overset{\eqref{eq:zal2}}{\leq} ab \left[ \int_T (|x|/y)^p (t) y^p(t) d\mu(t) \right]^{1/p}
+	= ab \left[ \int_T |x(t)|^p d\mu(t) \right]^{1/p}
+	= ab \|x\|_p < \infty.
+	\end{align*}
+	Pokazaliœmy, ¿e $\mathit{\Psi} x \in L^p$, co koñczy dowód. \hfill $\square$
+	%
+	\begin{uw}\label{u:cHS} \cite{HK}
+		\\Operatory ca³kowe s¹ operatorami Hilberta-Schmidta wtedy i tylko wtedy, gdy
+		\begin{equation}\label{eq:tM}
+		\iint \psi^2(t,s) dt ds < \infty.
+		\end{equation}
+		Ponadto zachodzi
+		\begin{equation*}
+		\left\| \mathit{\Psi} \right\|^2_{\mathcal{S}} = \iint \psi^2(t,s) dt ds.
+		\end{equation*}
+	\end{uw}
+	%
+	\begin{uw} (Twierdzenie Mercera) \cite{HK}
+		\\Niech operator $\mathit{\Psi}$ bêdzie operatorem ca³kowym  spe³niaj¹cym \eqref{eq:tM}. Jeœli ponadto jego j¹dro ca³kowe $\psi$ spe³nia $\psi (s,t) = \psi (t,s)$ oraz $\iint \psi(t,s) x(t) x(s) dt ds \geq 0$, to operator ca³kowy $\mathit{\Psi}$jest symetryczny i nieujemnie okreœlony, zatem z Uwagi \ref{HSsp} mamy
+		\begin{equation*}
+		\psi (t,s) = \sum_{j=1}^{\infty} \lambda_j \upsilon_j (t) \upsilon_j (s) \quad \text{w } L^2(T \times T),
+		\end{equation*}
+		gdzie $\lambda_j$, $\upsilon_j$ s¹ odpowiednio wartoœciami w³asnymi i funkcjami w³asnymi operatora $\mathit{\Psi}$.
+		\\Je¿eli funkcja $\psi$ jest ci¹g³a, powy¿sze rozwiniêcie jest prawdziwe dla wszystkich $t,s \in T$ i szereg jest zbie¿ny jednostajnie.
+	\end{uw}
+	%
+	%
+	\section{Zmienne funkcjonalne w $L^2$. Pojêcie œredniej i operatora kowariancji}
+	%
+	Rozwa¿my zmienn¹ funkcjonaln¹ $X= \{X(t), \ t \in T \}$ bêd¹c¹ krzyw¹ ($T \subset \mathbb{R}$) jako element losowy z przestrzeni $L^2(T)$ zaopatrzonej w $\sigma$-algebrê borelowskich podzbiorów $T$.
+	\\Mówimy, ¿e zmienna $X$ jest \textbf{ca³kowalna}, jeœli $\mathbb{E} \left\| X \right\| = \mathbb{E} \left[\int X^2(t) dt \right]^{1/2} <\infty $. Jeœli $X$ jest ca³kowalna, to istnieje jedyna funkcja $\mu \in L^2$ taka, ¿e $\mathbb{E} \langle y, X \rangle = \langle y , \mu \rangle$ dla dowolnej funkcji $y \in L^2$ (zauwa¿my, ¿e wartoœæ oczekiwana jest funkcjona³em liniowym, mo¿emy zatem skorzystaæ z twierdzenia Riesza). Zachodzi $\mu (t) = \mathbb{E} [X(t)]$ dla prawie wszystkich $t \in T$, tak okreœlon¹ funkcjê $\mu$ nazywaæ bêdziemy \textbf{funkcj¹ œredniej}. Ponadto, wartoœæ oczekiwana jest przemienna z operatorami ograniczonymi, tj. jeœli X jest ca³kowalna oraz $\mathit{\Psi} \in \mathcal{L}$, to mamy $\mathbb{E}\mathit{\Psi} (X) = \mathit{\Psi} (\mathbb{E} X)$.
+	%
+	\begin{df}\cite{B}
+		\\\textbf{Operator kowariancji} ca³kowalnej zmiennej funkcjonalnej $X$ o funkcji œredniej $\mu_X$ przyjmuj¹cej wartoœci w przestrzeni funkcyjnej $L^2$ spe³niaj¹cej $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy jako ograniczony operator liniowy wed³ug wzoru
+		\begin{equation*}
+		C_X (x):= \mathbb{E} \big[ \big\langle X - \mu_X, x \big\rangle (X - \mu_X ) \big], \quad x \in L^2.
+		\end{equation*}
+		Jeœli $Y$ jest zmienn¹ funkcjonaln¹ o funkcji œredniej $\mu_Y$ spe³niaj¹c¹ powy¿sze warunki, wtedy operator kowariancji miêdzy zmiennymi $X$ i $Y$ (ang. \textit{cross-covariance operator}) przedstawiamy jako
+		\begin{equation*}
+		C_{X,Y}(x):=\mathbb{E} \Big[ \big\langle (X - \mu_X) , x \big\rangle (Y - \mu_Y) \Big], \quad x \in L^2
+		\end{equation*}
+		oraz
+		\begin{equation*}
+		C_{Y,X}(x):=\mathbb{E} \Big[ \big\langle (Y - \mu_Y) , x \big\rangle \big(X - \mu_X \big) \Big], \quad x \in L^2.
+		\end{equation*}
+	\end{df}
+	%%% \textcolor{red}{[uogólniæ dla przypadku EX ró¿ne od 0 ?]} %%%
+	\textcolor{red}{Operator kowariancji jest operatorem ca³kowym, czyli
+	$$C_X (x)(t) = \int c(t,s) x(s) ds,$$
+	gdzie j¹dro ca³kowe $c(t,s)$ zdefiniowane nastêpuj¹co
+	$$c(t,s)=\mathbb{E} \Big[ \big( X(t) - \mu(t) \big) \big( X(s) - \mu(s) \big) \Big]$$
+	nazywaæ bêdziemy \textbf{funkcj¹ kowariancji}. Oczywistym jest, ¿e $c(t,s)=c(s,t)$ i mamy
+	\begin{align*}
+	\iint c(t,s) x(t) x(s) dt ds &= \iint \mathbb{E} \big[ \big( X(t) - \mu(t) \big) \big( X(s) - \mu(s) \big) \big] x(t) x(s) dt ds
+	\\&= \mathbb{E} \left[ \left( \int X(t) x(t) dt \right)^2 \right] \geq 0.
+	\end{align*}
+	Zatem operator kowariancji $C_X$ jest symetryczny oraz nieujemnie okreœlony. Wartoœci w³asne $\lambda_j$ operatora $C_X$ s¹ dodatnie i spe³niony jest warunek $\sum_{j=1}^{\infty} \lambda_j = \mathbb{E} \left\| X \right\|^2 <\infty$. $C_X$ jest operatorem Hilberta-Schmidta (a nawet operatorem œladowym) i  posiada on nastêpuj¹c¹ reprezentacjê
+	\begin{equation*}
+	C_X (x) = \sum_{j=1}^{\infty} \lambda_j \langle x, \upsilon_j \rangle \upsilon_j, \quad x \in L^2.
+	\end{equation*}
+	}
+	%
+	\textcolor{red}{[wiêcej w Bosq (2000), rozdz. 1]}
+	%
+	%\textcolor{red}{[ju¿ tu: estymatory operatorów kowariancji?]}
+	%
+	%
+	\section{Estymacja œredniej, funkcji kowariancji i operatora kowariancji}
+	%
+	Naturalnym problemem pojawiaj¹cym siê przy danych funkcjonalnych jest wnioskowanie o obiektach nieskoñczenie wymiarowych na podstawie skoñczonej próbki danych.
+	\\Obserwujemy zatem $N$ krzywych $X_1,...,X_N$, które mo¿emy traktowaæ  jako realizacje losowej funkcji $X$ lub obserwacje zmiennej funkcjonalnej $X$ z przestrzeni $L^2$.
+	%
+	\begin{zal}\label{proba} \cite{HK}
+		\\Zak³adamy, ¿e $X_1,...,X_N$ s¹ niezale¿nymi zmiennymi losowymi w $L^2$ o jednakowym rozk³adzie jak zmienna $X \in L^2$.
+	\end{zal}
+	\textcolor{red}{[rozk³ad?]}
+	%%% Assumption 2.1 %%%
+	%
+	%Definiujemy szukane parametry
+	%\begin{align*}
+	%\mu (t) &= \mathbb{E} [X(t)] \quad \text{funkcja œredniej}
+	%\\ c(t,s) &= \mathbb{E}[(X(t) - \mu(t)(X(s) - \mu(s))] \quad \text{funkcja kowariancji}
+	%\\  C &= \mathbb{E}[ \langle (X - \mu), \cdot \rangle (X -\mu)] \quad \text{operator kowariancji}
+	%\end{align*}
+	\\Poszukiwanymi parametrami s¹ funkcja œredniej, funkcja kowariancji oraz operator kowariancji, okreœlone nastêpuj¹co
+	\vspace{0.15cm}\\ \indent funkcja œredniej:  \indent \indent $\mu (t) = \mathbb{E} [X(t)]$;
+	\\ \indent funkcja kowariancji: \indent $c(t,s) = \mathbb{E}[(X(t) - \mu(t)(X(s) - \mu(s))]$;
+	\\ \indent operator kowariancji: $ \quad C = \mathbb{E}[ \langle (X - \mu), \cdot \rangle (X -\mu)]$.
+	%
+	\vspace{0.35cm}\\Funkcjê œredniej $\mu$ estymujemy œredni¹ z funkcji z próby
+	\[ \widehat{\mu}(t) = \frac{1}{N} \sum_{n=1}^N X_n (t), \quad t \in T, \]
+	funkcjê kowariancji ze wzoru
+	\[ \hat{c}(t,s) = \frac{1}{N} \sum_{n=1}^N \big( X_n (t) - \hat{\mu}(t) \big) \big( X_n(s) -\hat{\mu}(s) \big), \quad t,s \in T,\]
+	zaœ operator kowariancji estymujemy
+	\begin{equation}\label{eq:C}
+	\widehat{C}(x) = \frac{1}{N} \sum_{n=1}^N \langle X_n - \hat{\mu}, x \rangle ( X_n - \hat{\mu} ), \quad x \in L^2.
+	\end{equation}
+	\textcolor{red}{[wiêcej w \cite{HK}, rozdz. 2]}
+	%
+	%
+	\section{Estymacja wartoœci w³asnych i funkcji w³asnych operatora kowariancji}\label{r:FPC}
+	%
+	W dalszej czêœci pracy istotne bêdzie dla nas oszacowanie równie¿ wartoœci i funkcji w³asnych operatora kowariancji $C$. W szczególnoœci interesowaæ nas bêdzie $p$ najwiêkszych wartoœci w³asnych spe³niaj¹cych
+	\[ \lambda_1>\lambda_2>...>\lambda_p>\lambda_{p+1}\]
+	oraz aby $p$ pierwszych wartoœci w³asnych by³o zerowych.
+	\\Funkcje w³asne zdefiniowane s¹ przez równanie $C \upsilon_j = \lambda_j \upsilon_j$. Zauwa¿my, ¿e (z definicji operatora liniowego), jeœli $\upsilon_j$ jest funkcj¹ w³asn¹, to równie¿ $a \upsilon_j$ jest funkcj¹ w³asn¹, gdzie $a \neq 0$ jest skalarem.
+	\\\textcolor{red}{[...]}
+	\\Wartoœci i funkcje w³asne estymujemy wed³ug wzoru
+	\[ \int \hat{c}(t,s) \hat{\upsilon}_j (s) ds = \hat{\lambda}_j \hat{\upsilon}_j(t), \quad j=1,2,...,N. \]
+	\textcolor{red}{[...]}
+	\\\textcolor{red}{[EFPC: Interference... rozdz. 3]}
+	%
+	%
+	\section{Funkcjonalny model liniowy}
+	%
+	\textcolor{red}{Standardowy model liniowy dla par zmiennych skalarnych $Y_n$ i wektorów $\mathbf{X}_n$ (tworzonych przez $p$ skalarnych zmiennych $X_{ni}$, $i=1,...,p$), przy za³o¿eniu $\mathbb{E}Y_n=0$, $\mathbb{E}\mathbf{X}_n=\mathbf{0}$\textcolor{red}{\footnote{\textcolor{red}{przenieœæ tê uwagê/wyt³umaczenie do przypisu?}}} (gdzie $n=1,...,N$), przyjmuje postaæ
+	%%% bez tego za³o¿enia nale¿y dodaæ parametr odpowiadaj¹cy wyrazowi wolnemu w macierzy X i w wektorze beta - dodaæ jako footnote? %%%
+	\begin{equation}\label{eq:SLM}
+	\mathbf{Y} = \mathbf{X} \boldsymbol\beta + \boldsymbol\varepsilon,
+	\end{equation}
+	gdzie 
+	\\ \indent $\mathbf{Y}$ jest wektorem zmiennych objaœnianych d³ugoœci $N$,
+	\\ \indent $\mathbf{X}$ jest macierz¹ zmiennych objaœniaj¹cych wymiaru $ N \times p $,
+	\\ \indent $\boldsymbol{\beta}$ jest wektorem parametrów d³ugoœci $p$,
+	\\ \indent $\boldsymbol{\varepsilon}$ jest wektorem b³êdów losowych d³ugoœci $N$.}
+	%
+	%%% informacje zbêdne? %%%
+	\vspace{0.35cm}\\ \textcolor{red}{[} Maj¹c dane realizacje zmiennych $\mathbf{Y}$ oraz $\mathbf{X}$ poszukiwany wektor wspó³czynników modelu $\boldsymbol\beta$ znajdujemy metod¹ najmniejszych kwadratów. \textcolor{red}{]}
+	%
+	\\Poza narzuconym ju¿ za³o¿eniem o scentrowanych zmiennych losowych $\mathbf{Y}$ i $\mathbf{X}$ (tu: jedynie aby unikn¹æ uwzglêdniania wyrazu wolnego\textcolor{red}{\footnote{\textcolor{red}{przenieœæ tê uwagê/wyt³umaczenie do przypisu?}}}) najwa¿niejszymi za³o¿eniami powy¿szego modelu liniowego s¹ wymagania, aby zmienna losowa $\boldsymbol\varepsilon$ opisuj¹ca b³¹d modelu równie¿ spe³nia³a $\mathbb{E}[ \boldsymbol\varepsilon ] =0$ oraz aby nie by³a skorelowana ze zmiennymi $X_n$.
+	%
+	%%% czy w ogóle podawaæ wszystkie rodzaje funkcjonalnych modeli liniowych? %%%
+	%Rozró¿niamy trzy postaci funkcjonalnych modeli liniowych...
+	%%% postaci bez ca³ek? %%%
+	%
+	\vspace{0.35cm}\\Rozwa¿aæ bêdziemy odpowiednik modelu liniowego dla zmiennych funkcjonalnych. Dla uproszczenia (podobnie jak wy¿ej) zak³adaæ bêdziemy, ¿e zmienne objaœniane i objaœniaj¹ce maj¹ œrednie równe zero. \textbf{Pe³en model funkcjonalny} (ang. \textit{fully functional model}) przyjmuje postaæ
+	\begin{equation}\label{eq:FLM}
+	Y_n = \mathit{\Psi} X_n + \varepsilon_n, \quad n=1,2,...,N,
+	\end{equation}
+	gdzie krzywe $Y_n$, $X_n$ oraz nieobserwowalny b³¹d $\varepsilon_n$ nale¿¹ do przestrzeni Hilberta $L^2(T)$. Operator $\mathit{\Psi}: L^2 \rightarrow L^2$ jest ograniczonym operatorem liniowym, który jest operatorem ca³kowym. J¹dro ca³kowe $\psi(t,s)$ operatora $\mathit{\Psi}$ jest funkcj¹ ca³kowaln¹ z kwadratem na $T \times T$. Zauwa¿my ponadto, ¿e, na mocy Uwagi \ref{u:cHS}, operator $\mathit{\Psi}$ jest operatorem Hiberta-Schmidta.
+	\\Równoœæ \eqref{eq:FLM} rozumiemy zatem nastêpuj¹co
+	\begin{equation}\label{eq:FLM2}
+	Y_n(t) = \int \psi (t,s) X_n(s) ds + \varepsilon_n (t), \quad n=1,2,...,N.
+	\end{equation}
+	Jak i w przypadku standardowego modelu linowego, funkcjonalny model liniowy wymusza pewne za³o¿enia. Podobnie jak poprzednio, wymagamy, aby zmienna losowa \textcolor{red}{?} $\varepsilon_n$ opisuj¹ca b³¹d modelu spe³nia³a $\mathbb{E}[ \varepsilon_n ] =0$ oraz aby nie by³a skorelowana ze zmiennymi $X_n$.
+	\\\textcolor{red}{["nieskorelowane zmienne" = ( operator kowariancji  = 0 )?]}
+	\\\textcolor{red}{[inne za³o¿enia modelu? konsekwencje?]}
+	\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
+	%
+	\vspace{0.35cm}\\ Nazwa powy¿szego modelu wynika z faktu, ¿e zarówno zmienne objaœniane $Y_n$ jak i zmienne objaœniaj¹ce $X_n$ s¹ zmiennymi funkcjonalnymi. Niewielkim uproszczeniem s¹ pozosta³e typy funkcjonalnych modeli liniowych, tj.
+	\begin{itemize}
+		\item[-] model z odpowiedzi¹ skalarn¹ (ang. \textit{scalar response model}) postaci
+		$$ Y_n = \int \psi (s) X_n(s) ds + \varepsilon_n, \quad n=1,2,...,N,$$
+		w którym tylko zmienne objaœniaj¹ce $X_n$ s¹ zmiennymi funkcjonalnymi,
+			\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
+		\item[-] model z odpowiedzi¹ funkcyjn¹ (ang. \textit{functional response model}) postaci
+		$$ Y_n (t) = \psi (t) x_n + \varepsilon_n (t), \quad n=1,2,...,N,$$
+		w którym zmienne objaœniaj¹ce $x_n$ s¹ deterministycznymi skalarami.
+			\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
+	\end{itemize}
+	%
+	%%% za³o¿enia modelu! %%%
+	Naturalnym problemem pojawiaj¹cym siê przy funkcjonalnym modelu liniowym jest estymacja operatora $\mathit{\Psi}$ nale¿¹cego do nieskoñczenie wymiarowej przestrzeni na podstawie skoñczonej próbki danych. Mo¿liwym jest znalezienie operatora, który daje idealne dopasowanie do danych (dla którego wszystkie ró¿nice od próbki s¹ równe zero), nie narzucaj¹c dodatkowych za³o¿eñ, ale przypomina on bia³y szum i jego interpretacja jest czêsto problemowa i nie funkcjonalna. Jednym ze sposobów na rozwi¹zanie tego problemu jest poszukiwanie operatora nale¿¹cego do podprzestrzeni generowanej przez funkcje w³asne operatora kowariancji danych z próby, nazywane \textbf{empirycznymi funkcjonalnymi g³ównymi sk³adowymi} (ang. \textit{empirical functional principal components, EFPC's}), które zosta³y opisane w podrozdziale \ref{r:FPC}. G³ówne sk³adowe odpowiadaj¹ istotnym czynnikom zmiennoœci zmiennych, dobrze s³u¿¹ zatem do przybli¿ania ich wartoœci.
+	\\\textcolor{red}{...}
+	\\\textcolor{red}{[sposób znalezienia $\mathit{\Psi}$]}
+	\\Wykorzystany w dalszej czêœci pracy pakiet \textit{fda}, do programu \textit{R-project}, do znalezienia operatora $\mathit{\Psi}$ stosuje metodê najmniejszych kwadratów. Dlatego w³aœnie tê metodê przedstawiamy poni¿ej.
+	\vspace{0.35cm}\\Niech $\{ \eta_k \}_{k = 1}^{\infty}$ i $\{ \theta_l \}_{l = 1}^{\infty}$ bêd¹ pewnymi ustalonymi bazami, niekoniecznie ortonormalnymi, np. bazami Fouriera lub splajnowymi. Ponadto, niech funkcje $\eta_k$ dobrze przybli¿aj¹ funkcje $X_n$, a $\theta_l$ dobrze przybli¿aj¹ $Y_n$. Nieznane j¹dro $\psi$ estymujemy wed³ug postaci
+	\[ \widehat{\psi} (t,s) = \sum_{k=1}^{K} \sum_{l=1}^L p_{kl} \eta_k(s) \theta_l(t), \]
+	gdzie $K$ i $L$ s¹ odpowiednio ma³ymi liczbami wybranymi do wyg³adzenia przybli¿enia $X_n$ i $Y_n$. Podobnie jak w przypadku standardowego modelu linowego mo¿emy znaleŸæ parametry $p_{kl}$ metod¹ najmniejszych kwadratów przez minimalizacjê sumy kwadratów reszt
+	\[ \sum_{n=1}^N \bigg\| Y_n - \int X_n (s) \widehat{\psi}(s, \cdot) \bigg\|^2. \]
+	\\\textcolor{red}{[jak w pakiecie w R]}
+	\eqref{eq:FLM2}
+	%
+	\chapter{Test istotnoœci w funkcjonalnym modelu liniowym}
+	%
+	\section{Procedura testowa}
+	%
+	Jednym z podstawowych testów na efektywnoœæ modelu jest test istotnoœci zmiennych objaœniaj¹cych. Jak w przypadku modelu liniowego dla zmiennych skalarnych (postaci \eqref{eq:SLM}) testuje siê hipotezê o zerowaniu siê wektora $\boldsymbol\beta$, tak w przypadku funkcjonalnego modelu liniowego badamy zerowanie siê operatora $\mathit{\Psi}$, tj. hipotezy
+	\begin{equation*}
+	\text{H}_0: \quad \mathit{\Psi} = 0 \quad \text{przeciw} \quad \text{H}_{A}: \quad \mathit{\Psi} \neq 0.
+	\end{equation*}
+	Zauwa¿my, ¿e przyjêcie H$_0$ nie oznacza braku zwi¹zku miêdzy zmienn¹ objaœnian¹ a objaœniaj¹c¹. Prowadzi jedynie do stwierdzenia braku zale¿noœci liniowej.
+	%%% Ci¹g zmiennych d³ugoœci N %%%
+	\vspace{0.35cm}\\Obserwujemy ci¹g krzywych d³ugoœci $N$. Zak³adamy, ¿e zmienna objaœniana $Y_n$, zmienne objaœniaj¹ce $X_n$ i b³êdy $\varepsilon_n$ s¹ scentrowanymi zmiennymi losowymi przyjmuj¹cymi wartoœci w przestrzeni Hilberta $L^2$. Oznaczaj¹c przez $X$ (analogicznie $Y$) zmienn¹ funkcjonaln¹ o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory kowariancji
+	\\\textcolor{red}{[ROZK£AD]}
+	\begin{equation}\label{eq:operatory}
+	C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ], \quad x \in L^2.
+	\end{equation}
+	Przez $\widehat{C}$, $\widehat{\Gamma}$, $\widehat{\Delta}$ oznaczamy ich estymatory (zgodnie z \eqref{eq:C}), tj.
+	\begin{equation*}
+	\widehat{C}(x)=  \frac{1}{N} \sum_{n=1}^N \left\langle X_n, x \right\rangle X_n, \quad \widehat{\Gamma}(x)=  \frac{1}{N} \sum_{n=1}^N \left\langle Y_n, x \right\rangle Y_n, \quad \widehat{\Gamma}(x)=  \frac{1}{N} \sum_{n=1}^N \left\langle X_n, x \right\rangle Y_n, \quad x \in L^2.
+	\end{equation*}
+	Definiujemy równie¿ wartoœci i wektory w³asne $C$ i $\Gamma$
+	\begin{equation}\label{eq:eigen}
+	C(\upsilon_k)=\lambda_k \upsilon_k, \quad \Gamma(u_j)=\gamma_j u_j,
+	\end{equation}
+	których estymatory bêdziemy oznaczaæ $(\widehat{\lambda}_k,\widehat{\upsilon}_k)$, $(\widehat{\gamma}_j,\widehat{u}_j)$.
+	\\Test obejmuje obciêcie powy¿szych operatorów na podprzestrzenie skoñczenie wymiarowe. Podprzestrzeñ $\mathcal{V}_p=\text{span}\{\upsilon_1,...,\upsilon_p\}$ zawiera najlepsze przybli¿enia $X_n$, które s¹ liniowymi kombinacjami pierwszych $p$ g³ównych sk³adowych (ang. \textit{Functional Principal Components, FPC}). 
+	%%% zmniejszenie wymiaru X i Y %%%
+	Metod¹ g³ównych sk³adowych wyznaczamy $p$ najwiêkszych wartoœci w³asnych operatora $\widehat{C}$ tak, ¿e $\widehat{\mathcal{V}}_p=\text{span}\{\widehat{\upsilon}_1,...,\widehat{\upsilon}_p\}$ zawiera najlepsze przybli¿enie $X_n$. Analogicznie $\mathcal{U}_q=\text{span}\{u_1,...,u_q\}$ zawiera przybli¿enia $\text{span}\{Y_1,...,Y_N\}$.
+	%Analogicznie $\widehat{\mathcal{U}}_q=\text{span}\{\widehat{u}_1,...,\widehat{u}_q\}$ zawiera przybli¿enie $Y_n$.
+	\vspace{0.35cm}\\Z ogólnej postaci funkcjonalnego modelu liniowego
+	\[ Y = \mathit{\Psi} X + \varepsilon \]
+	mo¿emy wyprowadziæ kolejne równoœci
+	\begin{align*}
+	\langle X, x \rangle Y &= \langle X, x \rangle \mathit{\Psi} X + \langle X, x \rangle \varepsilon
+	\\ \mathbb{E} \left[ \langle X, x \rangle Y \right] &= \mathbb{E} \left[  \langle X, x \rangle \mathit{\Psi} X \right] + \mathbb{E} \left[ \langle X, x \rangle \varepsilon \right].
+	\end{align*}
+	Korzystaj¹c z definicji operatorów $C$ oraz $\Delta$ \eqref{eq:operatory}, za³o¿enia, ¿e $\mathit{\Psi}$ jest operatorem ograniczonym oraz z za³o¿enia o braku korelacji miêdzy $X$ a $\varepsilon$ zachodzi
+	\[ \Delta = \mathit{\Psi} C. \]
+	W szczególnoœci, prawdziwa jest równoœæ
+	\[ \Delta (\upsilon_k) = \mathit{\Psi} C (\upsilon_k). \]
+	Na mocy definicji funkcji w³asnych \eqref{eq:eigen}, dla $k \leq p$, mamy 
+	\begin{equation*}
+	\mathit{\Psi}(\upsilon_k)=\lambda_k^{-1}\Delta(\upsilon_k).
+	\end{equation*}
+	St¹d, $\psi$ zeruje siê na $\text{span}\{\upsilon_1,...,\upsilon_p\}$ wtedy i tylko wtedy, gdy $\Delta(\upsilon_k)=0$ dla ka¿dego $k=1,...,p$. Zauwa¿my, ¿e
+	\begin{equation*}
+	\Delta(\upsilon_k) \approx \widehat{\Delta}(\upsilon_k) = \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \upsilon_k \right\rangle Y_n.
+	\end{equation*}
+	Skoro zatem $\text{span}\{Y_1,...,Y_N\}$ s¹ dobrze aproksymowane przez $\mathcal{U}_q$, to mo¿emy ograniczyæ siê do sprawdzania czy
+	\begin{equation}\label{eq:delta}
+	\Big\langle \widehat{\Delta}(\upsilon_k),u_j \Big\rangle=0, \quad k=1,...,p,\quad j=1,...,q.
+	\end{equation}
+	Jeœli H$_0$ jest prawdziwa, to dla ka¿dego $x \in \mathcal{V}_p$, $\psi(x)$ nie nale¿y do $\mathcal{U}_q$. Co znaczy, ¿e ¿adna funkcja $Y_n$ nie mo¿e byæ opisana jako liniowa kombinacja $X_n$, $n=1,...,N$.
+	Statystyka testowa powinna zatem sumowaæ kwadraty iloczynów skalarnych (\ref{eq:delta}). Twierdzenie \ref{T1} stanowi, ¿e statystyka
+	\begin{equation}\label{eq:stat}
+	\widehat{T}_N(p,q)=N\sum_{k=1}^p \sum_{j=1}^q \widehat{\lambda}_k^{-1} \widehat{\gamma}_j^{-1} \left\langle \widehat{\Delta}(\widehat{\upsilon}_k),\widehat{u}_j \right\rangle^2,
+	\end{equation}
+	zbiega wed³ug rozk³adu do rozk³adu $\chi^2$ z $pq$ stopniami swobody.
+	\\Przy czym
+	\begin{equation*}
+	\Big\langle \widehat{\Delta}(\widehat{\upsilon}_k),\widehat{u}_j \Big\rangle = \bigg\langle \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \widehat{\upsilon}_k \right\rangle Y_n,\widehat{u}_j \bigg\rangle = \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \widehat{\upsilon}_k \right\rangle \left\langle Y_n,\widehat{u}_j \right\rangle
+	\end{equation*}
+	oraz $\lambda_k=\mathbb{E}\left\langle X, \upsilon_k \right \rangle ^2$ i $\gamma_j=\mathbb{E}\left\langle Y, u_j \right \rangle ^2$.
+	%
+	\begin{uw}
+		Oczywistym jest, ¿e jeœli odrzucamy H$_0$, to $\psi(\upsilon_k)\neq 0$ dla pewnego $k\geq 1$. Jednak ograniczaj¹c siê do $p$ najwiêkszych wartoœci w³asnych, test jest skuteczny tylko jeœli $\psi$ nie zanika na którymœ wektorze $\upsilon_k$, $k=1,...,p$. Takie ograniczenie jest intuicyjnie niegroŸne, poniewa¿ test ma za zadanie sprawdziæ czy g³ówne Ÿród³a zmiennoœci $Y$ mog¹ byæ opisane przez g³ówne Ÿród³a zmiennoœci zmiennych $X$.
+	\end{uw}
+	%
+	\vspace{0.35cm}\textbf{Schemat przebiegu testu}
+	\begin{enumerate}
+		\item Sprawdzamy za³o¿enie o liniowoœci metod¹ \textit{FPC score predictor-response plots}.
+		\item Wybieramy liczbê g³ównych sk³adowych $p$ i $q$ metodami \textit{scree test} oraz \textit{CPV}.
+		\item Wyliczamy wartoœæ statystyki $\widehat{T}_N(p,q)$ (\ref{eq:stat}).
+		\item Jeœli $\widehat{T}_N(p,q) > \chi^2_{pq}(1-\alpha)$, to odrzucamy hipotezê zerow¹ o braku liniowej zale¿noœci. W przeciwnym razie nie mamy podstaw do odrzucenia H$_0$.
+	\end{enumerate}
+	\textcolor{red}{[rozwin¹æ i dopracowaæ powy¿sze punkty]}
+	%
+	\vspace{0.35cm}\\Przedstawiony test mo¿na stosowaæ ju¿ do prób wielkoœci 40, co pokazuj¹ autorzy pozycji \cite{HK} w Rozdziale 9.3.
+	%
+	\section{Rozk³ad statystyki testowej \textcolor{red}{[nazwa?]}}
+	% Formalne podstawy 
+	% Dowód poprawnoœci testu
+	% Uzasadnienie poprawnoœci testu
+	% Analiza teoretyczna testu
+	%
+	\begin{zal}\label{Z1} \cite{K08}, \cite{HK}
+		\\Trójka $(Y_n,X_n, \varepsilon_n)$ tworzy ci¹g niezale¿nych zmiennych funkcjonalnych o jednakowym rozk³adzie, takich ¿e $\varepsilon_n$ jest niezale¿ne od $X_n$ oraz
+		\begin{equation*}
+		\mathbb{E}X_n=0, \quad \mathbb{E}\varepsilon_n=0,
+		\end{equation*}
+		\begin{equation*}
+		\mathbb{E} \|X_n\|^4<\infty \quad \text{i} \quad \mathbb{E}\|\varepsilon_n\|^4<\infty.
+		\end{equation*}
+	\end{zal}
+	%
+	\begin{zal}\label{Z2} \cite{K08}, \cite{HK}
+		\\Wartoœci w³asne operatorów $C$ oraz $\Gamma$ spe³niaj¹, dla pewnych $p>0$ i $q>0$
+		\begin{equation*}
+		\lambda_1>\lambda_2>...>\lambda_p>\lambda_{p+1}, \quad \gamma_1>\gamma_2>...>\gamma_q>\gamma_{q+1}.
+		\end{equation*}
+	\end{zal}
+	%
+	\begin{tw}\label{T1} \cite{K08}, \cite{HK}
+		\\Jeœli spe³nione s¹ powy¿sze Za³o¿enia \ref{Z1}, \ref{Z2} oraz H$_0$, to $\widehat{T}_N(p,q) \overset{d}{\longrightarrow}\chi^2_{pq} $ przy $N \rightarrow \infty$.
+	\end{tw}
+	%
+	\begin{tw}\label{T2} \cite{K08}, \cite{HK}
+		\\Przy Za³o¿eniach \ref{Z1}, \ref{Z2} oraz jeœli $\left\langle \psi(\upsilon_k),u_j \right\rangle \neq 0$ dla $k \leq p$ oraz $j \leq q$, to $\widehat{T}_N(p,q) \overset{P}{\longrightarrow} \infty $ przy $N \rightarrow \infty$. 
+	\end{tw}
+	Dowody powy¿szych twierdzeñ rozbijemy w krokach na kolejne lematy i wnioski. \textcolor{red}{...}
+	\\Zauwa¿my, ¿e konsekwencj¹ prawdziwoœci H$_0$ i przyjêcia modelu postaci $Y_n = \mathit{\Psi} X_n + \varepsilon_n$ jest równoœæ $Y_n = \varepsilon_n$. \textcolor{red}{?}
+	%
+	%%% zbie¿noœci wynikaj¹ce z powy¿szych za³o¿eñ %%%
+	%%% potrzebne? %%%
+	%
+	\begin{lem}\label{L1} \cite{K08}, \cite{B}
+		\\Wed³ug oznaczeñ podrozdzia³u \ref{r:FPC}, przy Za³o¿eniach \ref{Z1}, \ref{Z2} spe³nione s¹ nierównoœci
+		\begin{equation*}
+		\limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left\| \upsilon_k - \widehat{\upsilon}_k \right\|^2 < \infty, \quad \limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left\| u_j - \widehat{u}_j \right\|^2 < \infty,
+		\end{equation*}
+		\begin{equation*}
+		\limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left[ \left| \gamma_k - \widehat{\gamma}_k \right|^2 \right]  < \infty, \quad \limsup \limits_{N \rightarrow \infty} N \mathbb{E} \left[ \left| \lambda_j - \widehat{\lambda}_j \right|^2 \right] < \infty,
+		\end{equation*}
+		dla $k \leq p$ oraz $j \leq q$.
+	\end{lem}
+	%
+	\textcolor{red}{[}\begin{tw}\label{CTG} Centralne Twierdzenie Graniczne \cite{HK}, \cite{B}
+		\\Niech $\{ X_n\}_{n \geq 1}$ bêdzie ci¹giem zmiennych funkcjonalnych o jednakowym rozk³adzie przyjmuj¹cych wartoœci w oœrodkowej przestrzeni Hilberta. Jeœli $\mathbb{E}\|X_1 \|^2 < \infty$, $\mathbb{E} X_1 = \mu$ i $C_{X_1}=C$, wtedy
+		\begin{equation*}
+		N^{-1/2} \sum_{n=1}^{N} X_n \overset{d}{\longrightarrow} \mathcal{N},
+		\end{equation*}
+		gdzie $\mathcal{N} \sim \mathcal{N}(0,C)$.
+	\end{tw}
+	\textcolor{red}{]}
+	%
+	\begin{lem}\label{L2} \cite{K08}, \cite{HK}
+		\\Jeœli spe³nione s¹ Za³o¿enia \ref{Z1}, \ref{Z2} i H$_0$, to dla $k \leq p$, $j \leq q$
+		\begin{equation}\label{eq:L2.1}
+		\sqrt{N} \langle \widehat{\Delta} \upsilon_k, u_j \rangle  \stackrel{d}{\longrightarrow} \eta_{kj} \sqrt{ \gamma_k \lambda_j },
+		\end{equation}
+		gdzie $\eta_{kj} \sim N(0,1)$. Przy czym $\eta_{k,j}$ oraz $\eta_{k'j'}$ s¹ niezale¿ne dla $(k,j) \neq (k',j')$.
+	\end{lem}
+	\textit{Dowód.} Przy H$_0$
+	\begin{equation*}
+	\sqrt{N} \langle \widehat{\Delta} \upsilon_k, u_j \rangle  = N^{-1/2} \sum_{n=1}^N \langle X_n, \upsilon_k \rangle \langle \varepsilon_n , u_j \rangle,
+	\end{equation*}
+	gdzie elementy pod sum¹ po prawej stronie powy¿szej równoœci maj¹ œrednie $0$ i wariancje równe $\lambda_k \gamma_j$, co na mocy CTG (Twierdzenie \ref{CTG}) koñczy dowód \eqref{eq:L2.1}. \textcolor{red}{[skalarne CTG?]}
+	\\Aby udowodniæ niezale¿noœæ miêdzy $\eta_{kj}$ i $\eta_{k'j'}$ dla $(k,j) \neq (k',j')$, wystarczy pokazaæ, ¿e $\sqrt{N}(\widehat{\Delta} (\upsilon_k), u_j )$ i $\sqrt{N}(\widehat{\Delta} (\upsilon_{k'}), u_{j'} )$ s¹ nieskorelowane. Mamy
+	\begin{align*}
+	\mathbb{E} &\left[ \sqrt{N} \langle \widehat{\Delta} (\upsilon_k), u_j \rangle , \sqrt{N} \langle \widehat{\Delta} (\upsilon_{k'}), u_{j'} \rangle \right]
+	\\&= N \mathbb{E} \left[ \Big\langle \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \upsilon_k \right\rangle Y_n, u_j \Big\rangle , \Big\langle \frac{1}{N} \sum_{n'=1}^N \left\langle X_{n'}, \upsilon_{k'} \right\rangle Y_{n'}, u_{j'} \Big\rangle \right]
+	\\&= N \mathbb{E} \left[ \Big\langle \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \upsilon_k \right\rangle ( \mathit{\Psi} X_n + \varepsilon_n ), u_j \Big\rangle , \Big\langle \frac{1}{N} \sum_{n'=1}^N \left\langle X_{n'}, \upsilon_{k'} \right\rangle ( \mathit{\Psi} X_{n'} + \varepsilon_{n'}), u_{j'} \Big\rangle \right]
+	\\&\overset{\text{H}_0}{=} \frac{1}{N} \mathbb{E} \left[ \sum_{n=1}^N \langle X_n, \upsilon_k \rangle \langle \varepsilon_n , u_j \rangle \sum_{n'=1}^N \langle X_{n'}, \upsilon_{k'} \rangle \langle \varepsilon_{n'} , u_{j'} \rangle \right]
+	\\&= \frac{1}{N} \sum_{n,n'=1}^N \mathbb{E} \left[ \langle X_n, \upsilon_k \rangle \langle X_{n'}, \upsilon_{k'} \rangle \right] \mathbb{E} \left[ \langle \varepsilon_n , u_j \rangle  \langle \varepsilon_{n'} , u_{j'} \rangle \right]
+	\\&= \frac{1}{N} \sum_{n=1}^N \mathbb{E} \left[ \langle X_n, \upsilon_k \rangle \langle X_n, \upsilon_{k'} \rangle \right] \mathbb{E} \left[ \langle \varepsilon_n , u_j \rangle  \langle \varepsilon_n , u_{j'} \rangle \right]
+	\\&= \langle C(\upsilon_k), \upsilon_{k'} \rangle \langle \Gamma u_j, u_{j'} \rangle = \gamma_k \delta_{kk'} \gamma_j \delta_{jj'}.
+	\end{align*}
+	 \textcolor{red}{[zastanowiæ siê nad tym/dopracowaæ]}\hfill $\square$
+	%
+	\vspace{0.35cm}\\Przypomnijmy, ¿e norma Hilberta-Schmidta operatora Hilberta-Schmidta $S$ zdefiniowana jest wzorem $\left\| S \right\|^2_{\mathcal{S}}=\sum_{j=1}^{\infty} \left\| S(e_j) \right\|^2$, gdzie ci¹g $\{e_1, e_2,...\}$  stanowi bazê ortonormaln¹ oraz, ¿e norma ta jest nie mniejsza od normy operatorowej, tj. $\left\| S \right\|^2_{\mathcal{L}} \leq \left\| S \right\|^2_{\mathcal{S}}$.
+	%
+	\begin{lem}\label{L3} \cite{K08}, \cite{HK}
+		\\Przy za³o¿eniach Twierdzenia \ref{T1} mamy
+		\begin{equation*}	
+		\mathbb{E} \left\| \widehat{\Delta} \right\|^2_{\mathcal{S}} = N^{-1} \mathbb{E} \left\| X \right\|^2 \mathbb{E} \left\| \varepsilon_1 \right\|^2.
+		\end{equation*}
+	\end{lem}
+	\textit{Dowód.} Zauwa¿my, ¿e
+	\[ \left\| \widehat{\Delta}(e_j)\right\|^2 = N^{-2} \sum_{n,n'=1}^N \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle Y_n, Y_{n'} \rangle . \]
+	St¹d, przy za³o¿eniu H$_0$, mamy
+	\begin{align*}
+	\mathbb{E} \left\| \widehat{\Delta} \right\|^2_{\mathcal{S}} &= N^{-2} \sum_{j=1}^{\infty} \sum_{n,n'=1}^N \mathbb{E} \big[ \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle \varepsilon_n, \varepsilon_{n'} \rangle \big]
+	\\&= N^{-2} \sum_{j=1}^{\infty} \sum_{n=1}^N \mathbb{E}  \langle X_n, e_j \rangle^2 \ \mathbb{E} \left\| \varepsilon_n \right\|^2
+	\\&= N^{-1} \mathbb{E} \left\| \varepsilon_1 \right\|^2  \sum_{j=1}^{\infty} \langle X, e_j \rangle^2 = N^{-1} \mathbb{E} \left\| \varepsilon_1 \right\|^2 \left\| X \right\|^2. 
+	\end{align*}
+	\hfill $\square$
+	%
+	\begin{lem}\label{LP} \cite{K08}, \cite{HK}
+		\\Za³ó¿my, ¿e $\{U_n\}_{n=1}^{\infty}$ oraz $\{V_n\}_{n=1}^{\infty}$ s¹ ci¹gami elementów losowych z przestrzeni Hilberta takich, ¿e $\| U_n \| \overset{P}{\rightarrow} 0$ i $\| V_n \| = O_P (1)$, tj. $$\lim_{C \rightarrow \infty}\limsup_{n \rightarrow \infty} P(\|V_n \| >C) =0.$$
+		Wtedy zachodzi
+		\begin{equation*}
+		\langle U_n, V_n \rangle \overset{P}{\longrightarrow} 0.
+		\end{equation*}
+	\end{lem}
+	\textit{Dowód.} Prawdziwoœæ lematu wynika z analogicznej w³asnoœci dla losowych ci¹gów liczb rzeczywistych i nierównoœci $| \langle U_n, V_n \rangle | \leq \| U_n \| \| V_n \| $.
+	\\\textcolor{red}{[mo¿e lepiej przytoczyæ skalarn¹ wersjê?]}
+	\hfill $\square$
+	%
+	\begin{lem}\label{L4} \cite{K08}, \cite{HK}
+		\\Przy za³o¿eniach Twierdzenia \ref{T1}, dla $k \leq p$, $j \leq q$ zachodzi
+		\begin{equation*}
+		\sqrt{N} \big\langle \widehat{\Delta} (\hat{\upsilon}_k), \hat{u}_j \big\rangle  \stackrel{d}{\longrightarrow} \eta_{kj} \sqrt{ \lambda_k \gamma_j },
+		\end{equation*}
+		gdzie $\eta_{kj}$ definiowane s¹ jak w Lemacie \ref{L2}.
+	\end{lem}
+	\textit{Dowód.} Na mocy Lematu \ref{L2}, wystarczy pokazaæ, ¿e
+	\begin{equation}\label{eq:L4.1}
+	\sqrt{N} \big\langle \widehat{\Delta} (\hat{\upsilon}_k), \hat{u}_j \big\rangle - \sqrt{N} \big\langle \widehat{\Delta} (\upsilon_k), u_j \big\rangle \stackrel{P}{\longrightarrow} 0.
+	\end{equation}
+	Równoœæ \eqref{eq:L4.1} wynika z nierównoœci trójk¹ta oraz z
+	\begin{equation}\label{eq:L4.2}
+	\sqrt{N} \big\langle \widehat{\Delta} (\hat{\upsilon}_k), \hat{u}_j - u_j \big\rangle \stackrel{P}{\longrightarrow} 0
+	\end{equation}
+	i
+	\begin{equation}\label{eq:L4.3}
+	\sqrt{N} \big\langle \widehat{\Delta} (\hat{\upsilon}_k - \upsilon_k), \hat{u}_j \big\rangle \stackrel{P}{\longrightarrow} 0.
+	\end{equation}
+	Aby udowodniæ równoœæ \eqref{eq:L4.2}, zauwa¿my, ¿e z Lematu \ref{L1} mamy $\sqrt{N}(\hat{u}_j - u_j) = O_P(1)$ oraz, na mocy Lematu \ref{L3}, $\mathbb{E} \| \widehat{\Delta}(\upsilon_k) \| \leq \mathbb{E} \| \widehat{\Delta} \|_{\mathcal{S}} = O(N^{-1/2})$. St¹d równoœæ \eqref{eq:L4.2} wynika z Lematu \ref{LP}.
+	\\Aby wykorzystaæ takie samo uzasadnienie dla \eqref{eq:L4.3} (skorzystaæ z Lematu \ref{L1}), zauwa¿my, ¿e
+	\begin{equation*}
+	\sqrt{N} \big\langle \widehat{\Delta} (\hat{\upsilon}_k - \upsilon_k), \hat{u}_j \big\rangle = \sqrt{N} \big\langle  \hat{\upsilon}_k - \upsilon_), \widetilde{\Delta} (\hat{u}_j) \big\rangle, 
+	\end{equation*}
+	gdzie $	\widetilde{\Delta} (x) = N^{-1} \sum_{n=1}^N \left\langle Y_n, x \right\rangle X_n $. Lemat \ref{L3} stanowi, ¿e przy za³o¿eniu H$_0$ mamy $\mathbb{E} \| \widetilde{\Delta} \|_{\mathcal{S}} = \mathbb{E} \| \widehat{\Delta} \|_{\mathcal{S}}$, co koñczy dowód.
+	%%% O_P wy¿ej %%%
+	\\\textcolor{red}{[na pewno?]}\hfill $\square$
+	%
+	\vspace{0.35cm}\\Z Lematu \ref{L1}, $\hat{\lambda}_k \overset{P}{\rightarrow} \lambda_k$ oraz $\hat{\gamma}_j \overset{P}{\rightarrow} \gamma_j$.
+	%
+	\begin{wn} \cite{K08}, \cite{HK}
+		\\Przy za³o¿eniach Twierdzenia \ref{T1}, dla $j \leq q$, $k \leq p$ zachodzi
+		\begin{equation*}
+		\sqrt{N} \Big\langle \hat{\lambda}_k^{-1/2} \hat{\gamma}_j^{-1/2} \widehat{\Delta} (\hat{\upsilon}_k), \hat{u}_j \Big\rangle  \stackrel{d}{\longrightarrow} \eta_{kj} ,
+		\end{equation*}
+		gdzie $\eta_{kj}$ definiowane s¹ jak w Lemacie \ref{L2}.
+	\end{wn}
+	%
+	\textit{Dowód Twierdzenia \ref{T1}} \textcolor{red}{[...]}
+	%
+	\begin{lem}\label{L5} \cite{K08}, \cite{HK}
+		\\Jeœli $\{Y_n\}_{n\geq 1}$ s¹ zmiennymi funkcjonalnymi o jednakowych rozk³adach, to zachodzi
+		\[ \mathbb{E} \| \widehat{\Delta} \| \leq \mathbb{E} \| Y \|^2. \]
+	\end{lem}
+	\textit{Dowód.} Dla dowolnego $u \in L^2$ takiego, ¿e $\| u\| \leq 1$, mamy
+	\begin{equation*}
+	\| \widehat{\Delta} u \| \leq \frac{1}{N} \sum_{n=1}^N | \langle Y_n, u \rangle | \| Y_n \| \leq \frac{1}{N} \sum_{n=1}^{N} \| Y_n \|^2.
+	\end{equation*}
+	Co ze wzglêdu na za³o¿enie, ¿e $Y_n$ maj¹ jednakowy rozk³ad, jest równowa¿ne tezie lematu. \hfill $\square$
+	%
+	\begin{tw}\label{SLLN} Mocne Prawo Wielkich Liczb \cite{B}
+		\\Niech $\{ X_n\}_{n \geq 1}$ bêdzie ci¹giem zmiennych funkcjonalnych o jednakowym rozk³adzie przyjmuj¹cych wartoœci w oœrodkowej przestrzeni Hilberta takich, ¿e $\mathbb{E}\|X_n \|^2 < \infty$. Niech $m = \mathbb{E} X_n$, wtedy mamy
+		\begin{equation*}
+		\frac{1}{N} \sum_{n=1}^{N} X_n \overset{p.n.}{\longrightarrow} m.
+		\end{equation*}
+	\end{tw}
+	%%% dowód u Bosq'a %%%
+	%%% zbie¿noœæ prawie na pewno ~ zbie¿noœæ prawie wszêdzie %%%
+	%
+	\begin{lem}\label{L6} \cite{K08}, \cite{HK}
+		\\Je¿eli spe³nione jest Za³o¿enie \ref{Z1}, to dla dowolnych funkcji $\upsilon, u \in L^2$
+		\begin{equation*}
+		\langle \widehat{\Delta}(\upsilon), u \rangle \overset{P}{\longrightarrow} \langle \Delta (\upsilon), u \rangle.
+		\end{equation*}
+	\end{lem}
+	\textit{Dowód.} Tezê otrzymujemy korzystaj¹c z Prawa Wielkich Liczb zauwa¿aj¹c
+	\begin{equation*}
+	\langle \widehat{\Delta}(\upsilon), u \rangle = \frac{1}{N} \sum_{n=1}^N \langle X_n , \upsilon \rangle \langle Y_n , u \rangle
+	\end{equation*}
+	oraz
+	\begin{equation*}
+	\mathbb{E} \big[ \langle X_n , \upsilon \rangle \langle Y_n , u \rangle \big] = \mathbb{E} \big[  \langle \langle X_n , \upsilon \rangle Y_n , u \rangle \big] = \langle \Delta(\upsilon), u \rangle.
+	\end{equation*}
+	\hfill $\square$
+	%
+	\begin{lem}\label{L7} \cite{K08}, \cite{HK}
+		\\Je¿eli spe³nione s¹ Za³o¿enia \ref{Z1} oraz \ref{Z2}, to
+		\begin{equation*}
+		\langle \widehat{\Delta}(\hat{\upsilon}_k), \hat{u}_j \rangle \overset{P}{\longrightarrow} \langle \Delta (\upsilon_k), u_j \rangle, \quad \text{dla } k \leq p, \ j \leq q.
+		\end{equation*}
+	\end{lem}
+	\textit{Dowód.} Na mocy Lematu \ref{L6} wystarczy pokazaæ
+	\begin{equation*}
+	\langle \widehat{\Delta}(\upsilon_k), \hat{u}_j - u_j \rangle \overset{P}{\longrightarrow} 0
+	\end{equation*}
+	i
+	\begin{equation*}
+	\langle \widehat{\Delta}(\hat{\upsilon}_k) - \widehat{\Delta}(\upsilon_k), \hat{u}_j \rangle \overset{P}{\longrightarrow} 0.
+	\end{equation*}
+	Relacje te wynikaj¹ z Lematów \ref{LP}, \ref{L1} \textcolor{red}{[na pewno?]} oraz \ref{L5}.
+	\hfill $\square$
+	%
+	\vspace{0.4cm}
+	\\\textit{Dowód Twierdzenia \ref{T2}.} WprowadŸmy oznaczenie
+	\begin{equation*}
+	\widehat{S}_N (p,q) = \sum_{k=1}^p \sum_{j=1}^q \hat{\lambda}^{-1}_k \hat{\gamma}^{-1}_j \langle \widehat{\Delta}(\hat{\upsilon}_k), \hat{u}_j \rangle ^2.
+	\end{equation*}
+	Na mocy Lematu \ref{L7} oraz Lematu \ref{L1} \textcolor{red}{[na pewno?]}, zachodzi
+	\[ \widehat{S}_N (p,q) \overset{P}{\longrightarrow} S(p,q) > 0 . \]
+	St¹d,
+	\[ \widehat{T}_N (p,q) = N \widehat{S}_N (p,q) \overset{P}{\longrightarrow} \infty. \]
+	\hfill $\square$
+	\\\textcolor{red}{[...?]}	
+	%
+	%
+	\chapter{Przyk³ad zastosowania}
+	Podobnie jak w artykule \cite{K08} oraz ksi¹¿ce \cite{HK}, zastosujemy przedstawiony test do\textcolor{red}{/dla?} modelu stworzonego na podstawie danych opisuj¹cych natê¿enie pola magnetycznego Ziemi. Takie dane zbierane s¹ przez stacje geofizyczne i publikowane s¹ w ramach miêdzynarodowego programu INTERMAGNET na stronie internetowej projektu \cite{I}. Do programu nale¿y obecnie 129 naziemnych obserwatoriów, w tym dwie stacje znajduj¹ce siê w Polsce (mapa stacji na Rysunku \ref{fig:mapa}).
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.87]{mapa_stacji.png}
+		\caption{Mapa stacji geofizycznych nale¿¹cych do programu INTERMAGNET, Ÿród³o: strona internetowa projektu \cite{I} }
+		\label{fig:mapa}
+	\end{figure}
+	% uaktualnic rysynek?
+	\\\textcolor{red}{[SuperMAG]: lub \textbf{H}, D, Z?} 
+	\\\textcolor{red}{[odnoœnik do rysunku z przyk³adowymi obserwacjami]}
+	\\\textcolor{red}{[...](poziome i pionowe intensywnoœci?)}
+	\\\textcolor{red}{Magnetometer data... }
+	\\Mianem \textbf{pogody kosmicznej} nazywamy charakteryzacjê zjawisk w przestrzeni miêdzyplanetarnej oddzia³uj¹cych na atmosferê ziemsk¹. G³ównym Ÿród³em jej zmian s¹ wahania aktywnoœci s³onecznej. S³oñce stale emituje na³adowane cz¹steczki, które docieraj¹ do Ziemi w postaci tzw. wiatrów s³onecznych i mog¹ powodowaæ pewne anomalie w magnetosferze i jonosferze ziemskiej. \textcolor{red}{...zorze polarne + subburze (substorms),... }
+	\\Pogoda kosmiczna wp³ywa na dzia³anie satelitów, promów kosmicznych, komunikacjê radiow¹ i telefoniczn¹, loty samolotowe, na funkcjonowanie elektrowni, mo¿liwe ¿e tak¿e na klimat na Ziemi oraz na ¿ycie zwierz¹t oraz roœlin. Zatem obserwacja i zrozumienie jej procesów, w tym subburz, jest niezwykle istotne do kontrolowania i przewidywania jej skutków.
+	\\Celem testu jest zbadanie, czy zmiany w polu magnetycznym na wysokich szerokoœciach geograficznych maj¹ wp³yw na pole na œrednich szerokoœciach geograficznych, ...\\Dane o polu magnetycznym, generowanym przez pr¹d elektryczny przep³ywaj¹cy przez ziemsk¹ magnetosferê i jonosferê, rejestrowane s¹ za pomoc¹ tzw. magnetometru. To naziemne urz¹dzenie odczytuje kilka sk³adowych natê¿enia pola magnetycznego, nas interesowaæ bêdzie sk³adowa horyzontalna (H, \textit{Horizontal}), która wskazuje na wielkoœæ natê¿enia pola magnetycznego skierowanego w stronê magnetycznej pó³nocy. ...
+	\\\textcolor{red}{[...]}	
+	\\Ze strony programu INTERMAGNET mo¿na pobraæ dane dok³adne: w odstêpach jednosekundowych lub uproszczone: w odstêpach jednominutowych (obserwacja jest œredni¹ z 60 sekund). W pracy wykorzystano dane uproszczone, mamy zatem 1440 punktów ka¿dego dnia, przypisanych wed³ug czasu centralnego, które pos³u¿¹ nam do stworzenia danych funkcjonalnych. Tym sposobem jeden dzieñ stanie siê jedn¹ obserwacj¹.
+	% \footnote{Poza sytuacjami z brakiem czêœci danych.}
+	\\\textcolor{red}{Korzystaj¹c z dostêpnego pakietu \textit{fda} (\cite{R})...}
+	\\\textcolor{red}{scentrowanie danych?}
+	\\\textcolor{red}{za³o¿enia}
+	\\Ze wzglêdu na czêœciowe braki danych w obserwacjach musieliœmy przyj¹æ pewne za³o¿enia odnoœnie ich traktowania. W przypadku niektórych dni brakuje tylko jednej czy dwóch obserwacji, niekiedy jednak luki w zapisie danych dotycz¹ przynajmniej kilku godzin. Odsetek dni z brakami danych jest na tyle du¿y, ¿e nie chcemy odrzucaæ bezwzglêdnie wszystkich dni z niedoborem danych. Przyjmujemy zatem nastêpuj¹ce podejœcie: w przypadku braku wiêcej ni¿ 10 wartoœci (10 minut) dzieñ zostanie odrzucony z analiz, jeœli jednak brakuje nie wiêcej ni¿ 10 punktów w ci¹gu dnia obserwacje zostan¹ zachowane przy dope³nieniu braków danych ostatni¹ znan¹ wartoœci¹ (w przypadku braku wartoœci pocz¹tkowych bierzemy pierwsz¹ znan¹ wartoœæ).
+	%
+	\section{Ameryka Pó³nocna (Kanada)}
+	W krêgu zainteresowañ autorów artyku³u \cite{K08} le¿¹ dane pochodz¹ce z obserwatoriów Ameryki Pó³nocnej, zaczniemy zatem od analizy podobnych danych.
+	\vspace{0.35cm}\\Rozwa¿aæ bêdziemy okres od 1 stycznia do 30 czerwca 2001 roku...\textcolor{red}{[do sierpnia?]}
+	\\\textcolor{red}{[podaæ liczbê braków danych - liczbê wykluczeñ oraz nadpisanych wartoœci]}
+	\\\textcolor{red}{[wskazanie obserwatoriów z podzia³em na wysokie, œrednie i niskie szerokoœci geograficzne - wraz z dok³adnymi szerokoœciami]}
+	\\\textcolor{red}{[WYKRESY - przyk³ad danych] [jednostka!? nT]}
+	\\\textcolor{red}{[...]}
+	\vspace{0.35cm}\\\textcolor{red}{[do opracowania: punkt po punkcie wed³ug opisu procedury testowej w rozdziale 2]}
+	\\\textcolor{red}{[do opracowania: kod w R!]}
+	\\\textcolor{red}{[pytanie: wykonaæ to samo dla nowszych danych?]}
+	%
+	\section{Europa (Polska)}
+	Do programu INTERMAGNET nale¿¹ tak¿e dwie polskie stacje geofizyczne: obserwatorium w Belsku oraz obserwatorium na Helu. Przeprowadzimy zatem podobna j.w. analizê dla Europy. Wybraliœmy ? obserwatoriów: 
+	\\\textcolor{red}{[wskazanie obserwatoriów z podzia³em na wysokie, œrednie i niskie szerokoœci geograficzne - wraz z dok³adnymi szerokoœciami]}
+	\\Do analiz wykorzystamy najœwie¿sze dane:  od 1 stycznia do ? 2015 roku...
+	\\\textcolor{red}{[podaæ liczbê braków danych - liczbê wykluczeñ oraz nadpisanych wartoœci]}
+	\\\textcolor{red}{[...]}
+	%
+	\appendix
+	%
+	\chapter{Kod w R}
+	Poni¿ej za³¹czony jest kod napisany w jêzyku R wykorzystany w przedstawionym wy¿ej przyk³adzie.
+	\\\textcolor{red}{[zaktualizuj KOD]}
+	\begin{verbatim}
+	#-------------------------------------------------------------------------
+	# WCZYTYWANIE DANYCH BEZPOŒREDNIO Z PLIKÓW .min
+	#-------------------------------------------------------------------------
+	# BOU - STYCZEÑ
+	BOU.1.1<-t(matrix(as.numeric(array(scan(file="D:/.../bou20010101dmin.min",
+	what="list", skip=26), dim=c(7,1440))[3:4,]),nrow=2,ncol=1440))
+	BOU.1.2<-t(matrix(as.numeric(array(scan(file="D:/.../bou20010102dmin.min",
+	what="list", skip=26), dim=c(7,1440))[3:4,]),nrow=2,ncol=1440))
+	...
+	#
+	BOU.1<-cbind(BOU.1.1[,2],BOU.1.2[,2],...,BOU.1.30[,2],BOU.1.31[,2])
+	...
+	#-------------------------------------------------------------------------
+	# PREZENTACJA DANYCH
+	#-------------------------------------------------------------------------
+	t<-1:1440
+	plot(x=t,y=BOU.1.1[,2],type="l")
+	...
+	#-------------------------------------------------------------------------
+	# USUNIÊCIE BRAKÓW DANYCH
+	#-------------------------------------------------------------------------
+	# braki danych = 99999 lub 88888
+	#
+	# ZLICZANIE BRAKÓW DANYCH
+	zlicz.braki<-function(zbior){
+	braki<<-c()
+	n<-dim(zbior)
+	for (i in 1:n[2]){
+	braki<<-c(braki,length(which(zbior[,i]>80000)))
+	}
+	braki
+	}
+	zlicz.braki(BOU.1)
+	length(which(braki>0))
+	
+	# ZAMIANA ZBIORU - USUNIÊCIE/PODMIANA BRAKÓW DANYCH
+	zmien.braki<-function(zbior){
+	n<-dim(zbior)
+	temp<<-zbior
+	braki<<-c()
+	for (i in 1:30){
+	b1<<-which(zbior[,i]>80000)
+	b2<<-length(b1)
+	braki<<-c(braki,b2)
+	if (b2>0 & b2<11){
+	if(b1[1]==1 & b2==1){
+	temp[1,i]<<-temp[2,i]
+	}else if(b1[1]==1 & b2>1 & b1[2]!=2){
+	temp[1,i]<<-temp[2,i]
+	for (j in b1[-1]) temp[j,i]<-temp[j-1,i]
+	}else if(b1[1]==1 & b1[2]==2){
+	pierwsza<<-which(b1[-b2]!=b1[-1]-1)
+	if (length(pierwsza)<1){ pierwsza<<-b1[b2]
+	temp[1:pierwsza,i]<<-temp[pierwsza+1,i]
+	}else{ temp[1:pierwsza[1],i]<-temp[pierwsza[1]+1,i]
+	for (j in b1[pierwsza[1]+1:(b2-pierwsza[1])]){ temp[j,i]<-temp[j-1,i]} } 
+	}else if(b1[1]>1){ for (j in b1) temp[j,i]<-temp[j-1,i]
+	}
+	}
+	}
+	temp<<-temp[,-which(braki>10)]
+	}
+	
+	zmien.braki(BOU.1)
+	\end{verbatim}
+	\textcolor{red}{[zaktualizuj KOD]}
+	%
+	%
+	\begin{thebibliography}{99}
+		\addcontentsline{toc}{chapter}{Bibliografia}
+		
+		\bibitem[Bosq]{B} D. Bosq, \textit{Linear Processes in Function Spaces}. Springer, 2000.
+		
+		\bibitem[Ferraty, Vieu]{FV} F. Ferraty, P. Vieu, \textit{Nonparametric Functional Data Analysis. Theory and practice}. Springer, 2006.
+		
+		\bibitem[Horv\'{a}th, Kokoszka]{HK} L. Horv\'{a}th, P. Kokoszka, \textit{Interference for Functional Data with Applications}. Springer, 2012.
+		
+		\bibitem[I]{I} INTERMAGNET \url{http://www.intermagnet.org/index-eng.php}
+		
+		\bibitem[Kokoszka et al. (2008)]{K08} P. Kokoszka, I. Maslova, J. Sojka, L. Zhu, \textit{Testing for lack of dependence in the functional linear model}. Canadian Journal of Statistics, 2008, 36, 207-222.
+		
+		\bibitem[Maslova et al. (2010)]{K10} Maslova, I., Kokoszka, P., Sojka, J. and Zhu, L., \textit{Statistical significance
+		testing for the association of magnetometer records at high–, mid– and low latitudes during substorm days}. Planetary and Space Science, 58 (2010), 437–445.
+		
+		\bibitem[Pytlik]{P} T. Pytlik, \textit{Analiza funkcjonalna}. Instytut Matematyczny Uniwersytetu Wroc³awskiego, 2000.
+		
+		\bibitem[R: fda]{R} J. O. Ramsay, H. Wickham, S. Graves, G. Hooker, \textit{Package 'fda'}, wersja 2.4.4. On-line: \url{https://cran.r-project.org/web/packages/fda/fda.pdf}
+		
+		\bibitem[Ramsay, et al. (2009)]{R09} J. O Ramsay, G. Hooker and S. Graves, \textit{Functional Data Analysis with R and Matlab}. Springer, 2009.
+		
+		\bibitem[Ramsay, Silverman]{RS05} J. O. Ramsay, B. W. Silverman, \textit{Functional Data Analysis}. Springer, 2005.
+		
+		\bibitem[Wojtaszczyk]{W} P. Wojtaszczyk, \textit{Banach Spaces For Analysts}. Cambridge Universiti Press, 1991, 86-87.
+		
+		
+	\end{thebibliography}
+	
+\end{document}
+

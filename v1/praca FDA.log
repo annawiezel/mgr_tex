@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.24)  21 OCT 2015 00:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.24)  27 DEC 2015 23:24
 entering extended mode
 **praca*FDA.tex
-("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.tex"
+("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\v1\praca FDA.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,7 +13,7 @@ german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\pracamgr.cls"
+("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\v1\pracamgr.cls"
 Document Class: pracamgr 2006/05/05 v0.5.0 Praca magisterska
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\report.cls"
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
@@ -499,75 +499,115 @@ Package upgreek Info: Using Euler Roman for upright Greek on input line 31.
 LaTeX Font Info:    Overwriting symbol font `ugrf@m' in version `bold'
 (Font)                  U/eur/m/n --> U/eur/b/n on input line 38.
 )
-\c@df=\count124
-\c@uw=\count125
-\c@wn=\count126
-\c@zal=\count127
-\c@np=\count128
-\c@lem=\count129
-\c@tw=\count130
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdfpages\pdfpages.sty"
+Package: pdfpages 2015/09/18 v0.5d Insert pages of external PDF documents (AM)
 
-("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.sty"
+Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\atbegshi.sty"
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)))
+\AM@pagewidth=\dimen164
+\AM@pageheight=\dimen165
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdfpages\pppdftex.def"
+File: pppdftex.def 2015/09/18 v0.5d Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box39
+\AM@toc@title=\toks35
+\c@AM@survey=\count124
+\AM@templatesizebox=\box40
+)
+\c@df=\count125
+\c@uw=\count126
+\c@wn=\count127
+\c@zal=\count128
+\c@np=\count129
+\c@lem=\count130
+\c@tw=\count131
+
+("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\v1\praca FDA.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count131
-\scratchdimen=\dimen164
-\scratchbox=\box39
-\nofMPsegments=\count132
-\nofMParguments=\count133
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count134
-\MPscratchDim=\dimen165
-\MPnumerator=\count135
-\makeMPintoPDFobject=\count136
-\everyMPtoPDFconversion=\toks36
+\scratchcounter=\count132
+\scratchdimen=\dimen166
+\scratchbox=\box41
+\nofMPsegments=\count133
+\nofMParguments=\count134
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count135
+\MPscratchDim=\dimen167
+\MPnumerator=\count136
+\makeMPintoPDFobject=\count137
+\everyMPtoPDFconversion=\toks37
 )
-\c@lstlisting=\count137
+\c@lstlisting=\count138
  ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for OML+plm on input line 68.
+\AtBeginShipoutBox=\box42
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\pdflscape.sty"
+Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+))
+LaTeX Font Info:    Try loading font information for OML+plm on input line 71.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\omlplm.fd"
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMS+plsy on input line 68.
+LaTeX Font Info:    Try loading font information for OMS+plsy on input line 71.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\omsplsy.fd"
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMX+plex on input line 68.
+LaTeX Font Info:    Try loading font information for OMX+plex on input line 71.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\omxplex.fd"
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12> on input line 68.
+(Font)              <12> on input line 71.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 68.
+(Font)              <8> on input line 71.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 68.
-LaTeX Font Info:    Try loading font information for U+msa on input line 68.
+(Font)              <6> on input line 71.
+LaTeX Font Info:    Try loading font information for U+msa on input line 71.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 68.
+LaTeX Font Info:    Try loading font information for U+msb on input line 71.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -615,14 +655,14 @@ Missing character: There is no ¿ in font plr12!
 Missing character: There is no ½ in font plr12!
  [2]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10.95> on input line 72.
+(Font)              <10.95> on input line 77.
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
+Underfull \hbox (badness 10000) in paragraph at lines 80--80
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
+Underfull \hbox (badness 10000) in paragraph at lines 80--80
 
  []
 
@@ -631,10 +671,9 @@ Missing character: There is no ¿ in font plbx12!
 Missing character: There is no ½ in font plbx12!
 [1] [2
 
-] ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.toc")
+] ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\v1\praca FDA.toc")
 \tf@toc=\write4
-
-[3
+ [3
 
 ] [4
 
@@ -644,18 +683,18 @@ Missing character: There is no ½ in font plbx12!
 Rozdzia\PlPrIeC {\l } 1.
 [7] [8]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <14.4> on input line 195.
+(Font)              <14.4> on input line 202.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 195.
+(Font)              <10> on input line 202.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 195.
+(Font)              <7> on input line 202.
  [9] [10] [11] [12]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <9> on input line 379.
+(Font)              <9> on input line 386.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 379.
+(Font)              <5> on input line 386.
 
-Overfull \hbox (2.2448pt too wide) in paragraph at lines 379--391
+Overfull \hbox (2.2448pt too wide) in paragraph at lines 386--398
 \OT4/cmr/m/n/10.95 Rozwa»a¢ b¦-dzie-my od-po-wied-nik mo-de-lu li-nio-we-go dla
  zmien-nych funk-cjo-nal-nych. Dla uprosz-
  []
@@ -665,7 +704,7 @@ Overfull \hbox (2.2448pt too wide) in paragraph at lines 379--391
 ]
 Rozdzia\PlPrIeC {\l } 2.
 [17] [18] [19] [20] [21]
-Overfull \hbox (4.37334pt too wide) in paragraph at lines 631--638
+Overfull \hbox (4.37334pt too wide) in paragraph at lines 645--652
 \OT4/cmr/m/n/10.95 gdzie $[](\OML/plm/m/it/10.95 x\OT4/cmr/m/n/10.95 ) = \OML/p
 lm/m/it/10.95 N[] [][] [] X[]$\OT4/cmr/m/n/10.95 . Le-mat 2.2.3[] sta-no-wi, »e
  przy za-ªo-»e-niu H$[]$ ma-my $\U/msb/m/n/10.95 E\OMS/plsy/m/n/10.95 k[]k[] \O
@@ -679,35 +718,38 @@ Rozdzia\PlPrIeC {\l } 3.
 <mapa_stacji.png, id=107, 514.17094pt x 383.18156pt>
 File: mapa_stacji.png Graphic file (type png)
  <use mapa_stacji.png>
-Package pdftex.def Info: mapa_stacji.png used on input line 717.
-(pdftex.def)             Requested size: 452.47183pt x 337.2008pt.
+Package pdftex.def Info: mapa_stacji.png used on input line 731.
+(pdftex.def)             Requested size: 447.32512pt x 333.36526pt.
 
-Overfull \hbox (11.4541pt too wide) in paragraph at lines 717--718
+Overfull \hbox (6.30739pt too wide) in paragraph at lines 731--732
  [][] 
  []
 
-[25 <D:/Inne/STUDIA!/MAGISTERKA/praca magisterska/mgr_tex/mapa_stacji.png>]
-[26]
-Dodatek A.
-[27
 
-] [28
+Underfull \vbox (badness 4779) has occurred while \output is active []
+
+ [25 <D:/Inne/STUDIA!/MAGISTERKA/praca magisterska/mgr_tex/v1/mapa_stacji.png>]
+ [26]
+[27] [28
 
 ]
-LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 753
+Dodatek A.
+LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 774
 .
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\ot4cmtt.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\ot4cmtt.fd"
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
-)
-[29] ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA.aux") ) 
+) [29] [30]
+[31
+
+] ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\v1\praca FDA.aux") ) 
 Here is how much of TeX's memory you used:
- 11797 strings out of 493921
- 213310 string characters out of 3144879
- 259494 words of memory out of 3000000
- 14826 multiletter control sequences out of 15000+200000
+ 12551 strings out of 493921
+ 225857 string characters out of 3144879
+ 275600 words of memory out of 3000000
+ 15548 multiletter control sequences out of 15000+200000
  35974 words of font info for 105 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,24n,45p,980b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,24n,45p,980b,258s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C
 :/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/pltt.enc}{C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/plms.enc}{C:/Program Files (x86)/MiKTeX 2.9
@@ -733,9 +775,9 @@ TeX 2.9/fonts/type1/public/pl/plsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/pl/plsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
 ic/pl/plti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/pltt1
 0.pfb>
-Output written on "praca FDA.pdf" (31 pages, 409173 bytes).
+Output written on "praca FDA.pdf" (33 pages, 422911 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
+ 202 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

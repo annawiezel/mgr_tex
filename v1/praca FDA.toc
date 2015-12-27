@@ -8,9 +8,9 @@
 \contentsline {section}{\numberline {1.6}Funkcjonalny model liniowy}{13}
 \contentsline {chapter}{\numberline {2}Test istotno\'sci w funkcjonalnym modelu liniowym}{17}
 \contentsline {section}{\numberline {2.1}Procedura testowa}{17}
-\contentsline {section}{\numberline {2.2}Formalne podstawy \leavevmode {\color {red}[nazwa?]}}{19}
+\contentsline {section}{\numberline {2.2}Rozk\IeC {\l }ad statystyki testowej \leavevmode {\color {red}[nazwa?]}}{19}
 \contentsline {chapter}{\numberline {3}Przyk\IeC {\l }ad zastosowania}{25}
 \contentsline {section}{\numberline {3.1}Ameryka P\'o\IeC {\l }nocna (Kanada)}{26}
-\contentsline {section}{\numberline {3.2}Europa (Polska)}{26}
-\contentsline {chapter}{\numberline {A}Kod w R}{27}
-\contentsline {chapter}{Bibliografia}{29}
+\contentsline {section}{\numberline {3.2}Europa (Polska)}{27}
+\contentsline {chapter}{\numberline {A}Kod w R}{29}
+\contentsline {chapter}{Bibliografia}{31}
