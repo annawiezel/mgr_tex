@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.24)  4 JAN 2016 00:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.24)  7 JAN 2016 00:55
 entering extended mode
 **praca*FDA_vA2.tex
 ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA_vA2.tex"
@@ -566,7 +566,14 @@ Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
 \c@lem=\count133
 \c@tw=\count134
 
-("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA_vA2.aux")
+("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA_vA2.aux"
+
+LaTeX Warning: Label `eq:L2.1' multiply defined.
+
+
+LaTeX Warning: Label `eq:L2.1' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
 LaTeX Font Info:    ... okay on input line 74.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
@@ -642,53 +649,53 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
-<StronaTytulowa_132540.pdf, id=4, 597.432pt x 844.95674pt>
-File: StronaTytulowa_132540.pdf Graphic file (type pdf)
+<StronaTytulowa_132540_v2.pdf, id=4, 597.432pt x 844.95674pt>
+File: StronaTytulowa_132540_v2.pdf Graphic file (type pdf)
 
-<use StronaTytulowa_132540.pdf>
-Package pdftex.def Info: StronaTytulowa_132540.pdf used on input line 77.
+<use StronaTytulowa_132540_v2.pdf>
+Package pdftex.def Info: StronaTytulowa_132540_v2.pdf used on input line 77.
 (pdftex.def)             Requested size: 597.43054pt x 844.95468pt.
-File: StronaTytulowa_132540.pdf Graphic file (type pdf)
- <use StronaTytulowa_132540.pdf>
-Package pdftex.def Info: StronaTytulowa_132540.pdf used on input line 77.
+File: StronaTytulowa_132540_v2.pdf Graphic file (type pdf)
+ <use StronaTytulowa_132540_v2.pdf>
+Package pdftex.def Info: StronaTytulowa_132540_v2.pdf used on input line 77.
 (pdftex.def)             Requested size: 597.43054pt x 844.95468pt.
 
-<StronaTytulowa_132540.pdf, id=7, page=1, 597.432pt x 844.95674pt>
-File: StronaTytulowa_132540.pdf Graphic file (type pdf)
+<StronaTytulowa_132540_v2.pdf, id=7, page=1, 597.432pt x 844.95674pt>
+File: StronaTytulowa_132540_v2.pdf Graphic file (type pdf)
 
-<use StronaTytulowa_132540.pdf, page 1>
-Package pdftex.def Info: StronaTytulowa_132540.pdf, page1 used on input line 77
-.
+<use StronaTytulowa_132540_v2.pdf, page 1>
+Package pdftex.def Info: StronaTytulowa_132540_v2.pdf, page1 used on input line
+ 77.
 (pdftex.def)             Requested size: 597.43054pt x 844.95468pt.
-File: StronaTytulowa_132540.pdf Graphic file (type pdf)
+File: StronaTytulowa_132540_v2.pdf Graphic file (type pdf)
 
-<use StronaTytulowa_132540.pdf, page 1>
-Package pdftex.def Info: StronaTytulowa_132540.pdf, page1 used on input line 77
-.
+<use StronaTytulowa_132540_v2.pdf, page 1>
+Package pdftex.def Info: StronaTytulowa_132540_v2.pdf, page1 used on input line
+ 77.
 (pdftex.def)             Requested size: 597.93192pt x 845.66379pt.
-File: StronaTytulowa_132540.pdf Graphic file (type pdf)
+File: StronaTytulowa_132540_v2.pdf Graphic file (type pdf)
 
-<use StronaTytulowa_132540.pdf, page 1>
-Package pdftex.def Info: StronaTytulowa_132540.pdf, page1 used on input line 77
-.
+<use StronaTytulowa_132540_v2.pdf, page 1>
+Package pdftex.def Info: StronaTytulowa_132540_v2.pdf, page1 used on input line
+ 77.
 (pdftex.def)             Requested size: 597.93192pt x 845.66379pt.
-File: StronaTytulowa_132540.pdf Graphic file (type pdf)
+File: StronaTytulowa_132540_v2.pdf Graphic file (type pdf)
 
-<use StronaTytulowa_132540.pdf, page 1>
-Package pdftex.def Info: StronaTytulowa_132540.pdf, page1 used on input line 77
-.
+<use StronaTytulowa_132540_v2.pdf, page 1>
+Package pdftex.def Info: StronaTytulowa_132540_v2.pdf, page1 used on input line
+ 77.
 (pdftex.def)             Requested size: 597.93192pt x 845.66379pt.
-File: StronaTytulowa_132540.pdf Graphic file (type pdf)
+File: StronaTytulowa_132540_v2.pdf Graphic file (type pdf)
 
-<use StronaTytulowa_132540.pdf, page 1>
-Package pdftex.def Info: StronaTytulowa_132540.pdf, page1 used on input line 77
-.
+<use StronaTytulowa_132540_v2.pdf, page 1>
+Package pdftex.def Info: StronaTytulowa_132540_v2.pdf, page1 used on input line
+ 77.
 (pdftex.def)             Requested size: 597.93192pt x 845.66379pt.
  [1
 
- <D:/Inne/STUDIA!/MAGISTERKA/praca magisterska/mgr_tex/StronaTytulowa_132540.pd
-f>]
-<Oswiadczenie_132540.pdf, id=36, 597.432pt x 844.95674pt>
+ <D:/Inne/STUDIA!/MAGISTERKA/praca magisterska/mgr_tex/StronaTytulowa_132540_v2
+.pdf>]
+<Oswiadczenie_132540.pdf, id=37, 597.432pt x 844.95674pt>
 File: Oswiadczenie_132540.pdf Graphic file (type pdf)
 
 <use Oswiadczenie_132540.pdf>
@@ -699,7 +706,7 @@ File: Oswiadczenie_132540.pdf Graphic file (type pdf)
 Package pdftex.def Info: Oswiadczenie_132540.pdf used on input line 78.
 (pdftex.def)             Requested size: 597.43054pt x 844.95468pt.
 
-<Oswiadczenie_132540.pdf, id=39, page=1, 597.432pt x 844.95674pt>
+<Oswiadczenie_132540.pdf, id=40, page=1, 597.432pt x 844.95674pt>
 File: Oswiadczenie_132540.pdf Graphic file (type pdf)
 
 <use Oswiadczenie_132540.pdf, page 1>
@@ -784,42 +791,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--97
 
 ] [6
 
-] [7] [8
-
 ]
+Underfull \vbox (badness 6477) has occurred while \output is active []
+
+ [7]
+[8]
 Rozdzia\PlPrIeC {\l } 1.
-[9] [10] [11] [12]
+[9
+
+] [10] [11] [12]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <14.4> on input line 398.
+(Font)              <14.4> on input line 411.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 398.
+(Font)              <10> on input line 411.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 398.
+(Font)              <7> on input line 411.
  [13] [14]
-Overfull \hbox (1.6278pt too wide) in paragraph at lines 438--439
+Overfull \hbox (1.6278pt too wide) in paragraph at lines 451--452
 \OT4/cmr/m/n/10.95 war-to-±ci ocze-ki-wa-nej oraz ilo-czy-nu ska-lar-ne-go, za±
  ogra-ni-czo-no±¢ z nie-rów-no-±ci Cauchy'ego-
  []
 
-[15] [16]
+[15] [16] [17] [18] [19] [20]
+Rozdzia\PlPrIeC {\l } 2.
+[21
 
-LaTeX Warning: Reference `L2_el_los' on page 17 undefined on input line 485.
-
-[17] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 583--591
-
+] [22] [23]
+Overfull \hbox (11.55869pt too wide) in paragraph at lines 705--709
+\OT4/cmr/m/n/10.95 Zaªó»my, »e ma-my da-ne scen-tro-wa-ne $\OML/plm/m/it/10.95 
+L[]$\OT4/cmr/m/n/10.95 -elementy lo-so-we $\OML/plm/m/it/10.95 Y$ \OT4/cmr/m/n/
+10.95 oraz $\OML/plm/m/it/10.95 X$ \OT4/cmr/m/n/10.95 ta-kie, »e $\U/msb/m/n/10
+.95 E\OMS/plsy/m/n/10.95 k\OML/plm/m/it/10.95 X\OMS/plsy/m/n/10.95 k[]\OML/plm/
+m/it/10.95 ;  \U/msb/m/n/10.95 E\OMS/plsy/m/n/10.95 k\OML/plm/m/it/10.95 Y\OMS/
+plsy/m/n/10.95 k[] \OML/plm/m/it/10.95 <$
  []
 
-[19] [20
 
-]
-Rozdzia\PlPrIeC {\l } 2.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <9> on input line 605.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 605.
-[21] [22]
-Overfull \hbox (6.7779pt too wide) detected at line 672
+Overfull \hbox (9.05914pt too wide) detected at line 717
 []\OT4/cmr/m/n/10.95 (\OML/plm/m/it/10.95 x\OT4/cmr/m/n/10.95 ) = [] [] [] \OML
 /plm/m/it/10.95 X[];  []\OT4/cmr/m/n/10.95 (\OML/plm/m/it/10.95 x\OT4/cmr/m/n/1
 0.95 ) = [] [] [] \OML/plm/m/it/10.95 Y[];  []\OT4/cmr/m/n/10.95 (\OML/plm/m/it
@@ -827,54 +835,93 @@ Overfull \hbox (6.7779pt too wide) detected at line 672
 /n/10.95 2 \OML/plm/m/it/10.95 L[]:
  []
 
-[23] [24] [25] [26] [27] [28]
+[24] [25] [26] [27] [28] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 973--975
+
+ []
+
+[30] [31] [32]
 Rozdzia\PlPrIeC {\l } 3.
-<mapa_stacji.png, id=173, 525.46312pt x 325.96782pt>
+<mapa_stacji.png, id=185, 525.46312pt x 325.96782pt>
 File: mapa_stacji.png Graphic file (type png)
  <use mapa_stacji.png>
-Package pdftex.def Info: mapa_stacji.png used on input line 958.
+Package pdftex.def Info: mapa_stacji.png used on input line 1082.
 (pdftex.def)             Requested size: 420.37106pt x 260.7746pt.
 
-[29
 
- <D:/Inne/STUDIA!/MAGISTERKA/praca magisterska/mgr_tex/mapa_stacji.png>]
-Underfull \vbox (badness 4940) has occurred while \output is active []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
- [30]
-[31] [32
+[33
+
+] <bsplajn.png, id=189, 520.19344pt x 758.835pt>
+File: bsplajn.png Graphic file (type png)
+ <use bsplajn.png>
+Package pdftex.def Info: bsplajn.png used on input line 1109.
+(pdftex.def)             Requested size: 416.1553pt x 607.06883pt.
+
+<wykres1.png, id=190, 652.4375pt x 451.6875pt>
+File: wykres1.png Graphic file (type png)
+ <use wykres1.png>
+Package pdftex.def Info: wykres1.png used on input line 1116.
+(pdftex.def)             Requested size: 391.46552pt x 271.01459pt.
+
+<wykres2.png, id=191, 652.4375pt x 451.6875pt>
+File: wykres2.png Graphic file (type png)
+ <use wykres2.png>
+Package pdftex.def Info: wykres2.png used on input line 1122.
+(pdftex.def)             Requested size: 391.46552pt x 271.01459pt.
+ [34 <D:/Inne/STUDIA!/MAGISTERKA/praca magisterska/mgr_tex/mapa_stacji.png>] [3
+5] [36 <D:/Inne/STUDIA!/MAGISTERKA/praca magisterska/mgr_tex/bsplajn.png>] [37 
+<D:/Inne/STUDIA!/MAGISTERKA/praca magisterska/mgr_tex/wykres1.png> <D:/Inne/STU
+DIA!/MAGISTERKA/praca magisterska/mgr_tex/wykres2.png>] [38
 
 ]
 Dodatek A.
-LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 100
-0.
+LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 114
+3.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\ot4cmtt.fd"
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
-) [33]
-Overfull \hbox (33.10367pt too wide) in paragraph at lines 1067--1067
+) [39]
+Overfull \hbox (10.10892pt too wide) in paragraph at lines 1265--1265
+[]\OT4/cmtt/m/n/10.95 # TWORZENIE BAZY B-SPLAJNÓW DLA WYBRANEJ LICZBY FUNKCJI =
+ PARAMETRU 'nbasis'[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [40]
+Overfull \hbox (15.8576pt too wide) in paragraph at lines 1265--1265
+[]\OT4/cmtt/m/n/10.95 plot.fd(BOU.1.fd, xlab="Minuta w ci¡gu dnia [min]",ylab="
+Intensywno±ci [nT]",[] 
+ []
+
+
+Overfull \hbox (33.10367pt too wide) in paragraph at lines 1265--1265
 []\OT4/cmtt/m/n/10.95 # Magnetic Local Time (MLT), Magnetic Longitude (MLON), M
 agnetic Latitude (MLAT)[] 
  []
 
-[34] [35
+[41] [42
 
-] [36]
+] [43] [44]
 ("D:\Inne\STUDIA!\MAGISTERKA\praca magisterska\mgr_tex\praca FDA_vA2.aux")
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13264 strings out of 493921
- 235791 string characters out of 3144879
- 288677 words of memory out of 3000000
- 16235 multiletter control sequences out of 15000+200000
- 35955 words of font info for 108 fonts, out of 3000000 for 9000
+ 13242 strings out of 493921
+ 235710 string characters out of 3144879
+ 291861 words of memory out of 3000000
+ 16228 multiletter control sequences out of 15000+200000
+ 26376 words of font info for 78 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,18n,45p,1239b,421s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,18n,45p,1220b,421s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/pltt.enc}{C:/Program Fi
 les (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/plms.enc}{C:/Program Files (x86)/MiKTeX
- 2.9/fonts/enc/dvips/pl/plrm.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/d
-vips/pl/plmi.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/plme.enc
+ 2.9/fonts/enc/dvips/pl/plmi.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/d
+vips/pl/plrm.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/plme.enc
 }{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/pl/plit.enc}<C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Progr
@@ -884,18 +931,16 @@ am Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plbx10.pfb><C:/Program Files (x
 /type1/public/pl/plex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
 ic/pl/plmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plmi1
 2.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plmi8.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plmib10.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/pl/plr10.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/pl/plr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
-type1/public/pl/plr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-pl/plr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plsy10.pfb
-><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plsy6.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plsy8.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/public/pl/plti10.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/pl/pltt10.pfb>
-Output written on "praca FDA_vA2.pdf" (36 pages, 554857 bytes).
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plr10.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/pl/plr6.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/pl/plr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/public/pl/plsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/p
+l/plsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plsy8.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/plti10.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/pl/pltt10.pfb>
+Output written on "praca FDA_vA2.pdf" (44 pages, 637104 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
+ 291 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 58 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
