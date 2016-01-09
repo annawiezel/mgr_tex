@@ -114,7 +114,7 @@
 	\\\textcolor{red}{[opis przyk³adu - dane magnetometryczne/geomagnetyczne]}
 	\\\textcolor{red}{Praca opiera siê g³ównie na artykule \cite{K08}, który zosta³ rozwiniêty w ksi¹¿ce \cite{HK}}.
 	\\\textcolor{red}{+pozosta³a literatura, gdzie mo¿na doczytaæ, itd.}
-	Odpowiednikami testu istotnoœci w klasycznym modelu liniowym s¹ np. t-test oraz F-test.
+	%Odpowiednikami testu istotnoœci w klasycznym modelu liniowym s¹ np. t-test oraz F-test.
 	\vspace{0.35cm}\\\textcolor{red}{[pakiet w R: fda] W za³¹czniku na koñcu pracy za³¹czony zosta³ kod napisany w jêzyku R na potrzeby przyk³adu zaprezentowanego w pracy.}	
 	\vspace{0.35cm}\\\textcolor{red}{Ze wzglêdu na to, ¿e analiza danych funkcjonalnych (\textit{ang.} Functional Data Analysis, FDA) jest stosunkowo nowym dzia³em statystyki i jest wci¹¿ ma³o popularna w polskiej literaturze, wiele pojêæ czy okreœleñ zawartych w pracy nie posiada jeszcze ogólnie przyjêtych polskich odpowiedników. Dlatego zosta³y one przet³umaczone przez autora wed³ug w³asnego uznania, przytaczaj¹c oryginalne (angielskie) nazwy.}
 	\vspace{0.35cm}\\W pracy wykorzystano dane o polu magnetycznym Ziemi publikowane na stronie programu INTERMAGNET oraz organizacji SuperMAG. Za³¹czam zatem specjalne podziêkowania:
@@ -262,23 +262,26 @@
 	%\section{Zmienne funkcjonalne w $L^2$. Pojêcie œredniej i operatora kowariancji}
 	%\section{$L^2$-elementy losowe. Pojêcie funkcji œredniej i operatora kowariancji}
 	%
+	%
 	%%% wartoœæ oczekiwana = ca³ka ? %%%
 	%
-	W dalszej czêœci pracy ograniczymy siê do przypadku $H=L^2(T,\mathcal{A}, \mu)$, gdzie $(T, \mathcal{A}, \mu)$ jest przestrzeni¹ z miar¹ $\sigma$-skoñczon¹. Przestrzeñ $L^2(T,\mathcal{A}, \mu)$ jest zbiorem mierzalnych funkcji rzeczywistych ca³kowalnych z kwadratem okreœlonych na $T$, tj.
+	W dalszej czêœci pracy ograniczymy siê do przypadku $H=L^2(T,\mathcal{B}(T), \lambda)$.
+	\vspace{0.35cm}\\Na przedziale $T \subset \mathbb{R}$ rozwa¿my $\sigma$-algebrê zbiorów borelowskich $\mathcal{B}(T)$ wraz z miar¹ Lebesgue'a $\lambda$. Przestrzeñ $L^2=L^2(T)=L^2(T,\mathcal{B}, \lambda)$ nad przedzia³em $T$ jest zbiorem mierzalnych funkcji rzeczywistych ca³kowalnych z kwadratem okreœlonych na $T$, tj.
 	%funkcji ca³kowalnych z kwadratem w sensie Lebesgue'a na przedziale T (Pytlik)
-	\[x \in L^2(T,\mathcal{A}, \mu) \iff x: T \rightarrow \mathbb{R} \ \wedge \ \int \limits_{T} x^2 (t) d\mu  (t) < \infty,\]
-	z uto¿samieniem funkcji równych prawie wszêdzie. Jeœli $x,y \in L^2(T,\mathcal{A}, \mu)$, równoœæ $x=y$ zawsze oznaczaæ bêdzie $\int \left[x(t) - y(t) \right]^2 d \mu (t) = 0$. Przestrzeñ $L^2(T,\mathcal{A}, \mu)$ jest przestrzeni¹ Hilberta z iloczynem skalarnym
+	\[x \in L^2(T) \iff x: T \rightarrow \mathbb{R} \ \wedge \ \int \limits_{T} x^2 (t) dt < \infty,\]
+	z uto¿samieniem funkcji równych prawie wszêdzie. Przestrzeñ $L^2$ jest oœrodkow¹ przestrzeni¹ Hilberta z iloczynem skalarnym
 	\begin{equation*}
-		\langle x, y \rangle:= \int \limits_{T} x(t) y(t) d \mu (t), \quad x,y \in L^2(T,\mathcal{A}, \mu),
+	\langle x, y \rangle:= \int \limits_{T} x(t) y(t) dt, \quad x,y \in L^2,
 	\end{equation*}
 	wyznaczaj¹cym normê
-	\[ \|x\|^2 = \langle x,x \rangle = \int \limits_T x^2 (t) d \mu (t), \quad x \in L^2(T,\mathcal{A}, \mu). \]
+	\[ \|x\|^2 = \langle x,x \rangle = \int x^2 (t) dt, \quad x \in L^2. \]
 	%
+	Tak jak zwyczajowo zapisujemy $L^2$ zamiast $L^2(T)$, tak w przypadku symbolu ca³ki bez wskazania obszaru ca³kowania bêdziemy mieæ na myœli ca³kowanie po ca³ym przedziale $T$. Jeœli $x,y \in L^2$, równoœæ $x=y$ zawsze oznaczaæ bêdzie $\int \left[x(t) - y(t) \right]^2 dt = 0$.
 	%
-	Wa¿n¹ klasê operatorów liniowych na przestrzeni $L^2(T,\mathcal{A}, \mu)$ stanowi¹ operatory ca³kowe. Przedstawimy pomocnicze definicje i twierdzenia, a nastêpnie twierdzenie opisuj¹ce warunki, które powinny byæ spe³nione, aby taki operator by³ dobrze okreœlony.
+	\vspace{0.35cm}\\Wa¿n¹ klasê operatorów liniowych na przestrzeni $L^2$ stanowi¹ operatory ca³kowe. Przedstawimy pomocnicze definicje i twierdzenia, a nastêpnie twierdzenie opisuj¹ce warunki, które powinny byæ spe³nione, aby taki operator by³ dobrze okreœlony.
 	%
 	\begin{df}\cite{Beœka}
-		\\Niech $(T,\mathcal{A})$ i $(S, \mathcal{C})$ bêd¹ przestrzeniami mierzalnymi. $\mathbf{\sigma}$\textbf{-algebrê produktow¹} na $T \times S$ okreœla wzór
+		Niech $(T,\mathcal{A})$ i $(S, \mathcal{C})$ bêd¹ przestrzeniami mierzalnymi. $\mathbf{\sigma}$\textbf{-algebrê produktow¹} na $T \times S$ okreœla wzór
 		\[ \mathcal{A} \otimes \mathcal{C} = \sigma( \{ A \times C: A \in \mathcal{A}, \ C \in \mathcal{C}  \}). \]
 	\end{df}
 	%
@@ -298,11 +301,10 @@
 	%\end{df}
 	%
 	%Operator ca³kowy $\mathit{\Psi}$ jest dobrze okreœlony, jeœli spe³nia pewnego rodzaju w³asnoœæ ograniczonoœci.
-	%
 	\begin{tw}\cite{Billingsley}\label{Fubini} (Twierdzenie Fubiniego)
 		\\Niech $(T,\mathcal{A},\mu)$ i $(S, \mathcal{C}, \nu)$ bêd¹ przestrzeniami z miarami $\sigma$-skoñczonymi. Niech $f: T \times U \rightarrow \mathbb{R}$ bêdzie funkcj¹ mierzaln¹ wzglêdem $\sigma$-algebry produktowej $\mathcal{A} \otimes \mathcal{C}$.
 		\begin{itemize}
-			\item[(a)] Za³ó¿my, ¿e ca³ka  $\int \limits_S f(t,s) d\nu(s)$ istnieje dla ka¿dego $t \in T$ oraz ca³ka $\int \limits_T f(t,s) d\mu(t)$ istnieje dla ka¿dego $s \in S$. Wówczas funkcja $T \ni t \mapsto \int \limits_S f(t,s) d\nu(s) \in \mathbb{R}$ jest $\mathcal{A}$-mierzalna i funkcja $S \ni s \mapsto \int \limits_T f(t,s) d\mu(t) \in \mathbb{R}$ jest $\mathcal{C}$-mierzalna.
+			\item[(a)] Za³ó¿my, ¿e ca³ka  $\int \limits_S f(t,s) d\nu(s)$ istnieje dla \textcolor{red}{$\mu$-prawie} ka¿dego $t \in T$ oraz ca³ka $\int \limits_T f(t,s) d\mu(t)$ istnieje dla \textcolor{red}{$\nu$-prawie} ka¿dego $s \in S$. Wówczas funkcja $T \ni t \mapsto \int \limits_S f(t,s) d\nu(s) \in \mathbb{R}$ jest $\mathcal{A}$-mierzalna i funkcja $S \ni s \mapsto \int \limits_T f(t,s) d\mu(t) \in \mathbb{R}$ jest $\mathcal{C}$-mierzalna.
 			\item[(b)]	Za³ó¿my, ¿e przynajmniej jedna z ca³ek jest skoñczona:
 			\[ \int \limits_{T \times S} |f|d\mu \otimes \nu,\ \int \limits_{T} \left( \int \limits_{S} |f(t,s)| d\nu(s) \right) d\mu(t),\ \int \limits_{S} \left( \int \limits_{T} |f(t,s)| d\mu(t) \right) d\nu(s).\]
 			Wtedy dla $\mu$-prawie wszystkich $t \in T$	funkcja $f(t,\cdot): S \rightarrow \mathbb{R}$ jest $\nu$-skoñczenie ca³kowalna i dla $\nu$-prawie wszystkich $s \in S$ funkcja $f(\cdot,s): T \rightarrow \mathbb{R}$ jest $\mu$-skoñczenie ca³kowalna. Ponadto, funkcja $T \ni t \mapsto \int \limits_S f(t,s) d\nu(s) \in \mathbb{R}$ jest $\mu$-skoñczenie ca³kowalna i funkcja $S \ni s \mapsto \int \limits_T f(t,s) d\mu(t) \in \mathbb{R}$ jest $\nu$-skoñczenie ca³kowalna. Prawdziwe s¹ poni¿sze równoœci
@@ -310,9 +312,10 @@
 	\end{itemize}
 	\end{tw}
 	%
+	\textcolor{red}{
 	\begin{uw}\cite{Beœka} 
 		\\Zauwa¿my, ¿e funkcje $T \ni t \mapsto \int \limits_S f(t,s) d\nu(s) \in \mathbb{R}$, $S \ni s \mapsto \int \limits_T f(t,s) d\mu(t) \in \mathbb{R}$ mog¹ nie byæ poprawnie okreœlone dla wszystkich $t \in T$ oraz $s \in S$. S¹ one zdefiniowane $\mu$- i $\nu$-prawie wszêdzie, co wystarcza, aby poprawnie zdefiniowaæ ich ca³ki.
-	\end{uw}
+	\end{uw}}
 	%
 	%\begin{tw}\cite{W}
 	%	\\Niech $(T, \mu)$ bêdzie przestrzeni¹ z miar¹ i niech $\psi(t,s)$ bêdzie mierzaln¹ funkcj¹ na $T \times T$. Zdefiniujmy
@@ -358,42 +361,32 @@
 	%#################################################################
 	%
 	\begin{lem}\cite{HE} \label{op_calk_L2}
-		\\Niech $(T,\mathcal{A}, \mu)$ bêdzie przestrzeni¹ z miar¹. Dla funkcji $\psi \in L^2(T \times T, \mathcal{A} \otimes \mathcal{A}, \mu \times \mu )$ zdefiniujmy
+		\\Niech $(T, \mu)$ bêdzie przestrzeni¹ z miar¹. Dla funkcji $\psi \in L^2(T \times T)$ zdefiniujmy
 		\begin{equation}\label{eq:operator_calkowy}
-		\mathit{\Psi} x (t) = \int \limits_T \psi (t,s) x(s) d\mu(s), \quad x \in L^2(T,\mathcal{A}, \mu), \ t \in T.
+		\mathit{\Psi} x (t) = \int \limits_T \psi (t,s) x(s) d\mu(s), \quad x \in L^2, \ t \in T.
 		\end{equation}
-		Wówczas $\mathit{\Psi}:L^2(T,\mathcal{A}, \mu) \rightarrow L^2(T,\mathcal{A}, \mu)$ jest ograniczonym operatorem liniowym spe³niaj¹cym
-		\[ \|\mathit{\Psi}\|_{\mathcal{L}} \leq \bigg(\int \limits_T \int \limits_T |\psi(t,s)|^2d\mu(t)d\mu(s) \bigg)^{1/2} = \|\psi\|_{L^2(T\times T)}. \]	
+		Wówczas $\mathit{\Psi}:L^2(T) \rightarrow L^2(T)$ jest ograniczonym operatorem liniowym spe³niaj¹cym
+		\[ \|\mathit{\Psi}\| \leq \bigg(\int \limits_T \int \limits_T |\psi(t,s)|^2d\mu(t)d\mu(s) \bigg)^{1/2} = \|\psi\|_{L^2(T\times T)}. \]	
 	\end{lem}	
-	\textit{Dowód.} Poka¿emy, ¿e dla $x \in L^2(T,\mathcal{A}, \mu)$ zachodzi $\mathit{\Psi}x \in L^2(T,\mathcal{A}, \mu)$.
+	\textit{Dowód.} Poka¿emy, ¿e dla $x \in L^2(T)$ zachodzi $\mathit{\Psi}x \in L^2(T)$.
 	\\Oznaczmy $M:= \Big(\iint |\psi(t,s)|^2 d\mu(t)d\mu(s) \Big)^{1/2}$. Mierzalnoœæ funkcji $\mathit{\Psi}x$ wynika z twierdzenia Fubiniego. Z nierównoœci Cauchy'ego-Schwarza mamy
 	\begin{align*} \|\mathit{\Psi}x\|^2 &= \int |\mathit{\Psi}x(t)|^2 d\mu(t) = \int  \Big| \int \psi(t,s)x(s)d\mu(s) \Big|^2 d\mu(t)
 	\\ &\leq \int \Big( \int  |\psi(t,s)|^2 d\mu(s) \cdot \int |x(s)|^2d\mu(s) \Big) d\mu(t)
 	\\&= \iint |\psi(t,s)|^2 d\mu(s) d\mu(t) \cdot \int |x(s)|^2d\mu(s) =  M^2 \|x\|^2,
 	\end{align*}
-	wiêc $\mathit{\Psi}x \in L^2(T,\mathcal{A}, \mu)$ oraz $\mathit{\Psi}$ jest operatorem ograniczonym z norm¹ $\|\mathit{\Psi}\|_{\mathcal{L}} \leq M$. Liniowoœæ operatora wynika z liniowoœci ca³ki. \hfill $\square$
+	wiêc $\mathit{\Psi}x \in L^2(T)$ oraz $\mathit{\Psi}$ jest operatorem ograniczonym z norm¹ $\|\mathit{\Psi}\| \leq M$. Liniowoœæ operatora wynika z liniowoœci ca³ki. \hfill $\square$
 	%
 	%#################################################################
 	%
-		\vspace{0.35cm}\\Tak okreœlony operator $\mathit{\Psi}$ (wzór \eqref{eq:operator_calkowy}) nazywamy \textbf{operatorem ca³kowym}, zaœ funkcjê $\psi$ nazywamy \textbf{j¹drem ca³kowym} operatora $\mathit{\Psi}$. %W pracy bêdziemy rozwa¿aæ tylko przypadek $p=2$ oraz $\mu=\lambda$. Wtedy $q=p=2$, \eqref{eq:zal1} $\Leftrightarrow$ \eqref{eq:zal2} i mamy
-		%\begin{equation*}
-		%\mathit{\Psi}(x)(t)= \int \psi(t,s) x(s) ds, \quad x \in L^2, \ t \in T.
-		%\end{equation*}
+	\vspace{0.35cm}\\Tak okreœlony operator $\mathit{\Psi}$ (wzór \eqref{eq:operator_calkowy}) nazywamy \textbf{operatorem ca³kowym}, zaœ funkcjê $\psi$ nazywamy \textbf{j¹drem ca³kowym} operatora $\mathit{\Psi}$. %W pracy bêdziemy rozwa¿aæ tylko przypadek $p=2$ oraz $\mu=\lambda$. Wtedy $q=p=2$, \eqref{eq:zal1} $\Leftrightarrow$ \eqref{eq:zal2} i mamy
+	%\begin{equation*}
+	%\mathit{\Psi}(x)(t)= \int \psi(t,s) x(s) ds, \quad x \in L^2, \ t \in T.
+	%\end{equation*}
 	%
-	\vspace{0.35cm}\\Od tego miejsca, interesowaæ nas bêdzie tylko przypadek $L^2(T, \mathcal{A}, \mu)=L^2(T,\mathcal{B}(T), \lambda)$, gdzie $T \subset \mathbb{R}$ jest przedzia³em, $\mathcal{B}(T)$ $\sigma$-algebr¹ zbiorów borelowskich na $T$, zaœ $\lambda$ jest miar¹ Lebesgue'a . Przestrzeñ $L^2(T,\mathcal{B}, \lambda)$ jest oœrodkow¹ przestrzeni¹ Hilberta z iloczynem skalarnym
-		\begin{equation*}
-			\langle x, y \rangle:= \int \limits_{T} x(t) y(t) dt, \quad x,y \in L^2,
-		\end{equation*}
-		wyznaczaj¹cym normê
-		\[ \|x\|^2 = \langle x,x \rangle = \int x^2 (t) dt, \quad x \in L^2. \]
-		%
-		Tak jak zwyczajowo zapisujemy $L^2(T)$ lub $L^2$ zamiast $L^2(T,\mathcal{B}, \lambda)$, tak w przypadku symbolu ca³ki bez wskazania obszaru ca³kowania bêdziemy mieæ na myœli ca³kowanie po ca³ym przedziale $T$. Operator ca³kowy przedstawia siê teraz nastêpuj¹co
-		\begin{equation*}
-		\mathit{\Psi}(x)(t)= \int \psi(t,s) x(s) ds, \quad x \in L^2, \ t \in T.
-		\end{equation*}
+	%\vspace{0.35cm}\\\textcolor{red}{[dodaæ coœ o mierze? $\mu$ i $\mu \times \mu$ a $\lambda$ i $\lambda \times \lambda$]}\\\textcolor{red}{[za szybkie przejœcie?]}
 	%
 	\begin{uw}\label{u:cHS} \cite{HK}
-		\\Operator ca³kowy $\mathit{\Psi}$ jest operatorem Hilberta-Schmidta wtedy i tylko wtedy, gdy jego j¹dro spe³nia
+		\\Operatory ca³kowe s¹ operatorami Hilberta-Schmidta wtedy i tylko wtedy, gdy
 		\begin{equation}\label{eq:tM}
 		\iint \psi^2(t,s) dt ds < \infty.
 		\end{equation}
@@ -403,7 +396,7 @@
 		\end{equation*}
 	\end{uw}
 	%
-	\begin{tw}\label{tw_mercera} \cite{HK} (Twierdzenie Mercera) 
+	\begin{tw}\label{tw_mercera} (Twierdzenie Mercera) \cite{HK}
 		\\Niech operator $\mathit{\Psi}$ bêdzie operatorem ca³kowym  spe³niaj¹cym \eqref{eq:tM}. Jeœli ponadto jego j¹dro ca³kowe $\psi$ spe³nia $\psi (s,t) = \psi (t,s)$ oraz $\iint \psi(t,s) x(t) x(s) dt ds \geq 0$, to operator ca³kowy $\mathit{\Psi}$jest symetryczny i nieujemnie okreœlony, zatem z Uwagi \ref{HSsp} mamy
 		\begin{equation*}
 		\psi (t,s) = \sum_{j=1}^{\infty} \lambda_j \upsilon_j (t) \upsilon_j (s) \quad \text{w } L^2(T \times T),
@@ -424,25 +417,24 @@
 		%
 	%\\\textcolor{red}{statystyka: zmienne funkcjonalne?}
 		%
+		\begin{df}
+			Niech $T \subset \mathbb{R}$ bêdzie przedzia³em, a $(\Omega, \mathcal{F}, P)$ przestrzeni¹ probabilistyczn¹. Proces stochastyczny $\{X_t\}_{t \in T}$ nazywamy \textbf{mierzalnym}, gdy jest mierzalny jako odwzorowanie z przestrzeni mierzalnej $(\Omega \times T, \mathcal{F} \otimes \mathcal{B}(T))$ w przestrzeñ $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$.
+		\end{df}
+		
 		\begin{lem}\label{mierzalnosc_el_los} \cite{HE}
 			\\Niech $(\Omega, \mathcal{F}, P)$ bêdzie przestrzeni¹ probabilistyczn¹, a $H$ oœrodkow¹ przestrzeni¹ Hilberta. Odwzorowanie $X:\Omega \rightarrow H$ jest $H$-elementem losowym wtedy i tylko wtedy, gdy dla ka¿dego $y \in H$ odwzorowanie $\Omega \ni \omega \mapsto \langle y, X(\omega) \rangle \in \mathbb{R}$ jest mierzalne (rozwa¿aj¹c na $\mathbb{R}$ $\sigma$-cia³o zbiorów borelowskich).
 		\end{lem}
-		%
 		\textit{Dowód.} Za³ó¿my najpierw, ¿e $X$ jest $H$-elementem losowym. Poniewa¿ dla dowolnego $y \in H$ odwzorowanie $H \ni x \mapsto \langle y,x \rangle  \in \mathbb{R}$ jest ci¹g³e, to jest tak¿e mierzalne (rozpatruj¹c $\sigma$-cia³a borelowskie zarówno na $H$ oraz $\mathbb{R}$). W takim razie odwzorowanie $\omega \mapsto \langle y, X(\omega) \rangle$ jest mierzalne jako z³o¿enie odwzorowañ mierzalnych.\\
 		Aby przeprowadziæ dowód w drug¹ stronê wystarczy pokazaæ, ¿e przeciwobrazy kul domkniêtych w $H$ s¹ mierzalne (poniewa¿ generuj¹ one $\mathcal{B}(H)$). Ustalmy w tym celu $h \in H$ oraz $\varepsilon >0$ oraz bazê ortonormaln¹ $\{e_j\}_{j=1}^{\infty}$ przestrzeni $H$. Z to¿samoœci Parsevala mamy
 		\[ \{ x \in H : \|x-h\| \leq \varepsilon \} = \{ x \in H : \|x-h\|^2 \leq \varepsilon^2 \} = \{ x \in H : \sum \limits_{j=1}^{\infty} \langle  e_j, x-h \rangle^2 \leq \varepsilon^2 \} \]
-		\[ = \Big\{ x \in H : \sum \limits_{j=1}^{\infty} \big(\langle e_j, x \rangle - \langle e_j, h \rangle \big)^2 \leq \varepsilon^2 \Big\}.\]
+		\[ = \{ x \in H : \sum \limits_{j=1}^{\infty} \big(\langle e_j, x \rangle - \langle e_j, h \rangle \big)^2 \leq \varepsilon^2 \}.\]
 		Podobnie
 		\[ X^{-1}\big(\{ x \in H : \|x-h\| \leq \varepsilon \}\big) = \{ \omega \in \Omega: \|X(\omega)-h\| \leq \varepsilon\}\]
-		\[ =\Big\{ \omega \in \Omega : \sum \limits_{j=1}^{\infty} \big(\langle e_j, X(\omega) \rangle - \langle e_j, h \rangle \big)^2 \leq \varepsilon^2 \Big\} \]
+		\[ =\{ \omega \in \Omega : \sum \limits_{j=1}^{\infty} \big(\langle e_j, X(\omega) \rangle - \langle e_j, h \rangle \big)^2 \leq \varepsilon^2 \} \]
 		Poniewa¿ wszystkie odwzorowania $\omega \mapsto \langle e_j, X(\omega) \rangle$ s¹ mierzalne z za³o¿enia, a skoñczone sumy oraz granice funkcji mierzalnych s¹ mierzalne, to mierzalne jest tak¿e odwzorowanie $ \omega \mapsto \sum \limits_{j=1}^{\infty} \big(\langle e_j, X(\omega) \rangle - \langle e_j, h \rangle \big)^2$, wiêc (na mocy powy¿szej równoœci) zbiór $X^{-1}\big(\{ x \in H : \|x-h\| \leq \varepsilon \}\big)$ jest mierzalny.\hfill $\square$
 		%
-		\begin{df}\cite{HE}
-			\\Niech $T \subset \mathbb{R}$ bêdzie przedzia³em, a $(\Omega, \mathcal{F}, P)$ przestrzeni¹ probabilistyczn¹. Proces stochastyczny $\{X_t\}_{t \in T}$ nazywamy \textbf{mierzalnym}, gdy jest mierzalny jako odwzorowanie z przestrzeni mierzalnej $(\Omega \times T, \mathcal{F} \otimes \mathcal{B}(T))$ w przestrzeñ $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$.
-		\end{df}
-		%
-		Podamy teraz kryterium gwarantuj¹ce, ¿e proces stochastyczny zada $L^2$-element losowy.
-		%
+		\vspace{0.35cm}\\Podamy teraz kryterium gwarantuj¹ce, ¿e proces stochastyczny zada $L^2$-element losowy.
+		
 		\begin{lem}\label{proces_zadaje_el_los}\cite{HE}
 			\\Niech $\{X_t\}_{t \in T}$ bêdzie mierzalnym procesem stochastycznym. Jeœli dla ka¿dego $\omega \in \Omega$ funkcja $X(\omega, \cdot)$ jest ca³kowalna z kwadratem (wzglêdem miary Lebesgue'a na $T$), to odwzorowanie $\Omega \ni \omega \mapsto X(\omega, \cdot) \in L^2(T)$ jest $L^2$-elementem losowym (gdzie $X(\omega, \cdot)$ rozumiemy ju¿ jako klasê abstrakcji funkcji równych prawie wszêdzie).
 		\end{lem}
@@ -451,27 +443,25 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%
 	%\vspace{0.35cm}\\Rozwa¿my zmienn¹ funkcjonaln¹ $X= \{X(t), \ t \in T \}$ bêd¹c¹ krzyw¹ ($T \subset \mathbb{R}$) jako element losowy z przestrzeni $L^2(T)$ zaopatrzonej w $\sigma$-algebrê borelowskich podzbiorów $T$.
-	\begin{df}\cite{HK}
-		\\Niech $X$ bêdzie $L^2(T)$-elementem losowym. Mówimy, ¿e $X$ jest \textbf{ca³kowalny}, jeœli $\mathbb{E} \left\| X \right\| = \mathbb{E} \left[\int X^2(t) dt \right]^{1/2} <\infty $.
+	\begin{df} Niech $X$ bêdzie $L^2(T)$-elementem losowym. Mówimy, ¿e $X$ jest \textbf{ca³kowalny}, jeœli $\mathbb{E} \left\| X \right\| = \mathbb{E} \left[\int X^2(t) dt \right]^{1/2} <\infty $.
 	\end{df}
 	Zauwa¿my, ¿e jeœli $X$ jest $L^2$-elementem losowym, to odwzorowanie $\omega \mapsto \|X(\omega)\|$ jest mierzalne (gdy¿ odwzorowanie $L^2 \ni h \mapsto \|h\|$ jest ci¹g³e), wiêc mo¿na rozwa¿aæ powy¿sz¹ wartoœæ oczekiwan¹. Wprowadzimy teraz pojêcie wartoœci¹ oczekiwnej dla $L^2$-elementu losowego.
 	\begin{df}\label{L2_el_los} Niech $X$ bêdzie ca³kowalnym $L^2(T)$-elementem losowym. Jedyny element $\mu \in L^2$ taki, ¿e $\langle y , \mu \rangle = \mathbb{E} \langle y, X \rangle$ dla dowolnego $y \in L^2$ nazywamy \textbf{wartoœci¹ oczekiwan¹ (funkcj¹ œredniej)} elementu losowego $X$. Ozn. $\mathbb{E}X := \mu$.
 	\end{df}
-	Aby uzasadniæ powy¿sza definicjê, zauwa¿my najpierw, ¿e odwzorowanie $\omega \mapsto \langle y, X(\omega) \rangle$ jest zmienn¹ losow¹ na mocy Lematu \ref{mierzalnosc_el_los}. Odwzorowanie $f:L^2 \rightarrow \mathbb{R}$ zadane jako $f(y):=\mathbb{E} \langle y, X \rangle$ jest ograniczonym funkcjona³em liniowym na $L^2$. Liniowoœæ wynika z liniowoœci wartoœci oczekiwanej oraz iloczynu skalarnego, zaœ ograniczonoœæ z nierównoœci Cauchy'ego-Schwarza:
+	Aby uzasadniæ powy¿sza definicjê, zauwa¿my najpierw, ¿e odwzorowanie $\omega \mapsto \langle y, X(\omega) \rangle$ jest zmienn¹ losow¹ na mocy Lematu \ref{mierzalnosc_el_los}. Odwzorwanie $f:L^2 \rightarrow \mathbb{R}$ zadane jako $f(y):=\mathbb{E} \langle y, X \rangle$ jest ograniczonym funkcjona³em liniowym na $L^2$. Liniowoœæ wynika z liniowoœci wartoœci oczekiwanej oraz iloczynu skalarnego, zaœ ograniczonoœæ z nierównoœci Cauchy'ego-Schwarza:
 	\[ |f(y)| = |\mathbb{E} \langle y, X \rangle| \leq \mathbb{E} |\langle y, X \rangle| \leq \mathbb{E} \|y\| \|X\| = \|y\| \cdot \mathbb{E} \left[\int X^2(t) dt \right]^{1/2} = \mathbb{E} \left\| X \right\| \cdot \|y\|. \]
 	Istnienie i jednoznacznoœæ funkcji $\mu \in L^2$ takiej, ¿e $f(y) = \langle y, \mu \rangle$ wynika teraz z twierdzenia Riesza o reprezentacji funkcjona³u liniowego ci¹g³ego na przestrzeni Hilberta.
-	%
-	\vspace{0.25cm}\\Wartoœæ oczekiwana jest przemienna z operatorami ograniczonymi, tj. jeœli X jest ca³kowalna oraz $\mathit{\Psi} \in \mathcal{L}$, to $\mathit{\Psi}(X)$ tak¿e jest ca³kowalna (gdy¿ $\mathbb{E} \|\mathit{\Psi}(X)\| \leq \mathbb{E} \|\mathit{\Psi}\|\|X\| = \|\mathit{\Psi}\|\cdot \mathbb{E}\|X\| < \infty$) oraz mamy $\mathbb{E}\mathit{\Psi} (X) = \mathit{\Psi} (\mathbb{E} X)$. Istotnie, niech $\mu = \mathbb{E}X$ oraz $\nu = \mathbb{E}\mathit{\Psi}(X)$. Wówczas dla dowolnego $y \in L^2$ mamy
+	\\Wartoœæ oczekiwana jest przemienna z operatorami ograniczonymi, tj. jeœli X jest ca³kowalna oraz $\mathit{\Psi} \in \mathcal{L}$, to $\mathit{\Psi}(X)$ tak¿e jest ca³kowalna (gdy¿ $\mathbb{E} \|\mathit{\Psi}(X)\| \leq \mathbb{E} \|\mathit{\Psi}\|\|X\| = \|\mathit{\Psi}\|\cdot \mathbb{E}\|X\| < \infty$) oraz mamy $\mathbb{E}\mathit{\Psi} (X) = \mathit{\Psi} (\mathbb{E} X)$. Istotnie, niech $\mu = \mathbb{E}X$ oraz $\nu = \mathbb{E}\mathit{\Psi}(X)$. Wówczas dla dowolnego $y \in L^2$ mamy
 	\[ \langle y, \nu \rangle = \mathbb{E}\langle y, \mathit{\Psi}(X) \rangle = \mathbb{E}\langle \mathit{\Psi}^*y, X \rangle = \langle \mathit{\Psi}^*y, \mu \rangle = \langle y, \mathit{\Psi} \mu \rangle, \]
-	gdzie $\mathit{\Psi}^*$ oznacza operator sprzê¿ony do operatora $\mathit{\Psi}$. W takim razie $\mathit{\Psi} (\mathbb{E} X) = \mathit{\Psi} \mu = \nu = \mathbb{E}\mathit{\Psi}(X)$.
-	%
-	\vspace{0.2cm}\\Jeœli dodatkowo za³o¿ymy, ¿e $\{ X_t\}_{t \in T}$ jest mierzalnym procesem stochastycznym o ca³kowalnych z kwadratem trajektoriach (wiêc, z Lematu \ref{proces_zadaje_el_los} zadaje $L^2$-element losowy) oraz takim, ¿e $\int |\mathbb{E}X(t)|^2dt < \infty$, to funkcjê œredniej zadanego przez niego $L^2$-elementu losowego mo¿emy znaleŸæ wprost jako $\mu(t) = \mathbb{E}X(t)$ dla prawie wszystkich $t \in T$. Po pierwsze zauwa¿my, ¿e dodatkowe za³o¿enie gwarantuje, ¿e funkcja $t \mapsto \mathbb{E}X(t)$ nale¿y do $L^2(T)$ (w szczególnoœci wartoœæ oczekiwana $\mathbb{E}X(t)$ istnieje dla prawie ka¿dego $t \in T$). Dla dowolnego $y \in L^2$ zachodzi (na mocy tw. Fubiniego, \ref{Fubini})
+	gdzie $\mathit{\Psi}^*$ oznacza operator sprzê¿ony do operatora $\mathit{\Psi}$. W takim razie $\mathit{\Psi} (\mathbb{E} X) = \mathit{\Psi} \mu = \nu = \mathbb{E}\mathit{\Psi}(X)$. \\
+	%##################################################################
+	Jeœli dodatkowo za³o¿ymy, ¿e $\{ X_t\}_{t \in T}$ jest mierzalnym procesem stochastycznym o ca³kowalnych z kwadratem trajektoriach (wiêc, z Lematu \ref{proces_zadaje_el_los} zadaje $L^2$-element losowy) oraz takim, ¿e $\int |\mathbb{E}X(t)|^2dt < \infty$, to funkcjê œredniej zadanego przez niego $L^2$-elementu losowego mo¿emy znaleŸæ wprost jako $\mu(t) = \mathbb{E}X(t)$ dla prawie wszystkich $t \in T$. Po pierwsze zauwa¿my, ¿e dodatkowe za³o¿enie gwarantuje, ¿e funkcja $t \mapsto \mathbb{E}X(t)$ nale¿y do $L^2(T)$ (w szczególnoœci wartoœæ oczekiwana $\mathbb{E}X(t)$ istnieje dla prawie ka¿dego $t \in T$). Dla dowolnego $y \in L^2$ zachodzi (na mocy tw. Fubiniego, \ref{Fubini})
 		\[  \int y(t) \mathbb{E}X(t) dt = \mathbb{E} \int y(t)X(t)dt  = \mathbb{E} \langle y, X \rangle,\]
 	wiêc funkcja $t \mapsto EX(t)$ spe³nia definicjê bycia wartoœci¹ oczekiwan¹ elementu losowego $\omega \mapsto X(\omega, \cdot)$. Z uwagi na jednoznacznoœæ wartoœci oczekiwanej zachodzi $\mu(t) = \mathbb{E}X(t)$. Na koniec zauwa¿my, ¿e jeœli proces $\{ X_t\}_{t \in T}$ spe³nia $\mathbb{E}\|X\|^2 < \infty$ (za³o¿enie to bêdzie obowi¹zywa³o w dalszej czêœci pracy), to spe³nia tak¿e $\int |\mathbb{E}X(t)|^2dt < \infty$, gdy¿ (z nierównoœci Jensena oraz ponownie twierdzenia Fubiniego)
 	\[\int |\mathbb{E}X(t)|^2dt \leq \int \big(\mathbb{E}|X(t)|\big)^2dt \leq \int \mathbb{E}\big(|X(t)|^2\big)dt = \mathbb{E} \int |X(t)|^2dt = \mathbb{E} \|X\|^2 < \infty. \]
 	%
 	%
-	\begin{df}\label{operator_kowariancji} \cite{B}
+	\begin{df}\cite{B}
 		\\\textbf{Operator kowariancji} ca³kowalnego $L^2(T)$-elementu losowego $X$ o funkcji œredniej $\mu_X$ spe³niaj¹cego $\mathbb{E}\left\| X \right\|^2 < \infty $ definiujemy jako ograniczony operator liniowy wed³ug wzoru
 		\begin{equation*}
 		C_X (x):= \mathbb{E} \big[ \big\langle X - \mu_X , x \big\rangle (X - \mu_X) \big], \quad x \in L^2.
@@ -485,8 +475,7 @@
 		C_{Y,X}(x):=\mathbb{E} \Big[ \big\langle Y - \mu_Y , x \big\rangle \big(X - \mu_X\big) \Big], \quad x \in L^2.
 		\end{equation*}
 	\end{df}
-	%
-	Uzasadnimy, ¿e powy¿sze operatory s¹ dobrze okreœlonymi operatorami ograniczonymi na $L^2$. Wystarczy to zrobiæ dla $C_{X, Y}$, gdy¿ $C_X = C_{X, X}$. W pierwszej kolejnoœci nale¿y sprawdziæ, ¿e $Z:=\langle X - \mu_X , x \rangle (Y - \mu_Y)$ jest $L^2$-elementem losowym. Z Lematu \ref{mierzalnosc_el_los} wystarczy sprawdziæ, ¿e dla ka¿dego $z \in L^2$ funkcja $\omega \mapsto \langle Z(\omega), z \rangle$ jest zmienn¹ losow¹. Mamy
+	Uzasadnimy, ¿e powy¿sze operatory s¹ dobrze okreœlonymi operatorem ograniczonymi na $L^2$. Wystarczy to zrobiæ dla $C_{X, Y}$, gdy¿ $C_X = C_{X, X}$. W pierwszej kolejnoœci nale¿y sprawdziæ, ¿e $Z:=\langle X - \mu_X , x \rangle (Y - \mu_Y)$ jest $L^2$-elementem losowym. Z Lematu \ref{mierzalnosc_el_los} wystarczy sprawdziæ, ¿e dla ka¿dego $z \in L^2$ funkcja $\omega \mapsto \langle Z(\omega), z \rangle$ jest zmienn¹ losow¹. Mamy
 	\[ \langle Z, z \rangle = \langle \langle X - \mu_X , x \rangle (Y - \mu_Y), z \rangle = \langle X - \mu_X , x \rangle \langle Y - \mu_Y, z \rangle \]
 	\[ = \langle X, x \rangle\langle Y, z \rangle - \langle X, x \rangle\langle \mu_Y, z \rangle - \langle \mu_X, x \rangle\langle Y, z \rangle + \langle \mu_X, x \rangle\langle \mu_Y, z \rangle. \]
 	Skoro $X$ oraz $Y$ s¹ $L^2$-elementami losowymi, to $\langle X, x \rangle$ oraz $\langle Y, z \rangle$ s¹ zmiennymi losowymi. Pozosta³e wyra¿enia s¹ sta³e, wiêc ostatecznie $\langle Z, z \rangle$ jest zmienn¹ losow¹. $Z$ jest ca³kowalny, gdy¿ (z nierównoœci Cauchy'ego-Schwarza)
@@ -495,69 +484,48 @@
 	\[ \leq \|x\| \cdot \Big[ \mathbb{E}\|X\|\|Y\| + \|\mu_X\|\mathbb{E}\|Y\| + \|\mu_Y\|\mathbb{E}\|X\| + \|\mu_X\|\|\mu_Y\| \Big].  \]
 	Skoro $\mathbb{E}\|X\|^2,\ \mathbb{E}\|Y\|^2 < \infty$, to tak¿e $\mathbb{E}\|X\|\|Y\|,\ \mathbb{E}\|X\|,\ \mathbb{E}\|Y\|<\infty$, wiêc zachodzi te¿ $\mathbb{E}\|Z\| < \infty$. W takim razie, $C_{X, Y}(x) = \mathbb{E}Z$ istnieje i nale¿y do $L^2(T)$. Powy¿szy rachunek pokazuje tak¿e, ¿e operator $C_{X,Y}$ jest ograniczony, zaœ jego liniowoœæ wynika z liniowoœci iloczynu skalarnego oraz wartoœci oczekiwanej (liniowoœæ wartoœci oczekiwanej dla $L^2$-elementów losowych wynika wprost z definicji).
 	%
+	\\\textcolor{red}{[twierdzenie spinaj¹ce w³aœciwoœci operatora kowariancji?]}
 	%
-	\begin{tw}\label{wlasnosci_operatora_kowriancji} (W³asnoœci operatora kowariancji)
-		\\Operator kowariancji $C_X$ elementu losowego $X$ wprowadzony w Definicji \ref{operator_kowariancji} posiada nastêpuj¹ce w³asnoœci:
-		\begin{enumerate}
-		\item[(i)] jest operatorem ca³kowym,
-		\item[(ii)] jest operatorem Hilberta-Schmidta,
-		\item[(iii)] jest operatorem symetrycznym i nieujemnie okreœlonym,
-		\item[(iv)] posiada on reprezentacjê
-		\[C_X(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \upsilon_j \rangle	\upsilon_j, \quad x \in L^2,\]
-		gdzie $\lambda_j$ s¹ wartoœciami w³asnymi operatora $C_X$ (lub zerami), a $\upsilon_j$ odpowiadaj¹cymi im wektorami w³asnymi tworz¹cymi bazê ortonormaln¹ przestrzeni $L^2(T)$,
-		\item[(v)] jego wartoœci w³asne $\lambda_j$ i funkcje w³asne $\upsilon_j$ spe³niaj¹ równoœæ: $\lambda_j = \mathbb{E} \langle X - \mu_X, \upsilon_j \rangle ^2$,
-		\item[(vi)] jest operatorem nuklearnym.
-		\end{enumerate}
-	\end{tw}
-	%
-	\textit{Dowód}. 
-	\begin{enumerate}
-		\item[(i)] Za³ó¿my teraz ponownie, ¿e $\{X_t \}_{t \in T}$ jest mierzalnym procesem stochastycznym takim, ¿e $\mathbb{E}\|X\|^2 < \infty$ z funkcj¹ œredniej $\mu  \in L^2(T)$. Wówczas operator kowariancji jest operatorem ca³kowym, czyli
-		$$C_X (x)(t) = \int c(t,s) x(s) ds,$$
-		z j¹drem ca³kowym $c(t,s)$ zdefiniowanym nastêpuj¹co:
-		$$c(t,s)=\mathbb{E} \Big[ \big( X(t) - \mu_X(t) \big) \big( X(s) - \mu_X(s) \big) \Big]$$
-		nazywanym te¿ \textbf{funkcj¹ kowariancji}. Zauwa¿my, ¿e mierzalnoœæ procesu implikuje, ¿e funkcja $c(t,s)$ jest mierzalna na produkcie $T \times T$ (twierdzenie Fubiniego). Najpierw poka¿emy, ¿e j¹dro $c(t,s)$ podanej postaci rzeczywiœcie zadaje ograniczony operator liniowy na $L^2$. W tym celu, na mocy Lematu \ref{op_calk_L2}, wystarczy sprawdziæ, ¿e $c \in L^2(T \times T)$ . Mamy
-		\[ \iint  |c(t,s)|^2dtds =  \iint  \Big|\mathbb{E}\big(X(t) - \mu_X(t)\big)\big(X(s) - \mu_X(s)\big)\Big|^2dtds \]
-		\[ \leq \iint  \Big(\mathbb{E}\big|X(t) - \mu_X(t)\big|\big|X(s) - \mu_X(s)\big|\Big)^2dtds = (*). \]
-		Zauwa¿my, ¿e dla prawie ka¿dego $t \in T$ zmienna losowa $X(t)$ jest ca³kowalna z kwadratem, tzn. $X(t) \in L^2(\Omega, \mathcal{F}, P)$. Wynika to z faktu, ¿e
-		\[ \int \mathbb{E} X^2(t) dt = \mathbb{E} \int X^2(t) dt = \mathbb{E} \|X\|^2 < \infty,\]
-		wiêc funkcja $t \mapsto \mathbb{E}X^2(t)$ musi byæ skoñczona prawie wszêdzie. W takim razie tak¿e $\big( X(t) - \mu_X(t) \big) \in L^2(\Omega, \mathcal{F}, P)$ i mo¿emy skorzystaæ z nierównoœci Cauchy'ego-Schwarza:
-		\[ (*) \leq \iint \mathbb{E}\big|X(t) - \mu_X(t)\big|^2 \mathbb{E}\big|X(s) - \mu_X(s)\big|^2dtds = \Big( \int \mathbb{E}|X(t)-\mu_X(t)|^2 dt \Big)^2 \]
-		\[ = \Big( \mathbb{E} \int |X(t)-\mu_X(t)|^2 dt \Big)^2 = \Big( \mathbb{E}\|X - \mu_X\|^2 \Big)^2 \leq \Big( \mathbb{E}\|X\|^2 + \|\mu_X\|\mathbb{E}\|X\| + \|\mu_X\|^2 \Big)^2 < \infty. \]
-		Poka¿emy teraz, ¿e przy powy¿szych za³o¿eniach operator kowariancji istotnie jest operatorem ca³kowym z j¹drem $c$. Poniewa¿ mamy do czynienia z $L^2$-elementem losowym pochodz¹cym od mierzalnego procesu stochastycznego, to wartoœæ oczekiwan¹ elementu losowego $Z:= \big\langle X - \mu_X , x \big\rangle (X - \mu_X)$ mo¿emy liczyæ punktowo (por. uwaga po Definicji \ref{L2_el_los}), czyli dla $x \in L^2(T)$ zachodzi dla prawie wszystkich $t \in T$:
-		\begin{align*}
-		C_X (x)(t) &= \mathbb{E} \big\langle X - \mu_X , x \big\rangle (X(t) - \mu_X(t)) 
-		\\&= \mathbb{E} \Big[ \int \big( X(s) - \mu_X(s) \big) x(s)ds \Big] \big( X(t) - \mu_X(t) \big)
-		\\& = \mathbb{E} \Big[ \int \big( X(s) - \mu_X(s) \big) \big( X(t) - \mu_X(t) \big) x(s)ds \Big]
-		\\&= \int \Big[ \mathbb{E}  \big( X(s) - \mu_X(s) \big) \big( X(t) - \mu_X(t) \big) \Big] x(s)ds \\&= \int c(t,s)x(s)ds,
-		\end{align*}
-		zatem funkcja $c$ jest j¹drem operatora $C_X$.
-		\item[(ii)] Na mocy Uwagi \ref{u:cHS}, jako operator ca³kowy, operator kowariancji jest operatorem Hilberta-Schmidta.
-		\item[(iii)] Oczywistym jest, ¿e $c(t,s)=c(s,t)$ i mamy
-		\begin{align*}
-		\iint c(t,s) x(t) x(s) dt ds &= \iint \mathbb{E} \big[ \big( X(t) - \mu_X(t) \big) \big( X(s) - \mu_X(s) \big) \big] x(t) x(s) dt ds
-		\\&= \mathbb{E} \left[ \left( \int \big(X(t) - \mu_X(t) \big) x(t) dt \right)^2 \right] \geq 0.
-		\end{align*}
-		Zatem operator kowariancji $C_X$ jest symetryczny oraz nieujemnie okreœlony (spe³nia zatem za³o¿enia Twierdzenia \ref{tw_mercera}).
-		\item[(iv)] Teza wynika bezpoœrednio z powy¿szych w³asnoœci oraz z Uwagi \ref{HSsp}.
-		\item[(v)] Spe³nione jest
-		\begin{align*}
-		\lambda_j &= \lambda_j \|\upsilon_j\|^2 = \langle \lambda_j \upsilon_j, \upsilon_j \rangle = \langle C_X \upsilon_j, \upsilon_j \rangle = \big\langle \mathbb{E}\langle X - \mu_X, \upsilon_j \rangle (X - \mu_X), \upsilon_j \big\rangle
-		\\& = \int \mathbb{E} \Big[ \Big( \int \big(X(s) - \mu_X(s) \big) \upsilon_j(s)ds \Big) \Big(X(t) - \mu_X(t) \Big) \Big] \upsilon_j(t) dt
-		\\& = \mathbb{E} \iint  \Big(  \big(X(s) - \mu_X(s) \big) \upsilon_j(s) \Big) \Big( \big(X(t) - \mu_X(t) \big) \upsilon_j(t)\Big) ds dt 
-		\\& = \mathbb{E} \left[ \left( \int \big(X(t) - \mu_X(t) \big) \upsilon_j(t) dt \right)^2 \right] = \mathbb{E} \langle X - \mu_X, \upsilon_j \rangle ^2.
-		\end{align*}
-		\item[(vi)] Korzystaj¹c z powy¿szych równoœci zauwa¿amy, ¿e wartoœci w³asne operatora kowariancji s¹ nieujemne oraz to¿samoœæ Parsevala pokazuje, ¿e
-		\[ \sum \limits_{j=1}^{\infty} \lambda_j = \sum \limits_{j=1}^{\infty} \mathbb{E} \langle X - \mu_X, \upsilon_j \rangle ^2 = \mathbb{E} \sum \limits_{j=1}^{\infty} \langle X - \mu_X, \upsilon_j \rangle ^2 = \mathbb{E}\|X - \mu_X \|^2 < \infty.\]
-		Widzimy zatem, ¿e operator $C_X$ jest operatorem nuklearnym.
-	\end{enumerate} \hfill $\square$
-	%
-	\begin{uw} Operatorem sprzê¿onym do $C_{X, Y}$ jest $C_{Y, X}$.
-	\end{uw}
-	\textit{Dowód.} Wystarczy sprawdziæ, ¿e dla dowolnych $x, y \in L^2 $ zachodzi $\langle C_{X, Y}(x), y \rangle = \langle x, C_{Y,X}(y) \rangle$. Dla uproszczenia za³ó¿my, ¿e $\mathbb{E}X = \mathbb{E}Y = 0$. Korzystaj¹c z definicji wartoœci oczekiwanej dla elementu losowego mamy
+	\\Poka¿emy, ¿e operatorem sprzê¿onym do $C_{X, Y}$ jest $C_{Y, X}$. Wystarczy sprawdziæ, ze dla dowolnych $x, y \in L^2 $ zachodzi $\langle C_{X, Y}(x), y \rangle = \langle x, C_{Y,X}(y) \rangle$. Dla uproszczenia za³ó¿my, ¿e $\mathbb{E}X = \mathbb{E}Y = 0$. Korzystaj¹c z definicji wartoœci oczekiwanej dla elementu losowego mamy
 	\[ \langle C_{X, Y}(x), y \rangle = \langle \mathbb{E}\langle X, x \rangle Y, y \rangle = \mathbb{E} \langle \langle X, x \rangle Y, y \rangle =\mathbb{E} \langle X, x \rangle \langle Y, y \rangle \]
-	\[  = \mathbb{E} \langle \langle Y, y \rangle X, x \rangle = \mathbb{E} \langle x,  \langle Y, y \rangle X \rangle = \langle x,  \mathbb{E} \langle Y, y \rangle X \rangle = \langle x, C_{Y,X}(y) \rangle. \] \hfill $\square$
+	\[  = \mathbb{E} \langle \langle Y, y \rangle X, x \rangle = \mathbb{E} \langle x,  \langle Y, y \rangle X \rangle = \langle x,  \mathbb{E} \langle Y, y \rangle X \rangle = \langle x, C_{Y,X}(y) \rangle. \]
 	%
+	Za³ó¿my teraz ponownie, ¿e $\{X_t \}_{t \in T}$ jest mierzalnym procesem stochastycznym takim, ¿e $\mathbb{E}\|X\|^2 < \infty$ z funkcj¹ œredniej $\mu  \in L^2(T)$. Wówczas operator kowariancji jest operatorem ca³kowym, czyli
+	$$C_X (x)(t) = \int c(t,s) x(s) ds,$$
+	z j¹drem ca³kowym $c(t,s)$ zdefiniowanym nastêpuj¹co:
+	$$c(t,s)=\mathbb{E} \Big[ \big( X(t) - \mu(t) \big) \big( X(s) - \mu(s) \big) \Big].$$
+	Zauwa¿my, ¿e mierzalnoœæ procesu implikuje, ¿e funkcja $c(t,s)$ jest mierzalna na produkcie $T \times T$ (twierdzenie Fubiniego). Najpierw poka¿emy, ¿e j¹dro $c(t,s)$ podanej postaci rzeczywiœcie zadaje ograniczony operator liniowy na $L^2$. W tym celu, na mocy Lematu \ref{op_calk_L2}, wystarczy sprawdziæ, ¿e $c \in L^2(T \times T)$ . Mamy
+	\[ \iint  |c(t,s)|^2dtds =  \iint  \Big|\mathbb{E}\big(X(t) - \mu(t)\big)\big(X(s) - \mu(s)\big)\Big|^2dtds \]
+	\[ \leq \iint  \Big(\mathbb{E}\big|X(t) - \mu(t)\big|\big|X(s) - \mu(s)\big|\Big)^2dtds = (*). \]
+	Zauwa¿my, ¿e dla prawie ka¿dego $t \in T$ zmienna losowa $X(t)$ jest ca³kowalna z kwadratem, tzn. $X(t) \in L^2(\Omega, \mathcal{F}, P)$. Wynika to z faktu, ¿e
+	\[ \int \mathbb{E} X^2(t) dt = \mathbb{E} \int X^2(t) dt = \mathbb{E} \|X\|^2 < \infty,\]
+	wiêc funkcja $t \mapsto \mathbb{E}X^2(t)$ musi byæ skoñczona prawie wszêdzie. W takim razie tak¿e $\big( X(t) - \mu(t) \big) \in L^2(\Omega, \mathcal{F}, P)$ i mo¿emy skorzystaæ z nierównoœci Cauchy'ego-Schwarza:
+	\[ (*) \leq \iint \mathbb{E}\big|X(t) - \mu(t)\big|^2 \mathbb{E}\big|X(s) - \mu(s)\big|^2dtds = \Big( \int \mathbb{E}|X(t)-\mu(t)|^2 dt \Big)^2 \]
+	\[ = \Big( \mathbb{E} \int |X(t)-\mu(t)|^2 dt \Big)^2 = \Big( \mathbb{E}\|X - \mu\|^2 \Big)^2 \leq \Big( \mathbb{E}\|X\|^2 + \|\mu\|\mathbb{E}\|X\| + \|\mu\|^2 \Big)^2 < \infty. \]
+	Poka¿emy teraz, ¿e przy powy¿szych za³o¿eniach operator kowariancji istotnie jest operatorem ca³kowym z j¹drem $c$. Poniewa¿ mamy do czynienia z $L^2$-elementem losowym pochodz¹cym od mierzalnego procesu stochastycznego, to wartoœæ oczekiwan¹ elementu losowego $Z:= \big\langle X - \mu , x \big\rangle (X - \mu)$ mo¿emy liczyæ punktowo (por. uwaga po Definicji \ref{L2_el_los}), czyli dla $x \in L^2(T)$ zachodzi dla prawie wszystkich $t \in T$:
+	\begin{align*}
+	C_X (x)(t) &= \mathbb{E} \big\langle X - \mu , x \big\rangle (X(t) - \mu(t)) 
+	\\&= \mathbb{E} \Big[ \int \big( X(s) - \mu(s) \big) x(s)ds \Big] \big( X(t) - \mu(t) \big)
+	\\& = \mathbb{E} \Big[ \int \big( X(s) - \mu(s) \big) \big( X(t) - \mu(t) \big) x(s)ds \Big]
+	\\&= \int \Big[ \mathbb{E}  \big( X(s) - \mu(s) \big) \big( X(t) - \mu(t) \big) \Big] x(s)ds \\&= \int c(t,s)x(s)ds,
+	\end{align*}
+	zatem funkcja $c$ jest j¹drem operatora $C_X$, który, jako operator ca³kowy, jest operatorem Hilberta-Schmidta (Uwaga \ref{u:cHS}). Oczywistym jest, ¿e $c(t,s)=c(s,t)$ i mamy
+	\begin{align*}
+	\iint c(t,s) x(t) x(s) dt ds &= \iint \mathbb{E} \big[ \big( X(t) - \mu(t) \big) \big( X(s) - \mu(s) \big) \big] x(t) x(s) dt ds
+	\\&= \mathbb{E} \left[ \left( \int \big(X(t) - \mu(t) \big) x(t) dt \right)^2 \right] \geq 0.
+	\end{align*}
+	Zatem operator kowariancji $C_X$ jest symetryczny oraz nieujemnie okreœlony (Twierdzenie \ref{tw_mercera}). Z Uwagi \ref{HSsp} wynika, ¿e posiada on reprezentacjê
+	\[C_X(x)=\sum_{j=1}^{\infty} \lambda_j \langle x, \upsilon_j \rangle	\upsilon_j, \quad x \in L^2,\]
+	gdzie $\lambda_j$ s¹ wartoœciami w³asnymi operatora $C_X$ (lub zerami), a $\upsilon_j$ odpowiadaj¹cymi im wektorami w³asnymi tworz¹cymi bazê ortonormaln¹ przestrzeni $L^2(T)$. Co wiêcej, spe³nione jest
+	\begin{align*}
+	\lambda_j &= \lambda_j \|\upsilon_j\|^2 = \langle \lambda_j \upsilon_j, \upsilon_j \rangle = \langle C_X \upsilon_j, \upsilon_j \rangle = \big\langle \mathbb{E}\langle X - \mu, \upsilon_j \rangle (X - \mu), \upsilon_j \big\rangle
+	\\& = \int \mathbb{E} \Big[ \Big( \int \big(X(s) - \mu(s) \big) \upsilon_j(s)ds \Big) \Big(X(t) - \mu(t) \Big) \Big] \upsilon_j(t) dt
+	\\& = \mathbb{E} \iint  \Big(  \big(X(s) - \mu(s) \big) \upsilon_j(s) \Big) \Big( \big(X(t) - \mu(t) \big) \upsilon_j(t)\Big) ds dt 
+	\\& = \mathbb{E} \left[ \left( \int \big(X(t) - \mu(t) \big) \upsilon_j(t) dt \right)^2 \right] = \mathbb{E} \langle X - \mu, \upsilon_j \rangle ^2.
+	\end{align*}
+	W takim razie wartoœci w³asne operatora kowariancji s¹ nieujemne oraz to¿samoœæ Parsevala pokazuje, ¿e
+	\[ \sum \limits_{j=1}^{\infty} \lambda_j = \sum \limits_{j=1}^{\infty} \mathbb{E} \langle X - \mu, \upsilon_j \rangle ^2 = \mathbb{E} \sum \limits_{j=1}^{\infty} \langle X - \mu, \upsilon_j \rangle ^2 = \mathbb{E}\|X - \mu \|^2 < \infty.\]
+	Widzimy zatem, ¿e operator $C_X$ jest operatorem nuklearnym.
 	%################################################################
 	%
 	\vspace{0.35cm}\\W dalszej czêœci pracy bêdziemy skupiaæ siê na \textbf{scentrowanych} elementach losowych $X$, tj. takich ¿e $\mathbb{E}X=0$, dlatego operator kowariancji przyjmowaæ bêdzie postaæ
@@ -567,24 +535,31 @@
 	%
 	%\textcolor{red}{[ROZK£AD? zmienne niezale¿ne? funkcjona³ charakterystyczny? rozk³ad normalny?]}
 	%
-	\vspace{0.1cm}\\Niezale¿noœæ elementów losowych przyjmuj¹cych wartoœci w przestrzeni Hilberta definiuje siê dok³adnie tak samo jak w przypadku niezale¿noœci zmiennych losowych. W pracy wielokrotnie korzystaæ bêdziemy z za³o¿enia o niezale¿noœci oraz z nastêpuj¹cej konsekwencji:
+	\vspace{0.1cm}\\Niezale¿noœæ elementów losowych przyjmuj¹cych wartoœci w przestrzeni Hilberta oznacza dok³adnie to samo co w przypadku niezale¿noœci zmiennych losowych. W pracy wielokrotnie korzystaæ bêdziemy z za³o¿enia o niezale¿noœci oraz z nastêpuj¹cej konsekwencji:
 	%
 	\begin{lem}\label{lemat_niezaleznosc}\cite{HK}
 		\\Jeœli $X_1$ i $X_2$ s¹ niezale¿nymi $L^2$-elementami losowymi takimi, ¿e $\mathbb{E}X_1 =0$ i $\mathbb{E}\|X_1\|^2<\infty$ oraz $\mathbb{E}\|X_2\|^2 < \infty$, to $\mathbb{E}[\langle X_1, X_2 \rangle]=0$.
 	\end{lem}
 	%
-	%\textcolor{red}{[dowód?]}
+	\textcolor{red}{[dowód?]}
 	%
 	%
 	\section{Estymacja œredniej, funkcji kowariancji i operatora kowariancji. FPC}\label{r:FPC}
 	%
 	Naturalnym problemem pojawiaj¹cym siê przy $L^2$-elementach losowych jest wnioskowanie o obiektach nieskoñczenie wymiarowych na podstawie skoñczonej próbki danych. Ze wzglêdu na fakt, ¿e w statystyce ograniczamy siê g³ównie do przypadku, w którym elementy losowe to funkcje g³adkie lub krzywe, to nazywa siê je tak¿e zmiennymi funkcjonalnymi, zaœ obserwacje zmiennej funkcjonalnej - danymi funkcjonalnymi.
 	%
+	\\Przedmiotem funkcjonalnej analizy danych jest zatem ci¹g $X_1,...,X_N$ niezale¿nych danych funkcjonalnych w $L^2(T)$ o jednakowym rozk³adzie jak zmienna funkcjonalna $X \in L^2$ spe³niaj¹ca za³o¿enie $\mathbb{E}\|X\|^2<\infty$. W dowolnie wybranej bazie $\{\upsilon_j\}_{j\geq 1}$ w $L^2$, $X_1,...,X_n$ mo¿na przedstawiæ jako kombinacje liniowe funkcji bazowych, tj.
+	%\[ X_n(t) = \mu(t) + \sum_{k=1}^{\infty} \xi_{kn} \upsilon_k(t), \quad n=1,...,N ,\]
+	%gdzie \textcolor{red}{$\mu(t)=\mathbb{E}X_n$}.
+	\[ X_n(t) = \sum_{k=1}^{\infty} \xi_{kn} \upsilon_k(t), \quad n=1,...,N .\]
+	W praktyce obserwujemy tylko punkty z danych funkcjonalnych, tj. wartoœci z $N$ nieznanych funkcji dla wybranych argumentów $t_1<...<t_n$ (niekoniecznie równomiernie roz³o¿onych) nale¿¹cych do przedzia³u $T$. Aby zatem otrzymaæ $N$ danych funkcjonalnych $X_1,...,X_N$ nale¿y znaleŸæ ich przybli¿enie przez dopasowanie kombinacji liniowej \textcolor{red}{tylko $K$} funkcji bazowych $\{\upsilon_j\}_{j\geq 1}$ w $L^2$, czyli
+	\[ X_n(t) \approx \sum_{k=1}^{K} \widehat{\xi}_{kn} \upsilon_k(t), \quad n=1,...,N,\]
+	gdzie $\widehat{\xi}_{kn}$ mo¿na znaleŸæ \textcolor{red}{metod¹ najmniejszych kwadratów}. Dla uproszczenia obliczeñ najlepiej, kiedy baza $\{\upsilon_j\}_{j\geq 1}$ jest ortonormalna, jak np. baza Fouriera, ale mo¿emy wykorzystaæ nawet bazê nieortogonaln¹, np. bazê tworzon¹ przez B-splajny.
 	%Bazê ortonormaln¹ tworz¹ funkcje (wektory) w³asne operatora kowariancji $X$.
 	%
-	\vspace{0.35cm}\\Z punktu widzenia analizy danych funkcjonalnych parametrami koniecznymi do estymacji s¹ funkcja œredniej, funkcja kowariancji oraz operator kowariancji. Przypomnijmy okreœlone w Definicji \ref{L2_el_los} oraz Definicji \ref{operator_kowariancji} (i w dowodzie Twierdzenia \ref{wlasnosci_operatora_kowriancji}) pojêcia:
-	\vspace{0.15cm}\\ \indent funkcja œredniej:  \indent \indent $\mu (t) = \mathbb{E} [X(t)]$,
-	\\ \indent funkcja kowariancji: \indent $c(t,s) = \mathbb{E}[(X(t) - \mu(t)(X(s) - \mu(s))]$,
+	\vspace{0.35cm}\\Z punktu widzenia analizy danych funkcjonalnych parametrami koniecznymi do estymacji s¹ funkcja œredniej, funkcja kowariancji oraz operator kowariancji, okreœlone nastêpuj¹co
+	\vspace{0.15cm}\\ \indent funkcja œredniej:  \indent \indent $\mu (t) = \mathbb{E} [X(t)]$;
+	\\ \indent funkcja kowariancji: \indent $c(t,s) = \mathbb{E}[(X(t) - \mu(t)(X(s) - \mu(s))]$;
 	\\ \indent operator kowariancji: $ \quad C = \mathbb{E}[ \langle (X - \mu), \cdot \rangle (X -\mu)]$.
 	%
 	\vspace{0.35cm}\\Funkcjê œredniej $\mu$ estymujemy œredni¹ z funkcji z próby
@@ -595,8 +570,8 @@
 	\begin{equation}\label{eq:C}
 	\widehat{C}(x)(t) = \frac{1}{N} \sum_{n=1}^N \langle X_n - \hat{\mu}, x \rangle ( X_n(t) - \hat{\mu}(t) ), \quad x \in L^2, \ t \in T.
 	\end{equation}
-	%Zauwa¿my, ¿e powy¿sza równoœæ ilustruje wspomniany problem wnioskowania statystycznego o zmiennych funkcjonalnych. Estymator $\widehat{C}$ rzutuje $L^2$ na skoñczenie wymiarow¹ podprzestrzeñ generowan¹ przez $X_1,...,X_N$, co ogranicza dok³adnoœæ znalezienia obiektu nieskoñczenie wymiarowego posiadaj¹c skoñczon¹ próbê.)	
-	Powy¿sze estymatory s¹ dobrze okreœlone, a estymator funkcji œredniej jest estymatorem nieobci¹¿onym. Dowody poprawnoœci tych estymatorów mo¿na znaleŸæ w Rozdziale 2 w ksi¹¿ce \cite{HK}.
+	Zauwa¿my, ¿e powy¿sza równoœæ ilustruje wspomniany problem wnioskowania statystycznego o zmiennych funkcjonalnych. Estymator $\widehat{C}$ rzutuje $L^2$ na skoñczenie wymiarow¹ podprzestrzeñ generowan¹ przez $X_1,...,X_N$, co ogranicza dok³adnoœæ znalezienia obiektu nieskoñczenie wymiarowego posiadaj¹c skoñczon¹ próbê.
+	\\Niemniej jednak powy¿sze estymatory s¹ dobrze okreœlone, a estymator funkcji œredniej jest estymatorem nieobci¹¿onym. Dowody poprawnoœci tych estymatorów mo¿na znaleŸæ w Rozdziale 2 w ksi¹¿ce \cite{HK}.
 	%
 	%
 	%\section{Estymacja wartoœci w³asnych i funkcji w³asnych operatora kowariancji}
@@ -610,9 +585,7 @@
 	Wartoœci w³asne $\lambda_j$ i funkcje w³asne $\upsilon_j$ estymujemy zatem wed³ug wzoru
 	\[ \int \hat{c}(t,s) \hat{\upsilon}_j (s) ds = \hat{\lambda}_j \hat{\upsilon}_j(t), \quad j=1,2,...,N. \]
 	%
-	%\textcolor{red}{[Bazê ortonormaln¹ tworz¹ funkcje (wektory) w³asne operatora kowariancji $X$.]}\\
-	%
-		Podamy teraz (bez dowodu) podstawow¹ w³asnoœæ przyjêtego sposobu estymacji wartoœci oraz wektorów w³asnych operatorów kowariancji - œredniokwadratowy b³¹d estymacji maleje do zera szybciej ni¿ liniowo:
+		Podamy teraz (bez dowodu) podstawow¹ w³asnoœæ \textcolor{red}{przyjêtego sposobu estymacji wartoœci oraz wektorów w³asnych operatorów kowariancji} - œredniokwadratowy b³¹d estymacji maleje do zera szybciej ni¿ liniowo:
 		%
 		\begin{tw}\label{L1} \cite{K08}, \cite{B}
 			\\Wed³ug powy¿szych oznaczeñ, je¿eli dla pewnego $p>0$ prawdziwe jest \eqref{eq:zal1.1}, to spe³nione s¹ nierównoœci
@@ -625,25 +598,8 @@
 	%\\\textcolor{blue}{[czy dodaæ \textit{asymptotyczn¹ normalnoœæ} funkcji w³asnych: $N^{1/2}(\upsilon_j - \hat{\upsilon_j})$ i $N^{1/2}(\lambda_j - \hat{\lambda_j})$? (na potrzeby rozdzia³u 2?)]}\\
 	%
 	%
-	Realnym przedmiotem funkcjonalnej analizy danych jest seria prób losowych $x_1,...,x_N$, gdzie ka¿dy $x_n$ jest wektorem o wielkim wymiarze. Dane te przekszta³camy w taki sposób, aby by³y one realizacjami ci¹gu niezale¿nych danych funkcjonalnych $X_1,...,X_N$ w $L^2(T)$ o jednakowym rozk³adzie jak zmienna funkcjonalna $X \in L^2$ spe³niaj¹ca za³o¿enie $\mathbb{E}\|X\|^2<\infty$. Przekszta³cenia tego dokonuje siê w oparciu o uk³ad bazowy $\{f_j\}_{j\geq 1}^J$ w $L^2$, gdzie $J$ jest odpowiednio du¿¹ liczba naturaln¹. Uk³ad bazowy oznacza w tym przypadku zbiór niezale¿nych liniowo funkcji. Mamy zatem 
-	%mo¿na przedstawiæ $X$ jako kombinacje liniowe funkcji bazowych, tj.
-	%\[ X_n(t) = \mu(t) + \sum_{k=1}^{\infty} \xi_{kn} \upsilon_k(t), \quad n=1,...,N ,\]
-	%gdzie \textcolor{red}{$\mu(t)=\mathbb{E}X_n$}.
-	%\[ X(t) = \sum_{k=1}^{\infty} \xi_{k} f_k(t) .\]
-	%W praktyce obserwujemy tylko punkty z danych funkcjonalnych, tj. wartoœci z $N$ nieznanych funkcji dla wybranych argumentów $t_1<...<t_n$ (niekoniecznie równomiernie roz³o¿onych) nale¿¹cych do przedzia³u $T$. Aby zatem otrzymaæ $N$ danych funkcjonalnych $X_1,...,X_N$ nale¿y znaleŸæ ich przybli¿enie przez dopasowanie kombinacji liniowej \textcolor{red}{tylko $K$} funkcji bazowych $\{\upsilon_j\}_{j\geq 1}$ w $L^2$, czyli
-	\[ X_n (t) \approx \sum_{j=1}^{J} \widehat{\alpha}_{jn} f_j(t), \quad n=1,...,N,\]
-	gdzie $\widehat{\alpha}_{jn}$ mo¿na znaleŸæ metod¹ najmniejszych kwadratów lub metod¹ interpolacji danych. Dla uproszczenia obliczeñ najlepiej, kiedy uk³ad $\{f_k\}_{j\geq 1}^J$ jest ortonormalny, jak np. baza Fouriera, ale mo¿emy wykorzystaæ nawet bazê nieortogonaln¹, np. bazê tworzon¹ przez B-splajny.
-	\\\textcolor{red}{odnoœnik do rysunku z przyk³adem wyg³adzenia}
-	%
-	\\W tym realnym przypadku, funkcjonalny odpowiednik analizy g³ównych sk³adowych (ang. \textit{principal components analysis, PCA}) przedstawia siê nastêpuj¹co. Funkcje w³asne operatora kowariancji z próby $\widehat{C}$ nazywamy \textbf{empirycznymi funkcjonalnymi g³ównymi sk³adowymi} (ang. \textit{empirical functional principal components, EFPC's}) danych funkcjonalnych $X_1,...,X_N$. Tworz¹ one bazê ortonormaln¹ w przestrzeni rozpiêtej przez uk³ad bazowy $\{f_j\}_j^J$ i baza ta jest baz¹ optymaln¹ do rozwiniêcia danych funkcjonalnych $X_1,...,X_N$. Zatem
-	\[ X_n (t) \approx \sum_{j=1}^{J} \widehat{\xi}_{jn} \upsilon_j(t), \quad n=1,...,N.\]
-	Jeœli $X_1,...,X_N$ maj¹ taki sam rozk³ad co $L^2$-element losowy $X$ (ca³kowalny z kwadratem, tj. spe³niaj¹cy $\mathbb{E}\|X\|^2 < \infty$), to funkcje w³asne operatora $C$ nazywamy \textbf{funkcjonalnymi g³ównymi sk³adowymi} (\textit{FPC's}), które estymujemy przez EFPC z dok³adnoœci¹ do znaku. Iloczyn skalarny $\langle X_i, \widehat{\upsilon}_j \rangle = \int X_i (t) \widehat{\upsilon}_j (t) dt$ odpowiada zmiennoœci $X_i$ opisanej przez $\upsilon_j$ i nazywany jest w anglojêzycznej literaturze \textbf{\textit{score}}.
-	\\\textcolor{red}{odnoœnik do rysunku z PCA?}
-	%
-	%\textcolor{red}{\\Jak w przypadku zmiennej losowej i wektorów w³asnych macierzy kowariancji, tak w przypadku zmiennej funkcjonalnej funkcje w³asne operatora kowariancji, FPC's i EFPC's, tworz¹ bazê ortonormaln¹ optymaln¹ do rozwiniêcia odpowiednio zmiennej funkcjonalnej $X$ i danych funkcjonalnych $X_1,...X_N$. Iloczyn skalarny $\langle X_i, \widehat{\upsilon}_j \rangle = \int X_i (t) \widehat{\upsilon}_j (t) dt$ odpowiada zmiennoœci $X_i$ opisanej przez $\upsilon_j$ i nazywany jest w anglojêzycznej literaturze \textbf{\textit{score}}. Istotnie, przy za³o¿eniu $\mathbb{E}X_i=0$, statystyka
-	%\[ \frac{1}{N} \sum_{i=1}^{N} \langle X_i , x \rangle ^2 = \langle \widehat{C} (x) , x \rangle \]
-	%mo¿e byæ traktowana jako wariancja z próby "w kierunku" funkcji $x$....}
-	
+	Zarysujemy teraz funkcjonalny odpowiednik analizy g³ównych sk³adowych (ang. \textit{principal components analysis, PCA}). Funkcje w³asne operatora kowariancji z próby $\widehat{C}$ nazywamy \textbf{empirycznymi funkcjonalnymi g³ównymi sk³adowymi} (ang. \textit{empirical functional principal components, EFPC's}) danych funkcjonalnych $X_1,...,X_N$. Jeœli $X_1,...,X_N$ maj¹ taki sam rozk³ad co $L^2$-element losowy $X$ (ca³kowalny z kwadratem, tj. spe³niaj¹cy $\mathbb{E}\|X\|^2 < \infty$), to funkcje w³asne operatora $C$ nazywamy \textbf{funkcjonalnymi g³ównymi sk³adowymi} (\textit{FPC's}), które estymujemy przez EFPC z dok³adnoœci¹ do znaku.
+	\\Jak w przypadku zmiennej losowej i wektorów w³asnych macierzy kowariancji, tak w przypadku zmiennej funkcjonalnej funkcje w³asne operatora kowariancji, FPC's i EFPC's, tworz¹ bazê ortonormaln¹ optymaln¹ do rozwiniêcia odpowiednio zmiennej funkcjonalnej $X$ i danych funkcjonalnych $X_1,...X_N$. Iloczyn skalarny $\\angle X_i, \widehat{\upsilon}_j \rangle = \int X_i (t) \widehat{\upsilon}_j (t) dt$ nazywa siê \textcolor{red}{\textbf{scores}} (ang. \textit{scores}) ...
 	%
 	%
 	\chapter{Test istotnoœci w funkcjonalnym modelu liniowym}
@@ -652,49 +608,46 @@
 	%
 	\section{Funkcjonalny model liniowy}
 	%
-	Za³ó¿my, ¿e mamy dane scentrowane $L^2$-elementy losowe $Y$ oraz $X$ takie, ¿e $\mathbb{E}\|X\|^2< \infty , \ \mathbb{E}\|Y\|^2 < \infty$ dla których chcemy zbudowaæ funkcjonalny model liniowy w którym $Y$ jest zmienn¹ objaœnian¹ a $X$ zmienn¹ objaœniaj¹c¹. Obserwujemy próbê d³ugoœci $N$, tzn. mamy dane ci¹gi $\{Y_n\}_{n=1}^N, \{X_n\}_{n=1}^N, \{\varepsilon_n\}_{n=1}^N$ takie ¿e kolejne trójki $(Y_n, X_n, \varepsilon_n)$ s¹ niezale¿ne, $X_n$ oraz $\varepsilon_n$ s¹ niezale¿ne dla ka¿dego $n \in \{1, ..., N\}$, $\mathbb{E}\varepsilon_n = 0$. 
-	%\\Mamy $N$ par $L^2$-elementów losowych $(X_n, Y_n)$ ($n=1,...,N$). Dla uproszczenia zak³adaæ bêdziemy, ¿e zmienne objaœniane $Y_n$ i objaœniaj¹ce $X_n$ s¹ scentrowane.
-	\textbf{Pe³en model funkcjonalny} (ang. \textit{fully functional model}) przyjmuje postaæ
+	\textcolor{red}{Za³ó¿my, ¿e mamy dane scentrowane $L^2$-elementy losowe $Y$ oraz $X$ takie, ¿e $\mathbb{E}\|X\|^2< \infty , \ \mathbb{E}\|Y\|^2 < \infty$ dla których chcemy zbudowaæ funkcjonalny model liniowy w którym $Y$ jest zmienn¹ objaœnian¹ a $X$ zmienn¹ objaœniaj¹c¹. Obserwujemy próbê d³ugoœci $N$, tzn. mamy dane ci¹gi $\{Y_n\}_{n=1}^N, \{X_n\}_{n=1}^N, \{\varepsilon_n\}_{n=1}^N$ takie ¿e kolejne trójki $(Y_n, X_n, \varepsilon_n)$ s¹ niezale¿ne, $X_n$ oraz $\varepsilon_n$ s¹ niezale¿ne dla ka¿dego $n \in \{1, ..., N\}$, $\mathbb{E}\varepsilon_n = 0$
+	\\Mamy $N$ par $L^2$-elementów losowych $(X_n, Y_n)$ ($n=1,...,N$). Dla uproszczenia zak³adaæ bêdziemy, ¿e zmienne objaœniane $Y_n$ i objaœniaj¹ce $X_n$ s¹ scentrowane.} \textbf{Pe³en model funkcjonalny} (ang. \textit{fully functional model}) przyjmuje postaæ
 	\begin{equation}\label{eq:FLM}
 	Y_n = \mathit{\Psi} X_n + \varepsilon_n, \quad n=1,2,...,N,
 	\end{equation}
-	%gdzie b³¹d $\varepsilon_n$ równie¿ nale¿y do przestrzeni Hilberta $L^2(T)$.
-	gdzie operator $\mathit{\Psi}: L^2 \rightarrow L^2$ jest ca³kowym operatorem Hilberta-Schmidta, a zatem j¹dro ca³kowe $\psi(t,s)$ jest funkcj¹ ca³kowaln¹ z kwadratem na $T \times T$. Równoœæ \eqref{eq:FLM} rozumiemy zatem nastêpuj¹co
+	gdzie b³¹d $\varepsilon_n$ równie¿ nale¿y do przestrzeni Hilberta $L^2(T)$. Operator $\mathit{\Psi}: L^2 \rightarrow L^2$ jest ca³kowym operatorem Hilberta-Schmidta, a zatem j¹dro ca³kowe $\psi(t,s)$ jest funkcj¹ ca³kowaln¹ z kwadratem na $T \times T$. Równoœæ \eqref{eq:FLM} rozumiemy zatem nastêpuj¹co
 	\begin{equation}\label{eq:FLM2}
 	Y_n(t) = \int \psi (t,s) X_n(s) ds + \varepsilon_n (t), \quad n=1,2,...,N.
 	\end{equation}
 	%%% za³o¿enia modelu! %%%
-	%\textcolor{red}{Jak i w przypadku standardowego modelu linowego, funkcjonalny model liniowy wymusza pewne za³o¿enia. Wymagamy, aby zmienna funkcjonalna $\varepsilon_n$ opisuj¹ca b³¹d modelu spe³nia³a $\mathbb{E}[ \varepsilon_n ] =0$ oraz aby nie by³a niezale¿na od $X_n$.}
-	%\\\textcolor{red}{["nieskorelowane zmienne" = ( operator kowariancji  = 0 )?]}
-	%\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
+	\textcolor{red}{Jak i w przypadku standardowego modelu linowego, funkcjonalny model liniowy wymusza pewne za³o¿enia. Wymagamy, aby zmienna funkcjonalna $\varepsilon_n$ opisuj¹ca b³¹d modelu spe³nia³a $\mathbb{E}[ \varepsilon_n ] =0$ oraz aby nie by³a niezale¿na od $X_n$.}
+	\\\textcolor{red}{["nieskorelowane zmienne" = ( operator kowariancji  = 0 )?]}
+	\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
 	%
 	\vspace{0.35cm}\\ Nazwa powy¿szego modelu wynika z faktu, ¿e zarówno zmienne objaœniane $Y_n$ jak i zmienne objaœniaj¹ce $X_n$ s¹ zmiennymi funkcjonalnymi. Niewielkim uproszczeniem s¹ pozosta³e typy funkcjonalnych modeli liniowych, tj.
 	\begin{itemize}
 		\item[-] model z odpowiedzi¹ skalarn¹ (ang. \textit{scalar response model}) postaci
 		$$ Y_n = \int \psi (s) X_n(s) ds + \varepsilon_n, \quad n=1,2,...,N,$$
 		w którym tylko zmienne objaœniaj¹ce $X_n$ s¹ zmiennymi funkcjonalnymi,
-			%\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
+			\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
 		\item[-] model z odpowiedzi¹ funkcyjn¹ (ang. \textit{functional response model}) postaci
 		$$ Y_n (t) = \psi (t) x_n + \varepsilon_n (t), \quad n=1,2,...,N,$$
 		w którym zmienne objaœniaj¹ce $x_n$ s¹ deterministycznymi skalarami.
-			%\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
+			\\\textcolor{red}{[przyk³ad - nawet jeœli nie zapisywaæ, to mieæ w g³owie]}
 	\end{itemize}
 	%
-	\textcolor{red}{Naturalnym problemem pojawiaj¹cym siê przy funkcjonalnym modelu liniowym jest estymacja operatora $\mathit{\Psi}$ nale¿¹cego do nieskoñczenie wymiarowej przestrzeni na podstawie skoñczonej próbki danych. Niech $\{ \eta_k \}_{k = 1}^{\infty}$ i $\{ \theta_l \}_{l = 1}^{\infty}$ bêd¹ pewnymi ustalonymi bazami, niekoniecznie ortonormalnymi, np. bazami Fouriera lub splajnowymi. Ponadto, niech funkcje $\eta_k$ dobrze przybli¿aj¹ funkcje $X_n$, a $\theta_l$ dobrze przybli¿aj¹ $Y_n$. Wtedy nieznane j¹dro $\psi$ estymujemy wed³ug postaci
+	Naturalnym problemem pojawiaj¹cym siê przy funkcjonalnym modelu liniowym jest estymacja operatora $\mathit{\Psi}$ nale¿¹cego do nieskoñczenie wymiarowej przestrzeni na podstawie skoñczonej próbki danych. Niech $\{ \eta_k \}_{k = 1}^{\infty}$ i $\{ \theta_l \}_{l = 1}^{\infty}$ bêd¹ pewnymi ustalonymi bazami, niekoniecznie ortonormalnymi, np. bazami Fouriera lub splajnowymi. Ponadto, niech funkcje $\eta_k$ dobrze przybli¿aj¹ funkcje $X_n$, a $\theta_l$ dobrze przybli¿aj¹ $Y_n$. Wtedy nieznane j¹dro $\psi$ estymujemy wed³ug postaci
 	\[ \widehat{\psi} (t,s) = \sum_{k=1}^{K} \sum_{l=1}^L p_{kl} \eta_k(s) \theta_l(t), \]
-	gdzie $K$ i $L$ s¹ odpowiednio ma³ymi liczbami wybranymi do wyg³adzenia przybli¿enia $X_n$ i $Y_n$. Mo¿liwym jest znalezienie operatora, który daje idealne dopasowanie do danych (dla którego wszystkie ró¿nice od próbki s¹ równe zero), nie narzucaj¹c dodatkowych za³o¿eñ. Wykorzystany w dalszej czêœci pracy pakiet \textit{fda}, do programu \textit{R-project}, do znalezienia operatora $\mathit{\Psi}$ stosuje metodê najmniejszych kwadratów, tj. przez minimalizacjê sumy kwadratów reszt, czyli wyra¿enia
+	gdzie $K$ i $L$ s¹ odpowiednio ma³ymi liczbami wybranymi do wyg³adzenia przybli¿enia $X_n$ i $Y_n$. Mo¿liwym jest znalezienie operatora, który daje idealne dopasowanie do danych (dla którego wszystkie ró¿nice od próbki s¹ równe zero), nie narzucaj¹c dodatkowych za³o¿eñ. Wykorzystany w dalszej czêœci pracy pakiet \textit{fda}, do programu \textit{R-project}, do znalezienia operatora $\mathit{\Psi}$ stosuje metodê najmniejszych kwadratów, tj. przez minimalizacjê sumy kwadratów reszt
 	\[ \sum_{n=1}^N \bigg\| Y_n - \int X_n (s) \widehat{\psi}(s, \cdot) \bigg\|^2, \]
-	ale przypomina on bia³y szum i jego interpretacja jest czêsto problematyczna i niepraktyczna. Jednym ze sposobów na rozwi¹zanie tego problemu jest poszukiwanie operatora nale¿¹cego do podprzestrzeni generowanej przez funkcje w³asne operatorów kowariancji danych z próby, nazywane empirycznymi funkcjonalnymi g³ównymi sk³adowymi (\textit{EFPC's}), które zosta³y opisane w podrozdziale \ref{r:FPC}. G³ówne sk³adowe odpowiadaj¹ istotnym czynnikom zmiennoœci zmiennych, dobrze s³u¿¹ zatem do przybli¿ania ich wartoœci.}
+	ale przypomina on bia³y szum i jego interpretacja jest czêsto problematyczna i niepraktyczna. Jednym ze sposobów na rozwi¹zanie tego problemu jest poszukiwanie operatora nale¿¹cego do podprzestrzeni generowanej przez funkcje w³asne operatora kowariancji danych z próby, nazywane empirycznymi funkcjonalnymi g³ównymi sk³adowymi (\textit{EFPC's}), które zosta³y opisane w podrozdziale \ref{r:FPC}. G³ówne sk³adowe odpowiadaj¹ istotnym czynnikom zmiennoœci zmiennych, dobrze s³u¿¹ zatem do przybli¿ania ich wartoœci.
 	\\Niech $X$ i $Y$ bêd¹ scentrowanymi $L^2$-elementami losowymi o rozwiniêciach
 	\begin{equation}\label{eq:XY}
 	X(s) = \sum_{i=1}^{\infty} \xi_{i} \upsilon_i (s), \quad Y (t) = \sum_{j=1}^{\infty} \zeta_{j} u_j(t) ,
 	\end{equation}
 	gdzie $\upsilon_i$ s¹ funkcjonalnymi g³ównymi sk³adowymi $X$, zaœ $u_j$ s¹ funkcjonalnymi g³ównymi sk³adowymi $Y$ i
-	\[ \xi_i = \langle X , \upsilon_i \rangle , \quad \zeta_j = \langle Y , u_j \rangle, \]
-	gdzie $C \upsilon_i = \lambda_i \upsilon_i$ oraz $\Gamma u_j = \zeta_j u_j$, oznaczaj¹c przez $C$ operator kowariancji $X$, zaœ przez $\Gamma$ operator kowariancji $Y$.
+	\[ \xi_i = \langle X , \upsilon_i \rangle , \quad \zeta_j = \langle Y , u_j \rangle. \]
 	%
 	\begin{lem}\label{lemat8.1}\cite{HK}
-	\\Niech $X, Y, \varepsilon$ bêd¹ scentrowanymi $L^2$-elementami losowymi. Za³ó¿my, ¿e $\varepsilon$ jest niezale¿ne od $X$ i niech spe³nione bêdzie równanie liniowe
+	\\Niech $X, Y, \varepsilon$ bêd¹ scentrowanymi $L^2$-elementami losowymi. Za³ó¿my, ¿e $\varepsilon$ bêdzie niezale¿ne od $X$ i niech spe³nione bêdzie równanie liniowe
 	\begin{equation}\label{eq:8.1zal1}
 	Y (t) = \int \psi (t,s) X(s) ds + \varepsilon (t)
 	\end{equation}
@@ -712,7 +665,7 @@
 	\end{equation}
 	a na mocy za³o¿enia \eqref{eq:8.1zal2} wspó³czynniki $\psi_{kl}$ spe³niaj¹
 	\[ \sum_{k=1}^{\infty} \sum_{l=1}^{\infty} \psi_{kl}^2 = \iint \psi^2(t,s)dt ds < \infty. \]
-	Podstawiaj¹c \eqref{eq:XY} i \eqref{eq:8.1} do \eqref{eq:8.1zal1} oraz korzystaj¹c z ortonormalnoœci $\{\upsilon_i\}_{i \geq 1}$, otrzymujemy
+	Podstawiaj¹c \eqref{eq:XY} i \eqref{eq:8.1} do \eqref{eq:8.1zal1} otrzymujemy
 	\begin{align*}
 	%\sum_{j=1}^{\infty} \zeta_{jn} u_j(t) =  \sum_{k=1}^{\infty} \sum_{l=1}^{\infty} \psi_{kl} u_k(t) \upsilon_l (s) \sum_{i=1}^{\infty} \xi_{i} \upsilon_i (s) + \varepsilon(t)
 	%\end{align*}
@@ -730,22 +683,19 @@
 	\\ \sum_{j=1}^{\infty} \zeta_{j} \langle u_j, u_l \rangle &=  \sum_{k=1}^{\infty} \sum_{i=1}^{\infty} \psi_{ki} \xi_{i} \langle u_k, u_l \rangle + \langle u_l , \varepsilon \rangle
 	\\ \zeta_{l} &=  \sum_{i=1}^{\infty} \psi_{li} \xi_{i} + \langle u_l ,\varepsilon\rangle .
 	\end{align*}
-	Wystarczy teraz pomno¿yæ obustronnie przez $\xi_k$, na³o¿yæ wartoœæ oczekiwan¹ na obie strony powy¿szej równoœci i skorzystaæ z Lematu \ref{lemat_niezaleznosc}, ¿eby otrzymaæ
-	\[  \mathbb{E} [\zeta_{l} \xi_k] = \mathbb{E} \sum_{i=1}^{\infty} \psi_{li} \xi_{i} \xi_k + \mathbb{E} \xi_k \langle u_l ,\varepsilon\rangle = \sum_{i=1}^{\infty} \psi_{li} \mathbb{E} \xi_{i} \xi_k = (*). \]
-	Rozpiszemy tylko wyra¿enie $\mathbb{E}\xi_i \xi_k$
-	\[ \mathbb{E} \xi_{i} \xi_k = \mathbb{E} \langle X, \upsilon_i \rangle \langle X,  \upsilon_k \rangle = \mathbb{E} \langle \langle X, \upsilon_i \rangle X,  \upsilon_k \rangle =  \langle \mathbb{E} \langle X, \upsilon_i \rangle X,  \upsilon_k \rangle = \langle C\upsilon_i,  \upsilon_k \rangle \]
-	\[= \lambda_i \langle \upsilon_i  ,  \upsilon_k \rangle = \lambda_i \delta_{i, k} .\]
-	Zatem dla $i \neq k $ wyra¿enie to zeruje siê, a w przypadku gdy $i =k$ wynosi $\lambda_k$. Podstawiaj¹c znowu do $(*)$
-	\[ (*)= \psi_{lk} \lambda_k = \psi_{lk} \mathbb{E}[\xi_{k}^2] \]
+	\textcolor{red}{Wystarczy teraz pomno¿yæ obustronnie przez $\xi_k$, na³o¿yæ wartoœæ oczekiwan¹ na obie strony powy¿szej równoœci i skorzystaæ z Lematu \ref{lemat_niezaleznosc}, ¿eby otrzymaæ
+	\[  \mathbb{E} [\zeta_{l} \xi_k] = \mathbb{E} \sum_{i=1}^{\infty} \psi_{li} \xi_{i} \xi_k + \mathbb{E} \xi_k \langle u_l ,\varepsilon\rangle = \sum_{i=1}^{\infty} \psi_{li} \mathbb{E} \xi_{i} \xi_k = \sum_{i=1}^{\infty} \psi_{li} \mathbb{E} \langle X, \upsilon_i \rangle \langle X,  \upsilon_k \rangle \]
+	\[ = \sum_{i=1}^{\infty} \psi_{li} \mathbb{E} \langle \langle X, \upsilon_i \rangle X,  \upsilon_k \rangle = \sum_{i=1}^{\infty} \psi_{li} \langle \mathbb{E} \langle X, \upsilon_i \rangle X,  \upsilon_k \rangle = \sum_{i=1}^{\infty} \psi_{li} \langle C\upsilon_i,  \upsilon_k \rangle  \]
+	\[ = \sum_{i=1}^{\infty} \psi_{li} \lambda_i \langle \upsilon_i,  \upsilon_k \rangle = \psi_{lk} \lambda_k \langle \upsilon_k,  \upsilon_k \rangle =  \psi_{lk}\mathbb{E}[\xi_{k}^2] \]}
 	co koñczy dowód. \hfill $\square$
 	%
-	\vspace{0.35cm}\\Zauwa¿my, ¿e $\mathbb{E}[\xi_l^2]=\lambda_l$, gdzie $\lambda_l$ jest wartoœci¹ w³asn¹ odpowiadaj¹c¹ funkcji w³asnej $\upsilon_l$. Bez zmiany reprezentacji \eqref{eq:XY} mo¿emy pomin¹æ z niej funkcje w³asne odpowiadaj¹ce zerowym wartoœciom w³asnym i dziêki temu za³o¿yæ, ¿e $\mathbb{E}[\xi_l^2]>0$ dla ka¿dego $l\geq 1$. Zatem w Lemacie \ref{lemat8.1} warunek \eqref{eq:8.1zal2} mo¿na zast¹piæ przez
+	\vspace{0.35cm}\\\textcolor{red}{Przypomnijmy/Zauwa¿my}, ¿e $\mathbb{E}[\xi_l^2]=\lambda_l$, gdzie $\lambda_l$ jest wartoœci¹ w³asn¹ odpowiadaj¹c¹ funkcji w³asnej $\upsilon_l$. Bez zmiany reprezentacji \eqref{eq:XY} mo¿emy pomin¹æ z niej funkcje w³asne odpowiadaj¹ce zerowym wartoœciom w³asnym i dziêki temu za³o¿yæ, ¿e $\mathbb{E}[\xi_l^2]>0$ dla ka¿dego $l\geq 1$. Zatem w Lemacie \ref{lemat8.1} warunek \eqref{eq:8.1zal2} mo¿na zast¹piæ przez
 	\[ \sum_{k=1}^{\infty} \sum_{l=1}^{\infty} \frac{(\mathbb{E}[\xi_l \zeta_k])^2}{\lambda_l^2} < \infty . \]
 	Powy¿sze rozwa¿ania prowadz¹ do estymatora
 	\[ \widehat{\psi}_{KL}(t,s) = \sum_{k=1}^K \sum_{l=1}^L \widehat{\lambda}_l^{-1} \widehat{\sigma}_{lk} \widehat{u}_k(t) \widehat{\upsilon}_l(s), \]
 	gdzie $\widehat{\sigma}_{lk}$ jest estymatorem $\mathbb{E}[\xi_l \zeta_k]$, czyli np.
 	\[ \widehat{\sigma}_{lk} = \frac{1}{N} \sum_{i=1}^N \langle X_i , \widehat{\upsilon}_l \rangle \langle Y_i , \widehat{u}_k \rangle. \]
-	%\\\textcolor{red}{[...?]}
+	\\\textcolor{red}{[...?]}
 	%
 	%
 	\section{Procedura testowa}
@@ -756,7 +706,8 @@
 	\end{equation*}
 	Zauwa¿my, ¿e przyjêcie H$_0$ nie oznacza braku zwi¹zku miêdzy zmienn¹ objaœnian¹ a objaœniaj¹c¹. Prowadzi jedynie do stwierdzenia braku zale¿noœci liniowej.
 	%%% Ci¹g zmiennych d³ugoœci N %%%
-	\vspace{0.35cm}\\Kontynuuj¹c za wczeœniej wprowadzonymi za³o¿eniami, niech $Y_n$ ma taki sam rozk³ad jak $Y$, zaœ $X_n$ ma taki sam rozk³ad jak $X$. Dla zmiennych $Y$ oraz $X$ mamy zadane operatory kowariancji:
+	\vspace{0.35cm}\\Za³ó¿my, ¿e mamy dane scentrowane $L^2$-elementy losowe $Y$ oraz $X$ takie, ¿e $\mathbb{E}\|X\|^2,\ \mathbb{E}\|Y\|^2 < \infty$ dla których chcemy zbudowaæ funkcjonalny model liniowy w którym $Y$ jest zmienn¹ objaœnian¹ a $X$ zmienn¹ objaœniaj¹c¹. Obserwujemy próbê d³ugoœci $N$, tzn. mamy dane ci¹gi $\{Y_n\}_{n=1}^N, \{X_n\}_{n=1}^N, \{\varepsilon_n\}_{n=1}^N$ takie ¿e kolejne trójki $(Y_n, X_n, \varepsilon_n)$ s¹ niezale¿ne, $X_n$ oraz $\varepsilon_n$ s¹ niezale¿ne dla ka¿dego $n \in \{1, ..., N\}$, $\mathbb{E}\varepsilon_n = 0$ oraz $Y_n$ ma taki sam rozk³ad jak $Y$, zaœ $X_n$ ma taki sam rozk³ad jak $X$. Dla zmiennych $Y$ oraz $X$ mamy zadane operatory kowariancji:
+	
 	%Zak³adamy, ¿e zmienna objaœniana $Y_n$, zmienne objaœniaj¹ce $X_n$ i b³êdy $\varepsilon_n$ s¹ $L^2$-elementami losowymi takimi, ¿e $\mathbb{E}\|X_n\|^2,\ \mathbb{E}\|Y_n\|^2 < \infty$. Oznaczaj¹c przez $X$ (analogicznie $Y$) zmienn¹ funkcjonaln¹ o tym samym rozk³adzie co $X_n$ ($Y_n$) wprowadzamy operatory kowariancji
 	\begin{equation}\label{eq:operatory}
 	C(x)=\mathbb{E}[\left\langle X, x \right\rangle X ], \quad \Gamma(x)= \mathbb{E}[\left\langle Y, x \right\rangle Y ], \quad \Delta(x)= \mathbb{E}[\left\langle X, x \right\rangle Y ], \quad x \in L^2.
@@ -770,10 +721,9 @@
 	C(\upsilon_k)=\lambda_k \upsilon_k, \quad \Gamma(u_j)=\gamma_j u_j,
 	\end{equation}
 	których estymatory bêdziemy oznaczaæ $(\widehat{\lambda}_k,\widehat{\upsilon}_k)$, $(\widehat{\gamma}_j,\widehat{u}_j)$.
-	\\Poni¿sze rozwa¿ania s¹ uzasadnieniem wzoru na statystykê testow¹ \eqref{eq:stat}. Test obejmuje obciêcie powy¿szych operatorów na podprzestrzenie skoñczenie wymiarowe. Podprzestrzeñ $\mathcal{V}_p=\text{span}\{\upsilon_1,...,\upsilon_p\}$ zawiera najlepsze przybli¿enia $X_1,..., X_N$, które s¹ liniowymi kombinacjami pierwszych $p$ g³ównych sk³adowych (\textit{FPC's}). 
+	\\Test obejmuje obciêcie powy¿szych operatorów na podprzestrzenie skoñczenie wymiarowe. Podprzestrzeñ $\mathcal{V}_p=\text{span}\{\upsilon_1,...,\upsilon_p\}$ zawiera najlepsze przybli¿enia $X_n$, które s¹ liniowymi kombinacjami pierwszych $p$ g³ównych sk³adowych (ang. \textit{Functional Principal Components, FPC}). 
 	%%% zmniejszenie wymiaru X i Y %%%
-	%Metod¹ g³ównych sk³adowych wyznaczamy $p$ najwiêkszych wartoœci w³asnych operatora $\widehat{C}$ tak, ¿e $\widehat{\mathcal{V}}_p=\text{span}\{\widehat{\upsilon}_1,...,\widehat{\upsilon}_p\}$ zawiera najlepsze przybli¿enia $X_1,...,X_N$. 
-	Analogicznie $\mathcal{U}_q=\text{span}\{u_1,...,u_q\}$ zawiera przybli¿enia $Y_1,...,Y_N$.
+	Metod¹ g³ównych sk³adowych wyznaczamy $p$ najwiêkszych wartoœci w³asnych operatora $\widehat{C}$ tak, ¿e $\widehat{\mathcal{V}}_p=\text{span}\{\widehat{\upsilon}_1,...,\widehat{\upsilon}_p\}$ zawiera najlepsze przybli¿enie $X_n$. Analogicznie $\mathcal{U}_q=\text{span}\{u_1,...,u_q\}$ zawiera przybli¿enia $\text{span}\{Y_1,...,Y_N\}$.
 	%Analogicznie $\widehat{\mathcal{U}}_q=\text{span}\{\widehat{u}_1,...,\widehat{u}_q\}$ zawiera przybli¿enie $Y_n$.
 	\vspace{0.35cm}\\Z ogólnej postaci funkcjonalnego modelu liniowego
 	\[ Y = \mathit{\Psi} X + \varepsilon \]
@@ -786,22 +736,21 @@
 	\[ \Delta(x) = \mathbb{E}[\left\langle X, x \right\rangle Y ] =  \mathbb{E} \left[  \langle X, x \rangle \mathit{\Psi} X \right] + \mathbb{E} \left[ \langle X, x \rangle \varepsilon \right] \]
 	\[ = \mathbb{E} \left[  \mathit{\Psi} (\langle X, x \rangle  X) \right] = \mathit{\Psi} \big(\mathbb{E} \left[  \langle X, x \rangle X \right]\big) = \mathit{\Psi} C(x).  \]
 	W szczególnoœci, dla funkcji w³asnych $\upsilon_k,\ k \leq p$ prawdziwa jest równoœæ
-	\[ \Delta (\upsilon_k) = \mathit{\Psi} C (\upsilon_k) = \mathit{\Psi} (\lambda_k \upsilon_k) = \lambda_k \mathit{\Psi} ( \upsilon_k). \]
-	Skoro $\lambda_k \neq 0$ to mo¿emy napisaæ
+	\[ \Delta (\upsilon_k) = \mathit{\Psi} C (\upsilon_k) = \mathit{\Psi} (\lambda_k \upsilon_k) = \lambda_k \mathit{\Psi} ( \upsilon_k), \]
+	wiêc \textcolor{red}{$\lambda_k \neq 0?!$}
 	\begin{equation}\label{wlasne_psi_delta}
 	\mathit{\Psi}(\upsilon_k)=\lambda_k^{-1}\Delta(\upsilon_k).
 	\end{equation}
-	St¹d, $\mathit{\Psi}$ zeruje siê na $\text{span}\{\upsilon_1,...,\upsilon_p\}$ wtedy i tylko wtedy, gdy $\Delta(\upsilon_k)=0$ dla ka¿dego $k=1,...,p$. Przypomnijmy, ¿e
+	St¹d, $\mathit{\Psi}$ zeruje siê na $\text{span}\{\upsilon_1,...,\upsilon_p\}$ wtedy i tylko wtedy, gdy $\Delta(\upsilon_k)=0$ dla ka¿dego $k=1,...,p$. Zauwa¿my, ¿e
 	\begin{equation*}
 	\Delta(\upsilon_k) \approx \widehat{\Delta}(\upsilon_k) = \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \upsilon_k \right\rangle Y_n.
 	\end{equation*}
-	Skoro zatem $Y_1,...,Y_N$ s¹ dobrze aproksymowane przez $\mathcal{U}_q$, to mo¿emy ograniczyæ siê do sprawdzania czy
+	Skoro zatem $\text{span}\{Y_1,...,Y_N\}$ s¹ dobrze aproksymowane przez $\mathcal{U}_q$, to mo¿emy ograniczyæ siê do sprawdzania czy
 	\begin{equation}\label{eq:delta}
 	\Big\langle \widehat{\Delta}(\upsilon_k),u_j \Big\rangle=0, \quad k=1,...,p,\quad j=1,...,q.
 	\end{equation}
-	%Jeœli H$_0$ jest prawdziwa, \textcolor{red}{to dla ka¿dego $x \in \mathcal{V}_p$, $\mathit{\Psi}(x)$ nie nale¿y do $\mathcal{U}_q$}. Co znaczy, ¿e ¿adna funkcja $Y_n$ nie mo¿e byæ opisana jako liniowa kombinacja $X_n$, $n=1,...,N$.
-	Jeœli H$_0$ jest prawdziwa, to ¿adna funkcja $Y_n$ nie mo¿e byæ opisana jako liniowa kombinacja $X_n$, $n=1,...,N$.
-	Statystyka testowa powinna zatem sumowaæ kwadraty iloczynów skalarnych (\ref{eq:delta}). Celem kolejnego podrozdzia³u jest udowodnienie Twierdzenia \ref{T1} stanowi¹cego, ¿e (przy za³o¿onym sposobie estymacji wartoœci oraz wektorów w³asnych operatora kowariancji) statystyka
+	Jeœli H$_0$ jest prawdziwa, \textcolor{red}{to dla ka¿dego $x \in \mathcal{V}_p$, $\mathit{\Psi}(x)$ nie nale¿y do $\mathcal{U}_q$}. Co znaczy, ¿e ¿adna funkcja $Y_n$ nie mo¿e byæ opisana jako liniowa kombinacja $X_n$, $n=1,...,N$.
+	Statystyka testowa powinna zatem sumowaæ kwadraty iloczynów skalarnych (\ref{eq:delta}). Celem kolejnego podrozdzia³u jest udowodnienie Twierdzenia \ref{T1} stanowi¹cego, ¿e (\textcolor{red}{przy za³o¿onym sposobie estymacji wartoœci oraz wektorów w³asnych operatora kowariancji}) statystyka
 	\begin{equation}\label{eq:stat}
 	\widehat{T}_N(p,q)=N\sum_{k=1}^p \sum_{j=1}^q \widehat{\lambda}_k^{-1} \widehat{\gamma}_j^{-1} \left\langle \widehat{\Delta}(\widehat{\upsilon}_k),\widehat{u}_j \right\rangle^2,
 	\end{equation}
@@ -820,7 +769,6 @@
 	\begin{enumerate}
 		\item Sprawdzamy za³o¿enie o liniowoœci metod¹ \textit{FPC score predictor-response plots}.
 		\item Wybieramy liczbê g³ównych sk³adowych $p$ i $q$ metodami \textit{scree test} oraz \textit{CPV}.
-		\\\textcolor{red}{p i q s¹ mniejsze od K i L}
 		\item Wyliczamy wartoœæ statystyki $\widehat{T}_N(p,q)$ (\ref{eq:stat}).
 		\item Jeœli $\widehat{T}_N(p,q) > \chi^2_{pq}(1-\alpha)$, to odrzucamy hipotezê zerow¹ o braku liniowej zale¿noœci. W przeciwnym razie nie mamy podstaw do odrzucenia H$_0$.
 	\end{enumerate}
@@ -859,19 +807,18 @@
 	\begin{tw}\label{T2} \cite{K08}, \cite{HK}
 		\\Przy Za³o¿eniach \ref{Z1}, \ref{Z2} oraz jeœli $\left\langle \mathit{\Psi}(\upsilon_k),u_j \right\rangle \neq 0$ dla $k \leq p$ oraz $j \leq q$, to $\widehat{T}_N(p,q) \overset{P}{\longrightarrow} \infty $ przy $N \rightarrow \infty$. 
 	\end{tw}
+	Dowody powy¿szych twierdzeñ rozbijemy w krokach na kolejne lematy i wnioski. \textcolor{red}{...}
+	\\Najpierw jednak zauwa¿my, ¿e konsekwencj¹ prawdziwoœci H$_0$ i przyjêcia modelu postaci $Y_n = \mathit{\Psi} X_n + \varepsilon_n$ jest równoœæ $Y_n = \varepsilon_n$. \textcolor{red}{?}\\
+	\textcolor{red}{[dodaæ informacjê o $\widehat{c}$?]}\\
 	%
-	Dowody powy¿szych twierdzeñ rozbijemy na kolejne lematy i wnioski. Najpierw jednak zauwa¿my, ¿e konsekwencj¹ prawdziwoœci H$_0$ i przyjêcia modelu postaci $Y_n = \mathit{\Psi} X_n + \varepsilon_n$ jest równoœæ $Y_n = \varepsilon_n$.
-	\\\textcolor{red}{[dodaæ informacjê o $\widehat{c}$?]}
-	%
-	\vspace{0.2cm}\\Bêdziemy korzystaæ z wielowymiarowej wersji Centralnego Twierdzenia Granicznego:
-	%
+	Bêdziemy korzystaæ z wielowymiarowej wersji Centralnego Twierdzenia Granicznego:		
 		\begin{tw}\label{CTG_multi} \cite{Billingsley}
 			\\Niech $X_n = (X_{n,1}, X_{n,2}, ... ,X_{n,k})$ bêdzie ci¹giem niezale¿nych $k$-wymiarowych wektorów losowych o tym samym rozk³adzie. Za³ó¿my, ¿e $\mathbb{E}X_{n,j}^2 < \infty$ dla ka¿dego $j=1,...,k$ oraz oznaczmy wektor œrednich jako $\mu = (\mu_1, ..., \mu_k) := (\mathbb{E}X_{n,1}, ..., \mathbb{E}X_{n,k}),$ oraz macierz kowariancji jako $\Sigma = [\sigma_{ij}]_{i,j=1}^k,\ \sigma_{ij} = Cov(X_{n,i}, X_{n,j}) = \mathbb{E}(X_{n,i} - \mu_i )(X_{n,j} - \mu_j)$. Wówczas ci¹g wektorów losowych
 			\[ \frac{X_1 + ... + X_n - n\mu}{\sqrt{n}}\]
 			zbiega wed³ug rozk³adu do $k$-wymiarowego rozk³adu normalnego o wektorze œrednich $\mu$ i macierzy kowariancji $\Sigma$.
 		\end{tw}
 		%
-		Pierwszym krokiem bêdzie zbadanie asymptotyki sk³adowych statystyki, gdy estymujemy tylko operator $\Delta$, zaœ wartoœci i funkcje w³asne $C$ oraz $\Gamma$ przyjmujemy za znane.
+		Pierwszym krokiem bêdzie zbadanie asymptotyki sk³adowych statystyki, gdy estymujemy tylko operator $\Delta$, zaœ wartoœci w³asne $C$ oraz $\Gamma$ przyjmujemy za znane.
 		
 		\begin{lem}\label{L2} \cite{K08}, \cite{HK}
 			\\Jeœli spe³nione s¹ Za³o¿enia \ref{Z1}, \ref{Z2} i H$_0$, to zachodzi zbie¿noœæ wed³ug rozk³adu $pq$-wymiarowych wektorów losowych
@@ -893,13 +840,24 @@
 		Wielowymiarowe Centralne Twierdzenie Graniczne (twierdzenie \ref{CTG_multi}) pokazuje teraz, ¿e wektor losowy
 		\[\{ \sqrt{N} \langle \widehat{\Delta} \upsilon_k, u_j \rangle,\ 1 \leq k \leq p,\ 1 \leq j \leq q  \} = \frac{1}{\sqrt{N}} \sum_{n=1}^N \{ \langle X_n, \upsilon_k \rangle \langle \varepsilon_n , u_j \rangle,\ 1 \leq k \leq p,\ 1 \leq j \leq q \}\]
 		zbiega do $pq$-wymiarowego rozk³adu normalnego, w którym wspó³rzêdne maj¹ rozk³ad normalny o œredniej $0$ i wariancji $\lambda_k \gamma_j$. Aby zakoñczyæ dowód twierdzenia nale¿y wykazaæ, ¿e wspó³rzêdne wektora granicznego s¹ niezale¿ne, czyli (wobec normalnoœci rozk³adu ³¹cznego) nieskorelowane. Wystarczy pokazaæ, ¿e dla $(k,j) \neq (k',j')$, zmienne losowe $\langle X_n, \upsilon_k \rangle \langle \varepsilon_n , u_j \rangle$ i $\langle X_n, \upsilon_{k'} \rangle \langle \varepsilon_n , u_{j'} \rangle$ s¹ nieskorelowane. Wynika to z faktu ¿e maj¹ one œredni¹ zero oraz z poni¿szych przekszta³ceñ:
-		\[ \mathbb{E}\langle X_n, \upsilon_k \rangle \langle \varepsilon_n , u_j \rangle \langle X_n, \upsilon_{k'} \rangle \langle \varepsilon_n , u_{j'} \rangle = \mathbb{E}\langle X_n, \upsilon_k \rangle \langle X_n, \upsilon_{k'} \rangle  \mathbb{E} \langle \varepsilon_n , u_j \rangle \langle \varepsilon_n , u_{j'} \rangle \]
+		\[ \mathbb{E}\langle X_n, \upsilon_k \rangle \langle \varepsilon_n , u_j \rangle \langle X_n, \upsilon_{k'} \rangle \langle \varepsilon_n , u_{j'} \rangle = \mathbb{E}\langle X_n, \upsilon_k \rangle \langle X_n, \upsilon_{k'} \rangle  \mathbb{E} \langle \varepsilon_n , u_j \rangle \langle \varepsilon_n , u_{j'} \rangle = \]
 		\[ = \mathbb{E}\langle X_n, \upsilon_k \rangle \langle X_n, \upsilon_{k'} \rangle  \mathbb{E} \langle Y_n , u_j \rangle \langle Y_n , u_{j'} \rangle = \mathbb{E} \langle \langle X_n, \upsilon_k \rangle X_n, \upsilon_{k'} \rangle  \mathbb{E}  \langle \langle Y_n , u_j \rangle Y_n , u_{j'} \rangle \]
 		\[ = \langle \mathbb{E}\langle X_n, \upsilon_k \rangle X_n, \upsilon_{k'} \rangle  \langle \mathbb{E}\langle Y_n , u_j \rangle Y_n , u_{j'} \rangle = \langle C\upsilon_k, \upsilon_{k'} \rangle \langle \Gamma\upsilon_j, \upsilon_{j'} \rangle  \]
 		\[ = \lambda_k \langle \upsilon_k, \upsilon_{k'} \rangle \gamma_j \langle \upsilon_j, \upsilon_{j'} \rangle = \lambda_k \gamma_j \delta_{k, k'} \delta_{j, j'}.\]
 		\hfill $\square$
+		%gdzie elementy pod sum¹ po prawej stronie powy¿szej równoœci maj¹ œrednie $0$ i wariancje równe $\lambda_k \gamma_j$, co na mocy CTG (Twierdzenie \ref{CTG}) koñczy dowód \eqref{eq:L2.1}. \textcolor{red}{[skalarne CTG?]}
+		%%\\Aby udowodniæ niezale¿noœæ miêdzy $\eta_{kj}$ i $\eta_{k'j'}$ dla $(k,j) \neq (k',j')$, wystarczy pokazaæ, ¿e $\sqrt{N}(\widehat{\Delta} (\upsilon_k), u_j )$ i $\sqrt{N}(\widehat{\Delta} (\upsilon_{k'}), u_{j'} )$ s¹ nieskorelowane. Mamy
+		%\begin{align*}
+		%\mathbb{E} &\left[ \sqrt{N} \langle \widehat{\Delta} (\upsilon_k), u_j \rangle \sqrt{N} \langle \widehat{\Delta} (\upsilon_{k'}), u_{j'} \rangle \right]
+		%\\&= N \mathbb{E} \left[ \Big\langle \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \upsilon_k \right\rangle Y_n, u_j \Big\rangle \Big\langle \frac{1}{N} \sum_{n'=1}^N \left\langle X_{n'}, \upsilon_{k'} \right\rangle Y_{n'}, u_{j'} \Big\rangle \right]
+		%\\&= N \mathbb{E} \left[ \Big\langle \frac{1}{N} \sum_{n=1}^N \left\langle X_n, \upsilon_k \right\rangle ( \mathit{\Psi} X_n + \varepsilon_n ), u_j \Big\rangle \Big\langle \frac{1}{N} \sum_{n'=1}^N \left\langle X_{n'}, \upsilon_{k'} \right\rangle ( \mathit{\Psi} X_{n'} + \varepsilon_{n'}), u_{j'} \Big\rangle \right]
+		%\\&\overset{\text{H}_0}{=} \frac{1}{N} \mathbb{E} \left[ \sum_{n=1}^N \langle X_n, \upsilon_k \rangle \langle \varepsilon_n , u_j \rangle \sum_{n'=1}^N \langle X_{n'}, \upsilon_{k'} \rangle \langle \varepsilon_{n'} , u_{j'} \rangle \right]
+		%\\&= \frac{1}{N} \sum_{n,n'=1}^N \mathbb{E} \left[ \langle X_n, \upsilon_k \rangle \langle X_{n'}, \upsilon_{k'} \rangle \right] \mathbb{E} \left[ \langle \varepsilon_n , u_j \rangle  \langle \varepsilon_{n'} , u_{j'} \rangle \right]
+		%\\&= \frac{1}{N} \sum_{n=1}^N \mathbb{E} \left[ \langle X_n, \upsilon_k \rangle \langle X_n, \upsilon_{k'} \rangle \right] \mathbb{E} \left[ \langle \varepsilon_n , u_j \rangle  \langle \varepsilon_n , u_{j'} \rangle \right]
+		%\\&= \langle C(\upsilon_k), \upsilon_{k'} \rangle \langle \Gamma u_j, u_{j'} \rangle = \gamma_k \delta_{kk'} \gamma_j \delta_{jj'}.
+		%\end{align*}
 		%
-		\vspace{0.35cm}\\Przypomnijmy, ¿e norma Hilberta-Schmidta operatora Hilberta-Schmidta $\mathit{\Psi}$ zdefiniowana jest wzorem $\left\| \mathit{\Psi} \right\|^2_{\mathcal{S}}=\sum_{j=1}^{\infty} \left\| \mathit{\Psi}(e_j) \right\|^2$, gdzie ci¹g $\{e_j\}_{j \geq 1}$  stanowi bazê ortonormaln¹ oraz zauwa¿my, ¿e norma ta jest nie mniejsza od normy operatorowej, tj. $\left\| \mathit{\Psi} \right\|^2_{\mathcal{L}} \leq \left\| \mathit{\Psi} \right\|^2_{\mathcal{S}}$.
+		\vspace{0.35cm}\\Przypomnijmy, ¿e norma Hilberta-Schmidta operatora Hilberta-Schmidta $\mathit{\Psi}$ zdefiniowana jest wzorem $\left\| \mathit{\Psi} \right\|^2_{\mathcal{S}}=\sum_{j=1}^{\infty} \left\| \mathit{\Psi}(e_j) \right\|^2$, gdzie ci¹g $\{e_1, e_2,...\}$  stanowi bazê ortonormaln¹ oraz, ¿e norma ta jest nie mniejsza od normy operatorowej, tj. $\left\| \mathit{\Psi} \right\|^2_{\mathcal{L}} \leq \left\| \mathit{\Psi} \right\|^2_{\mathcal{S}}$.
 		%
 		\begin{lem}\label{L3} \cite{K08}, \cite{HK}
 			\\Przy za³o¿eniach Twierdzenia \ref{T1} mamy
@@ -908,14 +866,13 @@
 			\end{equation*}
 		\end{lem}
 		\textit{Dowód.} Zauwa¿my, ¿e
-		\[ \left\| \widehat{\Delta}(e_j)\right\|^2 = \langle \widehat{\Delta}(e_j), \widehat{\Delta}(e_j) \rangle = \Big\langle \frac{1}{N} \sum \limits_{n=1}^N \langle X_n, e_j \rangle Y_n, \frac{1}{N} \sum \limits_{n'=1}^N \langle X_{n'}, e_j \rangle Y_{n'} \Big\rangle \]
+		\[ \left\| \widehat{\Delta}(e_j)\right\|^2 = \langle \widehat{\Delta}(e_j), \widehat{\Delta}(e_j) \rangle = \langle \frac{1}{N} \sum \limits_{n=1}^N \langle X_n, e_j \rangle Y_n, \frac{1}{N} \sum \limits_{n'=1}^N \langle X_{n'}, e_j \rangle Y_{n'} \rangle \]
 		\[ = N^{-2} \sum_{n,n'=1}^N \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle Y_n, Y_{n'} \rangle . \]
 		St¹d, przy za³o¿eniu H$_0$, mamy
-		\[\mathbb{E} \left\| \widehat{\Delta} \right\|^2_{\mathcal{S}}  = \mathbb{E} \sum \limits_{j=1}^{\infty} \left\| \widehat{\Delta}(e_j)\right\|^2 = \sum \limits_{j=1}^{\infty} \mathbb{E}  \left\| \widehat{\Delta}(e_j)\right\|^2 %= \sum \limits_{j=1}^{\infty} \mathbb{E} N^{-2} \sum_{n,n'=1}^N \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle Y_n, Y_{n'} \rangle \]
-		%\[ 
-		= N^{-2} \sum_{j=1}^{\infty} \sum_{n,n'=1}^N \mathbb{E} \big[ \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle Y_n, Y_{n'} \rangle \big] \]
-		\[= N^{-2} \sum_{j=1}^{\infty} \sum_{n,n'=1}^N \mathbb{E} \big[ \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle \varepsilon_n, \varepsilon_{n'} \rangle \big] \]
-		\[= N^{-2} \sum_{j=1}^{\infty} \sum_{n,n'=1}^N \mathbb{E} \big[ \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \big] \mathbb{E} \langle \varepsilon_n, \varepsilon_{n'} \rangle =  (*).  \]
+		
+		\[\mathbb{E} \left\| \widehat{\Delta} \right\|^2_{\mathcal{S}}  = \mathbb{E} \sum \limits_{j=1}^{\infty} \left\| \widehat{\Delta}(e_j)\right\|^2 = \sum \limits_{j=1}^{\infty} \mathbb{E}  \left\| \widehat{\Delta}(e_j)\right\|^2 = \sum \limits_{j=1}^{\infty} \mathbb{E} N^{-2} \sum_{n,n'=1}^N \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle Y_n, Y_{n'} \rangle \]
+		\[ = N^{-2} \sum_{j=1}^{\infty} \sum_{n,n'=1}^N \mathbb{E} \big[ \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle Y_n, Y_{n'} \rangle \big] = N^{-2} \sum_{j=1}^{\infty} \sum_{n,n'=1}^N \mathbb{E} \big[ \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \langle \varepsilon_n, \varepsilon_{n'} \rangle \big] \]
+		\[ = N^{-2} \sum_{j=1}^{\infty} \sum_{n,n'=1}^N \mathbb{E} \big[ \langle X_n, e_j \rangle \langle X_{n'}, e_j \rangle \big] \mathbb{E} \langle \varepsilon_n, \varepsilon_{n'} \rangle =  (*).  \]
 		Poniewa¿ dla $n \neq n'$ elementy losowe $\varepsilon_n$ oraz $\varepsilon_{n'}$ s¹ niezale¿ne oraz $\mathbb{E}\varepsilon_n = 0$, to z Lematu \ref{lemat_niezaleznosc} mamy $\mathbb{E} \langle \varepsilon_n, \varepsilon_{n'} \rangle = 0$, wiêc
 		\[ (*) = N^{-2} \sum_{j=1}^{\infty} \sum_{n=1}^N \mathbb{E} \big[ \langle X_n, e_j \rangle \langle X_{n}, e_j \rangle \big] \mathbb{E} \|\varepsilon_n\|^2 = N^{-1} \sum_{j=1}^{\infty} \mathbb{E} \langle X, e_j \rangle^2 \mathbb{E} \|\varepsilon_1\|^2 = \]
 		\[ = N^{-1} \mathbb{E}  \sum_{j=1}^{\infty} \langle X, e_j \rangle^2 \mathbb{E} \|\varepsilon_1\|^2 = N^{-1} \mathbb{E}  \|X\|^2 \mathbb{E} \|\varepsilon_1\|^2. \]
@@ -985,7 +942,7 @@
 		czyli $\| \sqrt{N}(\hat{u}_j - u_j) \| = O_P(1)$. Z kolei na mocy Lematu \ref{L3} mamy
 		\begin{equation}\label{delta_wg_p}
 		\begin{gathered}
-		P(\| \widehat{\Delta}(\upsilon_k) \| > C) \leq \frac{1}{C} \mathbb{E} \| \widehat{\Delta}(\upsilon_k) \| \leq \frac{1}{C} \mathbb{E} \| \widehat{\Delta}\|_{\mathcal{L}} \|\upsilon_k \| \leq \frac{1}{C} \mathbb{E} \big(\| \widehat{\Delta}\|_{\mathcal{L}}^2\big)^{1/2} \mathbb{E} \big(\|\upsilon_k \|^2\big)^{1/2} \\
+		P(\| \widehat{\Delta}(\upsilon_k) \| > C) \leq \frac{1}{C} \mathbb{E} \| \widehat{\Delta}(\upsilon_k) \| \leq \frac{1}{C} \mathbb{E} \| \widehat{\Delta}\| \|\upsilon_k \| \leq \frac{1}{C} \mathbb{E} \big(\| \widehat{\Delta}\|^2\big)^{1/2} \mathbb{E} \big(\|\upsilon_k \|^2\big)^{1/2} \\
 		= \frac{1}{C} \big(\mathbb{E} \| \widehat{\Delta} \|^2_{\mathcal{S}}\big)^{1/2} =  \frac{1}{C \sqrt{N}} \big( \mathbb{E} \left\| X \right\|^2 \mathbb{E} \left\| \varepsilon_1 \right\|^2 \big)^{1/2} \overset{N \rightarrow \infty}{\longrightarrow} 0,
 		\end{gathered}
 		\end{equation}
@@ -995,9 +952,7 @@
 		\begin{equation*}
 		\sqrt{N} \big\langle \widehat{\Delta} (\hat{\upsilon}_k - \upsilon_k), \hat{u}_j \big\rangle = \big\langle  \sqrt{N} (\hat{\upsilon}_k - \upsilon_k), \widehat{\Delta}^* (\hat{u}_j) \big\rangle.
 		\end{equation*}
-		Fakt, ¿e $\| \sqrt{N}(\hat{\upsilon}_j - \upsilon_j) \| = O_P(1)$ dowodzimy identycznie jak w \eqref{roznica_wg_p}. Poniewa¿ $\|\widehat{\Delta}^*\|_{\mathcal{L}} = \|\widehat{\Delta}\|_{\mathcal{L}} \leq \|\widehat{\Delta}\|_{\mathcal{S}}$ oraz $\sup \limits_{N \geq 1} \mathbb{E}\|\hat{u_j}\|^2 < \infty$ (gdy¿ $\mathbb{E}\|\hat{u_j} - u_j\|^2 \rightarrow 0$) to mo¿emy powtórzyæ rozumowanie z \eqref{delta_wg_p} aby otrzymaæ $\| \widehat{\Delta}^*(\hat{u_j}) \| \stackrel{P}{\longrightarrow} 0$.\hfill $\square$
-		%UWAGA: ci¹g zbie¿ny ma ograniczon¹ normê
-		%
+		Fakt, ¿e $\| \sqrt{N}(\hat{\upsilon}_j - \upsilon_j) \| = O_P(1)$ dowodzimy identycznie jak w \eqref{roznica_wg_p}. Poniewa¿ $\|\widehat{\Delta}^*\| = \|\widehat{\Delta}\| \leq \|\widehat{\Delta}\|_{\mathcal{S}}$ oraz $\sup \limits_{N \geq 1} \mathbb{E}\|\hat{u_j}\|^2 < \infty$ (gdy¿ $\mathbb{E}\|\hat{u_j} - u_j\|^2 \rightarrow 0$) to mo¿emy powtórzyæ rozumowanie z \eqref{delta_wg_p} aby otrzymaæ $\| \widehat{\Delta}^*(\hat{u_j}) \| \stackrel{P}{\longrightarrow} 0$.\hfill $\square$
 		%oraz $\widehat{\Delta}^* (x) = N^{-1} \sum_{n=1}^N \left\langle Y_n, x \right\rangle X_n $, gdy¿
 		%\[ \big\langle x,  N^{-1} \sum_{n=1}^N \left\langle Y_n, y \right\rangle X_n \big\rangle = N^{-1} \sum_{n=1}^N \left\langle Y_n, y \right\rangle \langle x, X_n \rangle = \big\langle N^{-1} \sum_{n=1}^N \langle X_n, x \rangle Y_n, y \big\rangle = \langle \widehat{\Delta}(x), y \rangle.  \]
 		%Uzasadnienie analogiczne do dowodu Lematu \ref{L3} stanowi, ¿e przy za³o¿eniu H$_0$ mamy $\mathbb{E} \| \widehat{\Delta}^* \|_{\mathcal{S}}^2 = \mathbb{E} \| \widehat{\Delta} \|_{\mathcal{S}}^2$, co koñczy dowód. \hfill $\square$
@@ -1026,7 +981,7 @@
 		\\W celu udowodnienia Twierdzenia \ref{T2} potrzebujemy kolejnych lematów pomocniczych, analogicznych do lematów s³u¿¹cych do dowodu Twierdzenia \ref{T1}. Poniewa¿ jednak nie zak³adamy hipotezy H$_0$, to pewne fragmenty rozumowania musz¹ byæ zmodyfikowane.
 		\begin{lem}\label{L5} % \cite{K08}, \cite{HK}
 			Jeœli spe³nione s¹ Za³o¿enia \ref{Z1}, \ref{Z2}, to zachodzi
-			\[ \mathbb{E} \| \widehat{\Delta} \|_{\mathcal{L}} \leq \Big( \mathbb{E} \|X\|^2 \mathbb{E}\|Y\|^2 \Big)^{1/2}. \]
+			\[ \mathbb{E} \| \widehat{\Delta} \| \leq \Big( \mathbb{E} \|X\|^2 \mathbb{E}\|Y\|^2 \Big)^{1/2}. \]
 		\end{lem}
 		%\begin{lem}\label{L5} \cite{K08}, \cite{HK}
 		%	\\Jeœli $\{Y_n\}_{n\geq 1}$ s¹ zmiennymi funkcjonalnymi o jednakowych rozk³adach, to zachodzi
@@ -1034,20 +989,21 @@
 		%\end{lem}
 		\textit{Dowód.} Dla dowolnego $u \in L^2$ takiego, ¿e $\| u\| \leq 1$, mamy
 		\begin{equation*}
-		\| \widehat{\Delta} u \| = \bigg\| \frac{1}{N} \sum_{n=1}^N \langle X_n, u \rangle  Y_n  \bigg\| \leq \frac{1}{N} \sum_{n=1}^N | \langle X_n, u \rangle | \| Y_n \| \leq \frac{1}{N} \sum_{n=1}^{N} \| X_n \|\| Y_n \|,
+		\| \widehat{\Delta} u \| = \| \frac{1}{N} \sum_{n=1}^N \langle X_n, u \rangle  Y_n  \| \leq \frac{1}{N} \sum_{n=1}^N | \langle X_n, u \rangle | \| Y_n \| \leq \frac{1}{N} \sum_{n=1}^{N} \| X_n \|\| Y_n \|,
 		\end{equation*}
 		wiêc
 		\begin{equation*}
-		\mathbb{E}\| \widehat{\Delta} \|_{\mathcal{L}}  \leq \frac{1}{N} \sum_{n=1}^{N} \mathbb{E} \| X_n \|\| Y_n \| \leq \frac{1}{N} \sum_{n=1}^{N} \Big( \mathbb{E} \|X_n\|^2 \mathbb{E}\|Y_n\|^2 \Big)^{1/2} = \Big( \mathbb{E} \|X\|^2 \mathbb{E}\|Y\|^2 \Big)^{1/2}.
+		\mathbb{E}\| \widehat{\Delta} \|  \leq \frac{1}{N} \sum_{n=1}^{N} \mathbb{E} \| X_n \|\| Y_n \| \leq \frac{1}{N} \sum_{n=1}^{N} \Big( \mathbb{E} \|X_n\|^2 \mathbb{E}\|Y_n\|^2 \Big)^{1/2} = \Big( \mathbb{E} \|X\|^2 \mathbb{E}\|Y\|^2 \Big)^{1/2}.
 		\end{equation*}
 		\hfill $\square$
 		%
-		\begin{tw}\label{SLLN} \cite{Billingsley} (Mocne Prawo Wielkich Liczb, wersja Chinczyna)
+		\begin{tw}\label{SLLN} \cite{Billingsley} Mocne Prawo Wielkich Liczb 
 		\\Niech $\{ X_n\}_{n \geq 1}$ bêdzie ci¹giem niezale¿nych zmiennych losowych o jednakowym rozk³adzie takich, ¿e $\mathbb{E} X_n = m$. Wtedy mamy
 		\begin{equation*}
 		\frac{1}{N} \sum_{n=1}^{N} X_n \overset{p.n.}{\longrightarrow} m.
 		\end{equation*}
 		\end{tw}
+		%%% dowód u Bosq'a %%%
 		%%% zbie¿noœæ prawie na pewno ~ zbie¿noœæ prawie wszêdzie %%%
 		%
 		\begin{lem}\label{L6} \cite{K08}, \cite{HK}
@@ -1056,7 +1012,7 @@
 			\langle \widehat{\Delta}(\upsilon), u \rangle \overset{P}{\longrightarrow} \langle \Delta (\upsilon), u \rangle.
 			\end{equation*}
 		\end{lem}
-		\textit{Dowód.} Tezê otrzymujemy korzystaj¹c z Mocnego Prawa Wielkich Liczb (zbie¿noœæ prawie na pewno poci¹ga zbie¿noœæ wed³ug prawdopodobieñstwa) zauwa¿aj¹c
+		\textit{Dowód.} Tezê otrzymujemy korzystaj¹c z Prawa Wielkich Liczb zauwa¿aj¹c
 		\begin{equation*}
 		\langle \widehat{\Delta}(\upsilon), u \rangle = \frac{1}{N} \sum_{n=1}^N \langle X_n , \upsilon \rangle \langle Y_n , u \rangle
 		\end{equation*}
@@ -1069,21 +1025,21 @@
 		\begin{lem}\label{L7} \cite{K08}, \cite{HK}
 			\\Je¿eli spe³nione s¹ Za³o¿enia \ref{Z1} oraz \ref{Z2}, to
 			\begin{equation*}
-			\langle \widehat{\Delta}(\hat{\upsilon}_k), u_j \rangle \overset{P}{\longrightarrow} \langle \Delta (\upsilon_k), u_j \rangle, \quad \text{dla } k \leq p, \ j \leq q.
+			\langle \widehat{\Delta}(\hat{\upsilon}_k), \hat{u}_j \rangle \overset{P}{\longrightarrow} \langle \Delta (\upsilon_k), u_j \rangle, \quad \text{dla } k \leq p, \ j \leq q.
 			\end{equation*}
 		\end{lem}
 		\textit{Dowód.} Na mocy Lematu \ref{L6} wystarczy pokazaæ
-		\[ \langle \widehat{\Delta}(\hat{\upsilon}_k), \hat{u}_j \rangle - \langle \widehat{\Delta}(\upsilon_k), u_j \rangle \overset{P}{\longrightarrow} 0.\]
+		\[ \langle \widehat{\Delta}(\hat{\upsilon}_k), \hat{u}_j \rangle - \langle \widehat{\Delta}(\upsilon), u \rangle \overset{P}{\longrightarrow} 0.\]
 		W tym celu poka¿emy, ¿e
 		\begin{equation*}
-		\langle \widehat{\Delta}(\upsilon_k), \hat{u}_j - u_j \rangle = \Big\langle \frac{1}{\sqrt{N}}\widehat{\Delta}(\upsilon_k), \sqrt{N}(\hat{u}_j - u_j) \Big\rangle \overset{P}{\longrightarrow} 0
+		\langle \widehat{\Delta}(\upsilon_k), \hat{u}_j - u_j \rangle = \langle \frac{1}{\sqrt{N}}\widehat{\Delta}(\upsilon_k), \sqrt{N}(\hat{u}_j - u_j) \rangle \overset{P}{\longrightarrow} 0
 		\end{equation*}
 		i
 		\begin{equation*}
-		\langle \widehat{\Delta}(\hat{\upsilon}_k) - \widehat{\Delta}(\upsilon_k), \hat{u}_j \rangle = \Big\langle \sqrt{N}(\hat{\upsilon}_k - \upsilon_k), \frac{1}{\sqrt{N}} \widehat{\Delta}^* (\hat{u}_j) \Big\rangle \overset{P}{\longrightarrow} 0,
+		\langle \widehat{\Delta}(\hat{\upsilon}_k) - \widehat{\Delta}(\upsilon_k), \hat{u}_j \rangle = \langle \sqrt{N}(\hat{\upsilon}_k - \upsilon_k), \frac{1}{\sqrt{N}} \widehat{\Delta}^* (\hat{u}_j) \rangle \overset{P}{\longrightarrow} 0,
 		\end{equation*}
-		korzystaj¹c z Lematu \ref{LP}. $\| \sqrt{N}(\hat{u}_j - u_j) \| = O_P(1)$ oraz $ \|\sqrt{N}(\hat{\upsilon}_k - \upsilon_k)\| = O_P(1)$ pokazaliœmy ju¿ w \eqref{roznica_wg_p}. Z nierównoœci Czebyszewa i z Lematu \ref{L5} zachodzi
-		\[ P\left( \Big\| \frac{1}{\sqrt{N}} \widehat{\Delta}(\upsilon_k) \Big\| > C\right) \leq \frac{1}{C \sqrt{N}} \mathbb{E} \|\widehat{\Delta}(\upsilon_k) \| \leq \frac{1}{C \sqrt{N}}\Big( \mathbb{E} \|X\|^2 \mathbb{E}\|Y\|^2 \Big)^{1/2} \overset{N \rightarrow \infty}{\longrightarrow} 0,\]
+		korzystuj¹c z Lematu \ref{LP}. $\| \sqrt{N}(\hat{u}_j - u_j) \| = O_P(1)$ oraz $ \|\sqrt{N}(\hat{\upsilon}_k - \upsilon_k)\| = O_P(1)$ pokazaliœmy ju¿ w \eqref{roznica_wg_p}. Z Lematu \ref{L5} zachodzi
+		\[ P(\| \frac{1}{\sqrt{N}} \widehat{\Delta}(\upsilon_k) \| > C) \leq \frac{1}{C \sqrt{N}} \mathbb{E} \|\widehat{\Delta}(\upsilon_k) \| \leq \frac{1}{C \sqrt{N}}\Big( \mathbb{E} \|X\|^2 \mathbb{E}\|Y\|^2 \Big)^{1/2} \overset{N \rightarrow \infty}{\longrightarrow} 0,\]
 		czyli $\| \frac{1}{\sqrt{N}} \widehat{\Delta}(\upsilon_k) \| \overset{P}{\longrightarrow} 0$. Tak samo jak w dowodzie Lematu \ref{L4} korzystamy z faktów, ¿e $\|\widehat{\Delta}^*\| = \|\widehat{\Delta}\|$ oraz $\sup \limits_{N \geq 1} \mathbb{E}\|\hat{u_j}\|^2 < \infty$, aby uzasadniæ $\|\frac{1}{\sqrt{N}} \widehat{\Delta}^* (\hat{u}_j)\| \overset{P}{\longrightarrow} 0$. \hfill $\square$
 		
 		%Podobnie jak w dowodzie Lematu \ref{L4} poka¿emy, ¿e $\hat{u}_j - u_j = O_P(1)$. Z Twierdzenia \ref{L1} mamy
@@ -1117,8 +1073,8 @@
 	%
 	\chapter{Przyk³ad zastosowania}
 	%
-	\textcolor{blue}{[Co to za  dane? Co to bêdzie za model?]}\\
-	W tym rozdziale przedstawimy przyk³adowe zastosowanie testu przedstawionego w Rozdziale 2. Podobnie jak w artykule \cite{K08} oraz ksi¹¿ce \cite{HK} stworzymy kilka funkcjonalnych modeli liniowych na podstawie danych opisuj¹cych natê¿enie pola magnetycznego Ziemi. Zmienn¹ objaœniaj¹c¹ $X$ bêd¹ obserwacje zanotowane w obserwatorium geofizycznych znajduj¹cym siê na wysokich szerokoœciach geograficznych. Zaœ zmienna objaœniana $Y$ bêdzie ró¿na dla kolejnych modeli: zmienne $Y_n$ bêd¹ obserwacjami z wybranego obserwatorium $n$ znajduj¹cego siê na odpowiednio ni¿szej szerokoœci geograficznej - wybrano obserwatoria ulokowane na œrednich i niskich szerokoœciach geograficznych. Nastêpnie ka¿dy model zostanie przetestowany wed³ug zaprezentowanej wczeœniej procedury. 
+	\textcolor{blue}{[Co to za  dane? Co to bêdzie za model?]}
+	\\W tym rozdziale przedstawimy przyk³adowe zastosowanie testu przedstawionego w Rozdziale 2. Podobnie jak w artykule \cite{K08} oraz ksi¹¿ce \cite{HK} stworzymy kilka funkcjonalnych modeli liniowych na podstawie danych opisuj¹cych natê¿enie pola magnetycznego Ziemi. Zmienn¹ objaœniaj¹c¹ $X$ bêd¹ obserwacje zanotowane w obserwatorium geofizycznych znajduj¹cym siê na wysokich szerokoœciach geograficznych. Zaœ zmienna objaœniana $Y$ bêdzie ró¿na dla kolejnych modeli: zmienne $Y_n$ bêd¹ obserwacjami z wybranego obserwatorium $n$ znajduj¹cego siê na odpowiednio ni¿szej szerokoœci geograficznej - wybrano obserwatoria ulokowane na œrednich i niskich szerokoœciach geograficznych. Nastêpnie ka¿dy model zostanie przetestowany wed³ug zaprezentowanej wczeœniej procedury. 
 	%
 	\section{Opis danych magnetometrycznych}
 	%
@@ -1131,10 +1087,9 @@
 	\end{figure}
 	%\\\textcolor{red}{[SuperMAG]: lub \textbf{H}, D, Z?} 
 	\\\textcolor{red}{[odnoœnik do rysunku z przyk³adowymi obserwacjami]}
-	%\\\textcolor{red}{[...](poziome i pionowe intensywnoœci?)}
+	\\\textcolor{red}{[...](poziome i pionowe intensywnoœci?)}
 	\\\textcolor{red}{Magnetometer data... }
-	\\Mianem \textbf{pogody kosmicznej} nazywamy charakteryzacjê zjawisk w przestrzeni miêdzyplanetarnej oddzia³uj¹cych na atmosferê ziemsk¹. G³ównym Ÿród³em jej zmian s¹ wahania aktywnoœci s³onecznej. S³oñce stale emituje na³adowane cz¹steczki, które docieraj¹ do Ziemi w postaci tzw. wiatrów s³onecznych i mog¹ powodowaæ pewne anomalie w magnetosferze i jonosferze ziemskiej. 
-	\textcolor{red}{...zorze polarne + subburze (substorms),... }
+	\\Mianem \textbf{pogody kosmicznej} nazywamy charakteryzacjê zjawisk w przestrzeni miêdzyplanetarnej oddzia³uj¹cych na atmosferê ziemsk¹. G³ównym Ÿród³em jej zmian s¹ wahania aktywnoœci s³onecznej. S³oñce stale emituje na³adowane cz¹steczki, które docieraj¹ do Ziemi w postaci tzw. wiatrów s³onecznych i mog¹ powodowaæ pewne anomalie w magnetosferze i jonosferze ziemskiej. \textcolor{red}{...zorze polarne + subburze (substorms),... }
 	\\Pogoda kosmiczna wp³ywa na dzia³anie satelitów, promów kosmicznych, komunikacjê radiow¹ i telefoniczn¹, loty samolotowe, na funkcjonowanie elektrowni, mo¿liwe ¿e tak¿e na klimat na Ziemi oraz na ¿ycie zwierz¹t oraz roœlin. Zatem obserwacja i zrozumienie jej procesów, w tym subburz, jest niezwykle istotne do kontrolowania i przewidywania jej skutków.
 	\\Celem testu jest zbadanie, czy zmiany w polu magnetycznym na wysokich szerokoœciach geograficznych maj¹ wp³yw na pole na œrednich szerokoœciach geograficznych, ...\\Dane o polu magnetycznym, generowanym przez pr¹d elektryczny przep³ywaj¹cy przez ziemsk¹ magnetosferê i jonosferê, rejestrowane s¹ za pomoc¹ tzw. magnetometru. To naziemne urz¹dzenie odczytuje kilka sk³adowych natê¿enia pola magnetycznego, nas interesowaæ bêdzie sk³adowa horyzontalna (H, \textit{Horizontal}), która wskazuje na wielkoœæ natê¿enia pola magnetycznego skierowanego w stronê magnetycznej pó³nocy. ...
 	\\\textcolor{red}{[...]}	
@@ -1147,12 +1102,10 @@
 	%
 	\section{Ameryka Pó³nocna (Kanada)}
 	W krêgu zainteresowañ autorów artyku³u \cite{K08} le¿¹ dane pochodz¹ce z obserwatoriów Ameryki Pó³nocnej, zaczniemy zatem od analizy podobnych danych.
-	\vspace{0.35cm}\\Rozwa¿aæ bêdziemy okres od 1 stycznia do 30 czerwca 2001 roku...
-	\textcolor{red}{[do sierpnia?]}
-	\\textcolor{red}{[podaæ liczbê braków danych - liczbê wykluczeñ oraz nadpisanych wartoœci]}
+	\vspace{0.35cm}\\Rozwa¿aæ bêdziemy okres od 1 stycznia do 30 czerwca 2001 roku...\textcolor{red}{[do sierpnia?]}
+	\\\textcolor{red}{[podaæ liczbê braków danych - liczbê wykluczeñ oraz nadpisanych wartoœci]}
 	\\\textcolor{red}{[wskazanie obserwatoriów z podzia³em na wysokie, œrednie i niskie szerokoœci geograficzne - wraz z dok³adnymi szerokoœciami]}
-	\\\textcolor{red}{[WYKRESY - przyk³ad danych] [jednostka!? nT]}
-	Wybór liczby funkcji bazowych nie ma istotnego wp³ywu na wynik testu, wa¿ne ¿eby otrzymana dana funkcjonalna by³a dobrze dopasowana do oryginalnych punktów, ale z wyeliminowaniem szumu. Stopieñ dopasowania wed³ug wyboru liczby funkcji w bazie przedstawia Rysunek \ref{fig:bsplajn}.
+	\\\textcolor{red}{[WYKRESY - przyk³ad danych] [jednostka!? nT]} Wybór liczby funkcji bazowych nie ma istotnego wp³ywu na wynik testu, wa¿ne ¿eby otrzymana dana funkcjonalna by³a dobrze dopasowana do oryginalnych punktów, ale z wyeliminowaniem szumu. Stopieñ dopasowania wed³ug wyboru liczby funkcji w bazie przedstawia Rysunek \ref{fig:bsplajn}.
 	\begin{figure}
 		\centering
 		\includegraphics[scale=0.8]{bsplajn.png}
@@ -1174,23 +1127,15 @@
 		\end{figure}
 	\\\textcolor{red}{[...]}
 	\vspace{0.35cm}\\\textcolor{red}{[do opracowania: punkt po punkcie wed³ug opisu procedury testowej w rozdziale 2]}
-	\\textcolor{red}{[do opracowania: kod w R!]}
+	\\\textcolor{red}{[do opracowania: kod w R!]}
 	\\\textcolor{red}{[pytanie: wykonaæ to samo dla nowszych danych?]}
 	%
 	\section{Europa (Polska)}
 	Do programu INTERMAGNET nale¿¹ tak¿e dwie polskie stacje geofizyczne: obserwatorium w Belsku oraz obserwatorium na Helu. Przeprowadzimy zatem podobna j.w. analizê dla Europy. Wybraliœmy ? obserwatoriów: 
-	\\textcolor{red}{[wskazanie obserwatoriów z podzia³em na wysokie, œrednie i niskie szerokoœci geograficzne - wraz z dok³adnymi szerokoœciami]}
+	\\\textcolor{red}{[wskazanie obserwatoriów z podzia³em na wysokie, œrednie i niskie szerokoœci geograficzne - wraz z dok³adnymi szerokoœciami]}
 	\\Do analiz wykorzystamy najœwie¿sze dane:  od 1 stycznia do ? 2015 roku...
 	\\\textcolor{red}{[podaæ liczbê braków danych - liczbê wykluczeñ oraz nadpisanych wartoœci]}
 	\\\textcolor{red}{[...]}
-	\\WYKRESY KROPKI - DANE FUNKCJONALNE
-	%
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[scale=0.8]{PCA1.png}
-		\caption{Pierwsze trzy funkcje w³asne....}
-		\label{fig:PCA1}
-	\end{figure}
 	%
 	\appendix
 	%
@@ -1298,32 +1243,7 @@
 	...
 	#
 	#-------------------------------------------------------------------------	
-	# FPCA
-	#-------------------------------------------------------------------------	
-	# BUDOWANIE 'nharm' LICZBY PIERWSZYCH FUNKCJI W£ASNYCH
-	pca<-pca.fd(BOU.1.fd, nharm=3, centerfns = TRUE)
 	
-	# WYJAŒNIONA ZMIENNOÆ
-	par(mfrow=c(1,3))
-	plot.pca.fd(pca,pointplot=FALSE)
-	par(mfrow=c(1,1))
-	
-	# WYKRESY PIERWSZYCH 'nharm' FUNKCJI W£ASNYCH
-	plot.fd(pca$harmonics,main="Pierwsze funkcje w³asne")
-	# PIERWSZYCH 'nharm' WARTOŒCI W£ASNYCH
-	pca$values[1]
-	pca$values[2]
-	pca$values[3]
-	
-	# SCORE-PLOTS
-	par(mfrow=c(1,3))
-	plot(pca$scores[,1],pca$scores[,2],xlab="Pierwszy score",ylab="Drugi score")
-	plot(pca$scores[,1],pca$scores[,3],xlab="Pierwszy score",ylab="Trzeci score")
-	plot(pca$scores[,2],pca$scores[,3],xlab="Drugi score",ylab="Trzeci score")
-	par(mfrow=c(1,1))
-	
-	
-	#-------------------------------------------------------------------------	
 	# WA¯NE FUNKCJE
 	#cca.fd
 	#cor.fd
